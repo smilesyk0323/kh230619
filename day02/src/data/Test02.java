@@ -10,7 +10,7 @@ public class Test02 {
 		
 		//올바른예시
 		System.out.println(7000*2);
-		System.out.println(8000*2);
+		System.out.println(8000*3);
 		System.out.println(7000*2+8000*3);
 	}
 }

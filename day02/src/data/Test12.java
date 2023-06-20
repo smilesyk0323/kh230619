@@ -8,5 +8,14 @@ public class Test12 {
 		//참고로 아르바이트생은 절대로 한개 더 가져오라고 하지 않습니다
 		int kimbabPrice = 1400;
 		int kimbabCount = 5;
+		
+		int freeKimbabcount = kimbabCount / 2;
+		
+		int payCount = kimbabCount - freeKimbabcount;
+		int totalPrice = payCount * kimbabPrice;
+		
+		System.out.println(freeKimbabcount);
+		System.out.println(totalPrice);
+				
 	}
 }

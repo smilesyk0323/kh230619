@@ -20,8 +20,27 @@ public class Test13 {
 		System.out.println(payMoney);
 	
 				
-				
-				
+		//풀이
+		//인원변수가 2개일 필욘 없다! 학생 선생 구분 없이 커피숍의 입장에서 주문잔수만 집중!
+		//늘 테스트는 필수!! > 경계값 테스트
+		//4+1 이거나 5+1로 계산하면 됨
+		//5+1 풀이 
+		
+		//입력
+		//int count = 28;
+		//int price = 2500;
+		
+		//난이도를 높이면 int event = 5;  int free = count / ( event + 1 );
+		
+		//계산
+		//int free = count/6
+		//int pay = count - free;
+		
+		//int total = price * pay;
+		
+		//출력
+		//System.out.println(free);
+		//System.out.println(total);		
 				
 				
 				

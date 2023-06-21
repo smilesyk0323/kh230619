@@ -8,8 +8,8 @@ public class Test01 {
 		//- 형태는 boolean 한 개 뿐이다
 		//- 비교연산 >,<,>=,<=,==(같다),!=(같지않다)
 		
-		boolean a = true;
-		boolean b = false;
+		//boolean a = true;
+		//boolean b = false;
 		
 		//(Q) 주머니에 2만원이 있다. 피자가 18000원일때 주문이 가능한가
 		int money = 20000;

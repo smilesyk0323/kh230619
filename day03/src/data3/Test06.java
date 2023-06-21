@@ -27,7 +27,7 @@ public class Test06 {
 		//boolean clap = tenClap || oneClap; 십의자리에 3,6,9 또는 일의자리의3,6,9;
 		
 		boolean tenClap = ten ==3 || ten == 6 || ten == 9;
-		boolean oneClap = ten ==3 || ten == 6 || ten == 9;
+		boolean oneClap = one ==3 || one == 6 || one == 9;
 		boolean clap = tenClap || oneClap;
 		
 				

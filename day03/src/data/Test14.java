@@ -1,6 +1,6 @@
 package data;
 
-public class test14 {
+public class Test14 {
 	public static void main(String[]args) {
 		//할인 금액 구하기 
 		//(Q)300만원짜리 컴퓨터를 20% 할인하면 얼마인가 

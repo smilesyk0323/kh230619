@@ -1,6 +1,6 @@
 package data;
 
-public class test15 {
+public class Test15 {
 	public static void main(String[]args) {
 		//KH여행사에서는 다음과 같이 프로모션을 진행중입니다. 
 		//국내 어디든 한 사람당 1박에 10만원 , 추가로 25%할인까지 챙겨가세요 

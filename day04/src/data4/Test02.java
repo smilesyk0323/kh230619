@@ -31,7 +31,7 @@ public class Test02 {
 		
 		//String text3 = "김밥		유료	무료";(탭키)
 		String text3 = "김밥\t유료\t무료";
-		System.out.println(text3);
+		System.out.println(text3);//김밥 유료 무료 
 		
 	}
 }

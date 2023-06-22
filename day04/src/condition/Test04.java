@@ -20,6 +20,7 @@ public class Test04 {
 		System.out.print("여행일수:");
 		int day = sc.nextInt();
 		
+		sc.close();
 		
 		int totalPrice = day * people * dayPrice;
 		int discount;

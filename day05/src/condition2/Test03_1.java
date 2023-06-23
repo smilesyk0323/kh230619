@@ -53,6 +53,8 @@ public class Test03_1 {
 					System.out.println("이용요금은450원입니다.");	 
 					}
 		//출력 
-		System.out.println("기본요금")
+		System.out.println("기본요금 : " + price+"원");
+		System.out.println("카드보증금 : " + card+"원");
+		System.out.println("결제요금 : " + result + "원");
 	}
 }

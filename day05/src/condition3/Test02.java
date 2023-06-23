@@ -7,19 +7,20 @@ public class Test02 {
 		//- 이게 문제가 되는 상황이 있다
 		
 		//입력 - 월 정보
-		int month = 5;
+		int month = 2;
 		
-		if (month >=3 && month <=5) {
-			System.out.println("봄");
-		}
-		else if(month>=6 && month<=8) {
-			System.out.println("여름");
-		}
-		else if(month>=9 && month<=11) {
-			System.out.println("가을");
-		}
-		else {
+		switch(month) {//month에 있는 값을 토대로 실행 지점을 찾겠다
+		case 12,1,2://17버전 적용가능한 기능이나 대부분 사용 불가일것..
 			System.out.println("겨울");
+			break;
+		case 3://month가 2인 경우 실행할 곳
+			System.out.println("겨울");
+			break;//그만하고 나가라!
+		case 4://month가 3인 경우 실행할 곳 
+			System.out.println("봄");
+		default : //else	
 		}
+		
+	
 	}
 }

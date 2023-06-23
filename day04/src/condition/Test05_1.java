@@ -1,5 +1,7 @@
 package condition;
 
+import java.util.Scanner;
+
 public class Test05_1 {
 	public static void main(String[]args) {
 		//과속단속 카메라 프로그램 
@@ -31,6 +33,7 @@ public class Test05_1 {
 			System.out.println("벌금은 "+ totalPay +"원입니다");//벌금 부과시 
 		}
 		else {
-			System.out.println("벌금은 없습니다");//과속이 아닐시 
+			System.out.println("벌금은 없습니다");//과속이 아닐시 ,
 		}	
+	}
 }

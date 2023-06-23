@@ -20,6 +20,8 @@ public class Test06 {
 		
 		//단위는 첨부터 float도 가능! 
 		//float로 시작한다면 18.5는 double 이라 18.5뒤에 f붙이도록 (사실 안붙여도 됨 )
+		//float로 작성시 next 뒤에도 Int가 아니라 Float > nextFloat로 입력 잊지 않기 
+		
 		
 		double m = (double)cm / 100; 
 		

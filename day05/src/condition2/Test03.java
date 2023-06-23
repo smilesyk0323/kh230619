@@ -16,6 +16,7 @@ public class Test03 {
 		System.out.print("나이:");
 		int age = sc.nextInt();
 		
+		sc.close();
 		
 		if(age>=65) {
 			System.out.println("이용요금은 무료입니다.");

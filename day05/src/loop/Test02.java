@@ -9,7 +9,7 @@ public class Test02 {
 		Scanner sc = new Scanner(System.in);
 		
 		for(int  i=0; i<5; i++) {
-			System.out.println("숫자 입력: ");
+			System.out.print("숫자 입력: ");
 			int a = sc.nextInt();
 		}
 

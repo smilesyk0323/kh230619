@@ -13,14 +13,14 @@ public class Test04 {
 
 		String result;
 		switch (month) {
-		case 1, 3, 5, 7, 8, 10, 12:
-			result = "큰달";
-		break;
-		case 4, 6, 9, 11:
-			result = "작은달";
-		break;
-		default:
-			
+			case 1, 3, 5, 7, 8, 10, 12:
+				result = "큰달";
+			break;
+			case 4, 6, 9, 11:
+				result = "작은달";
+			break;
+			default:
+				
 			result = "2월";
 			
 		}

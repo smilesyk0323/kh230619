@@ -13,6 +13,23 @@ public class Test05_1 {
 		
 		//풀이 
 		
-
+		//입력
+		int speed = 59;
+		int limit = 50;
+		
+		//계산
+		boolean over = speed > 50;
+				
+		//출력
+		if(over) {
+			int overSpeed = speed - limit;//계산할때 큰 수가 앞..? 
+			int fine = 30000 + overSpeed / 10 * 10000;	 	 	 
+			System.out.println("벌금 : 원");
+		}
+		else {
+			System.out.println("벌금 : 0원");
+		
+		}
+		
 	}
 }

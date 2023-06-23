@@ -13,7 +13,7 @@ public class Test05_3 {
 		
 		//풀이 
 		
-		//입력
+		//입력 
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("속도(km):");

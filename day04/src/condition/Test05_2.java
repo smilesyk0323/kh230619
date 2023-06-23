@@ -19,7 +19,7 @@ public class Test05_2 {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("자동차 속도값: ");
-		int speed = sc.nextInt();
+		int speed = sc.nextInt(); 
 		boolean finePay = speed > 50;//과속 기준
 		sc.close();
 		

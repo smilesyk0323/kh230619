@@ -20,7 +20,7 @@ public class Test03_1 {
 		
 		//계산 - 이용요금을 계산
 		//int price = 1250 or 720 or 450 or 0 ;
-		int price;
+		int price; 
 		if(age>=65 || age<9) {//어르신 또는 영유아
 			price = 0;
 		}

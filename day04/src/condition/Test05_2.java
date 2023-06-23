@@ -24,7 +24,7 @@ public class Test05_2 {
 		sc.close();
 		
 	    //60(50+10),70(50+20),80(50+30)...km  4(3+1)만원,5(3+2)만원,6(3+3)만원
-	    int extraSpeed = speed - 50; // 50이상의 과속 속도 
+	    int extraSpeed =speed -50  ; // 50이상의 과속 속도 
 	    int extraPrice = (extraSpeed / 10) * 10000;// 10km씩 추가되는 벌금
 		
 		int totalPay = finePrice + extraPrice;

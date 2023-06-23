@@ -18,6 +18,9 @@ public class Test06 {
 		
 		sc.close();
 		
+		//단위는 첨부터 float도 가능! 
+		//float로 시작한다면 18.5는 double 이라 18.5뒤에 f붙이도록 (사실 안붙여도 됨 )
+		
 		double m = (double)cm / 100; 
 		
 		double bmi = weight / (m * m);

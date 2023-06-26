@@ -22,7 +22,9 @@ public class Test05 {
 			int enter = sc.nextInt();
 			if (enter == number * i) {
 				System.out.println("정답");
-			} else {
+				
+			} 
+			else {
 				System.out.println("오답");
 				}
 			if( enter == number * i ) {

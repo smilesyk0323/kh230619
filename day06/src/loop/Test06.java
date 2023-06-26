@@ -6,8 +6,8 @@ public class Test06 {
 		
 		//(Q) 10부터 0까지 숫자가 줄어들며 출력하도록 구현 
 		
-		for( int i  = 10;  i >=0; i --) {
-			System.out.println(i);
+		for( int i  = 10;  i >=0; i --) { 
+			System.out.println(i); 
 		}
 		
 		//(Q) 10분의 1씩 줄어들며 출력하는 반복문 구현 

@@ -38,6 +38,7 @@ public class Test05_1 {
 				nok++;
 				combo = 0;
 			}		
+			
 			}		
 			sc.close();
 			

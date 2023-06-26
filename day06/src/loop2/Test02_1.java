@@ -11,10 +11,10 @@ public class Test02_1 {
 		
 		for(int i = 1; i < 99; i++) {
 		
-			boolean ten = i / 10 == 7;
+			boolean ten = i / 10 == 7; 
 			boolean one = i % 10 == 7;
 
-		if(ten || one) {
+		if(ten || one) { 
 			//System.out.println(i);
 			count++;
 		}

@@ -11,14 +11,14 @@ public class Test04 {
 		//사용자가 2 이상의 어떤 숫자를 입력했을 때 소수인지 아닌지 판정하여 출력 
 		//소수 탐색 프로그램 
 		
-			//입력
+			//입력  
 		   int number = 7;
 		   
 		   int count = 0;
 		   
 		   for(int i = 1; i <=number; i++) {
 			   if(number % i == 0 ) {// (2) 그 나눈 값이 0 이 된 값을 세기 
-			   		System.out.println(number % i);//(1)숫자를 본인 수 만큼 나누기 
+			   		//System.out.println(number % i);//(1)숫자를 본인 수 만큼 나누기 
 			   		count++;
 			   		}			   
 		   }

@@ -13,7 +13,7 @@ public class Test04 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("여행인원:");
+		System.out.print("여행인원:"); 
 		int people = sc.nextInt();
 		System.out.print("여행일수:");
 		int day = sc.nextInt();

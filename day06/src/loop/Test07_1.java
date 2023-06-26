@@ -11,7 +11,7 @@ public class Test07_1 {
 	 int m = sc.nextInt();
 	 int s = sc.nextInt();
 	 
-	 sc.close();
+	 sc.close(); 
 	 
 	 //계산
 	  int t = m * 60 + s;
@@ -20,7 +20,7 @@ public class Test07_1 {
 	  for(int i = t; i >= 0; i--) {
 		  //System.out.println(i + "초 남았습니다"
 		  int min = i /60;
-		  int sec = i % 60;
+		  int sec = i % 60; 
 		  System.out.println( min + "분" + sec + "초 남았습니다");
 		  
 		  //1초 대기 

@@ -14,6 +14,6 @@ public class Test03_1 {
 			   count ++;
 		    	}
 			}
-			System.out.println(count);
+			System.out.println("박수치는 숫자 = "+ count+ "개");
 	}
 }

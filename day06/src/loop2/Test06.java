@@ -16,16 +16,16 @@ public class Test06 {
 	   System.out.println(total);
 			//(Q) 1부터 10까지 더하면 얼마 
 	   //int total = 1+ 2 +3 + ...+ 10
-	   int total = 0;
+	   //int total = 0;
 	   
 	   //total += 1;
 	   //total += 2; .... total +=10;
 	   
-	   for(int i=1; i <= 10; i++) {
-		   total += i;
-	   }
+	   //for(int i=1; i <= 10; i++) {
+		   //total += i;
+	   //}
 	   
-	   System.out.println(total);
+	   //System.out.println(total);
 	   
 	   }	
 }

@@ -12,19 +12,17 @@ public class Test04 {
 		for(int i =1; i<=100; i++) {
 			
 			int a = r.nextInt(6)+1;
-			System.out.println("주사위A: " +a);
 			int b = r.nextInt(6)+1;
-			System.out.println("주사위B: " +b);
+			//System.out.println("주사위: " +a +","+b);
 			
 			if(a==b) {
-				System.out.println("더블");			
+				//System.out.println("더블");			
 				count++;
 				int c = r.nextInt(6)+1;
-				System.out.println("추가A: "+c);
 				int d = r.nextInt(6)+1;
-				System.out.println("추가B: "+d);
+				//System.out.println("추가: "+c+","+d);
 				if(c==d) {
-					System.out.println("추가더블");
+					//System.out.println("추가더블");
 					count2++;
 				}
 				

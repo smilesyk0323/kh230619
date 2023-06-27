@@ -24,7 +24,7 @@ public class Test10 {
 			System.out.print("분: ");
 			int min = sc.nextInt();
 			totalH += hour;
-			totalM += min;
+			totalM += min;//불필요한 코드 
 		}
 			int totalTime = (totalH * 60) + totalM;
 			int studyHour = totalTime / 60;

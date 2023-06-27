@@ -13,7 +13,7 @@ public class Test10_1 {
 		//출력도 '시간'과 '분'을 따로 합니다. 
 		
 		//풀이
-	    //시간 1번 입력 받기
+	
 		Scanner sc = new Scanner(System.in);
 		
 		int total = 0;

@@ -23,7 +23,7 @@ public class Test01 {
 			//최종형태 
 			//int number = r.nextInt(개수) + 시작값; 
 			int dice = r.nextInt(6) + 1;// 1부터 6개의 int중 하나를 추첨하라
-			System.out.println("dice =" + dice)
+			System.out.println("dice =" + dice);
 			
 		}
 

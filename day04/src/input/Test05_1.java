@@ -2,7 +2,7 @@ package input;
 
 import java.util.Scanner;
 
-public class Test5_1 {
+public class Test05_1 {
 	public static void main(String[]args) {
 		//KH분식점의 메뉴판은 다음과 같습니다. 
 		//떡볶이 3000원  튀김  500원   순대 2000원   1  3  1

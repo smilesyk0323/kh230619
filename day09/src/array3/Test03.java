@@ -44,7 +44,18 @@ public class Test03 {
 		//System.out.println(score[1][1]+"\t");
 		//System.out.println(score[1][2]+"\t");
 		
-		String[][] com = new String[2][3];
+		//Test04
+//		다음 데이터를 2차원 배열에 저장하고 출력
+//		자바, 스프링, 안드로이드
+//		파이썬, 판다스, 장고
+		
+		
+//		String[][] com = new String[2][3];
+		String[][] com = new String[][] {
+			{"자바", "스프링", "안드로이드"},
+			{"파이썬", "판다스", "장고"}
+			};
+			
 		com[0][0] = "자바";
 		com[0][1] = "스프링";
 		com[0][2] = "안드로이드";
@@ -64,10 +75,11 @@ public class Test03 {
 		for(int i =0; i <com.length; i++) {
 			for(int j = 0; j< com[i].length; j++ ) {
 				System.out.println(com[i][j]);
+				System.out.print("\t");
 			}
+//		System.out.print("\n");
+			System.out.println();
 			}
-		
-			
 	}
 
 }

@@ -10,23 +10,35 @@ public class Test14 {
 		//1.모든 자리는 1번씩 다른 위치와 바뀌어야 한다.
 		//2. 어디랑 섞일지 대상 위치는 모르며 같은 위치일 수도 있다
 		//3.랜덤으로 정해진 위치와 현재 위치의 데이터를 바꾸도록 구현 
-		
+
 		Random r = new Random();
 		
-		int[] data = new int[] {0,1,2,3};
+		//데이터 준비 
+		int[] data = new int[] {30,50,20,10};
 		
+		//셔플(뒤섞기) 
+		//- 같은 자리 제거 
+		//- 같은 자리가 나오면 다시 뽑아라 
+		//- 같은 자리가 나오면 하던 작업을 무효화시켜라
 		
-		int a = r.nextInt(3);
-		int maxIndex = 0;//0번 위치가 가장 크다고 정하자!
-		for(int i=0; i < data.length; i++) {//1번위치부터 마지막까지 
-				if(data[maxIndex] != data[i])	{//더 큰 숫자가 나오면
-					maxIndex = i;//위치를 갈아엎는다 
-					
-					}
-				}
-		 System.out.println("최대값 위치= "+ maxIndex);
-		 System.out.println("최대값 = "+ data[maxIndex]);
-
+		for(int i = 0; i< data.length; i++) {
+		//[0] <---> [0~4]
+		int index = r.nextInt(data.length);
+		//Sytstem.out.println("Index: "+index);//랜덤인지 확인
+		
+		if(i==index) {//같은 자리가 나왔다면
+			i--;//무력화.. 시키는.. 
+			continue;
+		}
+		int backup = data[i];
+		data[i] = data[index];
+		data[index] = backup;
+		}
+		
+		//출력 
+		for(int i =0; i< data.length; i++) {
+			System.out.println(data[i]);
+		}
 		
 	}
 

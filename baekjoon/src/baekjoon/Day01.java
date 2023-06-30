@@ -10,7 +10,7 @@ public class Day01 {
 			int n = sc.nextInt();
 			
 			for(int i =1; i <=n; i++) {
-				total += n;
+				total += i;
 	
 			}
 			sc.close();			

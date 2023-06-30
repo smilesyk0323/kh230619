@@ -28,5 +28,7 @@ public class Mobile {
 		System.out.println("데이터(GB): "+this.data);
 		System.out.println("통화(분): "+this.min);
 		System.out.println("문자(건): "+this.count+"\n");
+		
+		
 		}
 }

@@ -6,6 +6,8 @@ public class Test01 {
 		Mobile m2 = new Mobile();
 		Mobile m3 = new Mobile();
 		
+		//데이터 초기화
+		//planA.name = "5G언택트 52";//바람직하지 않은 방법
 		m1.setup("SK","5G언택트 52",52000,200,1000,2000);
 		m2.setup("KT", "5G세이브", 45000,100,900, 1500);
 		m3.setup("LG","5G시그니처", 130000,500,2000,2500);

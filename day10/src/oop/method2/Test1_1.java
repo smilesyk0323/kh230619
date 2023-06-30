@@ -17,9 +17,6 @@ public class Test1_1 {
 			p2.show1();
 			p3.show1();
 
-
-		
-
 	}
 
 }

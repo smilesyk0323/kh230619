@@ -6,4 +6,8 @@ public class Player {
 	String  name;
 	String  nation;
 	int  goal;
+	public void show1() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -7,10 +7,10 @@ public class Day01 {
 			
 			Scanner sc = new Scanner(System.in);
 			int total= 0;
+			int n = sc.nextInt();
 			
 			for(int i =1; i <=n; i++) {
-				int n = sc.nextInt();
-				total= += n;
+				total += n;
 	
 			}
 			sc.close();			

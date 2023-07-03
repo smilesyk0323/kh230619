@@ -9,12 +9,16 @@ public class Day02 {
 			
 			int total = sc.nextInt();
 			
-			int countTotal = sc.nextInt();
+			int N = sc.nextInt();
 			
-			
-			int price = sc.nextInt();
-			int count = sc.nextInt();
-			
+			for(int i =0; i<N; i++) {
+				int price = sc.nextInt();
+				int count = sc.nextInt();
+				
+				int total2 = price * count;
+				      total2 += N ;
+				System.out.println(total2);
+			}
 		}
 
 }

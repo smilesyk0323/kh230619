@@ -1,5 +1,5 @@
 package oop.getter2;
-
+//메인 메소드 
 public class Test01 {
 	public static void main(String[]args) {
 		Student a = new Student();

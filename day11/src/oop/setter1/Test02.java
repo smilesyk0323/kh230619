@@ -14,8 +14,7 @@ public class Test02 {
 			a.setScore(50);
 			a.show();
 			
-			a.setName("라이츄");
-			
+			a.setName("라이츄");			
 			a.show();		
 		}
 }

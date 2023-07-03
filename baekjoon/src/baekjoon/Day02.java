@@ -16,7 +16,6 @@ public class Day02 {
 				int count = sc.nextInt();
 				
 				int total2 = price * count;
-				      total2 += N ;
 				System.out.println(total2);
 			}
 		}

@@ -30,11 +30,23 @@ public class Id {
 		this.name = name;
 	}
 	
+//	public String getPasswordMasking() {
+//		return ""+this.password.charAt(0)+this.password.charAt(1) +"**********";
+//	}
+
 	public String getPasswordMasking() {
-		return ""+this.password.charAt(0)+this.password.charAt(1) +"**********";
+		String total = "";
+		for(int i=0; i < this.password.length(); i++) {
+			if(i <= 1) {
+				total += this.password.charAt(0);
+			}
+			else {
+				total += "*";
+			}
+		}
+		return total;
 	}
-	
-	
+
 	public void show() {
 		System.out.println("아이디: "+this.id);
 		System.out.println("닉네임: "+this.name);

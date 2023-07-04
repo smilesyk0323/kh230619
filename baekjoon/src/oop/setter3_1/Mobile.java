@@ -61,9 +61,10 @@ public class Mobile {
 	}
 	
 	void show() {
-		System.out.println("휴대폰 판매정보");
-		System.out.println("기종: ");
-		System.out.println("통신사: ");
+		System.out.println("<휴대폰 판매정보>");
+		System.out.println("기종: "+this.phone);
+		System.out.println("통신사: "+this.telecom);
+		
 		if(month>0) {
 			if(month==24) {
 				System.out.println("가격: "+this.price+"만원");
@@ -74,9 +75,12 @@ public class Mobile {
 				System.out.println("약정기간: "+this.month+"개월"+"월납부금액: "+this.getPay()+"만원");
 			}
 			else {
-				System.out.println("할인가격: "+this.getEvent()+"만원");
-				System.out.println("정상가")
+				
 			}
+		}
+		else {
+			System.out.println("할인가격: "+this.getEvent()+"만원");
+			System.out.println("(정상가"+this.price+"만원)");
 		}
 	}
 }

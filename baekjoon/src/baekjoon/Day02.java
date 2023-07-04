@@ -10,14 +10,20 @@ public class Day02 {
 			int total = sc.nextInt();
 			
 			int N = sc.nextInt();
-			
+			int total2 = 0;
 			for(int i =0; i<N; i++) {
 				int price = sc.nextInt();
 				int count = sc.nextInt();
-				int total2 = price * count;
-					total2++ ;
-					System.out.println(total2);
-			}
+				 total2 += price * count;
+					
+			     }
+			 if(total2 == total	) {
+				 System.out.println("Yes");
+			 }
+			 else{
+				 System.out.println("No");
+				 
+			 }
 		}
 
 }

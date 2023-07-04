@@ -7,6 +7,11 @@ public class Test01 {
 		Member c = new Member("신동엽",2,8,80,1000);
 		
 		a.show();
+		
+		a.next();
+		a.next();
+		
+		a.show();
 		b.show();
 		c.show();
 		

@@ -14,9 +14,9 @@ public class Day02 {
 			for(int i =0; i<N; i++) {
 				int price = sc.nextInt();
 				int count = sc.nextInt();
-				
 				int total2 = price * count;
-				System.out.println(total2);
+					total2++ ;
+					System.out.println(total2);
 			}
 		}
 

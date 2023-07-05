@@ -18,6 +18,7 @@ public class Phone {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
 	//공통메소드
 	public void call() {
 		System.out.println("전화기능 실행");

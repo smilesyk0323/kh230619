@@ -11,7 +11,7 @@ public class GalaxyFold4 extends Galaxy{
 	//메소드 재정의(method override)
 	//- 상속받은 메소드를 똑같이 한 번 더 만들어서 내가 만든게 실행되도록 하는 이유
 	//- 뭔가 상속받은 메소드가 맘에 안들때 사용 
-	@Override  //어노테이션(Annotation) - 역할 부여 
+	@Override  //어노테이션(Annotation) - 역할 부여 (해시태그)
 	public void call() {
 		//코드 추가
 		 //super.call();

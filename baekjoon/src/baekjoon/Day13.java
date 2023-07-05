@@ -8,18 +8,23 @@ public class Day13 {
 		Scanner sc = new Scanner(System.in);
 		
 		 int N = sc.nextInt();
+		 int [] intAry = new int[N];
 		 int count =0;
 		 int a;
 		 int v; 
+		 
 		 for(int i = 0; i<N; i++) {
-			 a  = sc.nextInt();
+			 intAry[i]  = sc.nextInt();
 			 }
-		
-	   if(a == v) {
-		   count++;
-		   v = sc.nextInt();
-	      }
-			
+		 
+		 v = sc.nextInt();
+		 for(int i = 0; i<N; i++) {
+			 if( intAry[i] == v) {
+				 count++;
+			 }
+				
+			 }
+				
 		System.out.println(count);
 		
 	}

@@ -10,14 +10,15 @@ public class Day13 {
 		 int N = sc.nextInt();
 		 int count =0;
 		 int a;
-		 int v = sc.nextInt();
-		
-		for(int i = 0; i<N; i++) {
+		 int v; 
+		 for(int i = 0; i<N; i++) {
 			 a  = sc.nextInt();
-				if(a == v) {
-					count++;
-				}
-			}
+			 }
+		
+	   if(a == v) {
+		   count++;
+		   v = sc.nextInt();
+	      }
 			
 		System.out.println(count);
 		

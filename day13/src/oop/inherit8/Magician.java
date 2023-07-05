@@ -2,8 +2,8 @@ package oop.inherit8;
 
 public class Magician extends Character{
 
-	public Magician(String id, int level) {
-		super(id, level);
+	public Magician(String id) {
+		super(id);
 	}
 
 	@Override

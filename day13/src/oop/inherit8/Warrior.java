@@ -2,8 +2,8 @@ package oop.inherit8;
 
 public class Warrior extends Character{
 
-	public Warrior(String id, int level) {//생성자를 맞춰라
-		super(id, level);
+	public Warrior(String id) {//생성자를 맞춰라
+		super(id);
 	}
 
 	@Override

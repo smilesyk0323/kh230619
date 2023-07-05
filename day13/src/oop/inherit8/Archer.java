@@ -2,8 +2,8 @@ package oop.inherit8;
 
 public class Archer extends Character{
 
-	public Archer(String id, int level) {
-		super(id, level);
+	public Archer(String id) {
+		super(id);
 	}
 
 	@Override

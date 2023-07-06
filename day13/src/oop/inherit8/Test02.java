@@ -15,7 +15,8 @@ public class Test02 {
 		//대충 표현..? 다형성~!!! 
 		//
 
-		//Character a= new Warrior("테스터1");>과제 답
+		//Character a= new Warrior("테스터1");>과제 답: 객체를 업캐스팅하여 생성한다
+		//상속 관계에서 특정 클래스로 대충 묶어서 표현하고 싶을 때
 		
 		interaction.battle (  a, b);
 	}

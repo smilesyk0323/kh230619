@@ -1,5 +1,6 @@
 package oop.inherit8;
 
+
 public class Test02 {
 	public static void main(String[]args) {
 		Warrior a= new Warrior("테스터1");
@@ -13,7 +14,9 @@ public class Test02 {
 		//힌트~ 추상적 개념/ 대략적인 추상적인걸로..?
 		//대충 표현..? 다형성~!!! 
 		//
+
+		//Character a= new Warrior("테스터1");>과제 답
 		
-		interaction.battle(a, b);
+		interaction.battle (  a, b);
 	}
 }

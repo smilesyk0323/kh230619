@@ -12,13 +12,16 @@ public class Day14 {
 		
 		int X = sc.nextInt();
 		
-//		for(int i = 0; i < N) {
-//			int b = sc.nextInt();
-//		}
-//		
-//		if( a[i] < X) {
-////			
-//		}
+		for(int i = 0; i < N;i++) {
+			int b = sc.nextInt();
+		}
+		for(int i = 0; i<N; i++) {
+			/*
+			 * if( a < X) {
+			 * 
+			 * }
+			 */
+		}
 	}
 
 }

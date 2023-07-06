@@ -6,10 +6,7 @@ public class Mp4 extends MediaFile{
 	public float getSpeed() {
 		return speed;
 	}
-
 	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
-       
-
 }

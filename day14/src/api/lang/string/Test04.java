@@ -10,21 +10,20 @@ public class Test04 {
 		//모든 검사를 통과 했다면 '닉네임 설정이 완료 되었습니다'라는 메세지를 출력 
 
 		Scanner sc = new Scanner(System.in);
-
-		System.out.print("사용할 닉네임을 입력하세요: ");
-		String user = sc.nextLine();
-		sc.close();
-
-		int userLength = user.length();
-
-		if( userLength<=2 && userLength>=10) {
-			System.out.println("닉네임의 글자수가 잘못 되었습니다");
+		//닉네임 설정 문제 
+		
+		//boolean 사용 비추천 성능저하.. 
+		String nickname = sc.next();
+		
+		if(nickname.length()<2 || nickname.length()>10) {//거절조건1
+			System.out.println("2글자 이상 10글자 이하로만 작성하세요");
 		}
-		else if(user.contains("운영자")){
-			System.out.println("닉네임에 '운영자'를 포함할 수 없습니다");
+		else if(nickname.contains("운영자")) {//거절조건2
+			System.out.println("운영자라는 단어는 포함할 수 없습니다"	);
 		}
 		else {
-			System.out.println("닉네임 설정이 완료 되었습니다");
+			System.out.println("닉네임 설정이 완료되었습니다");
 		}
+		
 	}
 }

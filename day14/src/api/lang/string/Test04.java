@@ -17,7 +17,7 @@ public class Test04 {
 
 		int userLength = user.length();
 
-		if( userLength<=2 && userLength<=10) {
+		if( userLength<=2 && userLength>=10) {
 			System.out.println("닉네임의 글자수가 잘못 되었습니다");
 		}
 		else if(user.contains("운영자")){

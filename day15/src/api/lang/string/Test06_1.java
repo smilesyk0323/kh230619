@@ -1,5 +1,6 @@
 package api.lang.string;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Test06_1 {
@@ -11,6 +12,16 @@ public class Test06_1 {
 		//- 위 조건을 만족하지 않을 경우 게임오버가 되며 프로그램 종료
 		//- 단어를 정상적으로 입력한 경우 제시어가 입력한 단어로 바뀝니다
 		//- 반복적으로 위 작업을 진행합니다
+		
+		String[] list = new String[] {
+				"강아지", "가로수", "각설탕", "나팔꽃", "눈송이", "도너츠"
+			};
+
+			Random r = new Random();
+			int index = r.nextInt(list.length);
+
+			String given = list[index];
+
 		
 		Scanner sc = new Scanner(System.in);
 		

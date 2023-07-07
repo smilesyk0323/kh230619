@@ -11,7 +11,7 @@ public class Test04 {
 		
 		if(id.matches(regex)) {
 			System.out.println("유효한 아이디입니다");
-		}
+		} 
 		else {
 			System.out.println("잘못된 아이디입니다");
 		}

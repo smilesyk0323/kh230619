@@ -5,7 +5,7 @@ public class Test01_1 {
 		//문자열 합성 
 		//= 원하는 문자열을 만들기 위해 지속적인 연결을 하는 작업 
 		//= 문자열 덧셈은 성능이 매우 안좋으며 이유는 문자열이 불변이기 때문이다 
-		//= 덧셈용 도구를 사용하면 된다(StringBuffer)
+		//= 덧셈용 도구를 사용하면 된다(StringBuffer/ StringBuilder)
 		
 		
 		StringBuffer buffer = new StringBuffer();

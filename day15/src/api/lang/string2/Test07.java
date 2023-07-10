@@ -11,9 +11,6 @@ public class Test07 {
 		Member member = new Member(memberId, memberPw, memberName);
 		
 		member.show();
-		
-		
-	}
-	
-
+				
+	}	
 }

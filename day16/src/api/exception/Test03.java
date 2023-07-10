@@ -33,12 +33,24 @@ public class Test03 {
 			System.out.print("출생일: "+ day + "일 ");
 		}
 		
-		catch(StringIndexOutOfBoundsException e){//플랜B - 입력길이가 짧을때 
-			System.out.println("입력값이 너무 짧습니다");
+//		catch(StringIndexOutOfBoundsException e){//플랜B - 입력길이가 짧을때 
+//			System.out.println("입력값이 너무 짧습니다");
+//		}
+//		catch(NumberFormatException e){//플랜B - 숫자 변환이 안될때
+//			System.out.println("올바른 숫자가 입력되지 않았습니다");
+//		}
+		catch(Exception e) {
+			System.out.println("에러!");
 		}
-		catch(NumberFormatException e){//플랜B - 숫자 변환이 안될때
-			System.out.println("올바른 숫자가 입력되지 않았습니다");
-		}
+		
 		
 	}
 }
+
+
+
+
+
+
+
+

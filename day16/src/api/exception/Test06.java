@@ -1,5 +1,7 @@
 package api.exception;
 
+import java.util.Scanner;
+
 public class Test06 {
 	public static void main(String[]args) {
 		//만나이 계산기 
@@ -18,30 +20,42 @@ public class Test06 {
 		//자바가 감지하는 부분과 못하는 부분을 구분 
 		//한 개의 catch 블록으로 모든 예외를 처리할 수 있도록 구현
 		
-		String birth = "1989-03";
+		try {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("출생년월 입력(예시:YYYY-MM)");
+		String birth = sc.next();
+
 		int thisY = 2023;
 		int thisM =  6;
-		
+		sc.close();
+
 		String part1 = birth.substring(0,4);
 		String part2 = birth.substring(5,7);
-		
-		
-		
+
 		int birthY = Integer.parseInt(part1);
 		int birthM = Integer.parseInt(part2);
-		
-		int 
-		int yearM = (thisY - birthY)*12;
-		int totalM = yearM + birthM;
-		
-		if()
-		
-		
-	
-		
-		
-		
-		
-	}
 
+		if(birthY<1900) {
+			throw new Exception("출생년도는1900년부터 입력가능합니다");
+		}
+		if(birthM<1||birthM>12) {
+			throw new Exception("출생월은 1~12만 입력가능합니다");
+		}
+
+		int ageM = (thisY - birthY)*12; //올해 만나이를개월수 
+
+		int age = (ageM+birthM)/12;
+
+		if((thisM-birthM)<1) {//올해 월 - 출생 월 < 1 =생일 달(포함) 지난 후 나이 
+			System.out.println("한국나이: " + ( age+1)+"세, 만"+  age +"세");
+		}
+		else {//생일달 전 나이 
+			System.out.println("한국나이: "+  age + "세, 만"+  (age -1) +"세");
+		}
+
+		}
+		catch(Exception e) {			
+				System.err.println("오류발생");
+				}
+	}
 }

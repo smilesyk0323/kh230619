@@ -8,19 +8,16 @@ public class Day14 {
 		
 		int N = sc.nextInt();
 			
-		int [] a = new int[N];
 		
 		int X = sc.nextInt();
 		
 		for(int i = 0; i < N;i++) {
 			int b = sc.nextInt();
 		}
+		int [] a = new int[N];
+			
 		for(int i = 0; i<N; i++) {
-			/*
-			 * if( a < X) {
-			 * 
-			 * }
-			 */
+			
 		}
 	}
 

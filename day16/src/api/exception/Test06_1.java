@@ -21,40 +21,52 @@ public class Test06_1 {
 		//한 개의 catch 블록으로 모든 예외를 처리할 수 있도록 구현
 		
 		try {
+		//입력
 		Scanner sc = new Scanner(System.in);
-		System.out.print("출생년월 입력(예시:YYYY-MM)");
-		String birth = sc.next();
-
-		int thisY = 2023;
-		int thisM =  6;
+		System.out.print("출생년월 입력(예시:YYYY-MM):");
+		String input = sc.next();
+		
+		
+		int currentYear = 2023;
+		int currentMonth =  7;
 		sc.close();
-
-		String part1 = birth.substring(0,4);
-		String part2 = birth.substring(5,7);
-
-		int birthY = Integer.parseInt(part1);
-		int birthM = Integer.parseInt(part2);
-
-		if(birthY<1900) {
-			throw new Exception("출생년도는1900년부터 입력가능합니다");
+		
+		//if(! input.matches("검사식") == false){//형식에 맞지 않으면 앞에 '!' 하거나 뒤에 '== false' 넣거나 
+		//     throw new Exception();    }
+		
+		
+		//계산
+		String[] part = input.split("-");//- 구분자(delimiter)로 하여 분해 
+		
+		int year = Integer.parseInt(part[0]);
+		int month = Integer.parseInt(part[1]);
+		if(year > currentYear || year ==currentYear && month > currentMonth) {//미래의 연/월이라면
+			throw new Exception("미래의 시간은 입력할 수 없습니다");
 		}
-		if(birthM<1||birthM>12) {
+		if(year < 1900) {
+			throw new Exception("1900년 미만은 입력할 수 없습니다");
+		}
+		if(month < 1 || month >12) {
 			throw new Exception("출생월은 1~12만 입력가능합니다");
 		}
+		
+		//한국나이 
+		int KoreanAge = currentYear - year +1;
 
-		int ageM = (thisY - birthY)*12; //올해 만나이를개월수 
-
-		int age = (ageM+birthM)/12;
-
-		if((thisM-birthM)<1) {//올해 월 - 출생 월 < 1 =생일 달(포함) 지난 후 나이 
-			System.out.println("한국나이: " + ( age+1)+"세, 만"+  age +"세");
+		//만나이 계산 - 12개월 마다 1살 
+		//= 개월수 / 12
+		int totalMonth = (currentYear - year) * 12 +(currentMonth- month );
+		int globalAge = totalMonth / 12;
+		
+			
+		//출력
+		System.out.println("한국나이: " +KoreanAge +"세, 만"+ globalAge +"세");
+		
+		
+		
 		}
-		else {//생일달 전 나이 
-			System.out.println("한국나이: "+  age + "세, 만"+  (age -1) +"세");
-		}
-
-		}
-		catch(Exception e) {			
+		catch(Exception e) {		
+			
 				System.err.println("오류발생");
 				}
 	}

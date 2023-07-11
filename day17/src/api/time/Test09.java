@@ -1,6 +1,7 @@
 package api.time;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Test09 {
@@ -11,12 +12,22 @@ public class Test09 {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		//입력
+		//입력이 2023/07/11 일때등 형식이 달라질때 
 		String input = sc.next();
 		
 		sc.close();
-		LocalDate day = LocalDate.parse(input);
+		
+		//계산
+		//LocalDate date = LocalDate.parse(input,해석기준);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		LocalDate day = LocalDate.parse(input,fmt);
+		
+//		LocalDate day = LocalDate.parse(input);
 		
 		//System.out.println(day);
+		
+		System.out.println("기념일 = "+ day.format(fmt));
 		
 		LocalDate after100 = day.plusDays(100L);
 		System.out.println("100일 = "+after100);
@@ -27,13 +38,14 @@ public class Test09 {
 		LocalDate after300 = day.plusDays(300L);
 		System.out.println("300일 = "+after300);
 		
-		LocalDate after1Y = day.plusDays(365L);
+//		LocalDate after1Y = day.plusDays(365L);
+		LocalDate after1Y = day.plusYears(1L);
 		System.out.println("1주년 = "+after1Y);
 		
-		LocalDate after2Y = day.plusDays(365L*2);
+		LocalDate after2Y = day.plusYears(2L);
 		System.out.println("2주년 = "+after2Y);
 		
-		LocalDate after10Y = day.plusDays(3650L);
+		LocalDate after10Y = day.plusYears(10L);
 		System.out.println("10주년 = "+after10Y);
 		
 		

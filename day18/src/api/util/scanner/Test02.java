@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Test02 {
 	public static void main(String[]args) {
-		//결론 : next() 계열의 명령 뒤에 .nextLIne()을 쓸 경우 비어있는 명령 한개
+		//결론 : next() 계열의 명령 뒤에 .nextLIne()을 쓸 경우 비어있는 명령 한개를 추가 
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("입력 :");
@@ -17,7 +17,8 @@ public class Test02 {
 		sc.close();
 		
 		System.out.println(" a= " + a);
-		System.out.println(" b= " + b);
+		System.out.println(" b= " + b
+				);
 		
 		
 }

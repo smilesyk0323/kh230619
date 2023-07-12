@@ -27,11 +27,11 @@ public class Test06 {
 				System.out.println("게임오버");
 				break;
 			}
-			else if(given.charAt(given.length()-1) != input.charAt(0)	) {
+			 if(given.charAt(given.length()-1) != input.charAt(0)	) {
 				System.out.println("게임오버");
 				break;
 			}
-			else if(history.contains(input)) {
+			 if(history.contains(input)) {
 				System.out.println("게임오버");
 				break;
 			}

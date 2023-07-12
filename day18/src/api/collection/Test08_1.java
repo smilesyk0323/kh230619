@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Test09 {
+public class Test08_1 {
 	public static void main(String[]args) {
 		//인원수 = 2~4명 입력
 		//카드는 4개의 도형(하트, 스페이드, 클로버, 다이아몬드)

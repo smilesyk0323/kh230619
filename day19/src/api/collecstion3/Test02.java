@@ -22,12 +22,19 @@ public static void main(String[] args) {
 		sc.close();
 		
 		
-		if(user.containsKey(id)&&user.containsValue(pass)) {
-			System.out.println("로그인성공!");
-		}
-		else {
-			System.out.println("로그인 실패!");
-		}
+//		if(user.containsKey(id)&&user.containsValue(pass)) {
+		//잘못된 표현 : 다른 사람 비밀번호를 입력하면 로그인됨... 
+//		System.out.println("로그인성공!");
+//	}
+//	else {
+//		System.out.println("로그인 실패!");
+//	}
+		if(user.containsKey(id)&&pass.equals(user.get(id))) {//올바른 표현
+		System.out.println("로그인성공!");
+	}
+	else {
+		System.out.println("로그인 실패!");
+	}
 	
 }
 }

@@ -56,7 +56,7 @@ public static void main(String[] args) {
 		Set<Integer> minus = new TreeSet<>();
 		minus.addAll(a);
 		minus.removeAll(b);
-		System.out.println("a - b = "+ minus);
+		System.out.println("a - b = "+ minus);//a - b = [50]
 		
 	
 }

@@ -10,10 +10,8 @@ public class Test03 {
 		//좋아요 이력 관리 프로그램
 		//= 비슷한 것들 : 팔로우, 좋아요, 추천, 싫어요, 즐겨찾기, 구독, 알람, ...
 		//= 토글(toggle) : 두 가지 상태를 왔다갔다 하는 것 (ex : 스위치)
-
 		Set<Integer> memory = new TreeSet<>();
 		//Set<Integer> memory = new HashSet<>();
-
 		Scanner sc = new Scanner(System.in);
 
 		while(true) {
@@ -34,11 +32,8 @@ public class Test03 {
 				System.out.println(no+"번 글 ♥");
 			}
 		}
-
 		sc.close();
-
 		System.out.println("좋아요 누른 글 번호들");
 		System.out.println(memory);
-
 	}
 }

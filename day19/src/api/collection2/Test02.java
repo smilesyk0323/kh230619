@@ -1,16 +1,21 @@
 package api.collection2;
 
-import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Test02 {
 	public static void main(String[] args) {
-		Set<Integer>	lotto = new HashSet<>();
+		//List때 만들었던 로또 생성 프로그램 
 		
-		while(lotto.size() <6) {
-			lotto.add((int)(Math.random()*45)+1);
+		Random r = new Random();
+		
+		Set<Integer>	lotto = new TreeSet<>();//정렬이 필요하다면 Tree,아니면Hash
+		
+		for(int i = 1; i<6; i++) {
+			int number = r.nextInt(45)+1;
+			lotto.add(number);
 		}
-	
 		System.out.println(lotto);
 		
 	}

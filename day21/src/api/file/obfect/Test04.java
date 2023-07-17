@@ -5,9 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.Date;
 import java.util.Set;
-import java.util.TreeSet;
 
 
 public class Test04 {
@@ -22,6 +20,8 @@ public class Test04 {
 			@SuppressWarnings("unchecked")//안적어도 상관없음
 			Set<Integer> lotto = (Set<Integer>) obj.readObject();//제너릭 타입을 적으면 경고 "<Integer>"써도 상관없음
 			obj.close();
+			
+			
 			
 			for(int number : lotto) {
 				System.out.println(number);

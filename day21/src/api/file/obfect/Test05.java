@@ -20,6 +20,8 @@ public class Test05 {
 		
 		obj.writeObject(st);
 		
+		
+		
 		obj.close();
 	}
 

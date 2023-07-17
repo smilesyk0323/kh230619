@@ -7,14 +7,20 @@ public class Day21 {
 		Scanner sc = new Scanner(System.in);
 		
 		int N = sc.nextInt();
-			
-		
+				
 		int X = sc.nextInt();
+		int[] list = new int[N];
 		
 		for(int i = 0; i < N;i++) {
-			int b = sc.nextInt();
+			list[i] = sc.nextInt();
 		}
-		int [] a = new int[N];
+		
+		for(int i =0; i<list.length; i++	) {
+			if(list[i] < X) {
+				System.out.println(list[i]);
+			}
+		}
+
 		
 		
 

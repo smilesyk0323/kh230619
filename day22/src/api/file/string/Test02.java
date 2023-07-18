@@ -20,6 +20,7 @@ public class Test02 {
 		BufferedWriter bw = new BufferedWriter(fw);//버퍼의 크기 8192
 		
 		bw.write("Hello");
+		bw.write("\n");
 		bw.write("안녕하세요");
 		
 		//정리 

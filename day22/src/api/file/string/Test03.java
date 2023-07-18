@@ -16,12 +16,14 @@ public class Test03 {
 		
 		while(true) {
 			System.out.print("입력: ");
-			String input = sc.next();
-			bw.write(input);
-			bw.write("\n");
+			String input = sc.nextLine();
 			if(input.equals("종료")){
 				break;
 			}
+			bw.write(input);
+			bw.write("\n");
+			//flush를 하면 즉시 저장이 됨
+			bw.flush();
 		}
 		sc.close();
 		bw.close();

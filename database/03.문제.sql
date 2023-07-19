@@ -6,7 +6,7 @@ room NUMBER,
 name varchar2(21),
 korean NUMBER(3),
 english NUMBER(3),
-math NUMBER(3)
+math NUMBER(3) 
 );
 
 INSERT INTO score(grade, room, name, korean, english, math)

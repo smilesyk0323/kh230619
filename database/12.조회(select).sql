@@ -109,3 +109,106 @@ select * from product where
 		and 
 		to_date('2020-12-31 23:59:59', 'yyyy-mm-dd hh24:mi:ss')
 		;
+-- (Q) 여름(6, 7, 8)월에 생산한 상품 정보 조회
+select * from product where to_char(made, 'mm') in ('06', '07', '08');
+select * from product where extract(month from made) between 6 and 8;
+	
+-- (Q) 2019년 하반기에 생산한 상품 정보 조회	
+-- 하반기 (07/01~12/31)
+select * from product 
+	where to_char(made, 'yyyy-mm') 
+		in ('2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12');
+select * from product
+	where extract(year from made) = 2019
+		and extract(month from made) between 7 and 12;
+select * from product
+	where made between 
+		to_date('2019-07-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss') 
+		and 
+		to_date('2019-12-31 23:59:59', 'yyyy-mm-dd hh24:mi:ss');
+
+-- (Q) 2020년 부터 현재까지 생산한 상품 정보 조회
+select * from product
+	where made between 
+		to_date('2020-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss') 
+		and 
+		sysdate;
+
+-- (Q) 최근 1년간 생산한 상품 정보 조회
+-- 오라클 날짜는 기본 계산 단위가 (일) 이다
+-- 따라서 1년전은 sysdate - 365이다.
+select * from product 
+	where made between sysdate-365 and sysdate;
+
+-- (응용) 시간까지 고려(시작일 00시부터 종료일 23시59분까지)
+select * from product 
+	where made between 
+	to_date(
+		to_char(sysdate-365, 'yyyy-mm-dd') || ' ' || '00:00:00',
+		'yyyy-mm-dd hh24:mi:ss'
+	)
+	and 
+	to_date(
+		to_char(sysdate, 'yyyy-mm-dd') || ' ' || '23:59:59', 
+		'yyyy-mm-dd hh24:mi:ss'
+	);
+
+-------------------------------------------------
+-- 정렬(Order)
+-------------------------------------------------
+-- 모든 조회가 끝나고 나온 결과를 원하는 목적에 따라 재배열
+-- asc(오름차순, ascending) , desc(내림차순, descending)
+
+-- 정렬을 따로 지정하지 않겠다(비추천)
+select * from product;
+
+select * from product order by no;
+select * from product order by no asc;
+select * from product order by no desc;
+	
+-- 2차 정렬
+select * from product order by price desc, no asc;
+
+-- (Q) 최근에 제조된 상품부터 출력(made desc)
+select * from product order by made desc;
+-- 번호가 시퀀스라면 아래 코드도 가능
+-- select * from product order by no desc; 
+
+-- (Q) 폐기일이 오래된 상품부터 출력(expire asc)
+select * from product order by expire asc;
+
+-- (Q) 이름순으로 출력(name asc)
+select * from product order by name asc;
+select * from product order by name asc, no asc;
+
+-- (Q) 상품을 종류별로 가격이 비싼 순으로 출력
+select * from product order by type asc, price desc;
+select * from product order by type asc, price desc, no asc;
+
+-- (Q) 유통기한이 가장 짧은 상품부터 출력(expire-made+1 asc)
+select * from product order by expire-made+1 asc, no asc;
+
+select 
+	no, name, type, price, made, expire, expire-made+1 
+from product
+order by expire-made+1 asc, no asc;
+
+-- 부여한 별칭으로 정렬 가능
+select 
+	no, name, type, price, made, expire, expire-made+1 유통기한
+from product
+order by 유통기한 asc, no asc;
+
+-- * 는 다른 항목과 같이 쓸 수 없고 테이블이름에 .* 를 추가하여 사용
+select 
+	product.*, expire-made+1 유통기한
+from product
+order by 유통기한 asc, no asc;
+
+-- 테이블에도 별칭 부여가 가능하다
+select 
+	p.*, expire-made+1 유통기한
+from product p
+order by 유통기한 asc, no asc;
+	
+	

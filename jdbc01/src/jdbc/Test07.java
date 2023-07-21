@@ -9,21 +9,23 @@ public class Test07 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-
+		System.out.println("번호");
+		int board_no = sc.nextInt();
 		System.out.print("제목: ");
-		String board_title = sc.nextLine();
+		String board_title = sc.next();
 		System.out.print("내용 작성: ");
-		String board_content = sc.nextLine();
-		System.out.println("작성자: ");
-		String board_writer = sc.nextLine();
+		String board_content = sc.next();
+		System.out.print("작성자: ");
+		String board_writer = sc.next();
 		int board_readcount = 100 ;
 		
 		sc.close();
 		
-		String sql = "board_no, board_title, board_content, "
-				            + "board_writer, board_readcount";
+		String sql = "insert into board(board_no, board_title, board_content, "
+				            + "board_writer, board_readcount)"
+				            + "values(?,?,?,?,?)";
 		
-		Object[]data = {board_title, board_content, board_writer,
+		Object[]data = {board_no,board_title, board_content, board_writer,
 				                  board_readcount};
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

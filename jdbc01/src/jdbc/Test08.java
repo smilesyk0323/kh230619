@@ -11,33 +11,31 @@ public class Test08 {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("회원아이디: ");
-		String member_id = sc.nextLine();
+		String memberId = sc.nextLine();
 		System.out.print("회원비밀번호: ");
-		String member_pw = sc.nextLine();
+		String memberPw = sc.nextLine();
 		System.out.print("회원닉네임: ");
-		String member_nickname = sc.nextLine();
+		String memberNickname = sc.nextLine();
 		System.out.print("회원생년월일: ");
-		String member_birth = sc.nextLine();
+		String memberBirth = sc.nextLine();
 		System.out.print("회원메일주소: ");
-		String member_email = sc.nextLine();
+		String memberEmail = sc.nextLine();
 		System.out.print("회원연락처: ");
-		String member_contact = sc.nextLine();
-		System.out.print("회원등급: ");
-		String member_level = sc.nextLine();
-		System.out.print("회원포인트: ");
-		String member_point = sc.nextLine();
-		System.out.print("회원가입일: ");
-		String member_join = sc.nextLine();
+		String memberContact = sc.nextLine();
 		
 		sc.close();
 		
-		String sql = "insert into member(member_id, member_pw, member_nickname, "
-				+ "member_birth, member_email, member_contact, member_level, "
-				+ "member_point, member_join) "
-				+ "values(?,?,?,?,?,?,?,?,?)";
+//		String sql = "insert into member(member_id, member_pw, member_nickname, "
+//				+ "member_birth, member_email, member_contact, member_level, "
+//				+ "member_point, member_join) "
+//				+ "values(?,?,?,?,?,?,'일반',0,sysdate)";
+//		
 		
-		Object[]data = {member_id, member_pw, member_nickname, member_birth, member_email, member_contact, 
-								member_level, member_point, member_join};
+		String sql = "insert into member(member_id, member_pw, member_nickname, "
+		+ "member_birth, member_email, member_contact	) "
+		+ "values(?,?,?,?,?,?)";
+		Object[]data = {memberId, memberPw, memberNickname, memberBirth,
+										memberEmail, memberContact	};
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");

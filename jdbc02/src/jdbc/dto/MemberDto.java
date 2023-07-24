@@ -3,15 +3,15 @@ package jdbc.dto;
 import java.sql.Date;
 
 public class MemberDto {
-	public String memberId;
-	public String memberPw;
-	public String memberNickname;
-	public String memberBirth;
-	public String memberEmail;
-	public String memberContact;
-	public String memberLevel;
-	public int memberPoint;
-	public Date memberJoin;
+	private String memberId;
+	private String memberPw;
+	private String memberNickname;
+	private String memberBirth;
+	private String memberEmail;
+	private String memberContact;
+	private String memberLevel;
+	private int memberPoint;
+	private Date memberJoin;
 	public MemberDto() {
 		super();
 	}

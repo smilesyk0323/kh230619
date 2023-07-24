@@ -27,11 +27,11 @@ public class Test04 {
 		if(list.isEmpty()) {	
 			System.out.println("게시글이 존재하지 않습니다");
 		}
-		
-		for(BoardDto dto :list) {
-//			System.out.println(dto);//dto.toString()
-			System.out.println(dto.getBoardTitle());
+		else {
+					for(BoardDto dto :list) {
+		//			System.out.println(dto);//dto.toString()
+						System.out.println(dto.getBoardTitle());
+					}
 		}
-				
 	}
 }

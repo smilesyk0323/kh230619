@@ -11,7 +11,7 @@ import jdbc.util.JdbcUtils;
 public class Test04 {
 	public static void main(String[] args) {
 		
-		String sql = "select * from board order by board_no asc";
+		String sql = "select * from board order by board_no desc";
 		
 		BoardMapper mapper = new BoardMapper();
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();

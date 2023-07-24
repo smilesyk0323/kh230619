@@ -10,8 +10,8 @@ public class MemberDao {
 	public void insert(MemberDto dto) {
 		String sql = "insert into member(member_id, member_pw, member_nickname,"
 						+ "member_birth, member_email, member_contact,"
-						+ " member_level, member_join)"
-						+ " values(?,?,?,?,?,?,'일반',sysdate)";
+						+ " member_level,member_point, member_join)"
+						+ " values(?,?,?,?,?,?,'일반',0,sysdate)";
 		Object[] data = {dto.getMemberId(),dto.getMemberPw(),dto.getMemberNickname(),
 							  dto.getMemberBirth(), dto.getMemberEmail(),dto.getMemberContact()
 							  	};

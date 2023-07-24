@@ -1,64 +1,65 @@
 package jdbc.dto;
 
 public class BookDto {
-		public int book_id;
-		public String book_title;
-		public String book_publication_date;
-		public int book_price;
-		public String book_publisher;
-		public int book_page_count;
-		public String book_genre;
+		public int bookId;
+		public String bookTitle;
+		public String bookPublication_date;
+		public int bookPrice;
+		public String bookPublisher;
+		public int bookPageCount;
+		public String bookGenre;
 		public BookDto() {
 			super();
 		}
-		public int getBook_id() {
-			return book_id;
+		public int getBookId() {
+			return bookId;
 		}
-		public void setBook_id(int book_id) {
-			this.book_id = book_id;
+		public void setBookId(int bookId) {
+			this.bookId = bookId;
 		}
-		public String getBook_title() {
-			return book_title;
+		public String getBookTitle() {
+			return bookTitle;
 		}
-		public void setBook_title(String book_title) {
-			this.book_title = book_title;
+		public void setBookTitle(String bookTitle) {
+			this.bookTitle = bookTitle;
 		}
-		public String getBook_publication_date() {
-			return book_publication_date;
+		public String getBookPublication_date() {
+			return bookPublication_date;
 		}
-		public void setBook_publication_date(String book_publication_date) {
-			this.book_publication_date = book_publication_date;
+		public void setBookPublication_date(String bookPublication_date) {
+			this.bookPublication_date = bookPublication_date;
 		}
-		public int getBook_price() {
-			return book_price;
+		public int getBookPrice() {
+			return bookPrice;
 		}
-		public void setBook_price(int book_price) {
-			this.book_price = book_price;
+		public void setBookPrice(int bookPrice) {
+			this.bookPrice = bookPrice;
 		}
-		public String getBook_publisher() {
-			return book_publisher;
+		public String getBookPublisher() {
+			return bookPublisher;
 		}
-		public void setBook_publisher(String book_publisher) {
-			this.book_publisher = book_publisher;
+		public void setBookPublisher(String bookPublisher) {
+			this.bookPublisher = bookPublisher;
 		}
-		public int getBook_page_count() {
-			return book_page_count;
+		public int getBookPageCount() {
+			return bookPageCount;
 		}
-		public void setBook_page_count(int book_page_count) {
-			this.book_page_count = book_page_count;
+		public void setBookPageCount(int bookPageCount) {
+			this.bookPageCount = bookPageCount;
 		}
-		public String getBook_genre() {
-			return book_genre;
+		public String getBookGenre() {
+			return bookGenre;
 		}
-		public void setBook_genre(String book_genre) {
-			this.book_genre = book_genre;
+		public void setBookGenre(String bookGenre) {
+			this.bookGenre = bookGenre;
 		}
 		@Override
 		public String toString() {
-			return "BookDto [book_id=" + book_id + ", book_title=" + book_title + ", book_publication_date="
-					+ book_publication_date + ", book_price=" + book_price + ", book_publisher=" + book_publisher
-					+ ", book_page_count=" + book_page_count + ", book_genre=" + book_genre + "]";
+			return "BookDto [bookId=" + bookId + ", bookTitle=" + bookTitle + ", bookPublication_date="
+					+ bookPublication_date + ", bookPrice=" + bookPrice + ", bookPublisher=" + bookPublisher
+					+ ", bookPageCount=" + bookPageCount + ", bookGenre=" + bookGenre + "]";
 		}
+
 		
 		
 }

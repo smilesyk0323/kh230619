@@ -1,48 +1,50 @@
 package jdbc.dto;
 
 public class BoardDto {
-		public int board_no;
-		public String board_title;
-		public String board_content;
-		public String board_writer;
-		public int board_readcount;
+		public int boardNo;
+		public String boardTitle;
+		public String boardContent;
+		public String boardWriter;
+		public int boardReadcount;
 		public BoardDto() {
 			super();
 		}
-		public int getBoard_no() {
-			return board_no;
+		public int getBoardNo() {
+			return boardNo;
 		}
-		public void setBoard_no(int board_no) {
-			this.board_no = board_no;
+		public void setBoardNo(int boardNo) {
+			this.boardNo = boardNo;
 		}
-		public String getBoard_title() {
-			return board_title;
+		public String getBoardTitle() {
+			return boardTitle;
 		}
-		public void setBoard_title(String board_title) {
-			this.board_title = board_title;
+		public void setBoardTitle(String boardTitle) {
+			this.boardTitle = boardTitle;
 		}
-		public String getBoard_content() {
-			return board_content;
+		public String getBoardContent() {
+			return boardContent;
 		}
-		public void setBoard_content(String board_content) {
-			this.board_content = board_content;
+		public void setBoardContent(String boardContent) {
+			this.boardContent = boardContent;
 		}
-		public String getBoard_writer() {
-			return board_writer;
+		public String getBoardWriter() {
+			return boardWriter;
 		}
-		public void setBoard_writer(String board_writer) {
-			this.board_writer = board_writer;
+		public void setBoardWriter(String boardWriter) {
+			this.boardWriter = boardWriter;
 		}
-		public int getBoard_readcount() {
-			return board_readcount;
+		public int getBoardReadcount() {
+			return boardReadcount;
 		}
-		public void setBoard_readcount(int board_readcount) {
-			this.board_readcount = board_readcount;
+		public void setBoardReadcount(int boardReadcount) {
+			this.boardReadcount = boardReadcount;
 		}
 		@Override
 		public String toString() {
-			return "BoardDto [board_no=" + board_no + ", board_title=" + board_title + ", board_content="
-					+ board_content + ", board_writer=" + board_writer + ", board_readcount=" + board_readcount + "]";
+			return "BoardDto [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
+					+ ", boardWriter=" + boardWriter + ", boardReadcount=" + boardReadcount + "]";
 		}
+
+		
 		
 }

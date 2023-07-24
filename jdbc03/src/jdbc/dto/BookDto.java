@@ -4,7 +4,7 @@ public class BookDto {
 		private int bookId;
 		private String bookTitle;
 		private String bookPublication_date;
-		private int bookPrice;
+		private float bookPrice;
 		private String bookPublisher;
 		private int bookPageCount;
 		private String bookGenre;
@@ -29,10 +29,10 @@ public class BookDto {
 		public void setBookPublication_date(String bookPublication_date) {
 			this.bookPublication_date = bookPublication_date;
 		}
-		public int getBookPrice() {
+		public float getBookPrice() {
 			return bookPrice;
 		}
-		public void setBookPrice(int bookPrice) {
+		public void setBookPrice(float bookPrice) {
 			this.bookPrice = bookPrice;
 		}
 		public String getBookPublisher() {

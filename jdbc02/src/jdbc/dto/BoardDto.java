@@ -1,12 +1,12 @@
 package jdbc.dto;
 
 public class BoardDto {
-		public int boardNo;
-		public String boardTitle;
-		public String boardContent;
-		public String boardWriter;
-		public int boardReadcount;
-		public BoardDto() {
+	private int boardNo;
+	private String boardTitle;
+	private String boardContent;
+	private String boardWriter;
+	private int boardReadcount;
+	public BoardDto() {
 			super();
 		}
 		public int getBoardNo() {

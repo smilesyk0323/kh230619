@@ -15,7 +15,7 @@ public class Test02 {
 		float bookPrice = sc.nextFloat();
 		
 		String sql = "update book set book_title=?, book_price=? where book_id=?" ;
-		Object[]data = {bookTitle, bookPrice};
+		Object[]data = {bookTitle, bookPrice,bookId};
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");

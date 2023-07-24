@@ -17,10 +17,7 @@ public class Test02 {
 			dto.setBoardTitle("테스트제목1");
 			dto.setBoardContent("테스트내용1");
 			dto.setBoardWriter("testWriter456");
-					
-			
-		
-			
+								
 			//처리
 			BoardDao dao = new BoardDao();
 //			dao.insert(boardNo, boardTitle, boardContent, boardWriter);

@@ -10,12 +10,12 @@ public class Test02 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int no = sc.nextInt();
-		String book_title = sc.nextLine();
-		float book_price = sc.nextFloat();
+		int bookId = sc.nextInt();
+		String bookTitle = sc.nextLine();
+		float bookPrice = sc.nextFloat();
 		
-		String sql = "update book set book_title=?, book_price=? whre no=?" ;
-		Object[]data = {book_title, book_price};
+		String sql = "update book set book_title=?, book_price=? where book_id=?" ;
+		Object[]data = {bookTitle, bookPrice};
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");

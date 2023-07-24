@@ -17,6 +17,7 @@ public class Test03 {
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		List<BookDto>list = jdbcTemplate.query(sql, mapper);
 		
+		System.out.println("조회결과 수 :"+ list.size());
 		for(BookDto dto : list) {
 			System.out.println(dto);
 		}

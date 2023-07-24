@@ -1,13 +1,13 @@
 package jdbc.dto;
 
 public class BookDto {
-		public int bookId;
-		public String bookTitle;
-		public String bookPublication_date;
-		public int bookPrice;
-		public String bookPublisher;
-		public int bookPageCount;
-		public String bookGenre;
+		private int bookId;
+		private String bookTitle;
+		private String bookPublication_date;
+		private int bookPrice;
+		private String bookPublisher;
+		private int bookPageCount;
+		private String bookGenre;
 		public BookDto() {
 			super();
 		}

@@ -10,10 +10,12 @@ public class Test02 {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		//데이터 
 		int bookId = sc.nextInt();
 		String bookTitle = sc.nextLine();
 		float bookPrice = sc.nextFloat();
 		
+		//DB처리- 자바는 자동 commit 모드를 사용한다 
 		String sql = "update book set book_title=?, book_price=? where book_id=?" ;
 		Object[]data = {bookTitle, bookPrice,bookId};
 		
@@ -26,12 +28,11 @@ public class Test02 {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		int result = jdbcTemplate.update(sql,data);
 		
-		if(result>0) {
+		if(result>0) {//결과 행 개수로 성공 /실패 확인 
 			System.out.println("성공");
 		}
 		else {
 			System.out.println("실패");
-		}
-		
+		}		
 	}
 }

@@ -12,6 +12,7 @@ public class PocketmonDao {
 	
 	//C(등록) 메소드 
 	public void insert(int no, String name, String type) {
+
 		String sql = "insert into pocketmon(no, name, type) "
 						+ "values(?,?,?)";
 		Object[] data = {no, name, type};

@@ -3,6 +3,7 @@ package jdbc.dto;
 public class BookDto {
 		private int bookId;
 		private String bookTitle;
+		private String bookAuthor;
 		private String bookPublication_date;
 		private float bookPrice;
 		private String bookPublisher;
@@ -22,6 +23,12 @@ public class BookDto {
 		}
 		public void setBookTitle(String bookTitle) {
 			this.bookTitle = bookTitle;
+		}
+		public String getBookAuthor() {
+			return bookAuthor;
+		}
+		public void setBookAuthor(String bookAuthor) {
+			this.bookAuthor = bookAuthor;
 		}
 		public String getBookPublication_date() {
 			return bookPublication_date;
@@ -55,10 +62,12 @@ public class BookDto {
 		}
 		@Override
 		public String toString() {
-			return "BookDto [bookId=" + bookId + ", bookTitle=" + bookTitle + ", bookPublication_date="
-					+ bookPublication_date + ", bookPrice=" + bookPrice + ", bookPublisher=" + bookPublisher
-					+ ", bookPageCount=" + bookPageCount + ", bookGenre=" + bookGenre + "]";
+			return "BookDto [bookId=" + bookId + ", bookTitle=" + bookTitle + ", bookAuthor=" + bookAuthor
+					+ ", bookPublication_date=" + bookPublication_date + ", bookPrice=" + bookPrice + ", bookPublisher="
+					+ bookPublisher + ", bookPageCount=" + bookPageCount + ", bookGenre=" + bookGenre + "]";
 		}
+		
+		
 
 		
 		

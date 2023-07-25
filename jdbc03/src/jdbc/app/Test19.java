@@ -7,14 +7,20 @@ import jdbc.dto.MemberDto;
 
 public class Test19 {
 	public static void main(String[] args) {
-		int page = 1;
+		//페이지 번호를 이용하여 회원 목록을 조회
+		int page = 2;
+		int size = 10;
 		
 		MemberDao dao = new MemberDao();
-		List<MemberDto>list = dao.selectListByPage(page);
+		List<MemberDto>list = dao.selectListByPage(page,size);
 		
-		for(MemberDto dto : list) {
-			System.out.println("["+dto.getMemberLevel()+"]");
-			System.out.println(dto.getMemberId());
+		if(list.isEmpty()) {
+			System.out.println("표시할 항목이 없습니다");
+		}
+		else {
+			for(MemberDto dto : list) {
+				System.out.println(dto.getMemberId());
+			}
 		}
 	}
 }

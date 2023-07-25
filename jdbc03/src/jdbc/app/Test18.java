@@ -7,7 +7,7 @@ import jdbc.dto.MemberDto;
 
 public class Test18 {
 	public static void main(String[] args) {
-		
+		//회원 전체 목록 
 		MemberDao dao = new MemberDao();
 		List<MemberDto>list = dao.selectList();
 		

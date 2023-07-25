@@ -61,25 +61,25 @@ public class MemberDao {
 		return jdbcTemplate.update(sql,data) > 0;
 	}
 	
-	// 조회 
+	// 회원 목록 조회 
 	
 	private MemberMapper mapper = new MemberMapper();
 	
 	public List<MemberDto>selectList(){
-		String sql = "select * from member order by member_id asc ";
+		String sql = "select * from member";
 		
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		return jdbcTemplate.query(sql,mapper);
 	}
 	
-	//페이징 목록조회 (10개)
+	//회원 목록(+pagination)
 	
-	public List<MemberDto>selectListByPage(int page){
-		int end = page*10;
-		int begin = end-9;
+	public List<MemberDto>selectListByPage(int page, int size){//보이는 회원목록수도 조절 가능(size)
+		int end = page * size;
+		int begin = end-(size-1);
 		String sql = "select * from ("
 				+ " select rownum rn, TMP.*from("
-				+ " select * from board order by board_no desc"
+				+ " select * from member"
 				+ ")TMP"
 				+ ")where rn between ? and ?";
 		Object[] data = {begin, end};

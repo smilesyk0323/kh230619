@@ -60,14 +60,15 @@ public class BookDao {
 		
 		//조회용 mapper
 		private BookMapper mapper = new BookMapper();
-
+		
+		//목록조회
 		public List<BookDto> selectList(){
 			String sql = "select * from book order by book_id asc";
 			
 			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 			return jdbcTemplate.query(sql, mapper);
 		}
-		
+		//상세조회
 		public BookDto selectOne(int BookId) {
 			String sql = "select * from book where book_id = ?";
 			Object[] data = {BookId};

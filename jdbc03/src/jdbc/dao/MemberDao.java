@@ -48,7 +48,15 @@ public class MemberDao {
 		return jdbcTemplate.update(sql,data) >0;
 	}
 	
+	//삭제 기증 
 	
+	public boolean delete(String memberId) {
+		String sql = "delete member where member_id = ?";
+		Object[] data = {memberId};
+		
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		return jdbcTemplate.update(sql,data) > 0;
+	}
 	
 }
 

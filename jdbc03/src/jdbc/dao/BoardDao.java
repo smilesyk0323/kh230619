@@ -35,15 +35,19 @@ public class BoardDao {
 								+ "board_content = ?  where board_no =?";
 			Object[] data = {
 					dto.getBoardTitle(), dto.getBoardContent(), dto.getBoardNo()
-			};
-		
-		
+			};		
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 //		int result = jdbcTemplate.update(sql,data);		
-//		return result > 0;
-		
-		return jdbcTemplate.update(sql,data) >0 ;//위에 두줄의  압축 코드 
-		
+//		return result > 0;		
+		return jdbcTemplate.update(sql,data) >0 ;//위에 두줄의  압축 코드 		
 }
 
+		//삭제 기능
+		public boolean delete(int boardNo) {
+			String sql = "delete board where board_no = ?";
+			Object[] data = {boardNo};
+			
+			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+			return jdbcTemplate.update(sql,data) > 0;
+		}
 }

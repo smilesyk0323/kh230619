@@ -48,9 +48,8 @@ public class PocketmonDao {
 			//else return false;
 			
 			return result > 0 ;//result가 0보다 큰지 판정해서 반환해라 
-		
-		
 	}
+		
 }
 
 

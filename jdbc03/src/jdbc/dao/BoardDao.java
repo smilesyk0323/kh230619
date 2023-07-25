@@ -1,8 +1,11 @@
 package jdbc.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.BoardDto;
+import jdbc.mapper.BoardMapper;
 import jdbc.util.JdbcUtils;
 //게시글을 CRUD 처리하는 도구 
 public class BoardDao {
@@ -43,11 +46,51 @@ public class BoardDao {
 }
 
 		//삭제 기능
-		public boolean delete(int boardNo) {
+		public boolean delete(int BoardNo) {
 			String sql = "delete board where board_no = ?";
-			Object[] data = {boardNo};
+			Object[] data = {BoardNo};
 			
 			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 			return jdbcTemplate.update(sql,data) > 0;
 		}
+
+		//조회
+		private BoardMapper mapper = new BoardMapper();
+		
+		public List<BoardDto> selectList(){
+			String sql = "select * from board order by board_no desc";
+			
+			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+			return jdbcTemplate.query(sql,mapper);					
+		}
+		
+		//(심화) 페이징 목록 조회(무조건 10개)
+		public List<BoardDto> selectListByPage(int page){
+			int end = page*10;
+			int begin  = end - 9;
+			
+			String sql = "select * from ("
+								+ " select rownum rn, TMP.*from("
+								+ " select * from board order by board_no desc"
+								+ ")TMP"
+								+ ")where rn between ? and ?";
+			Object[] data = {begin, end};
+			
+			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+			return jdbcTemplate.query(sql, mapper, data);
+		}
+		
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

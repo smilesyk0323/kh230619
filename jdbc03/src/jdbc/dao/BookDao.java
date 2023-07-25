@@ -1,8 +1,11 @@
 package jdbc.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.BookDto;
+import jdbc.mapper.BookMapper;
 import jdbc.util.JdbcUtils;
 
 public class BookDao {
@@ -54,6 +57,26 @@ public class BookDao {
 			return jdbcTemplate.update(sql,data) > 0;
 					
 		}
+		
+		//조회용 mapper
+		private BookMapper mapper = new BookMapper();
+
+		public List<BookDto> selectList(){
+			String sql = "select * from book order by book_id asc";
+			
+			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+			return jdbcTemplate.query(sql, mapper);
+		}
+		
+		public BookDto selectOne(int BookId) {
+			String sql = "select * from book where book_id = ?";
+			Object[] data = {BookId};
+			
+			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+			List<BookDto>list = jdbcTemplate.query(sql, mapper,data);
+			return list.isEmpty() ? null : list.get(0);
+		}
+
 }
 
 

@@ -6,13 +6,13 @@ import jdbc.dto.BoardDto;
 public class Test21 {
 	public static void main(String[] args) {
 		
-		int BoardNo = 20;
+		int boardNo = 20;
 		
 		BoardDao dao = new BoardDao();
-		BoardDto dto = dao.selectOne(BoardNo);
+		BoardDto dto = dao.selectOne(boardNo);
 		
 		if(dto==null) {
-			System.out.println("찾으시는 게시물의 번호가 없습니다");
+			System.out.println("찾으시는 게시물이 없습니다");
 		}
 		else {
 			System.out.println(dto);

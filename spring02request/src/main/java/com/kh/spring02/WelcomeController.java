@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //컨트롤러 - 
 //- 사용자가 접속할 수 있도록 특정 주소를 서비스 하는 도구 
-//- 클래스 상잔에 @Controller 또는 @RestController를 붙인다
+//- 클래스 상단에 @Controller 또는 @RestController를 붙인다
 @RestController
 public class WelcomeController {
  

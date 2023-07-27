@@ -33,4 +33,10 @@ public class PocketmonDao {
 		};
 		return jdbcTemplate.update(sql,data)>0;
 	}
+
+	public boolean delete(int no) {
+		String sql = "delete pocketmon where no = ?";
+		Object[] data = {no};
+		return jdbcTemplate.update(sql,data)>0;
+	}
 } 

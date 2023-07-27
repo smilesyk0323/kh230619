@@ -6,11 +6,12 @@ package com.kh.spring05.dto;
 public class PocketmonDto {
 	private int no;
 	private String name;
-	private String type;
+	private String type;	
 	
 	public PocketmonDto() {
 		super();
 	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -29,9 +30,9 @@ public class PocketmonDto {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	@Override
 	public String toString() {
 		return "PocketmonDto [no=" + no + ", name=" + name + ", type=" + type + "]";
-	}
-	
+	}	
 }

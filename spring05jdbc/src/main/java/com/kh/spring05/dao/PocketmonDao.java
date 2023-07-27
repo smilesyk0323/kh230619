@@ -23,4 +23,4 @@ public class PocketmonDao {
 		};
 		jdbcTemplate.update(sql,data);//jdbc가 밖으로 나와있음 
 	}
-}
+} 

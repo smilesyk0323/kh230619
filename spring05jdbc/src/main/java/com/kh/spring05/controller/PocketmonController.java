@@ -1,5 +1,7 @@
 package com.kh.spring05.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +27,7 @@ public class PocketmonController {
 		
 		@RequestMapping("/update")
 			 public String update(@ModelAttribute PocketmonDto dto) {
-				boolean result = dao.update(dto);
-				
+				boolean result = dao.update(dto);			
 				if(result) {
 					return "포켓몬스터 정보 변경 완료";
 				}
@@ -44,6 +45,18 @@ public class PocketmonController {
 			else {
 				return "존재하지 않는 몬스터 번호";
 			}
+		}
+		
+		
+		@RequestMapping("/list")
+		public String list() {
+			List<PocketmonDto> list = dao.selectList();
+			StringBuffer buffer = new StringBuffer();
+			for(PocketmonDto dto : list) {
+				buffer.append(dto);
+				buffer.append("<br>");//한줄씩 출력
+			}
+			return buffer.toString();
 		}
 }
 

@@ -19,4 +19,15 @@ public class BoardController {
 		dao.insert(dto);
 		return "게시물등록 완료";
 	}	
+	
+	 @RequestMapping("/update")
+	 	public String update(@ModelAttribute BoardDto dto) {
+//		 	boolean result = dao.update(dto);		 
+		 if(dao.update(dto)) {
+			 return "게시물 변경 완료 ";
+		 }
+		 else {
+			 return"해당 게시물이 존재하지 않습니다";
+		 }		 
+	 }	 	
 }

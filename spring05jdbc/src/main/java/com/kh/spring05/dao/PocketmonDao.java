@@ -23,4 +23,14 @@ public class PocketmonDao {
 		};
 		jdbcTemplate.update(sql,data);//jdbc가 밖으로 나와있음 
 	}
+	
+	public boolean update(PocketmonDto dto) {
+		String sql = "update pocketmon "
+				+ "set name = ?, type = ? "
+				+ "where no = ?";
+		Object[] data = {
+				dto.getName(), dto.getType(), dto.getNo()
+		};
+		return jdbcTemplate.update(sql,data)>0;
+	}
 } 

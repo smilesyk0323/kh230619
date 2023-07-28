@@ -5,7 +5,7 @@ public class BoardDto {
 	private String boardTitle;
 	private String boardContent;
 	private String boardWriter;
-	private int boardReadCount;
+	private int boardReadcount;
 	public BoardDto() {
 		super();
 	}
@@ -33,16 +33,16 @@ public class BoardDto {
 	public void setBoardWriter(String boardWriter) {
 		this.boardWriter = boardWriter;
 	}
-	public int getBoardReadCount() {
-		return boardReadCount;
+	public int getBoardReadcount() {
+		return boardReadcount;
 	}
-	public void setBoardReadCount(int boardReadCount) {
-		this.boardReadCount = boardReadCount;
+	public void setBoardReadcount(int boardReadcount) {
+		this.boardReadcount = boardReadcount;
 	}
 	@Override
 	public String toString() {
 		return "BoardDto [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-				+ ", boardWriter=" + boardWriter + ", boardReadCount=" + boardReadCount + "]";
+				+ ", boardWriter=" + boardWriter + ", boardReadcount=" + boardReadcount + "]";
 	}
 	
 	

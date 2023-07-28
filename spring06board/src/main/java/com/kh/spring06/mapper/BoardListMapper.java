@@ -18,8 +18,8 @@ public class BoardListMapper implements RowMapper<BoardDto>{
 		dto.setBoardNo(rs.getInt("board_no"));
 		dto.setBoardTitle(rs.getString("board_title"));
 		dto.setBoardWriter(rs.getString("board_writer"));
-		dto.setBoardReadCount(rs.getInt("board_readcount"));
-		return null;
+		dto.setBoardReadcount(rs.getInt("board_readcount"));
+		return dto;
 	}
 	
 }

@@ -47,6 +47,8 @@ public class BoardDao {
 			Object[] data = {boardNo};
 			return jdbcTemplate.update(sql,data)>0;
 		}
+		
+		
 		public List<BoardDto> selectList(){
 			String sql = "select "
 					+ "board_no, board_title, board_writer, board_readcount"
@@ -54,7 +56,12 @@ public class BoardDao {
 			return jdbcTemplate.query(sql, listMapper);
 		}
 		
-		
+		public BoardDto selectOne(int boardNo) {
+			String sql = "select * from board where board_no = ?";
+			Object[] data = {boardNo};
+			List<BoardDto> list = jdbcTemplate.query(sql,detailMapper,data);
+			return list.isEmpty() ? null : list.get(0);
+		}
 		
 }
 

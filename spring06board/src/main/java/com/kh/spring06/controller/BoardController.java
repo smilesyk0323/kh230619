@@ -54,6 +54,17 @@ public class BoardController {
 	 		}
 	 		return buffer.toString();
 	 	}
+	 	
+	 	@RequestMapping("/detail")
+	 	public String detail(@RequestParam int boardNo) {
+	 		BoardDto dto = dao.selectOne(boardNo);
+	 		if(dto == null) {
+	 			return "존재하지 않는 도서 정보";
+	 		}
+	 		else {
+	 			return dto.toString();
+	 		}
+	 	}
 	 
 }
 

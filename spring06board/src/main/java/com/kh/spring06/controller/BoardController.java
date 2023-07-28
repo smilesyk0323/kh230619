@@ -1,5 +1,7 @@
 package com.kh.spring06.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +44,16 @@ public class BoardController {
 	 		}
 	 	}
 	 	
-	 
+	 	@RequestMapping("/list")
+	 	public String list() {
+	 		List<BoardDto> list = dao.selectList();
+	 		StringBuffer buffer = new StringBuffer();
+	 		for(BoardDto dto : list) {
+	 			buffer.append(dto);
+	 			buffer.append("<br>");
+	 		}
+	 		return buffer.toString();
+	 	}
 	 
 }
 

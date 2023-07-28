@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.kh.spring05.dto.PocketmonDto;
-@Component//컨트롤러도 아니고 리파지토리도 아닌 애매한.. 
+@Component//컨트롤러도 아니고 리파지토리도 아닌 애매
 public class PocketmonMapper implements RowMapper<PocketmonDto>{
 
 	@Override
@@ -18,5 +18,4 @@ public class PocketmonMapper implements RowMapper<PocketmonDto>{
 		dto.setType(rs.getString("type"));
 		return dto;
 	}
-
 }

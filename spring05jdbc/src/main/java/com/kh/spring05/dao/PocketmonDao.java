@@ -51,10 +51,7 @@ public class PocketmonDao {
 	public List<PocketmonDto>selectList(){
 		String sql = "select * from pocketmon order by no asc";
 		return jdbcTemplate.query(sql,mapper); 
-	}
-	
-	
-	
+	}			
 } 
 
 

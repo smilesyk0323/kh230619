@@ -22,6 +22,5 @@ public class BoardDetailMapper implements RowMapper<BoardDto>{
 		dto.setBoardWriter(rs.getString("board_writer"));	
 		dto.setBoardReadcount(rs.getInt("board_readcount"));
 		return dto;
-	}
-		
+	}		
 }

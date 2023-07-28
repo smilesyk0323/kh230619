@@ -62,7 +62,16 @@ public class BoardController {
 	 			return "존재하지 않는 도서 정보";
 	 		}
 	 		else {
-	 			return dto.toString();
+				//return dto.toString();
+				StringBuffer buffer = new StringBuffer();
+				buffer.append("[제목]" + dto.getBoardTitle());
+				buffer.append("("+dto.getBoardWriter()+")");
+				buffer.append("<br>");
+				buffer.append("---------------------------------");
+				buffer.append("<br>");
+				buffer.append(dto.getBoardContent());
+				buffer.append("<br>");
+				return buffer.toString();
 	 		}
 	 	}
 	 

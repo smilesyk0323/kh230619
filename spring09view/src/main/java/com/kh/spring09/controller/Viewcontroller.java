@@ -33,6 +33,12 @@ public class Viewcontroller {
 	public String login() {
 		return "/WEB-INF/views/quiz1.jsp";
 	}
+	
+	@RequestMapping("/dummy")
+	public String dummy() {
+		return "/WEB-INF/views/dummy.jsp";
+	}
+	
 }
 
 

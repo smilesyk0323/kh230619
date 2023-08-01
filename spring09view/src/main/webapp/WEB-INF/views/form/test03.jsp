@@ -31,15 +31,14 @@
  									min="1"max="1000"step="1"value="1"required><br><br>
 <!-- 도서 장르 : <input type="text" name="bookGenre"><br><br> -->
 		<!-- select를 이용하여 선택 가능한 입력창을 만들 수 있다 -->
-		도서 장르 : 
-		<select name="bookGenre"required>
-			<option>Fantasy</option>
-			<option>Classic</option>
-			<option>Romance</option>
-			<option>Fiction</option>
-			<option>Modernist</option>
-		</select>
-		<br><br>
+		도서 장르 : 		<select name="bookGenre"required>
+								<option>Fantasy</option>
+								<option>Classic</option>
+								<option>Romance</option>
+								<option>Fiction</option>
+								<option>Modernist</option>
+							</select>
+								<br><br>
  		<button>등록</button>
  		
  	</form>

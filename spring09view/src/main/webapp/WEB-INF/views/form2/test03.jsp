@@ -8,14 +8,12 @@
 </head>
 <body>
 	<h1>회원 탈퇴</h1>
+	<h2>탈퇴를 위한 정보를 입력해주세요</h2>
 	
 	<form action="http://localhost:8080/member/exit" method="post">
-	
-	아이디<input type="text" name="memberId"><br><br>
-	비밀번호<input type="password" name="memberPw"><br><br>
-	<button>회원탈퇴</button>
-
-	
+		아이디<input type="text" name="memberId" required><br><br>
+		비밀번호<input type="password" name="memberPw" required><br><br>
+		<button>회원탈퇴</button>	
 	</form>
 
 </body>

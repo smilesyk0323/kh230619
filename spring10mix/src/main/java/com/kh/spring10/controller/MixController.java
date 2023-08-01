@@ -21,8 +21,7 @@ public class MixController {
 			Random r = new Random();
 			int dice = r.nextInt(6)+1;
 			//model에 추가
-//			model.addAttribute(이름, 값)
-			
+//			model.addAttribute(이름, 값)			
 			//JSP에서 dice라는 이름으로 사용할 수 있도록 값을 전달한다
 			model.addAttribute("dice",dice);
 			return "/WEB-INF/views/test01.jsp";

@@ -23,9 +23,10 @@ public static void main(String[]args) {
 	//출력
 	for(int i=0; i < data.length; i++) {
 		System.out.print(data[i]);
-		System.out.print("\t");
+		System.out.println();
+		
 	}
-	System.out.println();
+
 }
 }
 

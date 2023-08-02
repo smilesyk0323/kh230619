@@ -7,8 +7,7 @@
 <title>객체 출력</title>
 </head>
 <body>
-	<h1>번호 : ${dto.getNo()}</h1>
-	<h1>번호 : ${dto.no()}</h1>
+	<h1>번호 : ${dto.no}</h1>
 	<h1>이름 : ${dto.getName()}</h1>
 	<h1>속성 : ${dto.getType()}</h1>
 

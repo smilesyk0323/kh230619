@@ -25,7 +25,8 @@
 			<h1>미안! 없나봐</h1>
 		</c:otherwise>
 	</c:choose>
-
-
+	
+<!-- 	<a href="/pocketmon/list">목록보기</a> -->
+		<a href="list">목록보기</a>
 </body>
 </html>

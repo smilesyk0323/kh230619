@@ -20,7 +20,8 @@
 			<h1>찾으시는 게시물 번호가 없습니다</h1>
 		</c:otherwise>
 	</c:choose>
-
+	
+	<h2><a href="list">목록보기</a></h2>
 
 </body>
 </html>

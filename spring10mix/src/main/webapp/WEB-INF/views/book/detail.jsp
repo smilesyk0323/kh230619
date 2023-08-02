@@ -59,6 +59,8 @@
 		</c:otherwise>
 	
 	</c:choose>
+	
+	<h3><a href="list">목록보기</a></h3>
 
 </body>
 </html>

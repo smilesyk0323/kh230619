@@ -27,11 +27,11 @@ public class PocketmonController {
 	//- 번호(no)를 받아서 포켓몬스터 정보(PocketmonDto)를 조회
 	//- 화면(JSP)에 전달하도록 모델(Model)에 첨부 
 	@RequestMapping("/detail")
-		public String detail(@RequestParam int no, Model model) {
-		PocketmonDto dto = dao.selectOne(no);
-		model.addAttribute("dto",dto);
-		return "/WEB-INF/views/pocketmon/detail.jsp";
-	}
+			public String detail(@RequestParam int no, Model model) {
+				PocketmonDto dto = dao.selectOne(no);
+				model.addAttribute("dto",dto);
+				return "/WEB-INF/views/pocketmon/detail.jsp";
+		}
 	
 		//목록
 		@RequestMapping("/list")
@@ -62,7 +62,36 @@ public class PocketmonController {
 			return "redirect:/pocketmon/list";//절대경로
 		}
 		
+		//수정
+		//- 수정 역시 등록처럼 두 개의 매핑이 필요(작성,처리)
+		//- 전송방식으로 구분하여 구현
+		//- 화면에 기존 정보를 표시할 수 있도록 조회하여 전달
+		
+		@GetMapping("/edit")
+		   public String edit(@RequestParam int no, Model model) {
+				PocketmonDto dto = dao.selectOne(no);
+				model.addAttribute("dto", dto);
+				return "/WEB-INF/views/pocketmon/edit.jsp";
+		}
+		@PostMapping("/edit")
+		public String edit(@ModelAttribute PocketmonDto dto) {
+			boolean result = dao.update(dto);
+			if(result) {//성공시 상세페이지로 리다이렉트
+				return "redirect:detail?no="+dto.getNo();
+			}
+			else {
+				return "redirect:에러페이지주소";
+			}
+		}
+		
 }
+
+
+
+
+
+
+
 
 
 

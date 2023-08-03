@@ -18,6 +18,7 @@
 				<th width="50%">도서제목</th>
 				<th>저자명</th>
 				<th>판매가</th>
+				<th>메뉴</th>
 			</tr>
 		</thead>
 		<tbody align="center">
@@ -27,6 +28,9 @@
 				<td><a href="detail?bookId=${dto.bookId}">${dto.bookTitle}</a></td>
 				<td>${dto.bookAuthor}</td>
 				<td>$ ${dto.bookPrice}</td>
+				<td>
+					<a href="delete?bookId=${dto.bookId }">삭제</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>

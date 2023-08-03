@@ -53,12 +53,19 @@
 						<td bgcolor="EFF8FB">${dto.bookPublicationDate}</td>
 					</tr>	
 				</table>
+				
 		</c:when>	
 		<c:otherwise>
 			<h1>찾으시는 도서정보가 없습니다</h1>
 		</c:otherwise>
 	
 	</c:choose>
+	
+<%-- 	<c:if test="${not empty dto}"> --%>
+	<c:if test="${dto != null }">
+		<h2><a href="edit?bookId=${dto.bookId}">수정하기</a></h2>
+	</c:if>
+	
 	
 	<h3><a href="list">목록보기</a></h3>
 

@@ -11,7 +11,7 @@
 	
 	<form action="insert" method="post">
 		도서명<input type="text" name="bookTitle" required><br><br>
-		저자<input type="text" name="bookAthor" required><br><br>
+		저자<input type="text" name="bookAuthor" required><br><br>
 		출판일<input type="date" name="bookPublicationDate" required><br><br>
 		판매가<input type="number" step="0.01" name="bookPrice" required><br><br>
 		출판사<input type="text" name="bookPublisher" required><br><br>

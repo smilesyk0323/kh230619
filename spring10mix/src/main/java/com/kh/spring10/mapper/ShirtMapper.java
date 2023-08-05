@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.kh.spring10.dto.ShirtDto;
 
 @Component
-public class ShirtDetailMapper implements RowMapper<ShirtDto>{
+public class ShirtMapper implements RowMapper<ShirtDto>{
 
 	@Override
 	public ShirtDto mapRow(ResultSet rs, int rowNum) throws SQLException {

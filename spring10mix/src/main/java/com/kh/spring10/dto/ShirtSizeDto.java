@@ -7,3 +7,4 @@ public class ShirtSizeDto {
 		private int shirtNo;
 		private String shirtSizeName;
 }
+ 

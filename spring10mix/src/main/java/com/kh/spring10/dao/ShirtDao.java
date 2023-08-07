@@ -11,6 +11,7 @@ import com.kh.spring10.mapper.ShirtMapper;
 
 @Repository
 public class ShirtDao {
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -25,9 +26,9 @@ public class ShirtDao {
 	
 	public void insert(ShirtDto dto) {
 		String sql = "insert into shirt("
-				+ "shirt_no, shirt_name, shirt_color,"
-				+ "shirt_price, shirt_kind, shirt_type,"
-				+ "shirt_matrerial, shirt_stock) "
+				+ "shirt_no, shirt_name, shirt_color, "
+				+ "shirt_price, shirt_kind, shirt_type, "
+				+ "shirt_material, shirt_stock) "
 				+ "values(?,?,?,?,?,?,?,?)";
 		Object[] data = {
 				dto.getShirtNo(),dto.getShirtName(),dto.getShirtColor(),
@@ -37,12 +38,34 @@ public class ShirtDao {
 		jdbcTemplate.update(sql,data);
 	}
 	
+	//조회
+	public List<ShirtDto> selectList(){
+		String sql = "select * from shirt order by shirt_no asc";
+		//게시판처럼 일부만 보일 수 있을 땐 *를 사용하지 않을때도 있음
+		return jdbcTemplate.query(sql, mapper);
+	}
+	
+	public ShirtDto selectOne(int shirtNo) {
+		String sql = "select * from shirt where shirt_no = ?";
+		Object[] data = {shirtNo};
+		List<ShirtDto>list = jdbcTemplate.query(sql, mapper,data);
+		return list.isEmpty() ? null : list.get(0);
+	}
+	
+	//삭제
+	public boolean delete(int shirtNo) {
+		String sql = "delete shirt where shirt_no=?";
+		Object[] data = {shirtNo};
+		return jdbcTemplate.update(sql,data)>0;
+	}
+	
+	
 	//수정 
 	 	public boolean update(ShirtDto dto) {
 	 			String sql = "update shirt "
 	 					+ "set shirt_name =?, shirt_color =?, shirt_price =?, "
-	 					+ "shirt_kind =?, shirt_type =?, shirt_material =?,"
-	 					+ "shirt_stock where shirt_no =? ";
+	 					+ "shirt_kind =?, shirt_type =?, shirt_material =?, "
+	 					+ "shirt_stock =?  where shirt_no =? ";
 	 			Object[] data = {
 	 					dto.getShirtName(),dto.getShirtColor(),
 	 					dto.getShirtPrice(),dto.getShirtKind(),dto.getShirtType(),
@@ -51,26 +74,7 @@ public class ShirtDao {
 	 			return jdbcTemplate.update(sql,data)>0;
 	 	}
 	 	
-	 	//삭제
-	 		public boolean delete(int shirtNo) {
-	 			String sql = "delete shirt where shirt_no=?";
-	 			Object[] data = {shirtNo};
-	 			return jdbcTemplate.update(sql,data)>0;
-	 		}
-	 		
-	 		public List<ShirtDto> selectList(){
-	 			String sql = "select shirt_no, shirt_name,"
-	 					+ "shirt_price, shirt_kind, shirt_type "
-	 					+ "from shirt order by shirt_no asc";
-	 			return jdbcTemplate.query(sql, mapper);
-	 		}
-	 		
-	 		public ShirtDto selectOne(int shirtNo) {
-	 			String sql = "select * from shirt where shirt_no = ?";
-	 			Object[] data = {shirtNo};
-	 			List<ShirtDto>list = jdbcTemplate.query(sql, mapper,data);
-	 			return list.isEmpty() ? null : list.get(0);
-	 		}
+	 	
 
 }
 

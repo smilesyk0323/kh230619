@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <hr>
-	 KHÁ¤º¸±³À°¿ø À¥°³¹ßÀÚ ¾ç¼º°úÁ¤
-	</div><%--±¸ºÐÀ» À§ÇÑ °æ°è¼±--%>
+	 KHì •ë³´êµìœ¡ì› ì›¹ê°œë°œìž ì–‘ì„±ê³¼ì •
+	</div><%--êµ¬ë¶„ì„ ìœ„í•œ ê²½ê³„ì„ --%>
 </body>
 </html>

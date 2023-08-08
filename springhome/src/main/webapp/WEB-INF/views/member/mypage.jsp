@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%--날짜나 시간을 이뿌게??? --%>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
@@ -36,19 +39,35 @@
 		</tr>
 		<tr>
 			<th>포인트</th>
-			<td>${memberDto.memberPoint} pt</td>
+<%-- 			<td>${memberDto.memberPoint} pt</td> --%>
+			<td>
+				<fmt:formatNumber value="${memberDto.memberPoint}" 
+									pattern="#,##0"></fmt:formatNumber> pt
+			</td>
 		</tr>
 		<tr>
 			<th>가입일</th>
-			<td>${memberDto.memberJoin}</td>
+<%-- 			<td>${memberDto.memberJoin}</td> --%>
+				<td>
+					<fmt:formatDate value="${memberDto.memberJoin}" 
+										pattern="Y년 M월 d일 E a h시 m분 s초"/>
+				</td>
 		</tr>
 		<tr>
 			<th>마지막로그인</th>
-			<td>${memberDto.memberLogin}</td>
+<%-- 			<td>${memberDto.memberLogin}</td> --%>
+				<td>
+					<fmt:formatDate value="${memberDto.memberLogin}" 
+										pattern="Y년 M월 d일 E a h시 m분 s초"/>
+				</td>
 		</tr>
 		<tr>
 			<th>마지막변경일</th>
-			<td>${memberDto.memberChange}</td>
+<%-- 			<td>${memberDto.memberChange}</td> --%>
+				<td>
+					<fmt:formatDate value="${memberDto.memberChange}" 
+										pattern="Y년 M월 d일 E a h시 m분 s초"/>
+				</td>
 		</tr>
 		
 </table>

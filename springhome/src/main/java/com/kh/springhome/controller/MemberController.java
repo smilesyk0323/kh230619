@@ -89,7 +89,7 @@ public class MemberController {
 			//[1] 세션에서 사용자의 아이디를 꺼낸다 
 			//- 세션은 값을 Object로 저장한다(아무거나 넣어야 하니까)
 			String memberId = (String) session.getAttribute("name");
-			//(다운캐스팅) Object를 String으로바꿔주는구문
+			//ㄴ(특이코드!!)"다운캐스팅" Object를 String으로바꿔주는구문
 			//[2]  가져온 아이디로 회원정보를 조회한다
 			MemberDto memberDto = memberDao.selectOne(memberId);
 			//[3] 조회한 정보를 모델에 첨부한다 

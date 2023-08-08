@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,11 +77,26 @@ public class MemberController {
 				}
 		}
 		
+		//----------------회원 전용 메뉴-----------------------
 		@RequestMapping("/logout")
 			public String logout(HttpSession session) {
 			session.removeAttribute("name");
 			return "redirect:/";
 		}
+		
+		@RequestMapping("/mypage")
+			public String mypage(HttpSession session, Model model) {
+			//[1] 세션에서 사용자의 아이디를 꺼낸다 
+			//- 세션은 값을 Object로 저장한다(아무거나 넣어야 하니까)
+			String memberId = (String) session.getAttribute("name");
+			//(다운캐스팅) Object를 String으로바꿔주는구문
+			//[2]  가져온 아이디로 회원정보를 조회한다
+			MemberDto memberDto = memberDao.selectOne(memberId);
+			//[3] 조회한 정보를 모델에 첨부한다 
+			model.addAttribute("memberDto", memberDto);
+				return "/WEB-INF/views/member/mypage.jsp";
+		}
+		
 }
 
 

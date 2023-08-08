@@ -31,7 +31,8 @@ public class MemberDaoImpl implements MemberDao{
 			};
 			jdbcTemplate.update(sql,data);
 	    }
-
+	
+	//로그인처리 가능
 	@Override
 	public MemberDto selectOne(String memberId) {
 		String sql = "select * from member where member_id = ?";

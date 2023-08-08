@@ -30,5 +30,4 @@ public class MemberMapper implements RowMapper<MemberDto>{
 		memberDto.setMemberChange(rs.getDate("member_change"));
 		return memberDto;
 	}
-
 }

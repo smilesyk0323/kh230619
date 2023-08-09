@@ -72,4 +72,16 @@
 		
 </table>
 
+<h2><a href="password">비밀번호 변경</a></h2>
+
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@
 <h2>개인정보 변경</h2>
 
 <c:if test="${param.error != null}">
-	<h3>입력하신 비밀번호가 일치하지 않습니다</h3>
+	<h3 style="color:red">입력하신 비밀번호가 일치하지 않습니다</h3>
 </c:if>
 
 <form action="change" method="post">

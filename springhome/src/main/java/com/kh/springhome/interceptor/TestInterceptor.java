@@ -31,7 +31,7 @@ public class TestInterceptor implements HandlerInterceptor{
 		@Override
 		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 				throws Exception {
-			System.out.println("preHandle 실행");
+//			System.out.println("preHandle 실행");
 			return true;
 		}
 		/*
@@ -42,8 +42,8 @@ public class TestInterceptor implements HandlerInterceptor{
 		@Override
 			public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 					ModelAndView modelAndView) throws Exception {
-				System.out.println(modelAndView);
-				System.out.println("postHandle 실행");
+//				System.out.println(modelAndView);
+//				System.out.println("postHandle 실행");
 			}
 		
 		/*
@@ -56,7 +56,7 @@ public class TestInterceptor implements HandlerInterceptor{
 			public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
 								Object handler, Exception ex)
 					throws Exception {
-				System.out.println("afterCompletion 실행");
+//				System.out.println("afterCompletion 실행");
 				System.out.println(ex);
 			}	
 }

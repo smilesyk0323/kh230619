@@ -30,8 +30,5 @@ public class LoggingTest2 {
 			log.info("메세지3");
 			log.warn("메세지4");
 			log.error("메세지");
-
-
 		}
-
 }

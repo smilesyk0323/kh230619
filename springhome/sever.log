@@ -1,0 +1,40 @@
+2023-08-10 13:58:04.771  INFO 9776 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-2N14FI1 with PID 9776 (D:\study\github\kh230619\springhome\target\classes started by bora in D:\study\github\kh230619\springhome)
+2023-08-10 13:58:04.771 DEBUG 9776 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-10 13:58:04.771  INFO 9776 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-08-10 13:58:05.000  INFO 9776 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Started SpringhomeApplication in 0.246 seconds (JVM running for 15900.449)
+2023-08-10 13:58:44.858  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : Starting LoggingTest3 using Java 17.0.7 on DESKTOP-2N14FI1 with PID 10656 (started by bora in D:\study\github\kh230619\springhome)
+2023-08-10 13:58:44.859 DEBUG 10656 --- [main] com.kh.springhome.LoggingTest3           : Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-10 13:58:44.860  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : No active profile set, falling back to 1 default profile: "default"
+2023-08-10 13:58:46.804  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : Started LoggingTest3 in 2.128 seconds (JVM running for 2.651)
+2023-08-10 13:58:47.162  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : Hello!
+2023-08-10 13:58:47.162  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : a = 10
+2023-08-10 13:58:47.162  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : a = 10
+2023-08-10 13:58:47.163  INFO 10656 --- [main] com.kh.springhome.LoggingTest3           : 20 +30 = 50
+2023-08-10 14:00:54.635 [INFO ] Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-2N14FI1 with PID 9776 (D:\study\github\kh230619\springhome\target\classes started by bora in D:\study\github\kh230619\springhome) - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:00:54.635 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29 - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:00:54.635 [INFO ] No active profile set, falling back to 1 default profile: "default" - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:00:54.890 [INFO ] Started SpringhomeApplication in 0.264 seconds (JVM running for 16070.338) - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:01:07.427 [INFO ] Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-2N14FI1 with PID 9776 (D:\study\github\kh230619\springhome\target\classes started by bora in D:\study\github\kh230619\springhome) - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:01:07.427 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29 - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:01:07.427 [INFO ] No active profile set, falling back to 1 default profile: "default" - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:01:07.736 [INFO ] Started SpringhomeApplication in 0.319 seconds (JVM running for 16083.185) - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:01:29.943 [INFO ] Starting LoggingTest3 using Java 17.0.7 on DESKTOP-2N14FI1 with PID 13404 (started by bora in D:\study\github\kh230619\springhome) - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:29.944 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:29.944 [INFO ] No active profile set, falling back to 1 default profile: "default" - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:32.54 [INFO ] Started LoggingTest3 in 2.305 seconds (JVM running for 2.852) - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:32.364 [INFO ] Hello! - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:32.364 [INFO ] a = 10 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:32.364 [INFO ] a = 10 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:01:32.366 [INFO ] 20 +30 = 50 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:36.928 [INFO ] Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-2N14FI1 with PID 9776 (D:\study\github\kh230619\springhome\target\classes started by bora in D:\study\github\kh230619\springhome) - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:36.928 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29 - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:36.928 [INFO ] No active profile set, falling back to 1 default profile: "default" - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:37.161 [INFO ] Started SpringhomeApplication in 0.24 seconds (JVM running for 16172.61) - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:50.667 [INFO ] Starting LoggingTest3 using Java 17.0.7 on DESKTOP-2N14FI1 with PID 9188 (started by bora in D:\study\github\kh230619\springhome) - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:50.668 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:50.669 [INFO ] No active profile set, falling back to 1 default profile: "default" - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:52.826 [INFO ] Started LoggingTest3 in 2.343 seconds (JVM running for 2.895) - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:53.129 [INFO ] Hello! - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:53.129 [INFO ] a = 10 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:53.129 [INFO ] a = 10 - com.kh.springhome.LoggingTest3 
+2023-08-10 14:02:53.130 [INFO ] 20 +30 = 50 - com.kh.springhome.LoggingTest3 

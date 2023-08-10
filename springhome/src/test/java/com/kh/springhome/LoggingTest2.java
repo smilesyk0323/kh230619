@@ -28,8 +28,10 @@ public class LoggingTest2 {
 			log.trace("메세지1");
 			log.debug("메세지2");
 			log.info("메세지3");
-			log.warn("메세지3");
-			log.error("메세지5");
+			log.warn("메세지4");
+			log.error("메세지");
+
+
 		}
 
 }

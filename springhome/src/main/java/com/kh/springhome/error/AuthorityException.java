@@ -15,20 +15,6 @@ public class AuthorityException extends RuntimeException{
 			public AuthorityException(String message) {
 				super(message);
 			}		
-			
-			/*
-			 		내가 지정한 예외들을 처리하도록 추가 핸들러(처리기) 설정
-			 */
-			@ExceptionHandler(NoTargetException.class)
-				public String noTarget(NoTargetException e) {
-					//e.printStackTrace();
-					return "/WEB-INF/views/error/noTarget.jsp";
-			}
-			@ExceptionHandler(AuthorityException.class)
-				public String authority(AuthorityException e) {
-				e.printStackTrace();
-				return "/WEB-INF/views/error/authority.jsp";
-			}
 }
 
 

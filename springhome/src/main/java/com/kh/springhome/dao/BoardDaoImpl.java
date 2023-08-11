@@ -41,15 +41,16 @@ public class BoardDaoImpl implements BoardDao{
 			jdbcTemplate.update(sql,data);
 		}
 		
-
+		//상세 (비회원 접근가능)
 		@Override
-		public BoardDto selectOne(String boardNo) {
-			String sql = "select * from board where board_no =?";
+		public BoardDto selectOne(int boardNo) {
+			String sql = "select * from board where board_no = ? ";
 			Object[] data = {boardNo};
 			List<BoardDto>list = jdbcTemplate.query(sql, detailMapper,data);
 			return list.isEmpty() ? null : list.get(0);
 		}
 
+		//목록(비회원 접근 가능)
 		@Override
 		public List<BoardDto> selectList(BoardDto boardDto) {
 			String sql = "select "
@@ -63,15 +64,27 @@ public class BoardDaoImpl implements BoardDao{
 
 
 		@Override
-		public boolean updateBoardEdit(BoardDto boardDto) {
-						String sql = "update board set "
-					+ "board_title = ?, board_content =? board_utime =sysdate "
-					+ "where board_no = ?";
-				Object[] data = {
-						boardDto.getBoardTitle(), boardDto.getBoardContent()
-				};
+		public boolean updateBoardEdit(String boardTitle, String boardContent, int boardNo) {
+				String sql = "update board set "
+								+ "board_title = ?, board_content =?, board_utime = sysdate "
+								+ "where board_no = ?";
+				Object[] data = {boardTitle, boardContent, boardNo};
 				return jdbcTemplate.update(sql, data) > 0;
 		}
+		
+			@Override
+				public boolean deleteBoard(int boardNo) {
+					String sql = "delete board where board_no = ?";
+					Object[] data = {boardNo};
+					return jdbcTemplate.update(sql, data)>0;
+			}
+			
+			@Override
+				public boolean updateRcount(int boardNo) {
+					String sql = "update board set board_readcount = board_readcount + 1 where board_no=? ";
+					Object[] data = {boardNo};
+					return jdbcTemplate.update(sql,data)>0;
+			}
 
 
 

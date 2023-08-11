@@ -13,16 +13,16 @@ public class BoardListMapper implements RowMapper<BoardDto>{
 
 	@Override
 	public BoardDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-		BoardDto dto = new BoardDto();
-		dto.setBoardNo(rs.getInt("boardNo"));
-		dto.setBoardWriter(rs.getString("boardWriter"));
-		dto.setBoardTitle(rs.getString("boardTitle"));
-		dto.setBoardReadcount(rs.getInt("boardReadcout"));
-		dto.setBoardLikecount(rs.getInt("boardLikecount"));
-		dto.setBoardReplycount(rs.getInt("boardReplycount"));
-		dto.setBoardCtime(rs.getString("boardCtime"));
-		dto.setBoardUtime(rs.getString("boardUtime"));
-		return dto;
+		BoardDto boardDto = new BoardDto();
+		boardDto.setBoardNo(rs.getInt("board_no"));
+		boardDto.setBoardWriter(rs.getString("board_writer"));
+		boardDto.setBoardTitle(rs.getString("board_title"));
+		boardDto.setBoardReadcount(rs.getInt("board_readcount"));
+		boardDto.setBoardLikecount(rs.getInt("board_likecount"));
+		boardDto.setBoardReplycount(rs.getInt("board_replycount"));
+		boardDto.setBoardCtime(rs.getString("board_ctime"));
+		boardDto.setBoardUtime(rs.getString("board_utime"));
+		return boardDto;
 	}
 		
 

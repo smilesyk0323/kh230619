@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dto.BoardDto;
@@ -42,16 +43,17 @@ public class BoardController {
 	
 	//상세(비회원 접근가능)
 	@RequestMapping("/detail")
-		public String detail(HttpSession session,Model model) {
-			String boardNo = (String) session.getAttribute("name");
+		public String detail(@RequestParam int boardNo,Model model) {
+			boardDao.updateRcount(boardNo);
 			BoardDto boardDto = boardDao.selectOne(boardNo);
 			model.addAttribute("boardDto",boardDto);
 			return "/WEB-INF/views/board/detail.jsp";
 		}
 	
+	
 	//목록(비회원접근가능)
 	@RequestMapping("/list")
-		public String list( Model model, BoardDto boardDto) {
+		public String list( Model model,  BoardDto boardDto) {
 		List<BoardDto>list = boardDao.selectList(boardDto);
 		model.addAttribute("list",list);
 		return "/WEB-INF/views/board/list.jsp";
@@ -59,21 +61,39 @@ public class BoardController {
 	
 	//수정
 	@GetMapping("/edit")
-		public String edit(HttpSession session, Model model) {
-		String boardNo = (String) session.getAttribute("name");
+		public String edit(@RequestParam int boardNo, Model model) {
 		BoardDto boardDto = boardDao.selectOne(boardNo);
 		model.addAttribute("boardDto", boardDto);
 		return "/WEB-INF/views/board/edit.jsp";
 	}
 	
 	@PostMapping("/edit")
-	public String edit(@ModelAttribute BoardDto inputDto,
-								HttpSession session) {
-		String boardNo = (String) session.getAttribute("name");
-		boardDao.updateBoardEdit(inputDto);
-		return "redirect:detail?boardNo="+boardNo;
-		
+	public String edit(@RequestParam int boardNo,
+								@RequestParam String boardTitle,
+								@RequestParam String boardContent) {
+		BoardDto boardDto = boardDao.selectOne(boardNo);
+		boolean result = boardDao.updateBoardEdit(boardTitle,boardContent, boardNo);
+		if(result) {
+			return "redirect:detail?boardNo="+boardDto.getBoardNo();
+		}
+		else {
+			return "redirect:detail?error";
+		}
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int boardNo) {
+		boolean result = boardDao.deleteBoard(boardNo);
+		if(result) {
+			return "redirect:list";
+		}
+		else {
+			return "redirect:오류페이지";
+		}
+	}
+	
+	
+
 
 }
 

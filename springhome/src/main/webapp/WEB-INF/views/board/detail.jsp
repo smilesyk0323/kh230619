@@ -4,35 +4,41 @@
   
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<h2>${BoardDto.boardNo}번 게시글</h2>
+<h2>${boardDto.boardNo}번 게시글</h2>
 
-		<c:choose>
-			<c:when test="${dto != null}">
-				<table>
+
+				<table border="1" width="700">
 					<tr>
-						<th>제목 </th>
-						<td> ${dto.boardTitle}</td>
+						<th colspan="1">제목 </th>
+						<td colspan="5"> ${boardDto.boardTitle}</td>
 					</tr>
 					<tr>
-						<th>작성자</th>
-						<td>${dto.boardWriter}</td>
+						<th colspan="1">작성자</th>
+						<td colspan="5">${boardDto.boardWriter}</td>
 					</tr>
 					<tr>
-						<th>내용</th>
-						<td>${dto.boardContent}</td>
+						<th colspan="1">작성일</th>
+						<td colspan="2">${boardDto.boardCtime}</td>
+						<th colspan="1">수정시각</th>
+						<td colspan="2">${boardDto.boardUtime}</td>
+					</tr>
+					<tr>
+						<th>조회수</th>
+						<td>${boardDto.boardReadcount}</td>
+						<th>좋아요</th>
+						<td>${boardDto.boardLikecount}</td>
+						<th>댓글수</th>
+						<td>${boardDto.boardReplycount}</td>
+					</tr>
+					<tr>
+						<td  colspan="6">${boardDto.boardContent}</td>
 					</tr>
 				</table>
-			</c:when>
-			<c:otherwise>
-					<h2>찾으시는 게시물 번호가 없습니다</h2>
-			</c:otherwise>
-		</c:choose>
+
 		
-		<c:if test="${dto != null}">
-		<h2><a href="edit?boardNo=${dto.boardNo}">수정하기</a></h2>
-		<h2><a href="delete?boardNo=${dto.boardNo}">삭제하기</a></h2>
-		
-		</c:if>
+		<h2><a href="edit?boardNo=${boardDto.boardNo}">수정하기</a></h2>
+		<h2><a href="delete?boardNo=${boardDto.boardNo}">삭제하기</a></h2>
+
 		<h2><a href="list">목록보기</a></h2>
 
 

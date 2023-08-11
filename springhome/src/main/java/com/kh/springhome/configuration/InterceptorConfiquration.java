@@ -42,6 +42,7 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 			//- excludePathPatterns를 사용하면 제외할 주소를 설정할 수 있다.
 			registry.addInterceptor(memberInterceptor)
 							.addPathPatterns("/member/**")
+							.addPathPatterns("/board/**")
 							.excludePathPatterns(
 									"/member/join*",
 //									"/member/joinFinish",

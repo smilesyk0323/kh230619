@@ -21,16 +21,16 @@
 		</tr>	
 	</thead>
 	<tbody>
-		<c:forEach var="dto" items="${list}">
+		<c:forEach var="boardDto" items="${list}">
 		<tr align="center">
-			<td>${dto.boardNo}</td>
+			<td>${boardDto.boardNo}</td>
 			<td align="left">
-			<a href="detail?boardNo=${dto.boardNo}">${dto.boardTitle}</a></td>
-			<td>${dto.boardWriter}</td>
-			<td>${dto.boardCtime}</td>
-			<td>${dto.boardReadcount}</td>
-			<td>${dto.boardLikecount}</td>
-			<td>${dto.boardReplycount}</td>
+			<a href="detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}</a></td>
+			<td>${boardDto.boardWriter}</td>
+			<td>${boardDto.boardCtime}</td>
+			<td>${boardDto.boardReadcount}</td>
+			<td>${boardDto.boardLikecount}</td>
+			<td>${boardDto.boardReplycount}</td>
 		</tr>
 		</c:forEach>
 	</tbody>

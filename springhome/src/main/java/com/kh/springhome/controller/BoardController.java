@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.error.AuthorityException;
 
 
 @Controller
@@ -61,41 +62,66 @@ public class BoardController {
 	
 	//수정
 	@GetMapping("/edit")
-		public String edit(@RequestParam int boardNo, Model model) {
-		BoardDto boardDto = boardDao.selectOne(boardNo);
-		model.addAttribute("boardDto", boardDto);
-		return "/WEB-INF/views/board/edit.jsp";
-	}
+		public String edit(@RequestParam int boardNo, Model model, HttpSession session) {
+		String memberId = (String) session.getAttribute("name");
+		BoardDto findDto = boardDao.selectOne(boardNo);
+		 
+		if(findDto.getBoardWriter().equals(memberId)) {			
+			model.addAttribute("boardDto", findDto);
+			return "/WEB-INF/views/board/edit.jsp";
+		}
+		else{
+			throw new AuthorityException();
+		}
+	 }
 	
 	@PostMapping("/edit")
 	public String edit(@RequestParam int boardNo,
 								@RequestParam String boardTitle,
-								@RequestParam String boardContent) {
-		BoardDto boardDto = boardDao.selectOne(boardNo);
-		boolean result = boardDao.updateBoardEdit(boardTitle,boardContent, boardNo);
+								@RequestParam String boardContent,
+								HttpSession session,
+								@ModelAttribute BoardDto boardDto) {
+		String memberId = (String) session.getAttribute("name");
+		BoardDto findDto = boardDao.selectOne(boardNo);
+		
+		if(findDto.getBoardWriter().equals(memberId)) {
+			boolean result = boardDao.updateBoardEdit(boardTitle,boardContent, boardNo);
 		if(result) {
 			return "redirect:detail?boardNo="+boardDto.getBoardNo();
 		}
 		else {
+			throw new AuthorityException();
+		}
+		}
+		else {
 			return "redirect:detail?error";
 		}
+		
 	}
 	
 	@RequestMapping("/delete")
-	public String delete(@RequestParam int boardNo) {
-		boolean result = boardDao.deleteBoard(boardNo);
-		if(result) {
-			return "redirect:list";
-		}
-		else {
-			return "redirect:오류페이지";
-		}
+	public String delete(@RequestParam int boardNo, HttpSession session) {
+		String memberId = (String) session.getAttribute("name");
+		BoardDto findDto = boardDao.selectOne(boardNo);
+		
+	
+	if(findDto.getBoardWriter().equals(memberId)) {			
+			boolean result = boardDao.deleteBoard(boardNo);
+				if(result) {
+						return "redirect:list";
+					}
+				else {
+						return "redirect:오류페이지";
+					}			
 	}
-	
+	else{
+				throw new AuthorityException();
+			}
+	}
+ }
 	
 
 
-}
 
 
 

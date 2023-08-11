@@ -41,16 +41,41 @@ public class BoardDaoImpl implements BoardDao{
 			jdbcTemplate.update(sql,data);
 		}
 		
+
 		@Override
-		public List<BoardDto> selectList(){
+		public BoardDto selectOne(String boardNo) {
+			String sql = "select * from board where board_no =?";
+			Object[] data = {boardNo};
+			List<BoardDto>list = jdbcTemplate.query(sql, detailMapper,data);
+			return list.isEmpty() ? null : list.get(0);
+		}
+
+		@Override
+		public List<BoardDto> selectList(BoardDto boardDto) {
 			String sql = "select "
-					+ "board_no, board_write, board_title, "
+					+ "board_no, board_writer, board_title, "
 					+ "board_readcount, board_likecount, "
-					+ "board_Replycount, board_ctime, "
+					+ "board_replycount, board_ctime, "
 					+ "board_utime "
 					+ "from board order by board_no desc";
 			return jdbcTemplate.query(sql, listMapper);
 		}
+
+
+		@Override
+		public boolean updateBoardEdit(BoardDto boardDto) {
+						String sql = "update board set "
+					+ "board_title = ?, board_content =? board_utime =sysdate "
+					+ "where board_no = ?";
+				Object[] data = {
+						boardDto.getBoardTitle(), boardDto.getBoardContent()
+				};
+				return jdbcTemplate.update(sql, data) > 0;
+		}
+
+
+
+		
 		
 
 }

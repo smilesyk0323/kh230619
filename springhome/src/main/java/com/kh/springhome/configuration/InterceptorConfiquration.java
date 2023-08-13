@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.kh.springhome.dao.BoardDao;
+import com.kh.springhome.interceptor.BoardInterceptor;
 import com.kh.springhome.interceptor.MemberInterceptor;
 import com.kh.springhome.interceptor.TestInterceptor;
 
@@ -28,6 +30,12 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 		@Autowired
 		private MemberInterceptor memberInterceptor;
 		
+		@Autowired
+		private BoardInterceptor boardInterceptor;
+		
+
+
+		
 		//인터셉터를 추가할 수 있는 설정 메소드(registry 저장소에 설정)
 		//등록시 주소의 패턴 설정 방법 
 		//- *이 한 개면 동일한 엔드포인트 내에서만 적용 
@@ -35,23 +43,31 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 		@Override
 		public void addInterceptors(InterceptorRegistry registry) {
 			//[1] TestInterceptor로 모든 주소 처리과정에 간섭할 수 있도록 설정하겠다
+			//registry.addInterceptor(인터셉터 객체);
+						//.addPathPatterns(간섭하고 싶은 주소);
+						//.addPathPatterns("/**") 몽땅!
+			
 //			registry.addInterceptor(testInterceptor).addPathPatterns("/**");
 			
 			//[2] MemberInterceptor를 회원 전용 페이지 처리과정에 간섭할 수 있도록 설정하겠다
 			//- addPathPatterns를 사용하면 추가할 주소를 설정할 수 있다.
 			//- excludePathPatterns를 사용하면 제외할 주소를 설정할 수 있다.
+			registry.addInterceptor(boardInterceptor)
+							.addPathPatterns("/board/**")
+							.excludePathPatterns(
+									"/board/list",
+									"/board/detail"
+							);
 			registry.addInterceptor(memberInterceptor)
 							.addPathPatterns("/member/**")
-							.addPathPatterns("/board/**")
 							.excludePathPatterns(
 									"/member/join*",
 //									"/member/joinFinish",
 									"/member/login",
-									"/member/exitFinish",
-									"/board/list",
-									"/board/detail"
+									"/member/exitFinish"
 							);
 		}
+		
 }
 
 

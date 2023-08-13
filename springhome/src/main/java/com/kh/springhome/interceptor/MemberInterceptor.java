@@ -14,6 +14,7 @@ import com.kh.springhome.error.AuthorityException;
 
 @Component
 public class MemberInterceptor implements HandlerInterceptor{
+		
 		@Override
 		public boolean preHandle(HttpServletRequest request, 
 								HttpServletResponse response, Object handler)

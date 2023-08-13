@@ -8,8 +8,8 @@
 --%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<h2>환영합니다!</h2>
-<img src="https://dummyimage.com/600x400/000/fff">
+<body style="background-color:#F2EFFB">
+<img src="https://img.freepik.com/premium-photo/minimal-render-laptop-purple-background_53036-42.jpg" style="width:70%">
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 

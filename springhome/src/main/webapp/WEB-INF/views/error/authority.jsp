@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+
+<img src="https://job.eulji.ac.kr/image/common/bg_error_img2.jpg">
 <h2>해당 기능에 대한 권한이 없습니다</h2>
 
 <h3>다시 확인하고 이용해주세요</h3>

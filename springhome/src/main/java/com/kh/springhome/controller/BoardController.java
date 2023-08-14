@@ -65,7 +65,7 @@ public class BoardController {
 	//목록(비회원접근가능)
 	@RequestMapping("/list")
 		public String list( Model model,  BoardDto boardDto) {
-		List<BoardDto>list = boardDao.selectList(boardDto);
+		List<BoardDto>list = boardDao.selectList(boardDto);	
 		model.addAttribute("list",list);
 		return "/WEB-INF/views/board/list.jsp";
 	}
@@ -96,6 +96,7 @@ public class BoardController {
 	
 	@RequestMapping("/delete")
 	public String delete(@RequestParam int boardNo) {
+		
 			boolean result = boardDao.deleteBoard(boardNo);
 				if(result) {
 						return "redirect:list";

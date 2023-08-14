@@ -14,7 +14,7 @@
 						<td colspan="5"> ${boardDto.boardTitle}</td>
 					</tr>
 					<tr>
-						<th colspan="1">작성자</th>
+						<th colspan="1">닉네임</th>
 						<td colspan="5">${boardDto.boardWriter}</td>
 					</tr>
 					<tr>

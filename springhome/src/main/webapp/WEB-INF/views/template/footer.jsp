@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <hr>
-	 KH정보교육원 웹개발자 양성과정<br>
+	<h4 style="color:#6460AA">KH정보교육원 웹개발자 양성과정</h4><br>
 	 		<%--
 				JSP에서 세션에 저장된 값을 확인하려면  EL의 내장객체를 사용
 				sessionScope 내장객체를 사용하면 HttpSession의 값을 조회할 수 있다

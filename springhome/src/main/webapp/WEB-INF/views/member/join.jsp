@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<body style="background-color:#F2EFFB">
+
 <h1>회원가입</h1>
 <form action="join" method="post" autocomplete="off">
 	

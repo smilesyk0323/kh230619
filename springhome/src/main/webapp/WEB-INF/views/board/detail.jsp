@@ -3,6 +3,7 @@
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<body style="background-color:#F2EFFB">
 
 <h2>${boardDto.boardNo}번 게시글</h2>
 
@@ -36,10 +37,10 @@
 				</table>
 
 		
-		<h2><a href="edit?boardNo=${boardDto.boardNo}">수정하기</a></h2>
-		<h2><a href="delete?boardNo=${boardDto.boardNo}">삭제하기</a></h2>
+		<h2><a style="text-decoration:none ; color: #6460AA; " href="edit?boardNo=${boardDto.boardNo}">수정하기</a></h2>
+		<h2><a style="text-decoration:none ; color: #6460AA; " href="delete?boardNo=${boardDto.boardNo}">삭제하기</a></h2>
 
-		<h2><a href="list">목록보기</a></h2>
+		<h2><a style="text-decoration:none ; color: #6460AA; " href="list">목록보기</a></h2>
 
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

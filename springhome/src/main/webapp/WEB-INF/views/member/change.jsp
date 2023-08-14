@@ -4,6 +4,7 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<body style="background-color:#F2EFFB">
 <h2>개인정보 변경</h2>
 
 <c:if test="${param.error != null}">

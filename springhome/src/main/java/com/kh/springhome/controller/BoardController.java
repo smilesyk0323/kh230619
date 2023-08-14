@@ -44,11 +44,21 @@ public class BoardController {
 	
 	//상세(비회원 접근가능)
 	@RequestMapping("/detail")
-		public String detail(@RequestParam int boardNo,Model model) {
-			boardDao.updateRcount(boardNo);
-			BoardDto boardDto = boardDao.selectOne(boardNo);
-			model.addAttribute("boardDto",boardDto);
-			return "/WEB-INF/views/board/detail.jsp";
+		public String detail(@RequestParam int boardNo,Model model, HttpSession session) {
+			String memberId = (String) session.getAttribute("name");
+			BoardDto findDto = boardDao.selectOne(boardNo);
+			
+			if(findDto.getBoardWriter().equals(memberId)) {	
+				BoardDto boardDto = boardDao.selectOne(boardNo);
+				model.addAttribute("boardDto",boardDto);
+				return "/WEB-INF/views/board/detail.jsp";				
+			}
+			else {
+				boardDao.updateRcount(boardNo);
+				BoardDto boardDto = boardDao.selectOne(boardNo);
+				model.addAttribute("boardDto",boardDto);
+				return "/WEB-INF/views/board/detail.jsp";
+			}			
 		}
 	
 	
@@ -62,50 +72,30 @@ public class BoardController {
 	
 	//수정
 	@GetMapping("/edit")
-		public String edit(@RequestParam int boardNo, Model model, HttpSession session) {
-		String memberId = (String) session.getAttribute("name");
-		BoardDto findDto = boardDao.selectOne(boardNo);
+		public String edit(@RequestParam int boardNo, Model model) {		
+		BoardDto boardDto = boardDao.selectOne(boardNo);
+		model.addAttribute("boardDto", boardDto);
+		return "/WEB-INF/views/board/edit.jsp";
 		 
-		if(findDto.getBoardWriter().equals(memberId)) {			
-			model.addAttribute("boardDto", findDto);
-			return "/WEB-INF/views/board/edit.jsp";
-		}
-		else{
-			throw new AuthorityException();
-		}
 	 }
 	
 	@PostMapping("/edit")
 	public String edit(@RequestParam int boardNo,
 								@RequestParam String boardTitle,
-								@RequestParam String boardContent,
-								HttpSession session,
-								@ModelAttribute BoardDto boardDto) {
-		String memberId = (String) session.getAttribute("name");
-		BoardDto findDto = boardDao.selectOne(boardNo);
+								@RequestParam String boardContent
+								) {
 		
-		if(findDto.getBoardWriter().equals(memberId)) {
-			boolean result = boardDao.updateBoardEdit(boardTitle,boardContent, boardNo);
+		boolean result = boardDao.updateBoardEdit(boardTitle,boardContent, boardNo);
 		if(result) {
-			return "redirect:detail?boardNo="+boardDto.getBoardNo();
+			return "redirect:detail?boardNo="+ boardNo;
 		}
 		else {
 			throw new AuthorityException();
-		}
-		}
-		else {
-			return "redirect:detail?error";
-		}
-		
+		}	
 	}
 	
 	@RequestMapping("/delete")
-	public String delete(@RequestParam int boardNo, HttpSession session) {
-		String memberId = (String) session.getAttribute("name");
-		BoardDto findDto = boardDao.selectOne(boardNo);
-		
-	
-	if(findDto.getBoardWriter().equals(memberId)) {			
+	public String delete(@RequestParam int boardNo) {
 			boolean result = boardDao.deleteBoard(boardNo);
 				if(result) {
 						return "redirect:list";
@@ -114,10 +104,7 @@ public class BoardController {
 						return "redirect:오류페이지";
 					}			
 	}
-	else{
-				throw new AuthorityException();
-			}
-	}
+	
  }
 	
 

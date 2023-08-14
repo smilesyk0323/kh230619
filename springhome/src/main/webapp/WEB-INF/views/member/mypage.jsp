@@ -5,6 +5,7 @@
     <%--날짜나 시간을 이뿌게??? --%>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<body style="background-color:#F2EFFB">
 
 <h2>${memberDto.memberId} 님의 회원 정보</h2>
 
@@ -72,9 +73,9 @@
 		
 </table>
 
-<h2><a href="password">비밀번호 변경</a></h2>
-<h2><a href="change">개인정보 변경</a></h2>
-<h2><a href="exit">회원탈퇴</a></h2>
+<h2><a style="text-decoration:none ; color: #6460AA; " href="password">비밀번호 변경</a></h2>
+<h2><a style="text-decoration:none ; color: #6460AA; " href="change">개인정보 변경</a></h2>
+<h2><a style="text-decoration:none ; color: #6460AA; " href="exit">회원탈퇴</a></h2>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 

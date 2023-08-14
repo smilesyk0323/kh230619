@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div align="center">
-	 <h1>내가 만든 홈페이지</h1>
+	 <h1 style="color:#6460AA">Bora's Home</h1>
 	<hr>
 		<%--
 				JSP에서 세션에 저장된 값을 확인하려면  EL의 내장객체를 사용
@@ -17,7 +17,7 @@
 			세션ID = ${pageContext.session.id},
 		 --%>
 		 <c:if test="${sessionScope.name != null}">
-	 <h3 style="color:#9F81F7">${sessionScope.name}님 환영합니다</h3>
+	 <p style="color:#ad79a4">${sessionScope.name}님 환영합니다</p>
 </c:if>
 	<%-- 
 				이 페이지는 조각일 뿐이므로 어디서 실행될지 모른다
@@ -28,15 +28,15 @@
 		<c:choose>
 			<c:when test="${sessionScope.name != null}">
 					<a href="/"><img width="35" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbvPHh_PD8kK8kD1AwGvB3uPaEgKlr1DkjnlgtVyDgHj9-pgafLE7-OwGlK6wNcWGjIW8&usqp=CAU"></a>
-					<a style="text-decoration:none ; color: #F781F3; " href="/member/mypage">Mypage</a>
-					<a style="text-decoration:none ; color: #F781F3; " href="/member/logout">로그아웃</a>
-	   				<a style="text-decoration:none ; color: #F781F3; " href="/board/list">게시판</a>
+					<a style="text-decoration:none ; color: #6460AA; " href="/member/mypage">Mypage</a>
+					<a style="text-decoration:none ; color: #6460AA; " href="/member/logout">로그아웃</a>
+	   				<a style="text-decoration:none ; color: #6460AA; " href="/board/list">게시판</a>
 			</c:when>
 			<c:otherwise>
-			<a href="/">홈</a>
-				   	<a href="/member/join">회원가입</a>
-				   	<a href="/member/login">로그인</a>
-				   	<a href="/board/list">게시판</a>
+			<a href="/"><img width="35" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbvPHh_PD8kK8kD1AwGvB3uPaEgKlr1DkjnlgtVyDgHj9-pgafLE7-OwGlK6wNcWGjIW8&usqp=CAU"></a>
+				   	<a style="text-decoration:none ; color: #6460AA; " href="/member/join">회원가입</a>
+				   	<a style="text-decoration:none ; color: #6460AA; " href="/member/login">로그인</a>
+				   	<a style="text-decoration:none ; color: #6460AA; " href="/board/list">게시판</a>
 			</c:otherwise>
 		</c:choose>
 

@@ -4,6 +4,8 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<body style="background-color:#F2EFFB">
+
 <h2>비밀번호 변경</h2>
 
 <!-- 아이디는 세션에 있으므로 입력하거나 전송할 필요가 없다 -->

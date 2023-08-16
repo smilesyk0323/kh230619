@@ -12,6 +12,8 @@ public interface BoardDao {
 		boolean updateRcount(int boardNo);//조회수 증가 
 		boolean deleteBoard(int boardNo);
 		boolean updateBoardEdit(BoardDto boardDto);
+		
+		Integer selectMax(String boardWriter);
 }
 
 

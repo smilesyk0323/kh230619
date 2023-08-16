@@ -9,10 +9,9 @@
 
 <%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
 <c:if test="${sessionScope.name != null}">
-<h3>
-	<a style="text-decoration:none ; color: #6460AA; " href="write">글쓰기</a>
-</h3>
+<h3><a style="text-decoration:none ; color: #6460AA; " href="write">글쓰기</a></h3>
 </c:if>
+
 <table border="1" width="700">
 	<thead>
 		<tr>
@@ -31,26 +30,23 @@
 			<td>${boardDto.boardNo}</td>
 			<td align="left">
 			<!-- 제목을 누르면 상세페이지로 이동 -->
-			<a style="text-decoration:none ; color: #6460AA; " href="detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}</a></td>
-			
-			
-			
+			<a style="text-decoration:none ; color: #6460AA; " href="detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}</a>
 			<!-- 댓글이 있다면 개수를 표시 -->
-			<c:if test=${boardDto.boardReplycount > 0}">
+			<c:if test="${boardDto.boardReplycount > 0}">
 			[${boardDto.boardReplycount}]
 			</c:if>
-			
-			<%-- 사용자가 없으면 탈퇴한 사용자로 표시
-			
-			<c:choose>
-				<c:when test="${boardDto.boardWriter != null}">
-					<td>${boardDto.boardWriter}</td>
-				</c:when>
-				<c:otherwise>
-					<td>(탈퇴한 사용자)</td>
-				</c:otherwise>
-			</c:choose>
-			  --%>
+			</td>
+		
+<%-- 		사용자가 없으면 탈퇴한 사용자로 표시			
+				<c:choose>
+					<c:when test="${boardDto.boardWriter != null}">
+						<td>${boardDto.boardWriter}</td>
+					</c:when>
+					<c:otherwise>
+						<td>(탈퇴한 사용자)</td>
+					</c:otherwise>
+				</c:choose>
+ --%>
 			<td>${boardDto.boardWriterString}</td>
 <%-- 			<td>${boardDto.boardWriter}</td> --%>
 			<td>${boardDto.boardCtimeString}</td>

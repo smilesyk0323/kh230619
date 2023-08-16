@@ -91,6 +91,16 @@ public class BoardDaoImpl implements BoardDao{
 				};
 				return jdbcTemplate.update(sql, data) > 0;
 		}
+
+		
+		@Override
+		public Integer selectMax(String boardWriter) {//null때문에 integer로 
+			String sql = "select max(board_no) from board "
+							+ "where board_writer = ?";
+			//DB계산시  and board_ctime >= sysdate-5/60/60/24(5분전)
+			Object[] data = {boardWriter};
+			return jdbcTemplate.queryForObject(sql, Integer.class,data);
+		}
 		
 			
 

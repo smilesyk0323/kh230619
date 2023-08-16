@@ -1,6 +1,9 @@
 package com.kh.springhome.controller;
 
 
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springhome.dao.BoardDao;
+import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.error.AuthorityException;
 import com.kh.springhome.error.NoTargetException;
@@ -26,6 +30,9 @@ public class BoardController {
 	
 	@Autowired
 	private BoardDao boardDao;
+	
+	@Autowired
+	private MemberDao memberDao;
 	
 	//등록
 	@GetMapping("/write")
@@ -39,7 +46,36 @@ public class BoardController {
 			int boardNo = boardDao.sequence();//시퀀스 번호 갖고오고
 			boardDto.setBoardNo(boardNo);//보드 번호 넣고
 			boardDto.setBoardWriter(memberId);//보드 작성자 넣고
+			
+			//이 사용자의 마지막 글번호를 조회
+			Integer lastNo = boardDao.selectMax(memberId);
+			
+			//글을 등록하고 
 			boardDao.insert(boardDto);//입력
+			
+			//포인트 계산 작업
+			//- lastNo가 null이라는 것은 처음 글을 작성했다는 의미 
+			//- lastNo가 null이 아니면 조회한 다음 시간차를 비교 
+			//- 처음 게시글 작성과 이후 게시글 작성시 부여되는 포인트를 다르게 설정 가능 
+			//게시글 작성시 포인트 +10 
+			if(lastNo == null) {//글 작성한지 처음이라면
+				memberDao.increaseMemberPoint(memberId, 10);	//10점 부여
+			}
+			else {//처음이 아니라면 시간 차이를 계산
+				BoardDto lastDto = boardDao.selectOne(lastNo);
+				Timestamp stamp = new Timestamp(
+														lastDto.getBoardCtime().getTime());
+				LocalDateTime lastTime = stamp.toLocalDateTime();
+				LocalDateTime currentTime = LocalDateTime.now();//현재시간이 더 큰 시간
+				
+				Duration duration = Duration.between(lastTime, currentTime);
+				long seconds = duration.getSeconds();//지금 작성하고 마지막 작성시간의 차이
+				if(seconds >300) {//시간차가 300초(5분 초과)보다 크다면
+					memberDao.increaseMemberPoint(memberId, 10);	//10점 부여
+				}
+			}
+			
+			
 			return "redirect:detail?boardNo="+boardNo;
 	}
 	

@@ -38,10 +38,19 @@
 					<tr>
 						<td  colspan="6">${boardDto.boardContent}</td>
 					</tr>
+						<tr>
+								<td colspan="6" align="center">
+								<%-- 회원일때만 글쓰기,수정,삭제가 나와야 한다 --%>
+								<c:if test="${sessionScope.name != null}">
+									<a style="text-decoration:none ; color: #6460AA; " href="write">글쓰기</a>
+									<a style="text-decoration:none ; color: #6460AA; " href="#">답글쓰기</a>
+									<a style="text-decoration:none ; color: #6460AA; " href="edit?boardNo=${boardDto.boardNo}">수정하기</a>
+									<a style="text-decoration:none ; color: #6460AA; " href="delete?boardNo=${boardDto.boardNo}">삭제하기</a>
+								</c:if>
+									<a style="text-decoration:none ; color: #6460AA; " href="list">목록보기</a>
+								</td>
+					</tr>
 				</table>
 	
-		<h2><a style="text-decoration:none ; color: #6460AA; " href="edit?boardNo=${boardDto.boardNo}">수정하기</a></h2>
-		<h2><a style="text-decoration:none ; color: #6460AA; " href="delete?boardNo=${boardDto.boardNo}">삭제하기</a></h2>
-		<h2><a style="text-decoration:none ; color: #6460AA; " href="list">목록보기</a></h2>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

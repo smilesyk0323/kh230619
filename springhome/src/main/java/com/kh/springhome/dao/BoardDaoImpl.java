@@ -72,21 +72,26 @@ public class BoardDaoImpl implements BoardDao{
 			return jdbcTemplate.update(sql,data)>0;
 		}
 
+		//삭제
 		@Override
-		public boolean updateBoardEdit(String boardTitle, String boardContent, int boardNo) {
+		public boolean deleteBoard(int boardNo) {
+			String sql = "delete board where board_no = ?";
+			Object[] data = {boardNo};
+			return jdbcTemplate.update(sql, data)>0;
+		}
+		
+		@Override
+		public boolean updateBoardEdit(BoardDto boardDto) {
 				String sql = "update board set "
 								+ "board_title = ?, board_content =?, board_utime = sysdate "
 								+ "where board_no = ?";
-				Object[] data = {boardTitle, boardContent, boardNo};
+				Object[] data = {
+						boardDto.getBoardTitle(), boardDto.getBoardContent(),
+						boardDto.getBoardNo()
+				};
 				return jdbcTemplate.update(sql, data) > 0;
 		}
 		
-			@Override
-				public boolean deleteBoard(int boardNo) {
-					String sql = "delete board where board_no = ?";
-					Object[] data = {boardNo};
-					return jdbcTemplate.update(sql, data)>0;
-			}
 			
 
 

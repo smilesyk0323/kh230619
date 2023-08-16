@@ -10,8 +10,8 @@ public interface BoardDao {
 		List<BoardDto> selectList(BoardDto boardDto);
 		BoardDto selectOne(int boardNo);
 		boolean updateRcount(int boardNo);//조회수 증가 
-		boolean updateBoardEdit(String boardTitle, String boardContent, int boardNo);
 		boolean deleteBoard(int boardNo);
+		boolean updateBoardEdit(BoardDto boardDto);
 }
 
 

@@ -6,9 +6,13 @@
 <body style="background-color:#F2EFFB">
 
 <h1>자유 게시판</h1>
-<h2>
+
+<%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
+<c:if test="${sessionScope.name != null}">
+<h3>
 	<a style="text-decoration:none ; color: #6460AA; " href="write">글쓰기</a>
-</h2>
+</h3>
+</c:if>
 <table border="1" width="700">
 	<thead>
 		<tr>

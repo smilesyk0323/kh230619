@@ -10,8 +10,8 @@
 	<input type="hidden" name="boardNo" value="${boardDto.boardNo}"><br><br>
 	제목 <input type="text" name="boardTitle" 
 					value="${boardDto.boardTitle}" required><br><br>
-	내용 <input type="text" name="boardContent"
-					value="${boardDto.boardContent}"><br><br>					
+	내용 <textarea name="boardContent"
+					required>${boardDto.boardContent}</textarea><br><br>					
 	<button>게시글 수정</button>
 </form>
 		<h2><a style="text-decoration:none ; color: #6460AA; " href="list">목록보기</a></h2>

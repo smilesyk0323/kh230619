@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.error.AuthorityException;
+import com.kh.springhome.error.NoTargetException;
 
 
 @Controller
@@ -70,43 +71,39 @@ public class BoardController {
 			}			
 		}
 	
-	
-	
-	//수정
-	@GetMapping("/edit")
-		public String edit(@RequestParam int boardNo, Model model) {		
-		BoardDto boardDto = boardDao.selectOne(boardNo);
-		model.addAttribute("boardDto", boardDto);
-		return "/WEB-INF/views/board/edit.jsp";
-		 
-	 }
-	
-	@PostMapping("/edit")
-	public String edit(@RequestParam int boardNo,
-								@RequestParam String boardTitle,
-								@RequestParam String boardContent
-								) {
-		
-		boolean result = boardDao.updateBoardEdit(boardTitle,boardContent, boardNo);
-		if(result) {
-			return "redirect:detail?boardNo="+ boardNo;
-		}
-		else {
-			throw new AuthorityException();
-		}	
-	}
-	
-	@RequestMapping("/delete")
-	public String delete(@RequestParam int boardNo) {
-		
+		//삭제 
+		@RequestMapping("/delete")
+		public String delete(@RequestParam int boardNo) {			
 			boolean result = boardDao.deleteBoard(boardNo);
-				if(result) {
-						return "redirect:list";
-					}
-				else {
-						return "redirect:오류페이지";
-					}			
-	}
+			if(result) {//삭제된다면
+				return "redirect:list";
+			}
+			else {
+				throw new NoTargetException("없는 게시글 번호");
+			}			
+		}
+	
+	
+		//수정
+		@GetMapping("/edit")
+			public String edit(@RequestParam int boardNo, Model model) {		
+			BoardDto boardDto = boardDao.selectOne(boardNo);
+			model.addAttribute("boardDto", boardDto);
+			return "/WEB-INF/views/board/edit.jsp";
+			 
+		 }	
+		@PostMapping("/edit")
+		public String edit(@ModelAttribute BoardDto boardDto) {		
+			boolean result = boardDao.updateBoardEdit(boardDto);
+			if(result) {
+				return "redirect:detail?boardNo="+ boardDto.getBoardNo();
+			}
+			else {
+				throw new NoTargetException("존재하지 않는 글번호");
+			}	
+		}
+	
+		
 	
  }
 	

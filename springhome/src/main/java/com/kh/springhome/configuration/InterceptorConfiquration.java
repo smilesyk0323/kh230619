@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kh.springhome.dao.BoardDao;
-import com.kh.springhome.interceptor.BoardInterceptor;
+import com.kh.springhome.interceptor.BoardOwnerInterceptor;
 import com.kh.springhome.interceptor.MemberInterceptor;
 import com.kh.springhome.interceptor.TestInterceptor;
 
@@ -31,7 +31,7 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 		private MemberInterceptor memberInterceptor;
 		
 		@Autowired
-		private BoardInterceptor boardInterceptor;
+		private BoardOwnerInterceptor boardInterceptor;
 		
 
 
@@ -52,11 +52,6 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 			//[2] MemberInterceptor를 회원 전용 페이지 처리과정에 간섭할 수 있도록 설정하겠다
 			//- addPathPatterns를 사용하면 추가할 주소를 설정할 수 있다.
 			//- excludePathPatterns를 사용하면 제외할 주소를 설정할 수 있다.
-			registry.addInterceptor(boardInterceptor)
-							.addPathPatterns(
-									"/board/edit",
-									"/board/delete")
-							;
 			registry.addInterceptor(memberInterceptor)
 							.addPathPatterns(
 									"/member/**",
@@ -70,8 +65,11 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 									"/board/list",
 									"/board/detail"
 							);
-		}
-		
+			//[3] 게시글 소유자 외의 접근을 차단하는 인터셉터 등록
+			registry.addInterceptor(boardInterceptor)
+						.addPathPatterns("/board/edit", "/board/delete");
+			
+		}		
 }
 
 

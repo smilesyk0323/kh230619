@@ -71,7 +71,26 @@ public class BoardController {
 			}			
 		}
 	
-		//삭제 
+		//삭제 (컨트롤러에 직접 코드 작성시/강결합코드-어디가 어딘지(삭제와 권한검사) 구분이 불가)
+	  	//- 만약 소유자 검사를 추가한다면 
+		//- 현재 로그인 한 사용자와 게시글 작성자가 같다면 소유자로 판정 
+		//- 같은 코드를 3번은 써야 적용가능 
+//		@RequestMapping("/delete")
+//		public String delete(@RequestParam int boardNo, HttpSession session) {
+//			BoardDto boardDto = boardDao.selectOne(boardNo);//검사를 먼저
+//			String boardWriter = boardDto.getBoardWriter();//작성자 가져오기		
+//			String memberId = (String) session.getAttribute("name");//아이디 가져오기			
+//			if(memberId.equals(boardWriter)) {//	if(소유자라면)
+//				boardDao.deleteBoard(boardNo);
+//				return "redirect:list";
+//			}
+//			else {
+//				throw new AuthorityException("글 작성자가 아닙니다");
+//			}		
+//		}
+		
+		
+		//삭제 (인터셉터)
 		@RequestMapping("/delete")
 		public String delete(@RequestParam int boardNo) {			
 			boolean result = boardDao.deleteBoard(boardNo);

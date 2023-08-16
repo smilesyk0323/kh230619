@@ -89,7 +89,6 @@ public class BoardController {
 //			}		
 //		}
 		
-		
 		//삭제 (인터셉터)
 		@RequestMapping("/delete")
 		public String delete(@RequestParam int boardNo) {			
@@ -101,25 +100,23 @@ public class BoardController {
 				throw new NoTargetException("없는 게시글 번호");
 			}			
 		}
-	
-	
+		
 		//수정
 		@GetMapping("/edit")
 			public String edit(@RequestParam int boardNo, Model model) {		
-			BoardDto boardDto = boardDao.selectOne(boardNo);
-			model.addAttribute("boardDto", boardDto);
-			return "/WEB-INF/views/board/edit.jsp";
-			 
+				BoardDto boardDto = boardDao.selectOne(boardNo);
+				model.addAttribute("boardDto", boardDto);
+				return "/WEB-INF/views/board/edit.jsp";			 
 		 }	
 		@PostMapping("/edit")
-		public String edit(@ModelAttribute BoardDto boardDto) {		
-			boolean result = boardDao.updateBoardEdit(boardDto);
-			if(result) {
-				return "redirect:detail?boardNo="+ boardDto.getBoardNo();
-			}
-			else {
-				throw new NoTargetException("존재하지 않는 글번호");
-			}	
+			public String edit(@ModelAttribute BoardDto boardDto) {		
+				boolean result = boardDao.updateBoardEdit(boardDto);
+						if(result) {
+							return "redirect:detail?boardNo="+ boardDto.getBoardNo();
+						}
+						else {
+							throw new NoTargetException("존재하지 않는 글번호");
+						}	
 		}
 	
 		

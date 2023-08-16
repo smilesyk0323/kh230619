@@ -15,7 +15,7 @@
 					</tr>
 					<tr>
 						<th colspan="1">닉네임</th>
-						<td colspan="5">${boardDto.boardWriter}</td>
+						<td colspan="5">${boardDto.boardWriterString}</td>
 					</tr>
 					<tr>
 						<th colspan="1">작성일</th>

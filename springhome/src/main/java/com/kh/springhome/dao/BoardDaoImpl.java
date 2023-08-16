@@ -41,15 +41,6 @@ public class BoardDaoImpl implements BoardDao{
 			jdbcTemplate.update(sql,data);
 		}
 		
-		//상세 (비회원 접근가능)
-		@Override
-		public BoardDto selectOne(int boardNo) {
-			String sql = "select * from board where board_no = ? ";
-			Object[] data = {boardNo};
-			List<BoardDto>list = jdbcTemplate.query(sql, detailMapper,data);
-			return list.isEmpty() ? null : list.get(0);
-		}
-
 		//목록(비회원 접근 가능)
 		@Override
 		public List<BoardDto> selectList(BoardDto boardDto) {
@@ -60,6 +51,15 @@ public class BoardDaoImpl implements BoardDao{
 					+ "board_utime "
 					+ "from board order by board_no desc";
 			return jdbcTemplate.query(sql, listMapper);
+		}
+
+		//상세 (비회원 접근가능)
+		@Override
+		public BoardDto selectOne(int boardNo) {
+			String sql = "select * from board where board_no = ? ";
+			Object[] data = {boardNo};
+			List<BoardDto>list = jdbcTemplate.query(sql, detailMapper,data);
+			return list.isEmpty() ? null : list.get(0);
 		}
 
 

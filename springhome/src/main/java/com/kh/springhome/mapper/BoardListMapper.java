@@ -20,8 +20,8 @@ public class BoardListMapper implements RowMapper<BoardDto>{
 		boardDto.setBoardReadcount(rs.getInt("board_readcount"));
 		boardDto.setBoardLikecount(rs.getInt("board_likecount"));
 		boardDto.setBoardReplycount(rs.getInt("board_replycount"));
-		boardDto.setBoardCtime(rs.getString("board_ctime"));
-		boardDto.setBoardUtime(rs.getString("board_utime"));
+		boardDto.setBoardCtime(rs.getDate("board_ctime"));
+		boardDto.setBoardUtime(rs.getDate("board_utime"));
 		return boardDto;
 	}
 		

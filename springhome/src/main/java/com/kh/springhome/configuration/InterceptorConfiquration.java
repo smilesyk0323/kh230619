@@ -53,18 +53,20 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 			//- addPathPatterns를 사용하면 추가할 주소를 설정할 수 있다.
 			//- excludePathPatterns를 사용하면 제외할 주소를 설정할 수 있다.
 			registry.addInterceptor(boardInterceptor)
-							.addPathPatterns("/board/**")
-							.excludePathPatterns(
-									"/board/list",
-									"/board/detail"
-							);
+							.addPathPatterns(
+									"/board/edit",
+									"/board/delete")
+							;
 			registry.addInterceptor(memberInterceptor)
 							.addPathPatterns("/member/**")
+							.addPathPatterns("/board/**")
 							.excludePathPatterns(
 									"/member/join*",
 //									"/member/joinFinish",
 									"/member/login",
-									"/member/exitFinish"
+									"/member/exitFinish",
+									"/board/list",
+									"/board/detail"
 							);
 		}
 		

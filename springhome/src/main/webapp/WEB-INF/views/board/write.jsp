@@ -7,8 +7,8 @@
 <h2>게시글 작성</h2>
 	
 		<form action="write" method="post" autocomplete="off">
-			제목<input name="boardTitle"><br><br>
-			내용<textarea name="boardContent"> </textarea><br><br>
+			제목<input type="text" name="boardTitle" required><br><br>
+			내용<textarea name="boardContent"required> </textarea><br><br>
 			<button>글쓰기</button>
 		</form>
 			<h2><a style="text-decoration:none ; color: #6460AA; " href="list">목록보기</a></h2>

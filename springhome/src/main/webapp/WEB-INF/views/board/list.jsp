@@ -13,9 +13,9 @@
 	<thead>
 		<tr>
 			<th>번호</th>
-			<th width="50%">게시글제목</th>
-			<th>닉네임</th> 
-			<th>작성일자</th>
+			<th width="42%">게시글제목</th>
+			<th width="13%">닉네임</th> 
+			<th width="15%">작성일자</th>
 			<th>조회수</th>
 			<th>좋아요</th>
 			<th>댓글수</th>
@@ -26,6 +26,7 @@
 		<tr align="center">
 			<td>${boardDto.boardNo}</td>
 			<td align="left">
+			<!-- 제목을 누르면 상세페이지로 이동 -->
 			<a style="text-decoration:none ; color: #6460AA; " href="detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}</a></td>
 			<td>${boardDto.boardWriter}</td>
 			<td>${boardDto.boardCtime}</td>

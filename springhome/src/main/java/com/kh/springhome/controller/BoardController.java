@@ -34,14 +34,23 @@ public class BoardController {
 	
 	@PostMapping("/write")
 		public String write(@ModelAttribute BoardDto boardDto, HttpSession session) {
-			String boardWriter = (String) session.getAttribute("name");//멤버아이디갖고오고
+			String memberId = (String) session.getAttribute("name");//멤버아이디갖고오고
 			int boardNo = boardDao.sequence();//시퀀스 번호 갖고오고
 			boardDto.setBoardNo(boardNo);//보드 번호 넣고
-			boardDto.setBoardWriter(boardWriter);//보드 작성자 넣고
+			boardDto.setBoardWriter(memberId);//보드 작성자 넣고
 			boardDao.insert(boardDto);//입력
 			return "redirect:detail?boardNo="+boardNo;
 	}
 	
+		//목록(비회원접근가능)
+		@RequestMapping("/list")
+		public String list( Model model,  BoardDto boardDto) {
+				List<BoardDto>list = boardDao.selectList(boardDto);	
+				model.addAttribute("list",list);
+		//		model.addAttribute("list",BoardDao.selectList(boardDto));
+				return "/WEB-INF/views/board/list.jsp";
+	}
+		
 	//상세(비회원 접근가능)
 	@RequestMapping("/detail")
 		public String detail(@RequestParam int boardNo,Model model, HttpSession session) {
@@ -62,13 +71,6 @@ public class BoardController {
 		}
 	
 	
-	//목록(비회원접근가능)
-	@RequestMapping("/list")
-		public String list( Model model,  BoardDto boardDto) {
-		List<BoardDto>list = boardDao.selectList(boardDto);	
-		model.addAttribute("list",list);
-		return "/WEB-INF/views/board/list.jsp";
-	}
 	
 	//수정
 	@GetMapping("/edit")

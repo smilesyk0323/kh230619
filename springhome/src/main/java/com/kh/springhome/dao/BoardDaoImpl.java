@@ -80,6 +80,7 @@ public class BoardDaoImpl implements BoardDao{
 			return jdbcTemplate.update(sql, data)>0;
 		}
 		
+		//수정
 		@Override
 		public boolean updateBoardEdit(BoardDto boardDto) {
 				String sql = "update board set "
@@ -92,7 +93,7 @@ public class BoardDaoImpl implements BoardDao{
 				return jdbcTemplate.update(sql, data) > 0;
 		}
 
-		
+		//마지막 작성글 조회 
 		@Override
 		public Integer selectMax(String boardWriter) {//null때문에 integer로 
 			String sql = "select max(board_no) from board "

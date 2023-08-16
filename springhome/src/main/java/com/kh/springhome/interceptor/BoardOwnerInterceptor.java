@@ -45,8 +45,7 @@ public class BoardOwnerInterceptor implements HandlerInterceptor{
 							    } 
 							    else {
 							    	throw new AuthorityException("해당 게시글의 작성자만 수정 및 삭제 가능 ");
-							    }
-							    
+							    }							    
 					} 
 					else {
 						throw new AuthorityException("로그인 후 이용 가능 ");

@@ -24,6 +24,4 @@ public class BoardListMapper implements RowMapper<BoardDto>{
 		boardDto.setBoardUtime(rs.getDate("board_utime"));
 		return boardDto;
 	}
-		
-
 }

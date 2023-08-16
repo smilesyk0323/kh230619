@@ -44,11 +44,11 @@ public class BoardController {
 	
 		//목록(비회원접근가능)
 		@RequestMapping("/list")
-		public String list( Model model,  BoardDto boardDto) {
-				List<BoardDto>list = boardDao.selectList(boardDto);	
-				model.addAttribute("list",list);
-		//		model.addAttribute("list",BoardDao.selectList(boardDto));
-				return "/WEB-INF/views/board/list.jsp";
+	public String list( Model model,  BoardDto boardDto) {
+			List<BoardDto>list = boardDao.selectList(boardDto);	
+			model.addAttribute("list",list);
+//			model.addAttribute("list",boardDao.selectList(boardDto));
+			return "/WEB-INF/views/board/list.jsp";
 	}
 		
 	//상세(비회원 접근가능)
@@ -62,8 +62,8 @@ public class BoardController {
 				model.addAttribute("boardDto",boardDto);
 				return "/WEB-INF/views/board/detail.jsp";				
 			}
-			else {
-				boardDao.updateRcount(boardNo);
+			else {//작성자가 아닐경우 
+				boardDao.updateRcount(boardNo);//조회수 증가 
 				BoardDto boardDto = boardDao.selectOne(boardNo);
 				model.addAttribute("boardDto",boardDto);
 				return "/WEB-INF/views/board/detail.jsp";

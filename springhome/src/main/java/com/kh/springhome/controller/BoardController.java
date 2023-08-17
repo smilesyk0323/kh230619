@@ -4,7 +4,9 @@ package com.kh.springhome.controller;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +25,9 @@ import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -109,11 +113,31 @@ public class BoardController {
 		
 	//상세(비회원 접근가능)
 		@RequestMapping("/detail")
-		public String detail(@RequestParam int boardNo, Model model) {
+		public String detail(@RequestParam int boardNo, Model model, HttpSession session) {
 			
-//			if(조회수를 올릴만한 상황이면) {
-				boardDao.updateRcount(boardNo);//조회수 증가
-//			}
+//			조회수 중복 방지를 위한 마스터플랜 
+//			1. 세션에 history라는 이름의 저장소가 있는지 확인
+//			2.없으면 생성, 있으면 추출 
+//			3.지금 읽는 글 번호가 history에 존재하는지 확인
+//			4.없으면 추가하고 다시 세션에 저장
+
+			Set<Integer>history;
+			if(session.getAttribute("history") != null) {//있으면(1번)
+				history = (Set<Integer>) session.getAttribute("history");//(2번)제너릭타입은 보장이 안되서 경고(무시)
+			}
+			else {//없으면(1번)
+				history	= new HashSet<>();//(2번)
+			}		
+			boolean isRead = history.contains(boardNo);//(3번)			
+			if(isRead == false) {//읽은 적이 없으면 (4번)
+				history.add(boardNo);//글번호를 추가하고
+				session.setAttribute("history", history);//session 갱신
+			}
+			log.debug("history = {}",history);//확인용 코드 
+			
+			if(isRead == false) {//조회수를 올릴만한 상황이면
+			boardDao.updateRcount(boardNo);//조회수 증가
+			}
 			
 			BoardDto boardDto = boardDao.selectOne(boardNo);//조회
 			model.addAttribute("boardDto", boardDto);

@@ -64,7 +64,7 @@ public class MemberDaoImpl implements MemberDao{
 		String sql = "update member set "
 						+ "member_nickname=?, member_contact=?,"
 						+ "member_email=?, member_birth=?,"
-						+ "member_post=?, member_addr1=?, member_addr2=? "
+						+ "member_post=?, member_addr1=?, member_addr2=?, member_change=sysdate  "
 						+ "where member_id=?";
 		Object[] data = {
 			memberDto.getMemberNickname(), memberDto.getMemberContact(),

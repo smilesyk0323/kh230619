@@ -27,6 +27,9 @@
 			<th>조회수</th>
 			<th>좋아요</th>
 			<th>댓글수</th>
+			<th>그룹</th>
+			<th>상위</th>
+			<th>차수</th>
 		</tr>	
 	</thead>
 	<tbody>
@@ -58,6 +61,9 @@
 			<td>${boardListDto.boardReadcount}</td>
 			<td>${boardListDto.boardLikecount}</td>
 			<td>${boardListDto.boardReplycount}</td>
+			<td>${boardListDto.boardGroup}</td>
+			<td>${boardListDto.boardParent}</td>
+			<td>${boardListDto.boardDepth}</td>
 		</tr>
 		</c:forEach>
 	</tbody>

@@ -21,6 +21,10 @@ public class BoardListDto {
 	       private int boardReplycount;
 	       private Date boardCtime;
 	       private Date boardUtime;
+	       //뷰 변경으로 추가 
+	       private int boardGroup;
+	       private Integer boardParent;
+	       private int boardDepth;
 	       
 	       //작성자 출력용 메소드 
 	       public String getBoardWriterString() {

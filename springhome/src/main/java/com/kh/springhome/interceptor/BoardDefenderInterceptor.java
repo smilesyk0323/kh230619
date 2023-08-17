@@ -54,8 +54,7 @@ public class BoardDefenderInterceptor implements HandlerInterceptor{
 				boardDao.updateRcount(boardNo);
 			}			
 			return true;
-	}
-	
+	}	
 }
 
 

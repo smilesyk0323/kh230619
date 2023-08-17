@@ -23,7 +23,7 @@ import com.kh.springhome.interceptor.TestInterceptor;
 
 
 @Configuration
-public class InterceptorConfiquration implements WebMvcConfigurer{
+public class InterceptorConfiguration implements WebMvcConfigurer{
 		
 		@Autowired
 		private TestInterceptor testInterceptor;

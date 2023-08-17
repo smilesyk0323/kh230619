@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
-import com.kh.springhome.error.AuthorityException;
+import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
 
 
@@ -108,23 +108,24 @@ public class BoardController {
 	}
 		
 	//상세(비회원 접근가능)
-	@RequestMapping("/detail")
-		public String detail(@RequestParam int boardNo,Model model, HttpSession session) {
-			String memberId = (String) session.getAttribute("name");
-			BoardDto findDto = boardDao.selectOne(boardNo);
+		@RequestMapping("/detail")
+		public String detail(@RequestParam int boardNo, Model model) {
 			
-			if(findDto.getBoardWriter().equals(memberId)) {	
-				BoardDto boardDto = boardDao.selectOne(boardNo);
-				model.addAttribute("boardDto",boardDto);
-				return "/WEB-INF/views/board/detail.jsp";				
+//			if(조회수를 올릴만한 상황이면) {
+				boardDao.updateRcount(boardNo);//조회수 증가
+//			}
+			
+			BoardDto boardDto = boardDao.selectOne(boardNo);//조회
+			model.addAttribute("boardDto", boardDto);
+			//작성자의 회원정보 추가
+			String boardWriter = boardDto.getBoardWriter();
+			if(boardWriter != null) {
+				MemberDto memberDto = memberDao.selectOne(boardWriter);
+				model.addAttribute("writerDto", memberDto);
 			}
-			else {//작성자가 아닐경우 
-				boardDao.updateRcount(boardNo);//조회수 증가 
-				BoardDto boardDto = boardDao.selectOne(boardNo);
-				model.addAttribute("boardDto",boardDto);
-				return "/WEB-INF/views/board/detail.jsp";
-			}			
+			return "/WEB-INF/views/board/detail.jsp";
 		}
+		
 	
 		//삭제 (컨트롤러에 직접 코드 작성시/강결합코드-어디가 어딘지(삭제와 권한검사) 구분이 불가)
 	  	//- 만약 소유자 검사를 추가한다면 

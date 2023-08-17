@@ -41,7 +41,7 @@ public class BoardDaoImpl implements BoardDao{
 			jdbcTemplate.update(sql,data);
 		}
 		
-		//목록(비회원 접근 가능)
+		//[1]목록(비회원 접근 가능)
 		@Override
 		public List<BoardDto> selectList(BoardDto boardDto) {
 			String sql = "select "
@@ -103,8 +103,42 @@ public class BoardDaoImpl implements BoardDao{
 			return jdbcTemplate.queryForObject(sql, Integer.class,data);
 		}
 		
+		//검색창 구현 
+//		@Override //비추천
+//		public List<BoardDto> selectLIst(String type, String keyword) {
+//			String sql;
+//					if(type.equals("board_title")) {//type이 제목인 경우
+//						sql = "select * from board "
+//								+ "where instr(board_title, ?) > 0 "
+//								+ "order by board_no desc";
+//					}
+//					else {//type이 작성자인 경우 
+//						sql = "select * from board "
+//								+ "where instr(board_writer, ?) > 0 "
+//								+ "order by board_no desc";
+//					}
+//			Object[] data = {keyword};
+//			return jdbcTemplate.query(sql, listMapper,data);
+//		}
+		
+		@Override//아래 구문도 사용 가능 
+		public List<BoardDto> selectList(String type, String keyword) {
+			String sql = "select * from board "
+								+ "where instr("+type+", ?) > 0 "
+								+ "order by board_no desc";
+			Object[] data = {keyword};
+			return jdbcTemplate.query(sql, listMapper,data);
+		}
 			
-
+//		@Override
+//		public List<BoardDto> selectLIst(String type, String keyword) {
+//			String sql = "select * from board "
+//								+ "where instr(#1, ?) > 0 "
+//								+ "order by board_no desc";
+//			sql = sql.replace("#1",type);//#은 아무의미 없음/임의의 절대 안나올 글자를 적어둠
+//			Object[] data = {keyword};
+//			return jdbcTemplate.query(sql, listMapper,data);
+//		}
 
 
 		

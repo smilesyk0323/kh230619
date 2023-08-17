@@ -13,6 +13,7 @@ public interface BoardDao {
 		boolean deleteBoard(int boardNo);//삭제
 		boolean updateBoardEdit(BoardDto boardDto);//수정		
 		Integer selectMax(String boardWriter);//가장 마지막 작성글 조회
+		List<BoardDto> selectList(String type, String keyword);//검색창 구현
 }
 
 

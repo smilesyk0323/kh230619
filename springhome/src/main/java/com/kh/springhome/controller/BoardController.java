@@ -90,8 +90,7 @@ public class BoardController {
 		@RequestMapping("/list")
 	public String list( Model model,  
 							  	 @RequestParam(required = false) String type,
-							  	 @RequestParam(required = false) String keyword,
-							  	 BoardDto boardDto) {
+							  	 @RequestParam(required = false) String keyword) {
 			boolean isSearch = type != null && keyword != null; 
 			
 			if(isSearch) {//검색일 경우
@@ -100,7 +99,7 @@ public class BoardController {
 				model.addAttribute("isSearch",true);
 			}
 			else {//목록일 경우
-				List<BoardListDto>list = boardDao.selectList(boardDto);
+				List<BoardListDto>list = boardDao.selectList();
 				model.addAttribute("list",list);
 				model.addAttribute("isSearch",false);
 			}

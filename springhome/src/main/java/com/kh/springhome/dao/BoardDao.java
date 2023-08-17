@@ -14,7 +14,7 @@ public interface BoardDao {
 		boolean updateBoardEdit(BoardDto boardDto);//수정		
 		Integer selectMax(String boardWriter);//가장 마지막 작성글 조회
 
-		List<BoardListDto> selectList(BoardDto boardDto);//목록
+		List<BoardListDto> selectList();//목록
 		List<BoardListDto> selectList(String type, String keyword);//검색창 구현
 }
 

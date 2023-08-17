@@ -30,34 +30,34 @@
 		</tr>	
 	</thead>
 	<tbody>
-		<c:forEach var="boardDto" items="${list}">
+		<c:forEach var="boardListDto" items="${list}">
 		<tr align="center">
-			<td>${boardDto.boardNo}</td>
+			<td>${boardListDto.boardNo}</td>
 			<td align="left">
 			<!-- 제목을 누르면 상세페이지로 이동 -->
-			<a style="text-decoration:none ; color: #6460AA; " href="detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}</a>
+			<a style="text-decoration:none ; color: #6460AA; " href="detail?boardNo=${boardListDto.boardNo}">${boardListDto.boardTitle}</a>
 			<!-- 댓글이 있다면 개수를 표시 -->
-			<c:if test="${boardDto.boardReplycount > 0}">
-			[${boardDto.boardReplycount}]
+			<c:if test="${boardListDto.boardReplycount > 0}">
+			[${boardListDto.boardReplycount}]
 			</c:if>
 			</td>
 		
 <%-- 		사용자가 없으면 탈퇴한 사용자로 표시			
 				<c:choose>
-					<c:when test="${boardDto.boardWriter != null}">
-						<td>${boardDto.boardWriter}</td>
+					<c:when test="${boardListDto.boardWriter != null}">
+						<td>${boardListDto.boardWriter}</td>
 					</c:when>
 					<c:otherwise>
 						<td>(탈퇴한 사용자)</td>
 					</c:otherwise>
 				</c:choose>
  --%>
-			<td>${boardDto.boardWriterString}</td>
-<%-- 			<td>${boardDto.boardWriter}</td> --%>
-			<td>${boardDto.boardCtimeString}</td>
-			<td>${boardDto.boardReadcount}</td>
-			<td>${boardDto.boardLikecount}</td>
-			<td>${boardDto.boardReplycount}</td>
+			<td>${boardListDto.boardWriterString}</td>
+<%-- 			<td>${boardListDto.boardWriter}</td> --%>
+			<td>${boardListDto.boardCtimeString}</td>
+			<td>${boardListDto.boardReadcount}</td>
+			<td>${boardListDto.boardLikecount}</td>
+			<td>${boardListDto.boardReplycount}</td>
 		</tr>
 		</c:forEach>
 	</tbody>

@@ -21,12 +21,12 @@ public class BoardListTest {
 		@Autowired
 		private BoardDao boardDao;
 		
-		@Autowired
-		private BoardDto boardDto;
+//		@Autowired
+//		private BoardDto boardDto;
 		
 		@Test
 		public void test() {
-			List<BoardListDto>list = boardDao.selectList(boardDto);
+			List<BoardListDto>list = boardDao.selectList();
 			
 			// 단정문(Assertion)
 			//-Spring Test에서 사용할 수 있는 테스트 판정 구문 

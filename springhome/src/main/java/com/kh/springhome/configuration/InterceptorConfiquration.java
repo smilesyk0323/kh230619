@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kh.springhome.dao.BoardDao;
+import com.kh.springhome.interceptor.BoardDefenderInterceptor;
 import com.kh.springhome.interceptor.BoardOwnerInterceptor;
 import com.kh.springhome.interceptor.MemberInterceptor;
 import com.kh.springhome.interceptor.TestInterceptor;
@@ -33,6 +34,8 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 		@Autowired
 		private BoardOwnerInterceptor boardInterceptor;
 		
+		@Autowired
+		private BoardDefenderInterceptor boardDefenderInterceptor;
 
 
 		
@@ -68,6 +71,10 @@ public class InterceptorConfiquration implements WebMvcConfigurer{
 			//[3] 게시글 소유자 외의 접근을 차단하는 인터셉터 등록
 			registry.addInterceptor(boardInterceptor)
 						.addPathPatterns("/board/edit", "/board/delete");
+			
+			//[4] 게시글 조회수 중복방지 인터셉터 등록
+			registry.addInterceptor(boardDefenderInterceptor)
+						.addPathPatterns("/board/detail");
 			
 		}		
 }

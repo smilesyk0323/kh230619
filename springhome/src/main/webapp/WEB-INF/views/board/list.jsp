@@ -8,7 +8,7 @@
 <h1>자유 게시판</h1>
 
 <%-- 검색일 경우 검색어를 추가로 출력 --%>
-<c:if test="${param.keyword != null}">
+<c:if test="${isSearch}">
 <h3>&quot;${param.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>
 

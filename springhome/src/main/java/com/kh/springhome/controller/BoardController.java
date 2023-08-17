@@ -103,7 +103,7 @@ public class BoardController {
 			else {//목록일 경우
 				List<BoardDto>list = boardDao.selectList(boardDto);
 				model.addAttribute("list",list);
-				model.addAttribute("isSearch",true);
+				model.addAttribute("isSearch",false);
 			}
 //			List<BoardDto>list = boardDao.selectList(boardDto);	
 //			model.addAttribute("list",list);
@@ -120,25 +120,23 @@ public class BoardController {
 //			2.없으면 생성, 있으면 추출 
 //			3.지금 읽는 글 번호가 history에 존재하는지 확인
 //			4.없으면 추가하고 다시 세션에 저장
-
-			Set<Integer>history;
-			if(session.getAttribute("history") != null) {//있으면(1번)
-				history = (Set<Integer>) session.getAttribute("history");//(2번)제너릭타입은 보장이 안되서 경고(무시)
-			}
-			else {//없으면(1번)
-				history	= new HashSet<>();//(2번)
-			}		
-			boolean isRead = history.contains(boardNo);//(3번)			
-			if(isRead == false) {//읽은 적이 없으면 (4번)
-				history.add(boardNo);//글번호를 추가하고
-				session.setAttribute("history", history);//session 갱신
-			}
-			log.debug("history = {}",history);//확인용 코드 
-			
-			if(isRead == false) {//조회수를 올릴만한 상황이면
-			boardDao.updateRcount(boardNo);//조회수 증가
-			}
-			
+//			Set<Integer>history;
+//			if(session.getAttribute("history") != null) {//있으면(1번)
+//				history = (Set<Integer>) session.getAttribute("history");//(2번)제너릭타입은 보장이 안되서 경고(무시)
+//			}
+//			else {//없으면(1번)
+//				history	= new HashSet<>();//(2번)
+//			}		
+//			boolean isRead = history.contains(boardNo);//(3번)			
+//			if(isRead == false) {//읽은 적이 없으면 (4번)
+//				history.add(boardNo);//글번호를 추가하고
+//				session.setAttribute("history", history);//session 갱신
+//			}
+//			log.debug("history = {}",history);//확인용 코드 			
+//			if(isRead == false) {//조회수를 올릴만한 상황이면
+//			boardDao.updateRcount(boardNo);//조회수 증가
+//			}
+//----------------------------------------------------------------------인터셉터에 구현완료			
 			BoardDto boardDto = boardDao.selectOne(boardNo);//조회
 			model.addAttribute("boardDto", boardDto);
 			//작성자의 회원정보 추가

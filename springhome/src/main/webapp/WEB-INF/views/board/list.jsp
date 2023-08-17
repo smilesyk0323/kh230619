@@ -37,6 +37,18 @@
 		<tr align="center">
 			<td>${boardListDto.boardNo}</td>
 			<td align="left">
+				<!-- for(int i=1; i<=차수; i++) -->
+				<c:forEach var="i" begin="1" end="${boardListDto.boardDepth}" step="1">								
+				    &nbsp;&nbsp;&nbsp;
+				</c:forEach>
+				
+				<%-- 띄어쓰기 뒤에 화살표 표시 --%>
+				<c:if test="${boardListDto.boardDepth > 0 }">
+		<!-- 		     <img src="http://dummyimage.com/25x15/000/fff"> -->
+						<img src="/images/reply.jpg" width="15" height="25">
+				</c:if>
+				
+			
 			<!-- 제목을 누르면 상세페이지로 이동 -->
 			<a style="text-decoration:none ; color: #6460AA; " href="detail?boardNo=${boardListDto.boardNo}">${boardListDto.boardTitle}</a>
 			<!-- 댓글이 있다면 개수를 표시 -->

@@ -45,7 +45,14 @@ public class BoardDaoImpl implements BoardDao{
 		//[1]목록(비회원 접근 가능)
 		@Override
 		public List<BoardListDto> selectList() {
-			String sql = "select * from board_list order by board_no desc";
+			//기존 조회 구문 
+//			String sql = "select * from board_list order by board_no desc";
+			
+			//계층형 조회 구문
+			String sql = "select * from board_list "
+							+ "connect by prior board_no = board_parent "
+							+ "start with board_parent is null "
+							+ "order siblings by board_group desc, board_no asc";
 			return jdbcTemplate.query(sql, listMapper);
 		}
 

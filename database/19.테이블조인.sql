@@ -25,3 +25,16 @@ from board left outer join member
 select member_nickname, board.*
 from board left outer join member 
 	on member.member_id = board.board_writer;
+
+--완성된 구문을 View에 저장하는 코드 
+drop view board_list;
+create or replace view board_list as 
+select 
+member_nickname, board.board_no,
+board.board_writer, board.board_title,
+board.board_readcount, board.board_likecount,
+board.board_ctime, board.board_utime
+from board left outer join member 
+	on member.member_id = board.board_writer;
+
+select * from board_list;

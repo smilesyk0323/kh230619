@@ -90,10 +90,10 @@
 	<%-- 링크는 검색과 목록을 따로 구현 --%>
 	<c:choose>
 		<c:when test="${isSearch}">
-			<a href="list?page=${begin-1}&type=${param.type}&keyword=${param.keyword}">&lt;</a>
+			<a style="text-decoration:none ; color: #6460AA; " href="list?page=${begin-1}&type=${param.type}&keyword=${param.keyword}">&lt;</a>
 		</c:when>
 		<c:otherwise>
-			<a href="list?page=${begin-1}">&lt;</a>
+			<a style="text-decoration:none ; color: #6460AA; "  href="list?page=${begin-1}">&lt;</a>
 		</c:otherwise>
 	</c:choose>			
 </c:if>
@@ -123,10 +123,10 @@
 	<%-- 링크는 검색과 목록을 따로 구현 --%>
 	<c:choose>
 		<c:when test="${isSearch}">
-			<a href="list?page=${end+1}&type=${param.type}&keyword=${param.keyword}">&gt;</a>
+			<a style="text-decoration:none ; color: #6460AA; " href="list?page=${end+1}&type=${param.type}&keyword=${param.keyword}">&gt;</a>
 		</c:when>
 		<c:otherwise>
-			<a href="list?page=${end+1}">&gt;</a>
+			<a style="text-decoration:none ; color: #6460AA; " href="list?page=${end+1}">&gt;</a>
 		</c:otherwise>
 	</c:choose>			
 	

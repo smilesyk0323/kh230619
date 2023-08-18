@@ -11,6 +11,8 @@ import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.mapper.BoardListMapper;
 import com.kh.springhome.mapper.BoardMapper;
 
+
+
 @Repository
 public class BoardDaoImpl implements BoardDao{
 		@Autowired
@@ -129,13 +131,16 @@ public class BoardDaoImpl implements BoardDao{
 		
 		@Override//아래 구문도 사용 가능 
 		public List<BoardListDto> selectList(String type, String keyword) {
-			String sql = "select * from board "
-								+ "where instr("+type+", ?) > 0 "
-								+ "order by board_no desc";
+			String sql = "select * from board_list "
+					+ "where instr("+type+", ?) > 0 "
+					+ "connect by prior board_no = board_parent "
+					+ "start with board_parent is null "
+					+ "order siblings by board_group desc, board_no asc";
 			Object[] data = {keyword};
 			return jdbcTemplate.query(sql, listMapper,data);
 		}
-			
+
+
 //		@Override
 //		public List<BoardDto> selectLIst(String type, String keyword) {
 //			String sql = "select * from board "
@@ -146,7 +151,39 @@ public class BoardDaoImpl implements BoardDao{
 //			return jdbcTemplate.query(sql, listMapper,data);
 //		}
 
+		//페이징 추가 된 목록 
+		@Override
+		public List<BoardListDto> selectListByPage(int page) {
+			int begin  = page * 10 - 9;			
+			int end = page * 10;
+			String sql = "select * from ("
+								+ " select rownum rn, TMP.*from("
+										+ "select * from board_list "
+										+ "connect by prior board_no = board_parent "
+										+ "start with board_parent is null "
+										+ "order siblings by board_group desc, board_no asc"
+								+ ")TMP"
+							+ ")where rn between ? and ?";
+			Object[] data = {begin, end};		
+			return jdbcTemplate.query(sql, listMapper, data);
+		}
 
+		@Override
+		public List<BoardListDto> selectListByPage(String type, String keyword, int page) {
+			int begin  = page * 10 - 9;			
+			int end = page * 10;
+			String sql =  "select * from ("
+							+ " select rownum rn, TMP.*from("
+									+ "select * from board_list "
+									+ "where instr("+type+", ?) > 0 "
+									+ "connect by prior board_no = board_parent "
+									+ "start with board_parent is null "
+									+ "order siblings by board_group desc, board_no asc"
+							+ ")TMP"
+							+ ")where rn between ? and ?";
+			Object[] data = {keyword, begin, end};
+			return jdbcTemplate.query(sql, listMapper,data);
+		}
 		
 		
 

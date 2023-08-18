@@ -16,5 +16,7 @@ public interface BoardDao {
 
 		List<BoardListDto> selectList();//목록
 		List<BoardListDto> selectList(String type, String keyword);//검색창 구현
+		
+		List<BoardListDto>selectListByPage(int page);
+		List<BoardListDto>selectListByPage(String type, String keyword, int page);
 }
-

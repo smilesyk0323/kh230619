@@ -37,21 +37,47 @@ public class BoardController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	//등록
+	//[1]등록
+	//[2]등록(새글 or 답글)
+	//-boardParent라는 항목의 유무에 따라 새글과 답글을 구분하여
 	@GetMapping("/write")
-		public String write() {
+		public String write(Model model, @RequestParam(required = false ) Integer boardParent) {
+		if(boardParent != null) {
+			//답글이라면 원본글의 정보를 화면에 전달
+			BoardDto originDto = boardDao.selectOne(boardParent);
+			model.addAttribute("originDto", originDto);
+			model.addAttribute("isReply", true);
+		}
+		else {//새글 = boardParent가 없으면
+			model.addAttribute("isReply", false);
+		}
 			return "/WEB-INF/views/board/write.jsp";
 	}
 	
 	@PostMapping("/write")
 		public String write(@ModelAttribute BoardDto boardDto, HttpSession session) {
-			String memberId = (String) session.getAttribute("name");//멤버아이디갖고오고
 			int boardNo = boardDao.sequence();//시퀀스 번호 갖고오고
 			boardDto.setBoardNo(boardNo);//보드 번호 넣고
+			
+			
+			String memberId = (String) session.getAttribute("name");//멤버아이디갖고오고
 			boardDto.setBoardWriter(memberId);//보드 작성자 넣고
 			
 			//이 사용자의 마지막 글번호를 조회
 			Integer lastNo = boardDao.selectMax(memberId);
+			
+			//글 등록하기 전에 새글/답글에 따른 그룹,상위글,차수를 계산
+			if(boardDto.getBoardParent() == null) {//새글이라면
+				boardDto.setBoardGroup(boardNo);//그룹번호는 글번호로 설정
+//				boardDto.setBoardParent(null);//상위글번호는 null-설정안해도 null
+//				boardDto.setBoardDepth(0);//차수 0 - 설정안해도 null
+			}
+			else {//답글일 경우 
+				BoardDto originDto = boardDao.selectOne(boardDto.getBoardParent());//상위글 정보
+				boardDto.setBoardGroup(originDto.getBoardGroup());//그룹번호는 원본글 그룹번호와 동일
+//				boardDto.setBoardParent(originDto.getBoardNo());//상위글번호는 원본글 번호
+				boardDto.setBoardDepth(originDto.getBoardDepth()+1);//차수는 원본글 차수+1
+			}
 			
 			//글을 등록하고 
 			boardDao.insert(boardDto);//입력
@@ -77,8 +103,7 @@ public class BoardController {
 					memberDao.increaseMemberPoint(memberId, 10);	//10점 부여
 				}
 			}
-			
-			
+					
 			return "redirect:detail?boardNo="+boardNo;
 	}
 	

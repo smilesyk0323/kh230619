@@ -34,10 +34,13 @@ public class BoardDaoImpl implements BoardDao{
 		public void insert(BoardDto dto) {
 			String sql = "insert into board("
 					+ "board_no, board_title, board_content, "
-					+ "board_writer) values(?,?,?,?)";
+					+ "board_writer,board_group, board_parent, board_depth"
+					+ ") values(?,?,?,?,?,?,?)";
 			Object[] data = {
 					dto.getBoardNo(), dto.getBoardTitle(),
-					dto.getBoardContent(), dto.getBoardWriter()
+					dto.getBoardContent(), dto.getBoardWriter(),
+					dto.getBoardGroup(), dto.getBoardParent(),
+					dto.getBoardDepth()
 			};
 			jdbcTemplate.update(sql,data);
 		}

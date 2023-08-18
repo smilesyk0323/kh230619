@@ -45,7 +45,7 @@
 				<%-- 띄어쓰기 뒤에 화살표 표시 --%>
 				<c:if test="${boardListDto.boardDepth > 0 }">
 		<!-- 		     <img src="http://dummyimage.com/25x15/000/fff"> -->
-						<img src="/images/reply.jpg" width="15" height="25">
+						<img src="/images/reply.png" width="25" height="25">
 				</c:if>
 				
 			

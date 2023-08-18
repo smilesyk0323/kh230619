@@ -184,6 +184,20 @@ public class BoardDaoImpl implements BoardDao{
 			Object[] data = {keyword, begin, end};
 			return jdbcTemplate.query(sql, listMapper,data);
 		}
+
+		
+		@Override
+		public int countLIst() {
+			String sql = "select count(*) from board";
+			return jdbcTemplate.queryForObject(sql, int.class);
+		}
+		@Override
+		public int countList(String type, String keyword) {
+			String sql = "select count(*) from board "
+							+ "where instr("+type+",?) > 0";
+			Object[] data = {keyword};
+			return jdbcTemplate.queryForObject(sql, int.class, data);
+		}
 		
 		
 

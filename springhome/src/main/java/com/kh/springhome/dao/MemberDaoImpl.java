@@ -17,6 +17,7 @@ public class MemberDaoImpl implements MemberDao{
 	@Autowired
 		private MemberMapper memberMapper;
 	
+	//회원가입
 	@Override
 		public void insert(MemberDto memberDto) {
 			String sql = "insert into member("
@@ -32,6 +33,7 @@ public class MemberDaoImpl implements MemberDao{
 			jdbcTemplate.update(sql,data);
 	    }
 	
+	
 	//로그인처리 가능
 	@Override
 	public MemberDto selectOne(String memberId) {
@@ -41,6 +43,7 @@ public class MemberDaoImpl implements MemberDao{
 		return list.isEmpty() ? null : list.get(0);
 	}
 
+	//로그인 기록 업데이트
 	@Override
 	public boolean updateMemberLogin(String memberId) {
 		String sql = "update member "
@@ -50,6 +53,7 @@ public class MemberDaoImpl implements MemberDao{
 		return jdbcTemplate.update(sql,data)>0;
 	}
 
+	//비밀번호 변경
 	@Override
 	public boolean updateMemberPw(String memberId, String changePw) {
 		String sql = "update member "
@@ -59,6 +63,7 @@ public class MemberDaoImpl implements MemberDao{
 		return jdbcTemplate.update(sql,data)>0;
 	}
 	
+	//회원정보변경
 	@Override
 	public boolean updateMemberInfo(MemberDto memberDto) {
 		String sql = "update member set "
@@ -75,6 +80,7 @@ public class MemberDaoImpl implements MemberDao{
 		return jdbcTemplate.update(sql, data) > 0;
 	}
 
+	//회원 탈퇴 
 	@Override
 	public boolean deleteMemberExit(String memberId) {
 		String sql = "delete member where member_id = ?";
@@ -82,6 +88,7 @@ public class MemberDaoImpl implements MemberDao{
 		return jdbcTemplate.update(sql,data)>0;
 	}
 
+	//회원 포인트 증가
 	@Override
 	public boolean increaseMemberPoint(String memberId, int point) {
 		String sql = "update member "
@@ -90,9 +97,7 @@ public class MemberDaoImpl implements MemberDao{
 		Object[] data = {point, memberId};
 		return jdbcTemplate.update(sql,data) > 0;
 	}
-	
-	
-	
+		
 }
 
 

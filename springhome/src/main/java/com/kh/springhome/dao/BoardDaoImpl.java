@@ -10,6 +10,7 @@ import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.mapper.BoardListMapper;
 import com.kh.springhome.mapper.BoardMapper;
+import com.kh.springhome.vo.PaginationVO;
 
 
 
@@ -187,7 +188,7 @@ public class BoardDaoImpl implements BoardDao{
 
 		
 		@Override
-		public int countLIst() {
+		public int countList() {
 			String sql = "select count(*) from board";
 			return jdbcTemplate.queryForObject(sql, int.class);
 		}
@@ -198,7 +199,32 @@ public class BoardDaoImpl implements BoardDao{
 			Object[] data = {keyword};
 			return jdbcTemplate.queryForObject(sql, int.class, data);
 		}
+
+		@Override
+		public int countList(PaginationVO vo) {
+			if(vo.isSearch()) {
+				String sql = "select count(*) from board "
+						+ "where instr("+vo.getKeyword()+",?) > 0";
+				Object[] data = {vo.getKeyword()};
+				return jdbcTemplate.queryForObject(sql, int.class, data);
+			}
+			else{
+				String sql = "select count(*) from board";
+				return jdbcTemplate.queryForObject(sql, int.class);
+			}
+		}
 		
+		@Override
+		public List<BoardListDto> selectListByPage(PaginationVO vo) {
+			if(vo.isSearch()) {//옆에 애를 controller에 사용하지 않겠다! 
+				return selectListByPage(vo.getType(), vo.getKeyword(), vo.getPage());
+			}
+			else {
+				return selectListByPage(vo.getPage());
+			}
+		}
+		
+}
 		
 
-}
+

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.BoardListDto;
+import com.kh.springhome.vo.PaginationVO;
 
 public interface BoardDao {
 		int sequence();//시퀀스
@@ -19,9 +20,12 @@ public interface BoardDao {
 		
 		List<BoardListDto>selectListByPage(int page);// 페이징
 		List<BoardListDto>selectListByPage(String type, String keyword, int page);//페이징(검색
+		List<BoardListDto> selectListByPage(PaginationVO vo);
 		
-		int countLIst();
+		
+		int countList();
 		int countList(String type, String keyword);
+		int countList(PaginationVO vo);
 		
 		
 }

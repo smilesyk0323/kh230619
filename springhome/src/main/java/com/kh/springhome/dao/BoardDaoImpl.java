@@ -186,7 +186,7 @@ public class BoardDaoImpl implements BoardDao{
 			return jdbcTemplate.query(sql, listMapper,data);
 		}
 
-		
+		//게시글 갯수를 구하는 구문
 		@Override
 		public int countList() {
 			String sql = "select count(*) from board";

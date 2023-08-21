@@ -115,7 +115,7 @@ public class BoardController {
 		//- 만약 불완전한 상태(type이나 keyword만 있는 경우)라면 목록으로 처리
 		//-(추가) 페이징 관련 처리 
 //		@RequestMapping("/list")
-//	public String list( Model model,  
+//	     public String list( Model model,  
 //							  	 @RequestParam(required = false) String type,
 //							  	 @RequestParam(required = false) String keyword,
 //							  	 @RequestParam(required = false, defaultValue = "1") int page) {

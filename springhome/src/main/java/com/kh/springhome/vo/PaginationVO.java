@@ -15,8 +15,7 @@ public class PaginationVO {
 		
 		public boolean isSearch() {
 			return type != null && keyword != null;
-		}
-		
+		}		
 		public int getBegin() {
 			return (page-1)/navigatorSize*navigatorSize+1;//(page-1)/10*10-1;//10이라는 보장이없음
 		}
@@ -27,38 +26,44 @@ public class PaginationVO {
 		public boolean isFirst() {
 			return getBegin() == 1;
 		}
-		
-		public String getPrevQueryString() {
-			if(isSearch()) {//검색
-				return "page="+(getBegin()-1)+"&type="+type+"&keyword="+keyword;
-			}
-			else {//목록
-				return "page="+(getBegin()-1);
-			}
-		}
-		
+
 		public int getPageCount() {
 			return (count-1) / size + 1;
 		}
 		public boolean isLast() {
 			return getEnd() >= getPageCount();//계산된 끝번호 >= 페이지갯수;
 		}
-		public String getNextQueryString() {
+		
+		public String getPrevQueryString() {
 			if(isSearch()) {//검색
-				return "page="+(getEnd()+1)+"&type="+type+"&keyword="+keyword;
+				return "page="+(getBegin()-1)+"&size="+size+"&type="+type+"&keyword="+keyword;
 			}
 			else {//목록
-				return "page="+(getEnd()+1);
+				return "page="+(getBegin()-1)+"&size="+size;
+			}
+		}
+		public String getNextQueryString() {
+			if(isSearch()) {//검색
+				return "page="+(getEnd()+1)+"&size="+size+"&type="+type+"&keyword="+keyword;
+			}
+			else {//목록
+				return "page="+(getEnd()+1)+"&size="+size;
+			}
+		}
+		public String getQueryString(int page) {
+			if(isSearch()) {//검색
+				return "page="+page+"&size="+size+"&type="+type+"&keyword="+keyword;
+			}
+			else {//목록
+				return "page="+page+"&size="+size;
 			}
 		}
 		
-		public String getQueryString(int page) {
-			if(isSearch()) {//검색
-				return "page="+page+"&type="+type+"&keyword="+keyword;
-			}
-			else {//목록
-				return "page="+page;
-			}
+		public int getStartRow() {
+			return getFinishRow() - (size-1);
+		}
+		public int getFinishRow() {
+			return page * size;
 		}
 		
 }

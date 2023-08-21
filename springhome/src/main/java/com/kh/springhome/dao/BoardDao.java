@@ -19,13 +19,11 @@ public interface BoardDao {
 		List<BoardListDto> selectList(String type, String keyword);//검색창 구현
 		
 		List<BoardListDto>selectListByPage(int page);// 페이징
-		List<BoardListDto>selectListByPage(String type, String keyword, int page);//페이징(검색
+		List<BoardListDto>selectListByPage(String type, String keyword, int page);//페이징(검색)
 		List<BoardListDto> selectListByPage(PaginationVO vo);
-		
-		
+				
 		int countList();
 		int countList(String type, String keyword);
 		int countList(PaginationVO vo);
-		
-		
+			
 }

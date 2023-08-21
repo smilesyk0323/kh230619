@@ -192,6 +192,7 @@ public class BoardDaoImpl implements BoardDao{
 			String sql = "select count(*) from board";
 			return jdbcTemplate.queryForObject(sql, int.class);
 		}
+		
 		@Override
 		public int countList(String type, String keyword) {
 			String sql = "select count(*) from board "

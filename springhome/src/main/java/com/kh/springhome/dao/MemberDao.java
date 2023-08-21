@@ -1,11 +1,14 @@
 package com.kh.springhome.dao;
 
+import java.util.List;
+
 import com.kh.springhome.dto.MemberDto;
+import com.kh.springhome.vo.PaginationVO;
 
 //메소드 명세만 작성(책으로치면 목차)
 public interface MemberDao {
 		void insert(MemberDto memberDto);
-		MemberDto selectOne(String memberId);
+		MemberDto selectOne(String memberId);//mypage=상세
 		boolean updateMemberLogin(String memberId);
 		boolean updateMemberPw(String memberId, String changePw);
 		boolean updateMemberInfo(MemberDto memberDto);
@@ -15,4 +18,11 @@ public interface MemberDao {
 //		boolean updateMemberPoint(String memberId);//무조건10p
 		boolean increaseMemberPoint(String memberId, int point);//다른값이 설정될 여지가 있다면
 //		boolean decreaseMemberPoint(String memberId, int point);//포인트 사용시
+		
+		//관리자 목록구현
+		int countList(PaginationVO vo);
+		List<MemberDto>selectListByPage(PaginationVO vo);
+		
+		
+		
 	}

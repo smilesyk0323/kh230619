@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.mapper.MemberMapper;
+import com.kh.springhome.vo.PaginationVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
@@ -97,7 +98,51 @@ public class MemberDaoImpl implements MemberDao{
 		Object[] data = {point, memberId};
 		return jdbcTemplate.update(sql,data) > 0;
 	}
-		
+
+//----관리자계정----------------------------------------------------------------
+	
+	//카운트 결과 
+	public int countList(PaginationVO vo) {
+		if(vo.isSearch()) {
+			String sql = "select count(*) from member "
+							+ "where instr("+vo.getType()+", ?) > 0";
+			Object[] data = {vo.getKeyword()};
+			return jdbcTemplate.queryForObject(sql, int.class, data);
+		}
+		else {
+			String sql = "select count(*) from member";
+			return jdbcTemplate.queryForObject(sql, int.class);
+		}
+	}
+	
+	@Override
+	public List<MemberDto> selectListByPage(PaginationVO vo) {
+		if(vo.isSearch()) {
+			String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+									+ "select * from member "
+									+ "where instr("+vo.getType()+", ?) > 0 "
+//									+ "order by member_id asc";
+									+ "order by "+vo.getType()+" asc"
+								+ ")TMP"
+							+ ") where rn between ? and ?";
+			Object[] data = {vo.getKeyword(), vo.getStartRow(), vo.getFinishRow()};
+			return jdbcTemplate.query(sql, memberMapper, data);
+		}
+		else {
+			String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+									+ "select * from member order by member_id asc"
+								+ ")TMP"
+							+ ") where rn between ? and ?";
+			Object[] data = {vo.getStartRow(), vo.getFinishRow()};
+			return jdbcTemplate.query(sql, memberMapper, data);
+		}
+	}
+
+
+
+
 }
 
 

@@ -91,7 +91,7 @@
 				<td>${memberDto.memberLevel}</td>
 				<td>
 					<a href="detail?memberId=${memberDto.memberId}">상세</a>
-					<a href="#">수정</a>
+					<a href="edit?memberId=${memberDto.memberId}">수정</a>
 					<a href="#">차단</a>
 				</td>
 			</tr>

@@ -12,6 +12,8 @@ public interface MemberDao {
 		boolean updateMemberLogin(String memberId);
 		boolean updateMemberPw(String memberId, String changePw);
 		boolean updateMemberInfo(MemberDto memberDto);
+		//관리자 회원정보변경
+		boolean updateMemberInfoByAdmin(MemberDto memberDto);
 		boolean deleteMemberExit(String memberId);
 		
 		//포인트 증가 

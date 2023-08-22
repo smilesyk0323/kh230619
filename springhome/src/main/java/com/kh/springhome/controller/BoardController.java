@@ -165,15 +165,11 @@ public class BoardController {
 //				 }
 //				 else {
 //					 model.addAttribute("list", boardDao.selectListByPage(?));
-//				 }
-			
-				 int count =	boardDao.countList(vo);
-				 vo.setCount(count);
-				 
-				 
+//				 }			
+				 int count = boardDao.countList(vo);
+				 vo.setCount(count);				 			 
 				 List<BoardListDto> list = boardDao.selectListByPage(vo);
-				 model.addAttribute("list", list);
-				 
+				 model.addAttribute("list", list);				 
 				 return "/WEB-INF/views/board/list2.jsp";
 			}
 		

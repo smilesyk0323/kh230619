@@ -86,12 +86,10 @@
 
 <!-- 페이지 네비게이터 출력 -->
 <h3>
-
 <!-- 이전 버튼 -->
 <c:if test="${!vo.first}">
 			<a style="text-decoration:none ; color: #6460AA; "  href="list?${vo.prevQueryString}">&lt;</a>		
 </c:if>
-
 <!-- 숫자 버튼 -->
 <c:forEach var="i" begin="${vo.begin}" end="${vo.end}" step="1">
 	<c:choose>
@@ -103,16 +101,13 @@
 				</c:otherwise>
 			</c:choose>			
 </c:forEach>
-
 <!-- 다음 버튼 -->
 <c:if test="${!vo.last}">
 			<a style="text-decoration:none ; color: #6460AA; " href="list?${vo.nextQueryString}">&gt;</a>	
 </c:if>
-
-
 </h3>
-
 <br>
+
 <!-- 검색창 -->
 <form action="list" method="get">
 	<c:choose>

@@ -20,11 +20,11 @@ public interface BoardDao {
 		
 		List<BoardListDto>selectListByPage(int page);// 페이징
 		List<BoardListDto>selectListByPage(String type, String keyword, int page);//페이징(검색)
-		List<BoardListDto> selectListByPage(PaginationVO vo);
-				
 		int countList();//갯수를 구하는 명령(목록)
 		int countList(String type, String keyword);//갯수를 구하는 명령(검색)
-		int countList(PaginationVO vo);
+				
+		List<BoardListDto> selectListByPage(PaginationVO vo);//(모듈화)페이징 - 목록 구하는
+		int countList(PaginationVO vo);//(모듈화)페이징- 갯수 구하는
 			
 		//특정 사용자(매개변수)가 작성한 글을 조회(list)하는 메소드
 		List<BoardListDto> selectListByBoardWriter(String boardWriter);

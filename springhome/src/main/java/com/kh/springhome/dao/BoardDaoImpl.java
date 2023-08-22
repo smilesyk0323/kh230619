@@ -201,19 +201,21 @@ public class BoardDaoImpl implements BoardDao{
 			return jdbcTemplate.queryForObject(sql, int.class, data);
 		}
 
+		//페이징 모듈화
 		@Override
 		public int countList(PaginationVO vo) {
-			if(vo.isSearch()) {
+			if(vo.isSearch()) {//검색
 				String sql = "select count(*) from board "
-						+ "where instr("+vo.getKeyword()+",?) > 0";
+						+ "where instr("+vo.getType()+",?) > 0";
 				Object[] data = {vo.getKeyword()};
 				return jdbcTemplate.queryForObject(sql, int.class, data);
 			}
-			else{
+			else{//목록
 				String sql = "select count(*) from board";
 				return jdbcTemplate.queryForObject(sql, int.class);
 			}
 		}
+		
 		
 		@Override
 		public List<BoardListDto> selectListByPage(PaginationVO vo) {

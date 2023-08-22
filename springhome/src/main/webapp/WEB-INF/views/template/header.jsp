@@ -18,7 +18,7 @@
 		 --%>
 		 <c:if test="${sessionScope.name != null}">
 	 <p style="color:#ad79a4">${sessionScope.name}님 환영합니다
-	                                            등급 : ${sessionScope.level}</p>
+	                                            [${sessionScope.level}]</p>
 </c:if>
 	<%-- 
 				이 페이지는 조각일 뿐이므로 어디서 실행될지 모른다

@@ -2,8 +2,6 @@ package com.kh.springhome.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,7 @@ import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.dto.MemberDto;
+import com.kh.springhome.dto.MemberListDto;
 import com.kh.springhome.error.NoTargetException;
 import com.kh.springhome.vo.PaginationVO;
 
@@ -45,7 +44,8 @@ public class AdminController {
 		 vo.setCount(count);	 	 
 		 model.addAttribute("vo", vo);
 
-		 List<MemberDto> list = memberDao.selectListByPage(vo);//상황에 맞는 목록데이터;
+//		 List<MemberDto> list = memberDao.selectListByPage(vo);//상황에 맞는 목록데이터;
+		 List<MemberListDto> list = memberDao.selectListByPage2(vo);//block추가 구문
 		 model.addAttribute("list", list);
 		 
 		return "/WEB-INF/views/admin/member/list.jsp";
@@ -86,7 +86,19 @@ public class AdminController {
 						throw new NoTargetException("존재하지 않는 회원ID");
 					}
 				}
-	
+				
+				//회원 차단 + 해제 
+				@RequestMapping("/member/block")
+				public String memberBlock(@RequestParam String memberId) {
+					memberDao.insertBlock(memberId);
+					return "redirect:list";
+				}				
+				@RequestMapping("/member/cancel")
+				public String memberCancel(@RequestParam String memberId) {
+					memberDao.deleteBlock(memberId);
+					return "redirect:list";
+				}
+					
 }
 
 

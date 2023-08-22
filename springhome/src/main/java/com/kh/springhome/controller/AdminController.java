@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.dto.MemberDto;
@@ -25,6 +26,9 @@ public class AdminController {
 	
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private BoardDao boardDao;
 	
 	
 	@RequestMapping("/home")
@@ -51,9 +55,14 @@ public class AdminController {
 			MemberDto memberDto = memberDao.selectOne(memberId);
 			model.addAttribute("memberDto", memberDto);
 			
-			return "/WEB-INF/views/admin/member/detail.jsp";
-	
+			//이 회원이 작성한 글을 조회하여 모델에 첨부
+			List<BoardListDto> boardList = 
+							boardDao.selectListByBoardWriter(memberId);
+			model.addAttribute("boardList",boardList);
+			return "/WEB-INF/views/admin/member/detail.jsp";	
 	}
+	
+	
 }
 
 

@@ -26,4 +26,6 @@ public interface BoardDao {
 		int countList(String type, String keyword);//갯수를 구하는 명령(검색)
 		int countList(PaginationVO vo);
 			
+		//특정 사용자(매개변수)가 작성한 글을 조회(list)하는 메소드
+		List<BoardListDto> selectListByBoardWriter(String boardWriter);
 }

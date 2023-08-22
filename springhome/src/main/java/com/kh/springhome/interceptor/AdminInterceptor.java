@@ -32,5 +32,4 @@ public class AdminInterceptor implements HandlerInterceptor{
 				throw new AuthorityException("관리자만 이용 가능합니다");//차단
 			}
 	}
-
 }

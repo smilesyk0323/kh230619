@@ -115,12 +115,14 @@ public class MemberDaoImpl implements MemberDao{
 	public int countList(PaginationVO vo) {
 		if(vo.isSearch()) {
 			String sql = "select count(*) from member "
-							+ "where instr("+vo.getType()+", ?) > 0";
+							+ "where instr("+vo.getType()+", ?) > 0 "
+							+ "and member_level != '관리자'";
 			Object[] data = {vo.getKeyword()};
 			return jdbcTemplate.queryForObject(sql, int.class, data);
 		}
 		else {
-			String sql = "select count(*) from member";
+			String sql = "select count(*) from member "
+							+ "where member_level != '관리자'";
 			return jdbcTemplate.queryForObject(sql, int.class);
 		}
 	}

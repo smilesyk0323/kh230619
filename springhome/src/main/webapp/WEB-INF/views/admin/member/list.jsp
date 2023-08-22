@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-
+<body style="background-color:#F2EFFB">
 <h2>회원 관리</h2>
 
 <%--검색창 --%>
@@ -76,20 +76,24 @@
 			<th>아이디</th>
 			<th>닉네임</th>
 			<th>전화번호</th>
-			<th>이메일</th>
 			<th>생년월일</th>
 			<th>등급</th>
+			<th>메뉴</th>
 		</tr>
 	</thead>
-		<tbody>
+		<tbody >
 			<c:forEach var="memberDto" items="${list}">			
 			<tr>
-				<td><a style="text-decoration:none ; color: #6460AA; " href="detail?memberId=${memberDto.memberId}">${memberDto.memberId}</a></td>
+				<td>${memberDto.memberId}</td>
 				<td>${memberDto.memberNickname}</td>
 				<td>${memberDto.memberContact}</td>
-				<td>${memberDto.memberEmail}</td>
 				<td>${memberDto.memberBirth}</td>
 				<td>${memberDto.memberLevel}</td>
+				<td>
+					<a href="detail?memberId=${memberDto.memberId}">상세</a>
+					<a href="#">수정</a>
+					<a href="#">차단</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -102,7 +106,15 @@
 </c:if> 
 
 <c:forEach var="i" begin="${vo.begin}" end="${vo.end}" step="1">
-	<a href="list?${vo.getQueryString(i)}">${i}</a>
+	<c:choose>
+		<c:when test="${vo.page == i}">
+			${i}	
+		</c:when>
+		<c:otherwise>
+					<a href="list?${vo.getQueryString(i)}">${i}</a>
+				</c:otherwise>
+			</c:choose>	
+
 </c:forEach>
 
 <c:if test="${!vo.last}">

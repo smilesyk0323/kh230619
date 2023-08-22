@@ -7,7 +7,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <body style="background-color:#F2EFFB">
 
-<h2>${memberDto.memberId} 님의 회원 정보</h2>
+<h2>${memberDto.memberId} 님의 회원정보</h2>
 
 <table border="1" width="500">
 		<tr>

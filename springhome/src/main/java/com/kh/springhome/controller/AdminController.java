@@ -44,15 +44,16 @@ public class AdminController {
 		return "/WEB-INF/views/admin/member/list.jsp";
 	}
 	
+	
 	@RequestMapping("/member/detail")
-	public String detail( @RequestParam String memberId, Model model,
-									HttpSession session) {
-		MemberDto memberDto = memberDao.selectOne(memberId);
-		model.addAttribute("memberDto", memberDto);
-		return "/WEB-INF/views/admin/member/detail.jsp";		
+	public String memberDatail(@RequestParam String memberId, Model model) {
+			//파라미터로 전달된 아이디의 회원정보를 조회하여 모델에 첨부 
+			MemberDto memberDto = memberDao.selectOne(memberId);
+			model.addAttribute("memberDto", memberDto);
+			
+			return "/WEB-INF/views/admin/member/detail.jsp";
+	
 	}
-	
-	
 }
 
 

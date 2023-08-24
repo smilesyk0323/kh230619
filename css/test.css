@@ -6,5 +6,5 @@
 @charset "UTF-8";
 
 div{/*폭에 영향을 주지 않고*/
-    box-shadow: 0px 0px 1px 0px gray;
+    box-shadow: 0px 0px 1px 0px black;
 }

@@ -5,55 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쿠팡 로그인</title>
     <link rel="stylesheet"type="text/css" href="commons.css">
-    <link rel="stylesheet"type="text/css" href="test.css">
+    <!-- <link rel="stylesheet"type="text/css" href="test.css"> -->
 <style>
-        .logo{
-        padding: 0px 20px;
-        }
-        .form-input{
-            padding: 0.9em;
-            font-size: 12px;
-            border-color:#dfe4ea ;
-        }
-        .btn{
-            color: #3d3d3d;
-            font-weight:500;
-            font-size: 14px;
-            padding: 0.6em;
-            border-radius: 0.3em;
-        }
-        .btn-up{
-            background-color: #4b7bec;
-            color: floralwhite;
-            border:none;
-        }
-        .btn-down{
-            background-color: #f1f2f6;
-            background-color: #ffffff;
-            border-color:#dfe4ea ;
-        }
-        .line{
-            color: #f1f2f6;
-        }
+    /*
+        입력창 변형 스타일
+        - 배경이미지를 포함하는 입력창
+        - background-image 속성 사용
+    */
+
+    .form-input.form-image{
+        padding-left: 2em;
+        /* background-image: url("./images/email-icon.jpg");   속성선택자로 이미지는 개별적용 */
+        background-size: 1.25em;
+        background-repeat: no-repeat;
+        background-position-x: 0.35em;
+        /* background-position-y: 50%; */
+        background-position-y:center ;
+    }
+
+    [name=memberId]{
+        background-image: url("./images/email-icon.jpg");
+    }
+    [name=memberPw]{
+        background-image: url("./images/lock-icon.png");
+    }
 </style>
 </head>
 <body>
     <form action="#" method="post" autocomplete="off">
         <div class="container w-400">
-            <div class="row logo">
-                <img src="https://img.khan.co.kr/news/2022/08/11/news-p.v1.20220811.7175414a17b9480bbd5bc60ba1782c90.png" width="200"></div>
+            <div class="row ">
+                <h1>
+                <span style="color:rgb(142,97,39);">c</span><span style="color:rgb(142,97,39);">o</span><span style="color:rgb(142,97,39);">u</span><span style="color:rgb(247,87,39);">p</span><span style="color:rgb(255,196,0);">a</span><span style="color:rgb(136,204,47);">n</span><span style="color:rgb(49,180,221);">g</span></h1>
             <div class="row">
-                <input type="text"name="memberId" class="form-input w-100" placeholder="아이디(이메일)">
+                <input type="text"name="memberId" class="form-input form-image w-100" 
+                     placeholder="아이디(이메일)">
             </div>
             <div class="row">
-                <input type="password" name="memberPw"class="form-input w-100" placeholder="비밀번호">
+                <input type="password" name="memberPw"class="form-input form-image w-100" placeholder="비밀번호">
             </div>
-            <div class="row">
-                <button class="btn btn-up w-100">로그인</button>
+            <div class="row mt-20">
+                <button class="btn btn-positive w-100">로그인</button>
             </div>
-            <div class="row line"><hr></div>
+            <hr calss="line">
             <div class="row">
-                <button class="btn btn-down w-100">회원가입</button>
+                <button class="btn w-100">회원가입</button>
             </div>
         </div>
     </form>   

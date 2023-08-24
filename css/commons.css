@@ -87,6 +87,21 @@
     font-size: 13px;
 }
 /*
+입력창 변형 스타일
+- 배경이미지를 포함하는 입력창
+- background-image 속성 사용
+*/
+
+.form-input.form-image{
+    padding-left: 2em;
+    /* background-image: url("./images/email-icon.jpg");   속성선택자로 이미지는 개별적용 */
+    background-size: 1.25em;
+    background-repeat: no-repeat;
+    background-position-x: 0.35em;
+    /* background-position-y: 50%; */
+    background-position-y:center ;
+}
+/*
     버튼은 입력창과 동일하게 구현 
     글자를 두껍게 보여주도록 처리(bold)
 */
@@ -118,49 +133,49 @@
 }
 
 /*
-            간격 스타일(spacing)
-            -margin, padding을 자주 사용하는 것들 위주로 클래스화
-            -기본 간격은 10px이며 10px 단위로 설정 가능하도록 구현 
-            -margin은 m, padding은 p로 설정
-        */
-        .m-10{ margin:10px; }
-        .m-20{ margin:20px; }
-        .m-30{ margin:30px; }
-        .m-40{ margin:40px; }
-        .m-50{ margin:50px; }
+    간격 스타일(spacing)
+    -margin, padding을 자주 사용하는 것들 위주로 클래스화
+    -기본 간격은 10px이며 10px 단위로 설정 가능하도록 구현 
+    -margin은 m, padding은 p로 설정
+*/
+.m-10{ margin:10px; }
+.m-20{ margin:20px; }
+.m-30{ margin:30px; }
+.m-40{ margin:40px; }
+.m-50{ margin:50px; }
 
-        .mh-10{ margin: 0px 10px;}
-        .mh-20{ margin: 0px 20px;}
-        .mh-30{ margin: 0px 30px;}
-        .mh-40{ margin: 0px 40px;}
-        .mh-50{ margin: 0px 50px;}
+.mh-10{ margin: 0px 10px;}
+.mh-20{ margin: 0px 20px;}
+.mh-30{ margin: 0px 30px;}
+.mh-40{ margin: 0px 40px;}
+.mh-50{ margin: 0px 50px;}
 
-        .mv-10{margin:10px 0px;}
-        .mv-20{margin:20px 0px;}
-        .mv-30{margin:30px 0px;}
-        .mv-40{margin:40px 0px;}
-        .mv-50{margin:50px 0px;}
+.mv-10{margin:10px 0px;}
+.mv-20{margin:20px 0px;}
+.mv-30{margin:30px 0px;}
+.mv-40{margin:40px 0px;}
+.mv-50{margin:50px 0px;}
 
-        .mt-10{margin-top: 10px;}
-        .mt-20{margin-top: 20px;}
-        .mt-30{margin-top: 30px;}
-        .mt-40{margin-top: 40px;}
-        .mt-50{margin-top: 50px;}
+.mt-10{margin-top: 10px;}
+.mt-20{margin-top: 20px;}
+.mt-30{margin-top: 30px;}
+.mt-40{margin-top: 40px;}
+.mt-50{margin-top: 50px;}
 
-        .mb-10{margin-bottom: 10px;}
-        .mb-20{margin-bottom: 20px;}
-        .mb-30{margin-bottom: 30px;}
-        .mb-40{margin-bottom: 40px;}
-        .mb-50{margin-bottom: 50px;}
+.mb-10{margin-bottom: 10px;}
+.mb-20{margin-bottom: 20px;}
+.mb-30{margin-bottom: 30px;}
+.mb-40{margin-bottom: 40px;}
+.mb-50{margin-bottom: 50px;}
 
-        .ms-10{margin-left: 10px;}
-        .ms-20{margin-left: 20px;}
-        .ms-30{margin-left: 30px;}
-        .ms-40{margin-left: 40px;}
-        .ms-50{margin-left: 50px;}
+.ms-10{margin-left: 10px;}
+.ms-20{margin-left: 20px;}
+.ms-30{margin-left: 30px;}
+.ms-40{margin-left: 40px;}
+.ms-50{margin-left: 50px;}
 
-        .me-10{margin-right: 10px;}
-        .me-20{margin-right: 20px;}
-        .me-30{margin-right: 30px;}
-        .me-40{margin-right: 40px;}
-        .me-50{margin-right: 50px;}
+.me-10{margin-right: 10px;}
+.me-20{margin-right: 20px;}
+.me-30{margin-right: 30px;}
+.me-40{margin-right: 40px;}
+.me-50{margin-right: 50px;}

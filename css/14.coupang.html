@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠팡 로그인</title>
+    <link rel="stylesheet"type="text/css" href="commons.css">
+    <link rel="stylesheet"type="text/css" href="test.css">
+<style>
+        .logo{
+        padding: 0px 20px;
+        }
+        .form-input{
+            padding: 0.9em;
+            font-size: 12px;
+            border-color:#dfe4ea ;
+        }
+        .btn{
+            color: #3d3d3d;
+            font-weight:500;
+            font-size: 14px;
+            padding: 0.6em;
+            border-radius: 0.3em;
+        }
+        .btn-up{
+            background-color: #4b7bec;
+            color: floralwhite;
+            border:none;
+        }
+        .btn-down{
+            background-color: #f1f2f6;
+            background-color: #ffffff;
+            border-color:#dfe4ea ;
+        }
+        .line{
+            color: #f1f2f6;
+        }
+</style>
+</head>
+<body>
+    <form action="#" method="post" autocomplete="off">
+        <div class="container w-400">
+            <div class="row logo">
+                <img src="https://img.khan.co.kr/news/2022/08/11/news-p.v1.20220811.7175414a17b9480bbd5bc60ba1782c90.png" width="200"></div>
+            <div class="row">
+                <input type="text"name="memberId" class="form-input w-100" placeholder="아이디(이메일)">
+            </div>
+            <div class="row">
+                <input type="password" name="memberPw"class="form-input w-100" placeholder="비밀번호">
+            </div>
+            <div class="row">
+                <button class="btn btn-up w-100">로그인</button>
+            </div>
+            <div class="row line"><hr></div>
+            <div class="row">
+                <button class="btn btn-down w-100">회원가입</button>
+            </div>
+        </div>
+    </form>   
+</body>
+</html>

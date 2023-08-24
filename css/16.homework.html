@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
     <!-- css 파일을 불러오는 코드-->
     <link rel="stylesheet"type="text/css" href="commons.css">
-    <link rel="stylesheet"type="text/css" href="test.css">
+    <!-- <link rel="stylesheet"type="text/css" href="test.css"> -->
     <style>
         .required{
             padding: none;
         }
-        .btn{
-            background-color:#a29bfe ;
+        [name=memberPost]{
+            text-align: center;
+            border-radius:0.25em;
+            margin-bottom: 0.3em;
+      
         }
+          [name=memberAddr1]{
+            border-bottom: none;
+            border-radius: 0;
+            border-top-left-radius: 0.3em;
+            border-top-right-radius: 0.3em;
+          }
+          [name=memberAddr2]{
+            border-radius: 0;
+            border-bottom-left-radius: 0.3em;
+            border-bottom-right-radius: 0.3em;
+          }
     </style>
 </head>
     <h1 align="center">회원 가입</h1>
@@ -23,15 +37,15 @@
             <div class="required">
                     <div class="row">
                         <input type="text"name="memberId" class="form-input w-100" 
-                            placeholder="아이디(이메일)">
+                            placeholder="아이디(이메일)*">
                     </div>
                     <div class="row ">
                         <input type="password"name="memberPw" class="form-input w-100" 
-                            placeholder="비밀번호">
+                            placeholder="비밀번호*">
                     </div>
                     <div class="row ">
                         <input type="text"name="memberNickname" class="form-input w-100" 
-                            placeholder="닉네임">
+                            placeholder="닉네임*">
                     </div>
           </div>
             <div class="row ">
@@ -43,23 +57,19 @@
                      placeholder="연락처">
             </div>
             <div class="row ">
-                <input type="date"name="memberBirth" class="form-input w-100" 
-                     placeholder="생년월일 8자리">
+                <h2 >생년월일<input type="date"name="memberBirth" class="form-input w-100" 
+                     placeholder="생년월일 8자리"></h2>
             </div>
             <div class="row ">
-                <input type="text"name="memberPost" class="form-input w-100" 
+                <h2 style="margin: 0;">주소</h2><input type="text"name="memberPost" class="form-input w-30" 
                      placeholder="우편번호"size="6" maxlength="6">
-            </div>
-            <div class="row ">
                 <input type="text"name="memberAddr1" class="form-input w-100" 
                      placeholder="기본주소">
-            </div>
-            <div class="row ">
                 <input type="text"name="memberAddr2" class="form-input w-100" 
                      placeholder="상세주소">
             </div>
             <div class="row ">
-                <button class="btn w-50">가입하기</button>
+                <button class="btn btn-positive w-50">가입하기</button>
             </div>
         </div>
     </form>

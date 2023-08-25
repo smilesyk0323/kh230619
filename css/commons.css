@@ -66,6 +66,7 @@
     outline: none; /*outline은 입력창 선택시 강조 효과*/
     border: 1px solid #636e72 ;
     border-radius: 0.1em;
+    line-height: 1.2em;/*입력창과 버튼의 높이를 맞추는*/
 }
 .form-input:focus{/* 선택된 상태를 focus라 한다*/
     border-color: #2d3436;

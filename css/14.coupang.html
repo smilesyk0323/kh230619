@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠팡 로그인</title>
+    <link rel="stylesheet"type="text/css" href="commons.css">
+    <!-- <link rel="stylesheet"type="text/css" href="test.css"> -->
+<style>
+    /*
+        입력창 변형 스타일
+        - 배경이미지를 포함하는 입력창
+        - background-image 속성 사용
+    */
+
+    .form-input.form-image{
+        padding-left: 2em;
+        /* background-image: url("./images/email-icon.jpg");   속성선택자로 이미지는 개별적용 */
+        background-size: 1.25em;
+        background-repeat: no-repeat;
+        background-position-x: 0.35em;
+        /* background-position-y: 50%; */
+        background-position-y:center ;
+    }
+
+    [name=memberId]{
+        background-image: url("./images/email-icon.jpg");
+    }
+    [name=memberPw]{
+        background-image: url("./images/lock-icon.png");
+    }
+</style>
+</head>
+<body>
+    <form action="#" method="post" autocomplete="off">
+        <div class="container w-400">
+            <div class="row ">
+                <h1>
+                <span style="color:rgb(142,97,39);">c</span><span style="color:rgb(142,97,39);">o</span><span style="color:rgb(142,97,39);">u</span><span style="color:rgb(247,87,39);">p</span><span style="color:rgb(255,196,0);">a</span><span style="color:rgb(136,204,47);">n</span><span style="color:rgb(49,180,221);">g</span></h1>
+            <div class="row">
+                <input type="text"name="memberId" class="form-input form-image w-100" 
+                     placeholder="아이디(이메일)">
+            </div>
+            <div class="row">
+                <input type="password" name="memberPw"class="form-input form-image w-100" placeholder="비밀번호">
+            </div>
+            <div class="row mt-20">
+                <button class="btn btn-positive w-100">로그인</button>
+            </div>
+            <hr calss="line">
+            <div class="row">
+                <button class="btn w-100">회원가입</button>
+            </div>
+        </div>
+    </form>   
+</body>
+</html>

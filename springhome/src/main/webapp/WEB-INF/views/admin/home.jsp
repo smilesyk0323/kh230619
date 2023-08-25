@@ -8,5 +8,4 @@
 <h3><a  style="text-decoration:none ; color: #6460AA; " href="#">회원 통계 </a></h3>
 <h3><a  style="text-decoration:none ; color: #6460AA; " href="#">게시글 통계 </a></h3>
 
-
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

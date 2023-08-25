@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
+	<!-- 스타일시트로딩 코드 -->
+	<link rel="stylesheet"type="text/css" href="/css/commons.css">
+<!-- 	<link rel="stylesheet"type="text/css" href="/css/test.css"> -->
 </head>
 <body>
 	<div align="center">

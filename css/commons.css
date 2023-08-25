@@ -61,6 +61,9 @@
 */
 .form-input,
 .btn{
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: bottom;
     font-size: 20px;
     padding: 0.5em 1em;
     outline: none; /*outline은 입력창 선택시 강조 효과*/
@@ -102,6 +105,18 @@
     /* background-position-y: 50%; */
     background-position-y:center ;
 }
+
+/*
+            textarea는 크기 조정을 resize라는 속성으로 제어한다
+        */
+        textarea.form-input{
+            resize:vertical;
+            min-height: 5.8em;
+        }
+        textarea.form-input.fixed{
+            resize: none;
+        }
+
 /*
     버튼은 입력창과 동일하게 구현 
     글자를 두껍게 보여주도록 처리(bold)

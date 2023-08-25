@@ -271,3 +271,25 @@
         .table.table-slit > tbody > tr:not(tr:last-child){
             border-bottom: 1px dotted #2d3436;
         }
+                /*
+            페이지 네비게이터 디자인
+    
+        */
+        .page-navigator > a{
+            display: inline-block;
+            font-size: 12px;
+            padding: 0.5em;
+            min-width: 2.25em;
+            cursor: pointer;
+            text-decoration: none;/*line-through 가운데줄*/
+            /* border: 1px solid #2d3436; */
+            /* box-shadow: x위치 y위치  번짐 확장 색상; */
+            box-shadow: 0px 0px 0px 1px #2d3436;
+            color: #2d3436;
+        }
+        .page-navigator > a.on,
+        .page-navigator > a:hover{
+            /* border-color: #0984e3; */
+            box-shadow: 0px 0px 0px 1px #2d3436;
+            color: #0984e3;
+        }

@@ -4,9 +4,7 @@ package com.kh.springhome.controller;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
+import com.kh.springhome.vo.PaginationVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,21 +38,47 @@ public class BoardController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	//등록
+	//[1]등록
+	//[2]등록(새글 or 답글)
+	//-boardParent라는 항목의 유무에 따라 새글과 답글을 구분하여
 	@GetMapping("/write")
-		public String write() {
+		public String write(Model model, @RequestParam(required = false ) Integer boardParent) {
+		if(boardParent != null) {
+			//답글이라면 원본글의 정보를 화면에 전달
+			BoardDto originDto = boardDao.selectOne(boardParent);
+			model.addAttribute("originDto", originDto);
+			model.addAttribute("isReply", true);
+		}
+		else {//새글 = boardParent가 없으면
+			model.addAttribute("isReply", false);
+		}
 			return "/WEB-INF/views/board/write.jsp";
 	}
 	
 	@PostMapping("/write")
 		public String write(@ModelAttribute BoardDto boardDto, HttpSession session) {
-			String memberId = (String) session.getAttribute("name");//멤버아이디갖고오고
 			int boardNo = boardDao.sequence();//시퀀스 번호 갖고오고
 			boardDto.setBoardNo(boardNo);//보드 번호 넣고
+			
+			
+			String memberId = (String) session.getAttribute("name");//멤버아이디갖고오고
 			boardDto.setBoardWriter(memberId);//보드 작성자 넣고
 			
 			//이 사용자의 마지막 글번호를 조회
 			Integer lastNo = boardDao.selectMax(memberId);
+			
+			//글 등록하기 전에 새글/답글에 따른 그룹,상위글,차수를 계산
+			if(boardDto.getBoardParent() == null) {//새글이라면
+				boardDto.setBoardGroup(boardNo);//그룹번호는 글번호로 설정
+//				boardDto.setBoardParent(null);//상위글번호는 null-설정안해도 null
+//				boardDto.setBoardDepth(0);//차수 0 - 설정안해도 null
+			}
+			else {//답글일 경우 
+				BoardDto originDto = boardDao.selectOne(boardDto.getBoardParent());//상위글 정보
+				boardDto.setBoardGroup(originDto.getBoardGroup());//그룹번호는 원본글 그룹번호와 동일
+//				boardDto.setBoardParent(originDto.getBoardNo());//상위글번호는 원본글 번호
+				boardDto.setBoardDepth(originDto.getBoardDepth()+1);//차수는 원본글 차수+1
+			}
 			
 			//글을 등록하고 
 			boardDao.insert(boardDto);//입력
@@ -78,8 +104,7 @@ public class BoardController {
 					memberDao.increaseMemberPoint(memberId, 10);	//10점 부여
 				}
 			}
-			
-			
+					
 			return "redirect:detail?boardNo="+boardNo;
 	}
 	
@@ -88,28 +113,65 @@ public class BoardController {
 		//- 검색일 경우에는 type과 keyword라는 파라미터가 존재
 		//- 목록일 경우에는 type과 keyword라는 파라미터가 없음
 		//- 만약 불완전한 상태(type이나 keyword만 있는 경우)라면 목록으로 처리
-		@RequestMapping("/list")
-	public String list( Model model,  
-							  	 @RequestParam(required = false) String type,
-							  	 @RequestParam(required = false) String keyword,
-							  	 BoardDto boardDto) {
-			boolean isSearch = type != null && keyword != null; 
+		//-(추가) 페이징 관련 처리 
+//		@RequestMapping("/list")
+//	     public String list( Model model,  
+//							  	 @RequestParam(required = false) String type,
+//							  	 @RequestParam(required = false) String keyword,
+//							  	 @RequestParam(required = false, defaultValue = "1") int page) {
+//			boolean isSearch = type != null && keyword != null; 
+//			
+			//페이징과 관련된 값들을 계산하여 JSP로 전달
+//			int begin = (page - 1) / 10 * 10 + 1;
+//			int end = begin + 9;
+			//지금 상황에 해당하는 전체 데이터 개수=목록개수or검색결과수 
+//			int count = isSearch ?
+//					boardDao.countList(type, keyword) : boardDao.countLIst();//검색결과수 : 목록개수;
+//			int pageCount = (count-1) / 10 + 1;//총 페이지 수(수업내용 참고필수!)
+//			model.addAttribute("page",page);
+//			model.addAttribute("begin", begin);
+//			model.addAttribute("end", Math.min(pageCount, end));
+//			model.addAttribute("pageCount", pageCount);
 			
-			if(isSearch) {//검색일 경우
-				List<BoardDto>list = boardDao.selectList(type,keyword);
-				model.addAttribute("list",list);
-				model.addAttribute("isSearch",true);
-			}
-			else {//목록일 경우
-				List<BoardDto>list = boardDao.selectList(boardDto);
-				model.addAttribute("list",list);
-				model.addAttribute("isSearch",false);
-			}
+//			if(isSearch) {//검색일 경우
+//				List<BoardListDto>list = boardDao.selectList(type,keyword);
+//				List<BoardListDto> list = boardDao.selectListByPage(type, keyword, page);
+//				model.addAttribute("list",list);
+//				model.addAttribute("isSearch",true);
+//			}
+//			else {//목록일 경우
+//				List<BoardListDto>list = boardDao.selectList();
+//				List<BoardListDto> list = boardDao.selectListByPage(page);
+//				model.addAttribute("list",list);
+//				model.addAttribute("isSearch",false);
+//			}
 //			List<BoardDto>list = boardDao.selectList(boardDto);	
 //			model.addAttribute("list",list);
 //			model.addAttribute("list",boardDao.selectList(boardDto));
-			return "/WEB-INF/views/board/list.jsp";
-	}
+//			return "/WEB-INF/views/board/list.jsp";
+//	}
+		
+		//(추가) @ModelAttribute로 받은 데이터는 이름만 정하면 자동으로 화면으로 넘어간다
+		// - @ModelAttribute(name ="vo")는 model.addAttribute("vo",??)와 같다	
+		@RequestMapping("/list")
+			public String list(@ModelAttribute(name ="vo") PaginationVO vo,
+										Model model) {
+//				[1]boolean isSearch = type != null && keyword != null;//vo에 메소드 생성
+//				[2]int count = vo.isSearch() ?//검색or목록개수
+//						 	boardDao.countList(type,keyword) :
+//						 		boardDao.countLIst();
+//				[3] if(vo.isSearch()) {
+//					 model.addAttribute("list", boardDao.selectListByPage(?, ?, ?));
+//				 }
+//				 else {
+//					 model.addAttribute("list", boardDao.selectListByPage(?));
+//				 }			
+				 int count = boardDao.countList(vo);
+				 vo.setCount(count);				 			 
+				 List<BoardListDto> list = boardDao.selectListByPage(vo);
+				 model.addAttribute("list", list);				 
+				 return "/WEB-INF/views/board/list2.jsp";
+			}
 		
 	//상세(비회원 접근가능)
 		@RequestMapping("/detail")

@@ -64,7 +64,8 @@ public class BoardDao {
 		
 		public List<BoardDto> selectList(){
 			String sql = "select "
-					+ "board_no, board_title, board_writer, board_readcount"
+					+ "board_no, board_writer, board_title, board_readcount, board_likecount, "
+					+ "board_replycount, board_ctime, board_utime "
 					+ " from board order by board_no desc";
 			return jdbcTemplate.query(sql, listMapper);
 		}

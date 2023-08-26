@@ -7,9 +7,11 @@
 
 <h1>자유 게시판</h1>
 
-<%-- 검색일 경우 검색어를 추가로 출력 --%>
-<c:if test="${isSearch}">
-<h3>&quot;${param.keyword}&quot;에 대한 검색 결과</h3>
+<%-- 검색일 경우 검색어를 추가로 출력 
+		(참고) 논리 반환값을 가지는 getter 메소드는 get이 아니라 is로 시작한다
+--%>
+<c:if test="${vo.search}"><%--list2 수정 --%>
+<h3>&quot;${vo.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>
 
 <%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
@@ -82,57 +84,30 @@
 </table>
 <br>
 
-
-
+<!-- 페이지 네비게이터 출력 -->
+<h3>
 <!-- 이전 버튼 -->
-<c:if test="${begin > 1}">
-	<%-- 링크는 검색과 목록을 따로 구현 --%>
-	<c:choose>
-		<c:when test="${isSearch}">
-			<a style="text-decoration:none ; color: #6460AA; " href="list?page=${begin-1}&type=${param.type}&keyword=${param.keyword}">&lt;</a>
-		</c:when>
-		<c:otherwise>
-			<a style="text-decoration:none ; color: #6460AA; "  href="list?page=${begin-1}">&lt;</a>
-		</c:otherwise>
-	</c:choose>			
+<c:if test="${!vo.first}">
+			<a style="text-decoration:none ; color: #6460AA; "  href="list?${vo.prevQueryString}">&lt;</a>		
 </c:if>
-
 <!-- 숫자 버튼 -->
-<c:forEach var="i" begin="${begin}" end="${end}" step="1">
+<c:forEach var="i" begin="${vo.begin}" end="${vo.end}" step="1">
 	<c:choose>
-		<c:when test="${page == i}">
+		<c:when test="${vo.page == i}">
 			${i}	
 		</c:when>
 		<c:otherwise>
-			<%-- 링크는 검색과 목록을 따로 구현 --%>
-			<c:choose>
-				<c:when test="${isSearch}">
-					<a href="list?page=${i}&type=${param.type}&keyword=${param.keyword}">${i}</a>
-				</c:when>
-				<c:otherwise>
-					<a href="list?page=${i}">${i}</a>
+					<a href="list?${vo.getQueryString(i)}">${i}</a>
 				</c:otherwise>
 			</c:choose>			
-		</c:otherwise>
-	</c:choose>
 </c:forEach>
-
 <!-- 다음 버튼 -->
-<c:if test="${end < pageCount}">
-	<%-- 링크는 검색과 목록을 따로 구현 --%>
-	<c:choose>
-		<c:when test="${isSearch}">
-			<a style="text-decoration:none ; color: #6460AA; " href="list?page=${end+1}&type=${param.type}&keyword=${param.keyword}">&gt;</a>
-		</c:when>
-		<c:otherwise>
-			<a style="text-decoration:none ; color: #6460AA; " href="list?page=${end+1}">&gt;</a>
-		</c:otherwise>
-	</c:choose>			
-	
+<c:if test="${!vo.last}">
+			<a style="text-decoration:none ; color: #6460AA; " href="list?${vo.nextQueryString}">&gt;</a>	
 </c:if>
-
-
+</h3>
 <br>
+
 <!-- 검색창 -->
 <form action="list" method="get">
 	<c:choose>

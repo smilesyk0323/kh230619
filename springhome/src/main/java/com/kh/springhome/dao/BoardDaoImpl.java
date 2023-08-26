@@ -7,8 +7,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.mapper.BoardListMapper;
 import com.kh.springhome.mapper.BoardMapper;
+import com.kh.springhome.vo.PaginationVO;
+
+
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -33,23 +37,28 @@ public class BoardDaoImpl implements BoardDao{
 		public void insert(BoardDto dto) {
 			String sql = "insert into board("
 					+ "board_no, board_title, board_content, "
-					+ "board_writer) values(?,?,?,?)";
+					+ "board_writer,board_group, board_parent, board_depth"
+					+ ") values(?,?,?,?,?,?,?)";
 			Object[] data = {
 					dto.getBoardNo(), dto.getBoardTitle(),
-					dto.getBoardContent(), dto.getBoardWriter()
+					dto.getBoardContent(), dto.getBoardWriter(),
+					dto.getBoardGroup(), dto.getBoardParent(),
+					dto.getBoardDepth()
 			};
 			jdbcTemplate.update(sql,data);
 		}
 		
 		//[1]목록(비회원 접근 가능)
 		@Override
-		public List<BoardDto> selectList(BoardDto boardDto) {
-			String sql = "select "
-					+ "board_no, board_writer, board_title, "
-					+ "board_readcount, board_likecount, "
-					+ "board_replycount, board_ctime, "
-					+ "board_utime "
-					+ "from board order by board_no desc";
+		public List<BoardListDto> selectList() {
+			//기존 조회 구문 
+//			String sql = "select * from board_list order by board_no desc";
+			
+			//계층형 조회 구문
+			String sql = "select * from board_list "
+							+ "connect by prior board_no = board_parent "
+							+ "start with board_parent is null "
+							+ "order siblings by board_group desc, board_no asc";
 			return jdbcTemplate.query(sql, listMapper);
 		}
 
@@ -122,14 +131,17 @@ public class BoardDaoImpl implements BoardDao{
 //		}
 		
 		@Override//아래 구문도 사용 가능 
-		public List<BoardDto> selectList(String type, String keyword) {
-			String sql = "select * from board "
-								+ "where instr("+type+", ?) > 0 "
-								+ "order by board_no desc";
+		public List<BoardListDto> selectList(String type, String keyword) {
+			String sql = "select * from board_list "
+					+ "where instr("+type+", ?) > 0 "
+					+ "connect by prior board_no = board_parent "
+					+ "start with board_parent is null "
+					+ "order siblings by board_group desc, board_no asc";
 			Object[] data = {keyword};
 			return jdbcTemplate.query(sql, listMapper,data);
 		}
-			
+
+
 //		@Override
 //		public List<BoardDto> selectLIst(String type, String keyword) {
 //			String sql = "select * from board "
@@ -140,8 +152,91 @@ public class BoardDaoImpl implements BoardDao{
 //			return jdbcTemplate.query(sql, listMapper,data);
 //		}
 
+		//페이징 추가 된 목록 
+		@Override
+		public List<BoardListDto> selectListByPage(int page) {
+			int begin  = page * 10 - 9;			
+			int end = page * 10;
+			String sql = "select * from ("
+								+ " select rownum rn, TMP.*from("
+										+ "select * from board_list "
+										+ "connect by prior board_no = board_parent "
+										+ "start with board_parent is null "
+										+ "order siblings by board_group desc, board_no asc"
+								+ ")TMP"
+							+ ")where rn between ? and ?";
+			Object[] data = {begin, end};		
+			return jdbcTemplate.query(sql, listMapper, data);
+		}
 
+		@Override
+		public List<BoardListDto> selectListByPage(String type, String keyword, int page) {
+			int begin  = page * 10 - 9;			
+			int end = page * 10;
+			String sql =  "select * from ("
+							+ " select rownum rn, TMP.*from("
+									+ "select * from board_list "
+									+ "where instr("+type+", ?) > 0 "
+									+ "connect by prior board_no = board_parent "
+									+ "start with board_parent is null "
+									+ "order siblings by board_group desc, board_no asc"
+							+ ")TMP"
+							+ ")where rn between ? and ?";
+			Object[] data = {keyword, begin, end};
+			return jdbcTemplate.query(sql, listMapper,data);
+		}
+
+		//게시글 갯수를 구하는 구문
+		@Override
+		public int countList() {
+			String sql = "select count(*) from board";
+			return jdbcTemplate.queryForObject(sql, int.class);
+		}
+		
+		@Override
+		public int countList(String type, String keyword) {
+			String sql = "select count(*) from board "
+							+ "where instr("+type+",?) > 0";
+			Object[] data = {keyword};
+			return jdbcTemplate.queryForObject(sql, int.class, data);
+		}
+
+		//페이징 모듈화
+		@Override
+		public int countList(PaginationVO vo) {
+			if(vo.isSearch()) {//검색
+				String sql = "select count(*) from board "
+						+ "where instr("+vo.getType()+",?) > 0";
+				Object[] data = {vo.getKeyword()};
+				return jdbcTemplate.queryForObject(sql, int.class, data);
+			}
+			else{//목록
+				String sql = "select count(*) from board";
+				return jdbcTemplate.queryForObject(sql, int.class);
+			}
+		}
 		
 		
+		@Override
+		public List<BoardListDto> selectListByPage(PaginationVO vo) {
+			if(vo.isSearch()) {//옆에 애를 controller에 사용하지 않겠다! 
+				return selectListByPage(vo.getType(), vo.getKeyword(), vo.getPage());
+			}
+			else {
+				return selectListByPage(vo.getPage());
+			}
+		}
 
+		@Override
+		public List<BoardListDto> selectListByBoardWriter(String boardWriter) {
+			String sql = "select * from board_list "
+								+ "where board_writer = ? "
+								+ "order by board_no desc";
+			Object[] data = {boardWriter};
+			return jdbcTemplate.query(sql, listMapper,data);
+		}
+		
 }
+		
+
+

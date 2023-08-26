@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springhome.dao.MemberDao;
+import com.kh.springhome.dto.MemberBlockDto;
 import com.kh.springhome.dto.MemberDto;
+import com.kh.springhome.error.AuthorityException;
 
 //회원 관련 기능을 처리하는 컨트롤러 
 @Controller
@@ -22,11 +24,11 @@ public class MemberController {
 		@Autowired
 		private MemberDao memberDao;
 		
+		//회원가입
 		@GetMapping("/join")
 			public String join() {
 				return "/WEB-INF/views/member/join.jsp";
-		}
-		
+		}	
 		@PostMapping("/join")
 			public String join(@ModelAttribute MemberDto memberDto) {
 				memberDao.insert(memberDto);
@@ -38,11 +40,11 @@ public class MemberController {
 				return "/WEB-INF/views/member/joinFinish.jsp";
 		}
 		
+		//로그인
 		@GetMapping("/login")
 			public String login() {
 				return "/WEB-INF/views/member/login.jsp";
 		}
-		
 		/**
 		  	 로그인과 같이 사용자별로 관리되어야 하는 상태 정보들이 있다
 		  	 이 때 사용할 수 있는 저장소로 HttpSession이 있다
@@ -53,7 +55,6 @@ public class MemberController {
 		  	 [2] 확인 - session.getAttribute("key");//로그인 상태 확인
 		  	 [3] 삭제 - session.removeAttribute("key");//로그아웃과 관련
 		 * */
-		
 		@PostMapping("/login")
 		public String login(@ModelAttribute MemberDto inputDto, 
 											HttpSession session) {
@@ -63,35 +64,42 @@ public class MemberController {
 			if(findDto == null) {
 				return "redirect:login?error";//redirect는 무조건 GetMapping으로 간다 
 			}
-			
 			//boolean isCorrectPw = 입력한 비밀번호와 DB비밀번호가 같나?
-			   boolean isCorrectPw = inputDto.getMemberPw().equals(findDto.getMemberPw());
-				
+			   boolean isCorrectPw = inputDto.getMemberPw().equals(findDto.getMemberPw());	
+			   
 			//[3] 비밀번호가 일치하면 메인페이지로 이동
 			   //+로그인 시간 갱신
 				if(isCorrectPw) {
-					session.setAttribute("name", inputDto.getMemberId());
+					//(주의-관리자 회원관리) 만약 차단된 회원이라면 추가 작업을 중지하고 오류 발생
+					MemberBlockDto blockDto = memberDao.selectBlockOne(findDto.getMemberId());
+					if(blockDto != null) {//차단된 회원이라면
+//						return "redirect:오류페이지";
+						throw new AuthorityException("차단된 회원");
+					}
+					
+					//세션에 아이디 + 등급 저장 
+					session.setAttribute("name", findDto.getMemberId());
+					session.setAttribute("level", findDto.getMemberLevel());
 					//로그인시간 갱신
 					memberDao.updateMemberLogin(inputDto.getMemberId());
 					//메인페이지로 이동 
 					return "redirect:/";
-				}
-				
-				
-				
+				}			
 			//[4] 비밀번호가 일치하지 않으면 로그인페이지로 이동
 				else {
 					return "redirect:login?error";
 				}
-		}
-		
-		//----------------회원 전용 메뉴-----------------------
+		}		
+//--------------------회원 전용 메뉴----------------------------------------------------
+		//로그아웃
 		@RequestMapping("/logout")
 			public String logout(HttpSession session) {
 			session.removeAttribute("name");
+			session.removeAttribute("leve");
 			return "redirect:/";
 		}
 		
+		//마이페이지
 		@RequestMapping("/mypage")
 			public String mypage(HttpSession session, Model model) {
 			//[1] 세션에서 사용자의 아이디를 꺼낸다 
@@ -105,13 +113,11 @@ public class MemberController {
 				return "/WEB-INF/views/member/mypage.jsp";
 		}
 		
-		
 		//비밀번호 변경
 		@GetMapping("/password")
 			public String password() {
 				return "/WEB-INF/views/member/password.jsp";
-		}
-		
+		}		
 		@PostMapping("/password")
 			public String password(HttpSession session,
 								@RequestParam String originPw,
@@ -130,8 +136,7 @@ public class MemberController {
 			else {
 				return "redirect:password?error";//비번 오류로 인한 페이지 이동임을 알려주는 ?error이동
 			}
-		}
-		
+		}		
 		@RequestMapping("/passwordFinish")
 			public String passwordFinish() {
 				return "/WEB-INF/views/member/passwordFinish.jsp";
@@ -144,8 +149,7 @@ public class MemberController {
 			MemberDto memberDto = memberDao.selectOne(memberId	);
 			model.addAttribute("memberDto",memberDto);
 			return "/WEB-INF/views/member/change.jsp";
-		}
-		
+		}		
 		@PostMapping("/change")
 			public String change(@ModelAttribute MemberDto inputDto,//사용자가 입력한 비번
 												HttpSession session) {
@@ -162,11 +166,11 @@ public class MemberController {
 			}
 		}
 		
+		//회원 탈퇴 
 		@GetMapping("/exit")
 		public String exit() {
 			return "/WEB-INF/views/member/exit.jsp";
-		}
-		
+		}		
 		@PostMapping("/exit")
 		public String exit(HttpSession session, 
 									@RequestParam String memberPw) {
@@ -183,12 +187,16 @@ public class MemberController {
 			else {//비밀번호 불일치
 				return "redirect:exit?error";
 			}
-		}
-		
+		}	
 		@RequestMapping("/exitFinish")
 		public String exitFinish() {
 			return "/WEB-INF/views/member/exitFinish.jsp";
 	}
+		
+
+		
+		
+		
 		
 }
 

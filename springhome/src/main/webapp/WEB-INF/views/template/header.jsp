@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
+	<!-- 스타일시트로딩 코드 -->
+	<link rel="stylesheet"type="text/css" href="/css/commons.css">
+<!-- 	<link rel="stylesheet"type="text/css" href="/css/test.css"> -->
 </head>
 <body>
 	<div align="center">
@@ -17,7 +20,8 @@
 			세션ID = ${pageContext.session.id},
 		 --%>
 		 <c:if test="${sessionScope.name != null}">
-	 <p style="color:#ad79a4">${sessionScope.name}님 환영합니다</p>
+	 <p style="color:#ad79a4">${sessionScope.name}님 환영합니다
+	                                            [${sessionScope.level}]</p>
 </c:if>
 	<%-- 
 				이 페이지는 조각일 뿐이므로 어디서 실행될지 모른다
@@ -31,6 +35,12 @@
 					<a style="text-decoration:none ; color: #6460AA; " href="/member/mypage">Mypage</a>
 					<a style="text-decoration:none ; color: #6460AA; " href="/member/logout">로그아웃</a>
 	   				<a style="text-decoration:none ; color: #6460AA; " href="/board/list">게시판</a>
+	   				
+	   				<%-- 관리자인 경우 추가 메뉴 출력 --%>
+	   				<c:if test = "${sessionScope.level == '관리자'}">
+	   					<a style="text-decoration:none ; color: #6460AA; " href="/admin/home">[관리자메뉴]</a>
+	   				</c:if>
+	   				
 			</c:when>
 			<c:otherwise>
 			<a href="/"><img width="35" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbvPHh_PD8kK8kD1AwGvB3uPaEgKlr1DkjnlgtVyDgHj9-pgafLE7-OwGlK6wNcWGjIW8&usqp=CAU"></a>

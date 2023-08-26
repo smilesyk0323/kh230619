@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kh.springhome.dao.BoardDao;
+import com.kh.springhome.interceptor.AdminInterceptor;
 import com.kh.springhome.interceptor.BoardDefenderInterceptor;
 import com.kh.springhome.interceptor.BoardOwnerInterceptor;
 import com.kh.springhome.interceptor.MemberInterceptor;
@@ -36,7 +37,9 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 		
 		@Autowired
 		private BoardDefenderInterceptor boardDefenderInterceptor;
-
+		
+		@Autowired
+		private AdminInterceptor adminInterceptor;
 
 		
 		//인터셉터를 추가할 수 있는 설정 메소드(registry 저장소에 설정)
@@ -76,6 +79,9 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 			registry.addInterceptor(boardDefenderInterceptor)
 						.addPathPatterns("/board/detail");
 			
+			//[5] 관리자용 인터셉터 등록 
+			registry.addInterceptor(adminInterceptor)
+						.addPathPatterns("/admin/**");
 		}		
 }
 

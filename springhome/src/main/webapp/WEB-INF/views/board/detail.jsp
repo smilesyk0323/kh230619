@@ -48,7 +48,7 @@
 							<%-- 회원일때만 글쓰기,수정,삭제가 나와야 한다 --%>
 							<c:if test="${sessionScope.name != null}">
 								<a style="text-decoration:none ; color: #6460AA; " href="write">글쓰기</a>
-								<a style="text-decoration:none ; color: #6460AA; " href="#">답글쓰기</a>
+								<a style="text-decoration:none ; color: #6460AA; " href="write?boardParent=${boardDto.boardNo}">답글쓰기</a>
 								
 										<%--수정/삭제는 소유자일 경우만 나와야 한다  --%>
 										<c:if test="${sessionScope.name == boardDto.boardWriter}">

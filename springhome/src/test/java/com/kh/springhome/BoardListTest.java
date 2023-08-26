@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,12 +21,12 @@ public class BoardListTest {
 		@Autowired
 		private BoardDao boardDao;
 		
-		@Autowired
-		private BoardDto boardDto;
+//		@Autowired
+//		private BoardDto boardDto;
 		
 		@Test
 		public void test() {
-			List<BoardDto>list = boardDao.selectList(boardDto);
+			List<BoardListDto>list = boardDao.selectList();
 			
 			// 단정문(Assertion)
 			//-Spring Test에서 사용할 수 있는 테스트 판정 구문 

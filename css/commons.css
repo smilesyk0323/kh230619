@@ -61,6 +61,7 @@
 */
 .form-input,
 .btn{
+        /* a 태그 때문에 추가한 속성 */
     display: inline-block;
     text-decoration: none;
     vertical-align: bottom;

@@ -69,7 +69,6 @@
 <h3>&quot;${vo.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>
 
-
 <table border="1" width="900">
 	<thead>
 		<tr>
@@ -125,17 +124,12 @@
 		<c:otherwise>
 					<a href="list?${vo.getQueryString(i)}">${i}</a>
 				</c:otherwise>
-			</c:choose>	
-
+			</c:choose>				
 </c:forEach>
 
 <c:if test="${!vo.last}">
 	<a  style="text-decoration:none ; color: #6460AA; " href="list?${vo.nextQueryString}">&gt;</a>
 </c:if>
-
 </h3>
-
-
-
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

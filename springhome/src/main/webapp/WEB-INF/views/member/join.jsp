@@ -1,12 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<style>
+.container,
+.row{
+	font-size: 16px;
+	color:#6460AA;
+}
+.btn,
+.btn.btn-positive{
+	background-color:#6460AA;
+	color:white;
+	border:none;
+	 line-height: 1.2em;
+}
+.form-input{
+	size:12px;
+}
 
+</style>
 <body style="background-color:#F2EFFB">
 
 <form action="join" method="post" autocomplete="off">
     <div class="container w-500">
-            <div class="row"><h1>회원 가입</h1></div>
+            <div class="row"><h1 style="color:#6460AA">회원 가입</h1></div>
             <div class="required">
                     <div class="row left">
                         <!--라벨에는 for를 이용하여 특정 대상을 연결시킬 수 있다
@@ -44,9 +61,9 @@
             </div>
             <div class="row left">
                 <label style="display: block;">주소</label>
-                <input type="text"name="memberPost" class="form-input w-60" 
+                <input type="text"name="memberPost" class="form-input w-60 mb-10" 
                      placeholder="우편번호"size="6" maxlength="6">
-                     <button type="button" class="btn ">우편번호찾기</button>
+                     <button type="button" class="btn mb-10">우편번호찾기</button>
                 <input type="text"name="memberAddr1" class="form-input w-100" 
                      placeholder="기본주소">
                 <input type="text"name="memberAddr2" class="form-input w-100" 

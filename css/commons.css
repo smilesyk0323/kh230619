@@ -494,3 +494,17 @@
             right: 0;
             top: 0;
         }
+        /*
+            링크 스타일
+            - 방문한 링크는 :visited로 선택 가능 
+        */
+
+        a.link,
+        a.link:visited
+        {
+            text-decoration: none;
+            color: #2d3436;
+        }
+        a.link:hover{
+            color: #0984e3;
+        }

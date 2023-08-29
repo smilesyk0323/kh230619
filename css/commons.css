@@ -369,7 +369,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-          /*
+        /*
             메뉴는 계층형 구조를 가지는 가장 대표적인 도구
             list tag를 이용하여 구현(ol, ul, li)
             1차메뉴
@@ -460,7 +460,15 @@
             a태그에 말줄임표 처리 구현
         */
         ul.menu a{/* a태그는 폭을 줄 수 없음*/
-            display: block;
+                  /*
+            overflow로 인해 발생하는 추가 공간을 해결하기 위해 높이 설정
+             - 추가 공간이 생기는 이유는 overflow를 처리하기 위해 내부적으로 생성하는 공간 때문(BFC)
+             - display를 inline-block으로 설정하고 세로 정렬을 지정하면 해결
+             - vertical-aline은 어떤 값을 주더라도 문제가 해결된다
+             - 버그에 가깝다
+        */
+            display: inline-block;
+            vertical-align: top;
             width: 100%;
             padding: 0.5em;/*a태그에 폭을 줬기에 li에 줬던 폭을 가져옴*/
 
@@ -469,12 +477,7 @@
             overflow: hidden;/*넘치면 글자를 숨겨라/ ul이상의 글은 다 적용됨(2차li가 보이지않음)*/
             white-space: nowrap;/*줄바꿈을 하지 않겠다*/
         }
-        /*
-            overflow로 인해 발생하는 추가 공간을 해결하기 위해 높이 설정
-        */
-        ul.menu{
-            height: 2.35em;/*수동으로 맞추기*/
-        }
+
         /*
             3차 이상의 메뉴는 하단이 아니라 우측에 나오도록 변경
         */

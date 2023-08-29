@@ -17,7 +17,6 @@
         /*
             메뉴는 계층형 구조를 가지는 가장 대표적인 도구
             list tag를 이용하여 구현(ol, ul, li)
-
             1차메뉴
                 -2차메뉴
                     -3차메뉴
@@ -36,7 +35,6 @@
                     -3차메뉴
                     -3차메뉴
                 -2차메뉴
-
                 ul.menu
                       - li - a
                            - ul
@@ -49,7 +47,6 @@
                                 - li - a 
                                 - li - a 
         */
-
         /*디자인 초기화*/
         ul.menu,
         ul.menu ul{
@@ -123,16 +120,61 @@
         ul.menu{
             height: 2.35em;/*수동으로 맞추기*/
         }
+        /*
+            3차 이상의 메뉴는 하단이 아니라 우측에 나오도록 변경
+        */
+        ul.menu > li > ul > li  ul{
+            top: 0;
+            left: 100%;
+        } 
+        /*
+            확장 스타일: 메뉴를 상단 고정 처리
+        */
+        ul.menu.fixed{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
     </style>
 </head>
 <body>
-    <ul class="menu">
+    <ul class="menu fixed">
         <li><a href="#">1차메뉴1</a>
             <ul>
-                <li><a href="#">2차메뉴1</a></li>
-                <li><a href="#">2차메뉴2</a></li>
-                <li><a href="#">2차메뉴3</a></li>
-                <li><a href="#">2차메뉴4</a></li>
+                <li>
+                    <a href="#">2차메뉴1</a>
+                        <ul>
+                            <li><a href="#">3차메뉴1</a></li>
+                            <li><a href="#">3차메뉴2</a></li>
+                            <li><a href="#">3차메뉴3</a></li>
+                            <li><a href="#">3차메뉴4</a></li>                          
+                        </ul>
+                </li>
+                <li><a href="#">2차메뉴2</a>
+                        <ul>
+                            <li><a href="#">3차메뉴1</a></li>
+                            <li><a href="#">3차메뉴2</a></li>
+                            <li><a href="#">3차메뉴3</a></li>
+                            <li><a href="#">3차메뉴4</a></li>                          
+                        </ul>
+                </li>
+                <li><a href="#">2차메뉴3</a>
+                    <ul>
+                        <li><a href="#">3차메뉴1</a></li>
+                        <li><a href="#">3차메뉴2</a></li>
+                        <li><a href="#">3차메뉴3</a></li>
+                        <li><a href="#">3차메뉴4</a></li>                          
+                    </ul>
+                </li>
+                <li><a href="#">2차메뉴4</a>
+                    <ul>
+                        <li><a href="#">3차메뉴1</a></li>
+                        <li><a href="#">3차메뉴2</a></li>
+                        <li><a href="#">3차메뉴3</a></li>
+                        <li><a href="#">3차메뉴4</a></li>                          
+                    </ul>
+                </li>
             </ul>
         </li>
         <li><a href="#">1차메뉴2</a>

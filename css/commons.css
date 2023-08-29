@@ -516,3 +516,38 @@
         a.link:hover{
             color: #0984e3;
         }
+
+                /*
+            float 요소를 배치할 수 있는 전용 공간
+            - ::before는 공간 시작 지점을 의미하는 가상 선택자
+            - ::after는 공간 마지막 지점을 의미하는 가상 선택자
+        */
+        .float-container::after{
+            content: "";
+            display: block;/*width:100%도 가능, 어떻게든 한줄을 차지하면 됨*/
+            clear: both;
+        }
+        .float-container > .float-left{
+            float: left;
+        }
+        .float-container > .float-right{
+            float: right;
+        }
+        .float-container > .col-2,
+        .float-container > .col-3,
+        .float-container > .col-4,
+        .float-container > .col-5,
+        .float-container > .col-6
+        {
+            float:left
+        }
+        .logo{
+            width: 25%;
+        }
+
+        .col-3.a{
+            width: 14%;
+        }
+        .col-3{
+            width: 22%;
+        }

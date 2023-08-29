@@ -105,7 +105,8 @@
             a태그에 말줄임표 처리 구현
         */
         ul.menu a{/* a태그는 폭을 줄 수 없음*/
-            display: block;
+            display: inline-block;
+            vertical-align: bottom;
             width: 100%;
             padding: 0.5em;/*a태그에 폭을 줬기에 li에 줬던 폭을 가져옴*/
 
@@ -118,7 +119,7 @@
             overflow로 인해 발생하는 추가 공간을 해결하기 위해 높이 설정
         */
         ul.menu{
-            height: 2.35em;/*수동으로 맞추기*/
+            /* height: 2.35em;수동으로 맞추기 */
         }
         /*
             3차 이상의 메뉴는 하단이 아니라 우측에 나오도록 변경

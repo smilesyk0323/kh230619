@@ -476,7 +476,7 @@
              - 버그에 가깝다
         */
             display: inline-block;
-            vertical-align: top;
+            vertical-align: bottom;
             width: 100%;
             padding: 0.5em;/*a태그에 폭을 줬기에 li에 줬던 폭을 가져옴*/
 

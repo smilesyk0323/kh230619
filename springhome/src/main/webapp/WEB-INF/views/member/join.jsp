@@ -70,7 +70,8 @@
                      placeholder="상세주소">
             </div>
             <div class="row ">
-                <button type="submit" class="btn btn-positive w-50">가입하기</button>
+                <button type="submit" class="btn btn-positive w-50"
+                style="background-color:#6460AA">가입하기</button>
             </div>
         </div>
 </form>

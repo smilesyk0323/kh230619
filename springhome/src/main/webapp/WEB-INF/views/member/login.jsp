@@ -29,7 +29,7 @@
                     placeholder="비밀번호">
             </div>
             <div class="row">
-                <button class="btn btn-positive">Login</button>
+                <button class="btn btn-positive" style="background-color:#6460AA">Login</button>
             </div>
         </div>
 </form>

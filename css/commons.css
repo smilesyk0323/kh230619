@@ -541,16 +541,7 @@
         {
             float:left
         }
-        .logo{
-            width: 25%;
-        }
 
-        .col-3.a{
-            width: 14%;
-        }
-        .col-3{
-            width: 22%;
-        }
                 /*
             flexible 레이아웃 스타일
             - 영역은 display가 flex 이거나 inline-flex여야 한다 

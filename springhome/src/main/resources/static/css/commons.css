@@ -506,6 +506,10 @@
             링크 스타일
             - 방문한 링크는 :visited로 선택 가능 
         */
+        ul.menu {
+			display: flex;
+			justify-content: center;
+		}
 
         a.link,
         a.link:visited

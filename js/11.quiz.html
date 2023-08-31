@@ -32,9 +32,11 @@
             var span = document.querySelector(".span");
             if(idRegex.test(idInput.value)){
                 span.textContent = "멋진 아이디입니다!";
+                span.style.color="green";
             }
             else{
                 span.textContent = "영문 숫자 5~20자로 작성하세요";
+                span.style.color="red";
             }
         }
         function correctPw(){
@@ -43,9 +45,11 @@
             var span2 = document.querySelector(".span2");
             if(pwRegex.test(pwInput.value)){
                 span2.textContent = "올바른 비밀번호 형식입니다";
+                span2.style.color="green";
             }
             else{
                 span2.textContent = "영문,숫자,특수문자(!@#$) 8~20자로 작성하세요";
+                span2.style.color="red";
             }
         }
         function checkPw(){
@@ -54,9 +58,11 @@
             var span3 = document.querySelector(".span3");
             if(pwInput.value==checkPw.value){
                 span3.textContent = "비밀번호가 일치합니다";
+                span3.style.color="green";
             }
             else{
                 span3.textContent = "비밀번호가 일치하지 않습니다";
+                span3.style.color="red";
             }
         }
 

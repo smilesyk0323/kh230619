@@ -38,7 +38,7 @@
             }
         }
         function correctPw(){
-            var pwRegex =/^[a-zA-Z0-9!@#$]{5,20}$/;
+            var pwRegex =/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$]).{8,16}$/;
             var pwInput = document.querySelector(".pwInput");
             var span2 = document.querySelector(".span2");
             if(pwRegex.test(pwInput.value)){

@@ -20,22 +20,22 @@
     <link rel="stylesheet"type="text/css" href="/css/layout.css">
     <link rel="stylesheet"type="text/css" href="/css/commons.css">
 <!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->
-    
+    <style></style>
 
 </head>
 <body>
 	 <main>
         <header>
             <div class="logo">
-                <img src="https://dummyimage.com/200x50/000/fff">
+                <img src="/images/bora-logo3.png" style="width:70px">
             </div>
             <div class="title">
                 <h1 style="color:#6460AA">Bora's Home</h1>
             </div>
            
-            <div class="etc">
+            <div class="etc"style="color:#6460AA">
              <c:if test="${sessionScope.name != null}">
-            	<h3>${sessionScope.name}[${sessionScope.level}]</h3>
+            	<h3>${sessionScope.name}님[${sessionScope.level}]</h3>
             </c:if>
             </div>
             
@@ -51,28 +51,27 @@
 		<c:choose>
 			<c:when test="${sessionScope.name != null}">
 			
-					<li><a href="/"><i class="fa-solid fa-house"style="color:#6460AA"></i></a></li>
-					<li><a style="text-decoration:none ; color: #6460AA; " href="/member/mypage">Mypage</a></li>
-					<li><a style="text-decoration:none ; color: #6460AA; " href="/member/logout">로그아웃</a></li>
-	   				 <li><a style="text-decoration:none ; color: #6460AA; " href="/board/list">게시판</a></li>
+					<li><a href="/"><i class="fa-solid fa-house " style="color:#EDE7F6"></i></a></li>
+					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/mypage">Mypage</a></li>
+					<li><a style="text-decoration:none ; color:#EDE7F6; " href="/member/logout">로그아웃</a></li>
+	   				 <li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
 	   				
 	   				<%-- 관리자인 경우 추가 메뉴 출력 --%>
 	   				<c:if test = "${sessionScope.level == '관리자'}">
-	   					<li><a style="text-decoration:none ; color: #6460AA; " href="/admin/home">[관리자메뉴]</a></li>
+	   					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/admin/home">[관리자메뉴]</a></li>
 	   				</c:if>
-	   				 </ul>
+	   				
 			</c:when>
 			<c:otherwise>
 					<li><a href="/"><i class="fa-regular fa-house"></i></a></li>
-				   	<li><a style="text-decoration:none ; color: #6460AA; " href="/member/join">회원가입</a></li>
-				   	<li><a style="text-decoration:none ; color: #6460AA; " href="/member/login">로그인</a></li>
-				   	<li><a style="text-decoration:none ; color: #6460AA; " href="/board/list">게시판</a></li>
-				   	</ul>
+				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/join">회원가입</a></li>
+				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/login">로그인</a></li>
+				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
+				  
 			</c:otherwise>
 		</c:choose>
-      
+       	</ul>
         </nav>
+	<section>
 
-
-	<hr>
 	 

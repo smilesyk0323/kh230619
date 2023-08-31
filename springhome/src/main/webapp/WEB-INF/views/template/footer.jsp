@@ -11,7 +11,9 @@
     <link rel="stylesheet"type="text/css" href="/css/layout.css">
     <link rel="stylesheet"type="text/css" href="/css/commons.css">
 <!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->
-<hr>
+
+	</section>
+	<hr>
 
 	 		<%--
 				JSP에서 세션에 저장된 값을 확인하려면  EL의 내장객체를 사용
@@ -30,9 +32,9 @@
                     <a href="#" class="link" style="color:#6460AA">강사채용</a>
                 </div>
                 <div class="right">
-                    <i class="fa-brands fa-google"  style="color:#6460AA"></i>
-                    <i class="fa-brands fa-facebook"  style="color:#6460AA"></i>
-                    <i class="fa-brands fa-twitter"  style="color:#6460AA"></i>
+                    <i class="fa-brands fa-google me-10"  style="color:#6460AA"></i>
+                    <i class="fa-brands fa-facebook me-10"  style="color:#6460AA"></i>
+                    <i class="fa-brands fa-twitter me-10"  style="color:#6460AA"></i>
                     <i class="fa-brands fa-instagram"  style="color:#6460AA"></i>
                 </div>
             </div>

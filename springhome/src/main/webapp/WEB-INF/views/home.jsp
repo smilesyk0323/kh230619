@@ -19,9 +19,11 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <body style="background-color:#F2EFFB">
-<div class="center">
+	<section>
+<div class="row">
 <img src="https://img.freepik.com/premium-photo/minimal-render-laptop-purple-background_53036-42.jpg" style="width:70%"></div>
-
+	</section>
+	
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 
 

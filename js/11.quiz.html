@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 실습</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="./css/commons.css">
+    <link rel="stylesheet"type="text/css" href="./css/test.css">
+    <style>
+        label{
+            font-size: 20px;
+        }
+    </style>
+    <!--javascript 작성 공간-->
+    <script>
+        
+        
+        
+        function correctId(){
+            var idRegex =/^[a-z][a-z0-9]{4,19}$/;
+            //idInput와 idRegex와 비교 값이 true면 
+            //span에 멋진 아이디입니다를 출력 
+            var idInput = document.querySelector(".idInput");
+            var span = document.querySelector(".span");
+            if(idRegex.test(idInput.value)){
+                span.textContent = "멋진 아이디입니다!";
+            }
+            else{
+                span.textContent = "영문 숫자 5~20자로 작성하세요";
+            }
+        }
+        function correctPw(){
+            var pwRegex =/^[a-zA-Z0-9!@#$]{5,20}$/;
+            var pwInput = document.querySelector(".pwInput");
+            var span2 = document.querySelector(".span2");
+            if(pwRegex.test(pwInput.value)){
+                span2.textContent = "올바른 비밀번호 형식입니다";
+            }
+            else{
+                span2.textContent = "영문,숫자,특수문자(!@#$) 8~20자로 작성하세요";
+            }
+        }
+        function checkPw(){
+            var pwInput = document.querySelector(".pwInput");
+            var checkPw = document.querySelector(".checkPw");
+            var span3 = document.querySelector(".span3");
+            if(pwInput.value==checkPw.value){
+                span3.textContent = "비밀번호가 일치합니다";
+            }
+            else{
+                span3.textContent = "비밀번호가 일치하지 않습니다";
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="container w-400">
+        <div class="row">
+            <h1>회원가입</h1>
+        </div>
+            <div class="row left">
+                <label >아이디</label>
+                <input class="form-input w-100 idInput"oninput="correctId();">
+                <span class="span"></span>
+            </div>
+            <div class="row  left ">
+                <label>비밀번호</label>
+                <input class="form-input  w-100 pwInput"oninput="correctPw();">
+                <span class="span2"></span>
+            </div>
+            <div class="row left">
+                <label>비밀번호 확인</label>
+                <input class="form-input  w-100 checkPw"oninput="checkPw();">
+                <span class="span3"></span>
+            </div>
+
+    </div>
+</body>
+</html>

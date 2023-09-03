@@ -5,7 +5,7 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <body style="background-color:#F2EFFB">
-<div class="container w-800">
+<div class="container w-800 ">
 	<div class="row">
 		<h1 style="color:#4A148C">
 			${boardDto.boardNo}번 게시글

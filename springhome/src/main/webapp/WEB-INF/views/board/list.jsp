@@ -5,9 +5,8 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <body style="background-color:#F2EFFB">
 
-<h2>
+<h2 style="color: #6460AA;">
 	자유 게시판
-	<a href="list-mention">(멘션 형태로 이동)</a>
 </h2>
 
 <%-- 검색일 경우 검색어를 추가로 출력 --%>

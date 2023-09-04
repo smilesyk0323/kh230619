@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
 
-    	<!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
     <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!--구글 웹 폰트 사용을 위한 CDN-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,11 +16,10 @@
     <link rel="stylesheet"type="text/css" href="/css/reset.css">
     <link rel="stylesheet"type="text/css" href="/css/layout.css">
     <link rel="stylesheet"type="text/css" href="/css/commons.css">
-<!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->
-	
-
+	<!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->
 	<!-- favicon 설정 -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
+	
     <style>
     .menu.center{
     	font-size:22px;

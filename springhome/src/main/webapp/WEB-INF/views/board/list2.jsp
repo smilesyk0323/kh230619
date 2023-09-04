@@ -5,7 +5,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <body style="background-color:#F2EFFB">
-<div class="container w-800">
+<div class="container w-800"style="color: #182C61;">
 	<div class="row">
 		<h1>자유 게시판</h1>
 	</div>
@@ -31,7 +31,7 @@
 	</c:if>
 	
 	<div class="row">
-		<table class="table table-slit">
+		<table class="table table-slit"style="color: #182C61;">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -65,7 +65,7 @@
 						
 					
 						<!-- 제목을 누르면 상세페이지로 이동 -->
-						<a class="link" href="detail?boardNo=${boardListDto.boardNo}">
+						<a style="color: #182C61;"class="link" href="detail?boardNo=${boardListDto.boardNo}">
 							${boardListDto.boardTitle}
 						</a>
 						

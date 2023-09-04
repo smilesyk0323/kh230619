@@ -13,10 +13,7 @@
 	background-color:#6460AA;
 	color:white;
 	border:none;
-	 line-height: 1.2em;
-}
-.form-input{
-	size:12px;
+	line-height: 1.2em;
 }
 
 </style>
@@ -31,7 +28,8 @@
                             <input type="text"name="memberId" class="form-input w-100" id="id-input"
                                 placeholder="영문 소문자+숫자 8~20자 5~20자 이내"onblur="checkMemberId();">
                             <div class="success-feedback">가입 가능한 아이디입니다</div>
-                            <div class="fail-feedback">아이디는 영문과 숫자 5~20자로 작성하세요</div>  
+                            <div class="fail-feedback">아이디는 영문과 숫자 5~20자로 작성하세요</div> 
+                            <div class="fail2-feedback">이미 사용중인 아이디입니다</div> 
                         </div>
                         <div class="row left">
                             <label for="id-input">비밀번호<span class="important">*</span></label>
@@ -52,34 +50,40 @@
                         <div class="row left">
                             <label for="id-input">닉네임<span class="important">*</span></label>
                             <input type="text"name="memberNickname" class="form-input w-100" 
-                                placeholder="한글 또는 숫자2~10자 이내"onblur="checkMemberNick()">
+                                placeholder="한글 또는 숫자2~10자 이내"onblur="checkMemberNickname()">
                             <div class="success-feedback">사용 가능한 닉네임입니다</div>
                             <div class="fail-feedback">한글 또는 숫자 2~10자 이내로 작성하세요</div>
+                            <div class="fail2-feedback">닉네임이 이미 사용중입니다</div>
                         </div>
               </div>
                 <div class="row left">
                     <label>이메일</label>
                     <input type="email"name="memberEmail" class="form-input w-100" 
-                         placeholder="testuser@kh.com">
+                         placeholder="testuser@kh.com" onblur="checkMemberEmail();">
+                    <div class="fail-feedback">이메일 형식이 올바르지 않습니다</div>
                 </div>
                 <div class="row left">
                     <label>연락처</label>
                     <input type="tel"name="memberContact" class="form-input w-100" 
-                         placeholder="- 제외하고 입력">
+                         placeholder="- 제외하고 입력" onblur="checkMemberContact();">
+                    <div class="fail-feedback">전화번호 형식이 올바르지 않습니다</div>
                 </div>
                 <div class="row  left">
                     <label>생년월일</label>
-                    <input type="date"name="memberBirth" class="form-input w-100" >
+                    <input type="date"name="memberBirth" class="form-input w-100" 
+                     onblur="checkMemberBirth();">
+                    <div class="fail-feedback">잘못된 날짜를 선택하셨습니다</div>
                 </div>
                 <div class="row left">
                     <label style="display: block;">주소</label>
-                    <input type="text"name="memberPost" class="form-input w-60 mb-10" 
-                         placeholder="우편번호"size="6" maxlength="6">
-                         <button type="button" class="btn mb-10">우편번호찾기</button>
-                    <input type="text"name="memberAddr1" class="form-input w-100" 
-                         placeholder="기본주소">
-                    <input type="text"name="memberAddr2" class="form-input w-100" 
-                         placeholder="상세주소">
+                    <input type="text"name="memberPost" class="form-input" 
+                         placeholder="우편번호"size="6" maxlength="6" onblur="checkMemberAddress();">
+                         <button type="button" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text"name="memberAddr1" class="form-input w-100 mt-10" 
+                         placeholder="기본주소" onblur="checkMemberAddress();">
+                    <input type="text"name="memberAddr2" class="form-input w-100 mt-10" 
+                         placeholder="상세주소" onblur="checkMemberAddress();">
+                    <div class="fail-feedback">주소 입력시 모든 주소를 작성해주세요</div>
                 </div>
                 <div class="row ">
                     <button type="submit" class="btn btn-positive w-50"

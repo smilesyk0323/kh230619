@@ -35,13 +35,15 @@
             //console.log(tag.classList);
             //console.log(tag.classList.contains("check-item"));
 
-            if(tag.classList.contains("check-all")) {//2-1
+            if(tag.classList.contains("check-all")) {//2-1 모두동의체크일때 > 개별도 다 체크되어야함
+                //개별 동의를 모두 모아둠
                 var itemList = document.querySelectorAll(".check-item");
+                //모두 동의도 모두 모아둠
                 var allList = document.querySelectorAll(".check-all");
 
-                //tag의 체크 상태에 따라 allList와 itemList를 모두 체크/해제
+                //tag의 체크 상태(체크 여부)에 따라 allList와 itemList를 모두 체크/해제
                 for(var i=0; i < itemList.length; i++) {
-                    itemList[i].checked = tag.checked;
+                    itemList[i].checked = tag.checked;//주인공의 체크상태를 모든 아이템에 적용시켜라
                 }
                 for(var i=0; i < allList.length; i++) {
                     allList[i].checked = tag.checked;

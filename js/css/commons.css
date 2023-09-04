@@ -604,10 +604,13 @@
         .success {
             /* important는 우선순위를 최상위로 올린다 */
             border-color: #00b894 !important;
+        }
+        .success:not([type=date]) {
             background-image: url("../image/valid.png");
             background-repeat: no-repeat;
-            background-position-x: right;
-            background-position-y: center;
+            /* background-position-x: right;
+            background-position-y: center; */
+            background-position: center right 1em;
             background-size: 1em;
         }
         .fail, 
@@ -616,7 +619,8 @@
             border-color: #d63031 !important;
             background-image: url("../image/invalid.png");
             background-repeat: no-repeat;
-            background-position-x: right;
-            background-position-y: center;
+            /* background-position-x: right;
+            background-position-y: center; */
+            background-position: center right 1em;
             background-size: 1em;
         }

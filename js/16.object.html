@@ -54,8 +54,59 @@
         function window05() {//차단을 많이 당함.. 예전에 비해 많이 안씀
             //window.open("주소", "ID", "새창 옵션");            
             // open("https://www.google.com","","width=500, height=500"); //무한 새창
-            open("https://www.google.com","win1","width=500, height=500");//창 하나만 열림
+
+            //구글은 새창이 타겟팅되지 않음
+            window.open("https://www.melon.com/","win1","width=500, height=500");//창 하나만 열림
         }       
+
+        function location01() {
+            // console.log(window.location);
+            // console.log(location);
+            location.href = "https://www.google.com";
+            //location = "https://www.google.com"; // 위와 동일
+        }
+
+        function location02() {
+            // console.log(window.location.reload);
+            location.reload();
+        }
+
+        function history01() {
+            // console.log(window.history);
+            history.back();//= history.go(-1);
+        }
+
+        function history02() {
+            history.go(-2);
+        }
+
+        //document.querySelector()는 가장 위에 있는 1개의 태그를 선택
+        //document.querySelectorAll()은 해당하는 모든 태그를 선택
+        //
+        function document01() {
+            // console.log(window.document);
+            // var tag = document.querySelector("h1");//원치 않는 결과 
+            // var tag = document.querySelector("#target");
+            // var tag = document.querySelector(".temp");//selectOne(하나)
+            // tag.style.color="red";
+            var tag = document.querySelectorAll(".temp");//selectAll(배열)
+            // tag[0].style.color="red";
+            // tag[1].style.color="red";
+            for(i=0; i<tag.length; i++){//갯수 무관 처리 가능 
+                tag[i].style.color="red";
+            }
+        }
+
+        //document.getElementById(아이디) - 가장 중요!
+        //document.getElementsByClassName(클래스)
+        //document.getElementsByTagName(태그명)
+        function document02() {
+            var tag = document.getElementById("target");
+            tag.style.color = "red";
+
+            // var tag = document.getElementsByClassName("temp");
+            // tag[0].style.color = "red";
+        }
     </script>
 </head>
 <body>
@@ -75,6 +126,38 @@
             <button onclick="window04();">새탭</button>
             <button onclick="window05();">새창</button>
         </div>
+
+        <div class="row left">
+            location은 window의 하위 객체이며 주소창과 새로고침버튼 등의 정보 및 제어 기능이 존재
+        </div>
+        <div class="row">
+            <button onclick="location01();">구글로 이동</button>
+            <button onclick="location02();">새로고침</button>
+        </div>
+
+        <div class="row left">
+            history는 window의 하위 객체이며
+            방문이력을 관리하며 뒤로 혹은 앞으로 이동 기능이 존재
+        </div>
+        <div class="row">
+            <button onclick="history01();">뒤로가기</button>
+            <button onclick="history02();">뒤로 2페이지 가기</button>
+        </div>
+
+        <div class="row left">
+            document는 window의 하위 객체 이며 
+            문서를 제어할 수 있는 기능을 가지고 있다
+        </div>
+        <div class="row">
+            <button onclick="document01();">선택하기(신버전)</button>
+            <button onclick="document01();">선택하기(구버전)</button>
+        </div>
+
+        <div class="row">
+            <h1 id="target" class="temp">선택대상</h1>
+            <h1 id="target2" class="temp">선택대상</h1>
+        </div>
+
     </div>
 </body>
 </html>

@@ -21,7 +21,6 @@
     <script>
         window.addEventListener("load", function(){
             var buttonList = document.querySelectorAll(".keypad");
-
             for(var i=0; i < buttonList.length; i++) {
             buttonList[i].addEventListener("click", function(){
                     //this == 클릭된 버튼(이벤트의 주인공)
@@ -29,13 +28,11 @@
                     div.textContent+=this.textContent;
                 });
             }
-
             var sharp = document.querySelector(".delete");
             sharp.addEventListener("click",function(){
                 var div = document.querySelector(".target");
                 div.textContent="";
             });
-
         });
     </script>
 </head>
@@ -45,7 +42,7 @@
             <h2>전화기 화면 만들기</h2>
         </div>
         <div class="row">
-            <div class="target"></div>
+            <textarea class="target"></textarea>
         </div>
         <div class="row">
             <button class="btn keypad" >7</button>

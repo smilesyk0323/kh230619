@@ -13,7 +13,7 @@
     <!--내가 만든 CSS파일-->
     <link rel="stylesheet"type="text/css" href="./css/reset.css">
     <link rel="stylesheet"type="text/css" href="./css/commons.css">
-    <link rel="stylesheet"type="text/css" href="./css/test.css">
+    <!-- <link rel="stylesheet"type="text/css" href="./css/test.css"> -->
     <style>
 
     </style>
@@ -29,8 +29,8 @@
                 for(var i=0; i < itemList.length; i++) {
                     itemList[i].checked = tag.checked;
                     total += parseInt(itemList[i].value);
+                    span.textContent = total;
                 }
-                span.textContent = total;
 
             }
             else{
@@ -51,11 +51,11 @@
     </script>
 </head>
 <body>
-    <div class="container w-500">
-        <div class="row left">
+    <div class="container w-400 mt-50">
+        <div class="row">
             <h1>KH 과일 상회</h1>
         </div>
-        <div class="row left"style="font-size: 20px;">
+        <div class="row left mt-50"style="font-size: 20px;">
             <label>
                 <input type="checkbox" class="check-all" oninput="plusTotal(this);">모두 선택
             </label>
@@ -85,7 +85,7 @@
         </div>
         <hr>
         <div class="row">
-            <h1>예상 결제 금액 :<span id="total">0</span>원</h1>
+            <h2>예상 결제 금액 :<span id="total">0</span>원</h2>
         </div>
     </div>
 </body>

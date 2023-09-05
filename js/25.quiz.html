@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전화기 화면 만들기</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="./css/commons.css">
+    <link rel="stylesheet"type="text/css" href="./css/test.css">
+    <style>
+
+    </style>
+    <!--javascript 작성 공간-->
+    <script>
+        window.addEventListener("load", function(){
+            var buttonList = document.querySelectorAll(".btn");
+
+            for(var i=0; i < buttonList.length; i++) {
+            buttonList[i].addEventListener("click", function(){
+                    //this == 클릭된 버튼(이벤트의 주인공)
+                    var text = document.querySelector(".text");
+                    text.value+=this.textContent;
+                });
+            }
+
+            var sharp = document.querySelector(".delete");
+            sharp.addEventListener("click",function(){
+                var text = document.querySelector(".text");
+                text.value="";
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container w-300">
+        <div class="row">
+            <h2>전화기 화면 만들기</h2>
+        </div>
+        <div class="row">
+            <textarea class="form-input textarea text"></textarea>
+        </div>
+        <div class="row">
+            <button class="btn" >7</button>
+            <button class="btn" >8</button>
+            <button class="btn" >9</button>
+        </div>
+        <div class="row">
+            <button class="btn" >4</button>
+            <button class="btn" >5</button>
+            <button class="btn" >6</button>
+        </div>
+        <div class="row">
+            <button class="btn" >1</button>
+            <button class="btn" >2</button>
+            <button class="btn" >3</button>
+        </div>
+        <div class="row">
+            <button class="btn" >*</button>
+            <button class="btn" >0</button>
+            <button class="btn delete" >#</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -68,12 +68,24 @@
     <script>
 
         $(function(){
+            //객체를 하나 만들어서 검사 결과를 저장 
+            //- 검사 결과를 이곳에 저장 
+            var status = {//아직 id,pw,pwCheck는 통과하지 못했다
+                id:false,
+                pw:false,
+                pwCheck:false,
+                ok:function(){
+                    return this.id && this.pw && this.pwCheck;
+                },
+            };
 
             $("[name=memberId]").blur(function(){
                 var regex =  /^[a-z0-9]{5,20}$/;
                 var isValid = regex.test($(this).val());
                 $(this).removeClass("success fail");
                 $(this).addClass(isValid ? "success" : "fail");
+                //검사 결과를 status에 저장 
+                status.id = isValid;
             });
 
             $("[name=memberPw]").blur(function(){
@@ -81,6 +93,8 @@
                 var isValid = regex.test($(this).val());
                 $(this).removeClass("success fail");
                 $(this).addClass(isValid ? "success" : "fail");
+                 //검사 결과를 status에 저장 
+                 status.pw = isValid;
             });
 
             $("#password-check").blur(function(){
@@ -90,12 +104,29 @@
                 $(this).removeClass("success fail fail2");
                 if(originPw.length == 0){//미입력이면
                     $(this).addClass("fail2");
+                    //검사 결과를 status에 저장 
+                    status.pwCheck = false;
                 }
                 else if(originPw == checkPw){//일치하면
                     $(this).addClass("success");
+                    //검사 결과를 status에 저장 
+                    status.pwCheck = true;
                 }
                 else{//비밀번호 불일치
                     $(this).addClass("fail");
+                    //검사 결과를 status에 저장 
+                    status.pwCheck = false;
+                }
+            });
+
+            //form에 submit이벤트를 설정
+            $(".join-form").submit(function(e){
+                //status를 확인 
+                // console.table(status);//결과를 테이블로 보여줌
+                // console.log(status.ok());
+
+                if(status.ok()==false){
+                    e.preventDefault();
                 }
             });
 
@@ -105,7 +136,7 @@
     </script>
 </head>
 <body>
-    <form action="join" method="post" autocomplete="off">
+    <form class="join-form" action="join" method="post" autocomplete="off">
         
         <div class="container w-500">
             <div class="row">

@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<style>
+.button{
+}
+
+</style>
 <body style="background-color:#F2EFFB">
 
 <h2 style="color: #6460AA;">

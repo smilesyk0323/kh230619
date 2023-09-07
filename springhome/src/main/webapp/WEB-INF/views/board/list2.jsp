@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+ 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-
+  <style>
+.btn.btn-positive{
+	background-color:#6460AA;
+	border:none;
+}
+</style> 
 <body style="background-color:#F2EFFB">
 <div class="container w-800"style="color: #182C61;">
 	<div class="row">
@@ -117,7 +122,7 @@
 	
 	<!-- 검색창 -->
 	<form action="list" method="get">
-	<div class="row">
+	<div class="row select">
 		<c:choose>
 			<c:when test="${param.type == 'board_writer'}">
 				<select name="type" required class="form-input">
@@ -135,7 +140,7 @@
 		
 		<input type="search" name="keyword"  required class="form-input"
 					placeholder="검색어 입력" value="${param.keyword}">
-		<button type="submit" class="btn btn-positive" style="background-color:#6460AA">
+		<button type="submit" class="btn btn-positive" >
 			<i class="fa-solid fa-magnifying-glass"></i>
 			검색
 		</button>

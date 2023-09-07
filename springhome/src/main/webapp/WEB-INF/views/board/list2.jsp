@@ -3,10 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
  
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+
+    <script src="/js/checkbox.js"></script>
   <style>
 .btn.btn-positive{
 	background-color:#6460AA;
 	border:none;
+}
+.upBtn{
+	font-size:14px;
 }
 </style> 
 <body style="background-color:#F2EFFB">
@@ -15,10 +20,18 @@
 		<h1>자유 게시판</h1>
 	</div>
 	
+	<!-- 폼시작(체크박스) -->
+	<form class="delete-form" action="deleteByAdmin"method="post">
 	<%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
 	<c:if test="${sessionScope.name != null}">
-	<div class="row right">
-		<a href="write" class="btn">
+	<div class="row right ">
+		<c:if test="${sessionScope.level =='관리자' }">
+		<button type ="submit" class="btn upBtn delete-btn">
+			<i class="fa-solid fa-trash"></i>
+			일괄삭제</button></c:if>
+
+	
+		<a href="write" class="btn upBtn">
 			<i class="fa-solid fa-pen"></i>
 			글쓰기
 		</a>
@@ -39,6 +52,11 @@
 		<table class="table table-slit"style="color: #182C61;">
 			<thead>
 				<tr>
+				<%--체크박스 일괄 삭제 --%>
+				<c:if test="${sessionScope.level =='관리자' }">
+					<th>
+						<input type="checkbox" class="check-all">
+					</th></c:if>
 					<th>번호</th>
 					<th width="40%">제목</th>
 					<th>작성자</th>
@@ -50,6 +68,11 @@
 			<tbody>
 			<c:forEach var="boardListDto" items="${list}">
 				<tr>
+					<%--체크박스 개별 삭제 --%>
+					<c:if test="${sessionScope.level =='관리자' }">
+					<td>
+						<input type="checkbox"class="check-item" name="boardNoList" value="${boardListDto.boardNo }">
+					</td></c:if>
 					<td>${boardListDto.boardNo}</td>
 					<td align="left">
 						
@@ -91,6 +114,9 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<!-- 폼 종료(체크박스) -->
+	</form>
 	
 	<div class="row page-navigator mv-30">
 		<!-- 이전 버튼 -->

@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+        <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!--내가 만든 CSS파일-->
     <link rel="stylesheet"type="text/css" href="/css/reset.css">
     <link rel="stylesheet"type="text/css" href="/css/layout.css">

@@ -1,79 +1,111 @@
 
-function checkMemberId() {
-    var input = document.querySelector("[name=memberId]");
-    var regex = /^[a-z0-9]{5,20}$/;
+$(function(){
+    //상태 객체
+    var status = {
+        id:false,
+        pw:false,
+        pwCheck:false,
+        nick:false,
+        email:false,
+        contact:false,
+        birth:false,
+        addr:false,
+        ok:function(){
+            return this.id && this.pw && this.pwCheck&&this.nick && this.email 
+            && this.contact && this.birth && this.addr;
+        },
+    };
 
-    input.classList.remove("success","fail");
-    if(regex.test(input.value)){
-        input.classList.add("success");
-        return true;
-    }
-    else{
-        input.classList.add("fail");
-        return false;
-    }
-}
+    $("[name=memberId]").blur(function(){
+        var regex =  /^[a-z][a-z0-9]{4,19}$/;
+        var isValid = regex.test($(this).val());
+        $(this).removeClass("success fail");
+        $(this).addClass(isValid ? "success" : "fail"); 
+        status.id = isValid;
+    });
+    $("[name=memberPw]").blur(function(){
+        var regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$/;
+        var isValid = regex.test($(this).val());
+        $(this).removeClass("success fail");
+        $(this).addClass(isValid ? "success" : "fail");
+         status.pw = isValid;
+         //비밀번호 확인창에 강제로 blur이벤트를 발생시킨다(트리거)
+         $("#password-check").blur();//너무 많으면 혼돈~ 한 두개 정도에 적용
+    });
+    $("#password-check").blur(function(){
+        var originPw = $("[name=memberPw]").val();
+        var checkPw = $(this).val();
+        $(this).removeClass("success fail fail2");
+        if(originPw.length == 0){//미입력이면
+            $(this).addClass("fail2");
+            status.pwCheck = false;
+        }
+        else if(originPw == checkPw){//일치하면
+            $(this).addClass("success"); 
+            status.pwCheck = true;
+        }
+        else{//비밀번호 불일치
+            $(this).addClass("fail");
+            status.pwCheck = false;
+        }
+    });
+    $("[name=memberNickname]").blur(function(){
+        var regex =  /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9]{2,10}$/;
+        var isValid = regex.test($(this).val());
+        $(this).removeClass("success fail");
+        $(this).addClass(isValid ? "success" : "fail");
+         status.nick = isValid;
+    });
+    $("[name=memberEmail]").blur(function(){
+        var regex =  /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        var isValid =$(this).val() == "" || regex.test($(this).val());
+        $(this).removeClass("success fail");
+        $(this).addClass(isValid ? "success" : "fail");
+         status.email = isValid;
+    });
+    $("[name=memberContact]").blur(function(){
+        var regex =  /^010[1-9][0-9]{7}$/;
+        var contact = $(this).val();
+        var isValid =contact.length == 0 || regex.test(contact);
+        $(this).removeClass("success fail");
+        $(this).addClass(isValid ? "success" : "fail");
+         status.contact = isValid;
+    });
+    $("[name=memberBirth]").blur(function(){
+        var regex =  /^(19[0-9]{2}|20[0-9]{2})-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/;
+        var isValid =$(this).val().length == 0 || regex.test($(this).val());
+        $(this).removeClass("success fail");
+        $(this).addClass(isValid ? "success" : "fail");
+         status.birth = isValid;
+    });
+    $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").blur(function(){
+        //this 사용 불가(확실히 누군지 알 수 없음)-수동으로 선택해줘야함
+        var post =  $("[name=memberPost]").val();
+        var addr1 = $("[name=memberAddr1]").val();
+        var addr2 = $("[name=memberAddr2]").val();
+        var isBlank = post.length == 0 && addr1.length == 0 && addr2.length == 0;
+        var isFill = post.length > 0 && addr1.length > 0 && addr2.length > 0;            
+        var isValid = isBlank || isFill;
+        $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").removeClass("success fail");
+        $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").addClass(isValid ? "success" : "fail");
+         status.addr = isValid;
+    });
+    
+ //페이지 이탈 방지 
+            //- window에 beforeunload 이벤트 설정
+            $(window).on("beforeunload",function(){
+                return false;
+            });
 
-function checkMemberPw() {
-    var input = document.querySelector("[name=memberPw]");
+    $(".join-form").submit(function(e){//기본이벤트가 있는 코드라 "e"가 필요
+        $(".form-input").blur();
+        if(!status.ok()){
+            e.preventDefault();
+        }
+        else{
+            $(window).off("beforeunload")
+        }
+    });
 
-    var regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$/;
-    var isValid = regex.test(input.value);
 
-    input.classList.remove("success", "fail");
-    if(regex.test(input.value)){
-        input.classList.add("success");
-        return true;
-    }
-    else{
-        input.classList.add("fail");
-        return false;
-    }
-}
-
-function checkMemberPw2() {
-    var pw = document.querySelector("[name=memberPw]");
-    var pwCheck = document.querySelector("#password-check");
-
-    //var isValid = 비밀번호가 1글자이상 입력되어 있고 두 입력값이 같으면;
-    var isValid = pw.value.length >= 1 && pw.value == pwCheck.value;
-
-    pwCheck.classList.remove("success", "fail", "fail2");
-    if(pw.value.length == 0){
-        pwCheck.classList.add("fail2");
-        return false;
-    }
-    else if(isValid) {
-        pwCheck.classList.add("success");
-        return true;
-    }
-    else {
-        pwCheck.classList.add("fail");
-        return false;
-    }
-}
-function checkMemberNick() {
-    var input = document.querySelector("[name=memberNickname]");
-    var regex = /^[가-힣0-9]{2,10}$/;
-
-    input.classList.remove("success","fail");
-    if(regex.test(input.value)){
-        input.classList.add("success");
-        return true;
-    }
-    else{
-        input.classList.add("fail");
-        return false;
-    }
-}
-
-//폼 검사는 기존 검사 함수를 불러 결과를 받아 반환하도록 구현
-function checkForm(){
-    // return checkMemberId() && checkMemberPw(); 하나만 실행해서 결과를 알려줌
-
-    var r1 = checkMemberId();
-    var r2 = checkMemberPw();
-    var r3 = checkMemberPw2();
-    var r4 = checkMemberNick();
-    return r1&& r2&&r3&&r4;
-}
+});

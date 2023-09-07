@@ -39,12 +39,10 @@
         $(function(){
             //최초의 게이지 설정
             refreshProgressbar();
-
             //이전이나 다음버튼을 누르면 진행사항을 파악하여 게이지 계산
             $(".btn-prev, .btn-next").click(function(){
                 refreshProgressbar();
-            });
-            
+            });          
             function refreshProgressbar(){
                 //page중에 보여지는 태그(페이지)를 찾아서 계산
                 //- 전체페이지 수 + 보여지는 페이지 번호
@@ -57,14 +55,10 @@
                         index = idx+1; //진행율을 계산하기 쉽도록 +1 
                     }
                     count++;
-                });
-    
+                });   
                 var percent = index * 100 /count;
-                $(".progressbar > .guage").css("width", percent+"%");
-                
+                $(".progressbar > .guage").css("width", percent+"%");              
             }
-
-
         });
     </script>
 </head>

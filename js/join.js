@@ -91,7 +91,7 @@ $(function(){
          status.addr = isValid;
     });
     
- //페이지 이탈 방지 
+        //페이지 이탈 방지 
             //- window에 beforeunload 이벤트 설정
             $(window).on("beforeunload",function(){
                 return false;

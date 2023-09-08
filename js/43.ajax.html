@@ -26,8 +26,11 @@
             $(".load-btn").click(function(){
                 // $.ajax({옵션})
                 $.ajax({
-                    url:"./43.ajax.txt",//불러올 대상의 주소
-                    success:function(response){
+                    // url:"./43.ajax.txt",//[1]불러올 대상의 주소 
+                    // url:"http://localhost:8080/hello",
+                    url:"http://localhost:8080/lotto",
+                    success:function(response){//[2]성공하면 실행할 메세지를 적을 함수
+                        console.log(response);
                         $(".display").text(response);
                     }
                 });

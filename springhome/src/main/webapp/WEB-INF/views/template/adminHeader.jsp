@@ -7,30 +7,34 @@
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
 
-<!-- css 파일을 불러오는 코드 -->
-<!-- 아이콘 사용을 위한 Font Awesome 6 CDN -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+        <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="/css/reset.css">
+    <link rel="stylesheet"type="text/css" href="/css/layout.css">
+    <link rel="stylesheet"type="text/css" href="/css/commons.css">
+	<!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->
+	<!-- favicon 설정 -->
+	<link rel="shortcut icon" href="/images/favicon.ico">
+<style>
 
-<!-- 구글 웹 폰트 사용을 위한 CDN -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" type="text/css" href="/css/reset.css">
-<link rel="stylesheet" type="text/css" href="/css/layout-sidebar.css">
-<link rel="stylesheet" type="text/css" href="/css/commons.css">
-<!-- <link rel="stylesheet" type="text/css" href="/css/test.css"> -->
-<style></style>
+</style>
 
 </head>
 <body>
 	<main>
         <header>
             <div class="logo">
-                <img src="https://dummyimage.com/200x50/000/fff">
+                <img src="/images/bora-logo3.png" style="width:70px">
             </div>
             <div class="title">
-                <h1>내가 만든 홈페이지</h1>
+                <h1 style="color:#6460AA">Bora's Home</h1>
             </div>
             <div class="etc"></div>
         </header>

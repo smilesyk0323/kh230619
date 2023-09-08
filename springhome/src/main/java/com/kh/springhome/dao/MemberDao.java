@@ -11,6 +11,7 @@ import com.kh.springhome.vo.PaginationVO;
 public interface MemberDao {
 		void insert(MemberDto memberDto);
 		MemberDto selectOne(String memberId);//mypage=상세
+		MemberDto selectOneNick(String memberNickname);//비동기 닉네임검사
 		boolean updateMemberLogin(String memberId);
 		boolean updateMemberPw(String memberId, String changePw);
 		boolean updateMemberInfo(MemberDto memberDto);

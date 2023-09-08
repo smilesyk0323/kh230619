@@ -44,6 +44,15 @@ public class MemberDaoImpl implements MemberDao{
 			jdbcTemplate.update(sql,data);
 	    }
 	
+	//비동기 닉네임 검사
+	@Override
+	public MemberDto selectOneNick(String memberNickname) {
+		String sql = "select * from member where member_nickname = ?";
+		Object[] data = {memberNickname};
+		List<MemberDto>list = jdbcTemplate.query(sql, memberMapper,data);
+		return list.isEmpty() ? null : list.get(0);
+	}
+	
 	
 	//로그인처리 가능
 	@Override
@@ -234,6 +243,9 @@ public class MemberDaoImpl implements MemberDao{
 						jdbcTemplate.query(sql,  memberBlockMapper, data);
 			return list.isEmpty() ? null:list.get(0);
 		}
+
+
+		
 		
 
 

@@ -621,7 +621,7 @@
         .fail:not([type=date]), 
         .fail2:not([type=date])
         {
-            background-image: url("../images/invalid.png");
+            background-image: url("../image/invalid.png");
             background-repeat: no-repeat;
             /* background-position-x: right;
             background-position-y: center; */

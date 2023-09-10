@@ -4,16 +4,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <style>
+th,
+h1{
+color: #182C61;
+}
 .btn.btn-positive{
 background-color:#6460AA;
 border:none;
-font-size:18px;
+font-size:16px;
 }
 </style>
 <body style="background-color:#F2EFFB">
-<div class="container w-500" style="color:#6460AA">
-	<div class="row">
-		<h1>${memberDto.memberId} 님의 회원 정보</h1>
+<div class="container w-500">
+	<div class="row mb-20">
+		<h1>[ ${memberDto.memberId} ] 님의 회원 정보</h1>
 	</div>
 	
 	<div class="row">

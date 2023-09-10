@@ -13,6 +13,13 @@
 .upBtn{
 	font-size:14px;
 }
+select.form-input,
+.form-input,
+.btn{
+	font-size:16px;
+	height:2.3em;
+    border-radius: 0.1em;
+}
 </style> 
 <body style="background-color:#F2EFFB">
 <div class="container w-800"style="color: #182C61;">

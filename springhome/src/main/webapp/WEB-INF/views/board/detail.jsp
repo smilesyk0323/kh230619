@@ -4,7 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-<body style="background-color:#F2EFFB">
+<style>
+body{
+background-color:#F2EFFB;
+}
+</style>
 <div class="container w-800 ">
 	<div class="row">
 		<h1 style="color:#4A148C">

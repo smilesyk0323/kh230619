@@ -85,10 +85,12 @@ $(function(){
 					
 					//만드는 시점에 이벤트 설정
 					//- 반복문의 데이터 사용 불가(위치 다름-response[i]..)
+					//- 지금과 같이 버튼 내부에 태그가 더 있을 때, this와 e.target은 다를 수 있다
+					//   (this는 주인공, e.target은 실제대상)
 					$(htmlTemplate).find(".btn-delete").attr("data-reply-no",reply.replyNo);
 					$(htmlTemplate).find(".btn-delete").click(function(e){//삭제버튼
 						//var replyNo = $(this).data("reply-no");
-						var replyNo = $(e.target).data("reply-no");//data-reply-no
+						var replyNo = $(this).attr("data-reply-no");//data-reply-no
 						$.ajax({
 							url:"/rest/reply/delete",
 							method:"post",

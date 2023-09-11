@@ -105,11 +105,19 @@ $(function(){
 					//- 전환 시 작성된 값들을 입력창으로 이동시켜야 함
 					//- 전송 가능한 form과 취소 버튼을 구현
 					//- 수정 시 서버로 글 번호와 글 내용만 전달하면 됨
-					$(htmlTemplate).find(".btn-edit").click(function(){//수정버튼
-						//this == 수정버튼
-						
+					$(htmlTemplate).find(".btn-edit")
+														.attr("data-reply-no",reply.replyNo)
+														.click(function(){//수정버튼
+						//this == 수정버튼						
 						var editTemplate = $("#reply-edit-template").html();
 						var editHtmlTemplate = $.parseHTML(editTemplate);
+						
+						//value 설정
+						var replyNo = $(this).attr("data-reply-no");
+						var replyContent = $(this).parents(".view-container").find(".replyContent").text();
+						$(editHtmlTemplate).find("[name=replyNo]").val(replyNo);
+						$(editHtmlTemplate).find("[name=replyContent]").val(replyContent);
+						
 						
 						//취소 버튼에 대한 처리 구현
 						$(editHtmlTemplate).find(".btn-cancel")
@@ -119,6 +127,25 @@ $(function(){
 										.prev(".view-container").show();
 							$(this).parents(".edit-container").remove();
 						});
+						
+						//완료(등록)버튼 처리
+						//-editHtmlTemplate 자체가 form이므로 추가 탐색을 하지 않음
+						$(editHtmlTemplate).submit(function(e){
+									//검사 코드(미입력)
+									
+									//기본 이벤트 차단
+									e.preventDefault();
+									
+									$.ajax({
+										url:"/rest/reply/edit",
+										method:"post",
+										//data:{replyNo : ?, replyContent : ?},
+										data : $(e.target).serialize(),
+										success:function(response){
+											loadList();
+										}
+									});
+								});
 						
 						//화면 배치
 						$(this).parents(".view-container")
@@ -234,20 +261,21 @@ background-color:#F2EFFB;
 	</div>
 	
 	<%--댓글과 관련된 화면이 작성될 위치 --%>
-	<div class="row left">
-		<form class="reply-insert-form">
-				<input type="hidden" name="replyOrigin"value="${boardDto.boardNo}">
-				<div class="row">
-						<textarea name="replyContent" class="form-input w-100" rows="4"></textarea>
-				</div>	
-				<div class="row">
-						<button class="btn btn-positive w-100">
-						<i class="fa-solid fa-pen"></i>
-						댓글등록</button>
-				</div>
-		</form>
-	</div>
-	
+	<c:if test="${sessionScope.name != null }">
+		<div class="row left">
+			<form class="reply-insert-form">
+					<input type="hidden" name="replyOrigin"value="${boardDto.boardNo}">
+					<div class="row">
+							<textarea name="replyContent" class="form-input w-100" rows="4"></textarea>
+					</div>	
+					<div class="row">
+							<button class="btn btn-positive w-100">
+							<i class="fa-solid fa-pen"></i>
+							댓글등록</button>
+					</div>
+			</form>
+		</div>
+	</c:if>
 	<%--댓글 목록이 표시될 영역 --%>
 	<div class="row left reply-list"></div>
 	

@@ -46,6 +46,11 @@ public class ReplyRestController {
 		return list;
 	}
 	
+	@PostMapping("/delete")
+	public void delete(@RequestParam int replyNo) {
+		replyDao.delete(replyNo);
+	}
+	
 }
 
 

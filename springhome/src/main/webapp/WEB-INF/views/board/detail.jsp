@@ -83,7 +83,27 @@ $(function(){
 						$(htmlTemplate).find(".w-25").empty();
 					}
 					
+					//만드는 시점에 이벤트 설정
+					//- 반복문의 데이터 사용 불가(위치 다름-response[i]..)
+					$(htmlTemplate).find(".btn-delete").attr("data-reply-no",reply.replyNo);
+					$(htmlTemplate).find(".btn-delete").click(function(e){//삭제버튼
+						//var replyNo = $(this).data("reply-no");
+						var replyNo = $(e.target).data("reply-no");//data-reply-no
+						$.ajax({
+							url:"/rest/reply/delete",
+							method:"post",
+							data:{replyNo : replyNo},//오른쪽이 위의 var로 만든 replyNo
+							success:function(response){
+								loadList();
+							},							
+						});
+					});
 					
+					$(htmlTemplate).find(".btn-edit").click(function(){//수정버튼
+						
+					});
+					
+									
 					$(".reply-list").append(htmlTemplate);
 				}
 			},
@@ -106,12 +126,12 @@ $(function(){
 				</div>
 				<div class="w-25 ">
 						<div class="row right">
-							<button class="btn ">
+							<button class="btn btn-edit">
 							<i class="fa-solid fa-edit"></i>
 							</button>	
 						</div>
 						<div class="row right">
-							<button class="btn ">
+							<button class="btn btn-delete">
 							<i class="fa-solid fa-trash"></i>
 							</button>			
 						</div>

@@ -100,12 +100,32 @@ $(function(){
 							},							
 						});
 					});
-					
+					//수정버튼을 누르면?
+					//- 편집 상태의 템플릿을 만들어서 추가
+					//- 전환 시 작성된 값들을 입력창으로 이동시켜야 함
+					//- 전송 가능한 form과 취소 버튼을 구현
+					//- 수정 시 서버로 글 번호와 글 내용만 전달하면 됨
 					$(htmlTemplate).find(".btn-edit").click(function(){//수정버튼
+						//this == 수정버튼
 						
+						var editTemplate = $("#reply-edit-template").html();
+						var editHtmlTemplate = $.parseHTML(editTemplate);
+						
+						//취소 버튼에 대한 처리 구현
+						$(editHtmlTemplate).find(".btn-cancel")
+													.click(function(){
+							//this == 취소버튼
+							$(this).parents(".edit-container")
+										.prev(".view-container").show();
+							$(this).parents(".edit-container").remove();
+						});
+						
+						//화면 배치
+						$(this).parents(".view-container")
+										.hide()
+										.after(editHtmlTemplate);
 					});
-					
-									
+														
 					$(".reply-list").append(htmlTemplate);
 				}
 			},
@@ -114,7 +134,7 @@ $(function(){
 });
 </script>
 <script id="reply-template" type="text/template">
-		<div class="row flex-container">
+		<div class="row flex-container view-container">
 				<div class="w-75">
 						<div class="row left">
 								<h3 class="replyWriter"></h3>
@@ -141,6 +161,25 @@ $(function(){
 		</div>
 		
 </script>
+<script id="reply-edit-template"type="text/template">
+<form class="reply-edit-form edit-container">
+<input type="hidden"name="replyNo" value="?">
+<div class="row flex-container">
+	<div class="w-75">
+		<textarea name="replyContent" class="form-input w-100"rows="4">어쩌구저쩌구</textarea>
+	</div>
+	<div class="w-25">
+		<div class="row right">
+			<button type="submit" class="btn btn-positive">등록</button>
+		</div>
+		<div class="row right">
+			<button type="button" class="btn btn-negative btn-cancel">취소</button>
+		</div>
+	</div>
+</div>
+</form>
+</script>
+
 <style>
 body{
 background-color:#F2EFFB;
@@ -210,10 +249,9 @@ background-color:#F2EFFB;
 	</div>
 	
 	<%--댓글 목록이 표시될 영역 --%>
-	<div class="row left reply-list">
-		
-
-	</div>
+	<div class="row left reply-list"></div>
+	
+	
 	
 	<%--각종 버튼이 위치하는 곳 --%>
 	<div class="row right">

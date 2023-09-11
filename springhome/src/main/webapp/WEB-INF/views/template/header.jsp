@@ -58,7 +58,7 @@
 		<c:choose>
 			<c:when test="${sessionScope.name != null}">
 			
-					<li><a href="/"><i class="fa-regular fa-house"></i></a></li>
+					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/">Home</a></li>
 					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/mypage">Mypage</a></li>
 	   				 <li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
 					<li><a style="text-decoration:none ; color:#EDE7F6; " href="/member/logout">로그아웃</a></li>
@@ -70,7 +70,7 @@
 	   				
 			</c:when>
 			<c:otherwise>
-					<li><a href="/"><i class="fa-regular fa-house"></i></a></li>
+					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/">Home</a></li>
 				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
 				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/join">회원가입</a></li>
 				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/login">로그인</a></li>

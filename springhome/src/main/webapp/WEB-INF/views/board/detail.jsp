@@ -78,8 +78,8 @@ $(function(){
 					$(htmlTemplate).find(".replyTime").text(reply.replyTime);
 					
 					//내가 작성한 댓글이 아니라면
-					if(memberId.length == 0 || memberId != reply.replyWriter){
-						//버튼 숨기기
+					if(memberId.length == 0 || memberId != reply.replyWriter) {
+						//버튼 삭제
 						$(htmlTemplate).find(".w-25").empty();
 					}
 					
@@ -106,18 +106,19 @@ $(function(){
 					//- 전송 가능한 form과 취소 버튼을 구현
 					//- 수정 시 서버로 글 번호와 글 내용만 전달하면 됨
 					$(htmlTemplate).find(".btn-edit")
-														.attr("data-reply-no",reply.replyNo)
-														.click(function(){//수정버튼
-						//this == 수정버튼						
+											.attr("data-reply-no", reply.replyNo)
+											.click(function(){//수정버튼
+						//this == 수정버튼
 						var editTemplate = $("#reply-edit-template").html();
 						var editHtmlTemplate = $.parseHTML(editTemplate);
 						
 						//value 설정
 						var replyNo = $(this).attr("data-reply-no");
-						var replyContent = $(this).parents(".view-container").find(".replyContent").text();
+						var replyContent = $(this).parents(".view-container")
+																.find(".replyContent").text();
 						$(editHtmlTemplate).find("[name=replyNo]").val(replyNo);
 						$(editHtmlTemplate).find("[name=replyContent]").val(replyContent);
-						
+
 						
 						//취소 버튼에 대한 처리 구현
 						$(editHtmlTemplate).find(".btn-cancel")
@@ -131,21 +132,21 @@ $(function(){
 						//완료(등록)버튼 처리
 						//-editHtmlTemplate 자체가 form이므로 추가 탐색을 하지 않음
 						$(editHtmlTemplate).submit(function(e){
-									//검사 코드(미입력)
-									
-									//기본 이벤트 차단
-									e.preventDefault();
-									
-									$.ajax({
-										url:"/rest/reply/edit",
-										method:"post",
-										//data:{replyNo : ?, replyContent : ?},
-										data : $(e.target).serialize(),
-										success:function(response){
-											loadList();
-										}
-									});
-								});
+							//검사 코드(미입력)
+							
+							//기본 이벤트 차단
+							e.preventDefault();
+							
+							$.ajax({
+								url:"/rest/reply/edit",
+								method:"post",
+								//data:{replyNo : ?, replyContent : ?},
+								data : $(e.target).serialize(),
+								success:function(response){
+									loadList();
+								}
+							});
+						});
 						
 						//화면 배치
 						$(this).parents(".view-container")
@@ -162,49 +163,56 @@ $(function(){
 </script>
 <script id="reply-template" type="text/template">
 		<div class="row flex-container view-container">
-				<div class="w-75">
-						<div class="row left">
-								<h3 class="replyWriter"></h3>
-						</div>
-						<div class="row left">
-								<pre class="replyContent"></pre>
-						</div>
-						<div class="row left">
-								<span class="replyTime"></span>
-						</div>
+			<div class="w-75">
+				<div class="row left">
+					<h3 class="replyWriter">작성자</h3>
 				</div>
-				<div class="w-25 ">
-						<div class="row right">
-							<button class="btn btn-edit">
-							<i class="fa-solid fa-edit"></i>
-							</button>	
-						</div>
-						<div class="row right">
-							<button class="btn btn-delete">
-							<i class="fa-solid fa-trash"></i>
-							</button>			
-						</div>
-				</div>			
+				<div class="row left">
+					<pre class="replyContent">내용</pre>
+				</div>
+				<div class="row left">
+					<span class="replyTime">yyyy-MM-dd HH:mm:ss</span>
+				</div>
+			</div>
+			<div class="w-25">
+				<div class="row right">
+					<button class="btn btn-edit">
+						<i class="fa-solid fa-edit"></i>
+						수정
+					</button>
+				</div>
+				<div class="row right">
+					<button class="btn btn-negative btn-delete">
+						<i class="fa-solid fa-trash"></i>
+						삭제
+					</button>
+				</div>
+			</div>
 		</div>
-		
 </script>
-<script id="reply-edit-template"type="text/template">
-<form class="reply-edit-form edit-container">
-<input type="hidden"name="replyNo" value="?">
-<div class="row flex-container">
-	<div class="w-75">
-		<textarea name="replyContent" class="form-input w-100"rows="4">어쩌구저쩌구</textarea>
-	</div>
-	<div class="w-25">
-		<div class="row right">
-			<button type="submit" class="btn btn-positive">등록</button>
+<script id="reply-edit-template" type="text/template">
+		<form class="reply-edit-form edit-container">
+		<input type="hidden" name="replyNo" value="?">
+		<div class="row flex-container">
+			<div class="w-75">
+				<textarea name="replyContent" class="form-input w-100" rows="4">어쩌구저쩌구</textarea>
+			</div>
+			<div class="w-25">
+				<div class="row right">
+					<button type="submit" class="btn btn-positive">
+						<i class="fa-solid fa-check"></i>
+						수정
+					</button>
+				</div>
+				<div class="row right">
+					<button type="button" class="btn btn-negative btn-cancel">
+						<i class="fa-solid fa-xmark"></i>
+						취소
+					</button>
+				</div>
+			</div>
 		</div>
-		<div class="row right">
-			<button type="button" class="btn btn-negative btn-cancel">취소</button>
-		</div>
-	</div>
-</div>
-</form>
+		</form>
 </script>
 
 <style>
@@ -260,21 +268,23 @@ background-color:#F2EFFB;
 		<pre style="color:#4A148C">${boardDto.boardContent}</pre>
 	</div>
 	
-	<%--댓글과 관련된 화면이 작성될 위치 --%>
-	<c:if test="${sessionScope.name != null }">
-		<div class="row left">
-			<form class="reply-insert-form">
-					<input type="hidden" name="replyOrigin"value="${boardDto.boardNo}">
-					<div class="row">
-							<textarea name="replyContent" class="form-input w-100" rows="4"></textarea>
-					</div>	
-					<div class="row">
-							<button class="btn btn-positive w-100">
-							<i class="fa-solid fa-pen"></i>
-							댓글등록</button>
-					</div>
-			</form>
-		</div>
+	<%-- 댓글과 관련된 화면이 작성될 위치 --%>
+	<c:if test="${sessionScope.name != null}">
+	<div class="row left">
+		<form class="reply-insert-form">
+			<input type="hidden" name="replyOrigin" value="${boardDto.boardNo}">
+		
+			<div class="row">
+				<textarea name="replyContent" class="form-input w-100" rows="4"></textarea>
+			</div>
+			<div class="row">
+				<button class="btn btn-positive w-100">
+					<i class="fa-solid fa-pen"></i>
+					댓글등록
+				</button>
+			</div>
+		</form>
+	</div>
 	</c:if>
 	<%--댓글 목록이 표시될 영역 --%>
 	<div class="row left reply-list"></div>

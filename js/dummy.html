@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            var html = $("#template").html();
+            var htmlTemplate = $.parseHTML(html);
+            $("body").append(htmlTemplate);
+
+            // $(".container").find(".helloworld").css("color", "red");//1
+            // $(".container").find(".helloWorld").css("color", "red");//2
+            // $(".container").find(".hello-world").css("color", "red");//3
+            // $(".container").find(".hello-World").css("color", "red");//4
+        });
+    </script>
+    <script id="template" type="text/template">
+        <div class="container">
+            <div class="helloworld">1</div>
+            <div class="helloWorld">2</div>
+            <div class="hello-world">3</div>
+            <div class="hello-World">4</div>
+        </div>
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -116,6 +116,9 @@ $(function(){
 						var replyNo = $(this).attr("data-reply-no");
 						var replyContent = $(this).parents(".view-container")
 																.find(".replyContent").text();
+						console.log($(this).parents(".view-container"));
+						console.log($(this).parents(".view-container").find(".reply-content"));
+						console.log(replyContent);
 						$(editHtmlTemplate).find("[name=replyNo]").val(replyNo);
 						$(editHtmlTemplate).find("[name=replyContent]").val(replyContent);
 

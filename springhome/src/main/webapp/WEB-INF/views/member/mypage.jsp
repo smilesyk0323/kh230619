@@ -5,7 +5,8 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <style>
 th,
-h1{
+h1,
+h2{
 color: #182C61;
 }
 .btn.btn-positive{
@@ -82,6 +83,27 @@ font-size:16px;
 			</tr>
 		</table>
 	</div>
+	
+	<div class="row mt-40">
+		<h2>좋아요 한 게시글</h2>
+	</div>
+	
+	<div class="row">
+		<table class="table table-border">
+			<c:forEach var="boardDto" items="${boardLikeList}">
+			<tr>
+				<td class="w-75">
+				<a href="/board/detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}
+				</a>
+				</td>
+				<td class="w-25">${boardDto.boardWriter}</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
+	
+	
 	<div class="row flex-container w-100 auto-width">
 		<div class="row">
 			<a class="btn btn-positive" href="password">

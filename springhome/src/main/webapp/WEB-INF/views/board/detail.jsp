@@ -150,7 +150,7 @@ $(function(){
 							});
 						});
 						
-						//화면 배치
+						//화면 배치ㄱ데
 						$(this).parents(".view-container")
 										.hide()
 										.after(editHtmlTemplate);

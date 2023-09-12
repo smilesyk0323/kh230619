@@ -217,7 +217,49 @@ $(function(){
 		</div>
 		</form>
 </script>
-
+<!-- 좋아요 관련된 처리를 할 수 있도록 jQuery코드 구현 -->
+<c:if test="${sessionScope.name != null }">
+<script>
+	// 좋아요 처리
+	//[1] 페이지가 로드되면 비동기 통신으로 좋아요 상태를 체크하여 하트 생성
+	//[2] 하트에 클릭 이벤트를 설정하여 좋아요 처리가 가능하도록 구현
+	$(function(){
+		var params = new URLSearchParams(location.search);
+		var boardNo = params.get("boardNo");
+		
+		$.ajax({
+			url:"/rest/like/check",
+			method:"post",
+			data:{boardNo : boardNo},
+			success:function(response){
+				if(response =="Y"){
+					$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-solid");
+				}
+				else{
+					$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-regular");
+				}
+			}
+		});
+		
+		//[2]하트를 누르면
+		$(".fa-heart").click(function(){
+			$.ajax({
+				url:"/rest/like/action",
+				method:"post",
+				data: {boardNo : boardNo},//밖(함수랑 같은 위치랑 가능)에 만든 변수를 쓸 수 있음 
+				success:function(response){
+					if(response =="Y"){
+						$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-solid");
+					}
+					else{
+						$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-regular");
+					}
+				}
+			});
+		});
+	});
+</script>
+</c:if>
 <style>
 body{
 background-color:#F2EFFB;

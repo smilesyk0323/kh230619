@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.springhome.dao.BoardLikeDao;
 import com.kh.springhome.dto.BoardLikeDto;
+import com.kh.springhome.vo.BoardLikeVO;
 
 //@CrossOrigin
 @RestController
@@ -23,17 +24,26 @@ public class BoardLikeRestController {
 	//[2] 좋아요 상태를 확인하는 매핑 - 사용자 최초 화면에 표시할 하트 확인
 	
 	@RequestMapping("/check")
-	public String check(@ModelAttribute BoardLikeDto boardLikeDto,
+	public BoardLikeVO check(@ModelAttribute BoardLikeDto boardLikeDto,
 									HttpSession session) {
 		String memberId = (String)session.getAttribute("name");
 		boardLikeDto.setMemberId(memberId);//아이디는 세션에 있기에 갖고와야함
 		
 		boolean isCheck = boardLikeDao.check(boardLikeDto);
-		return isCheck ? "Y" : "N";
+		int count = boardLikeDao.count(boardLikeDto.getBoardNo());
+		
+		//그냥 반환을 못하기에 묶어주기 위해 객체 만듦
+		BoardLikeVO vo = new BoardLikeVO();
+		vo.setCheck(isCheck);
+		vo.setCount(count);
+		
+		return vo;//클라이언트에게 JSON으로 날라감
+		
+//		return isCheck ? "Y" : "N";
 	}
 	
 	@RequestMapping("/action")
-	public String action(@ModelAttribute BoardLikeDto boardLikeDto,
+	public BoardLikeVO action(@ModelAttribute BoardLikeDto boardLikeDto,
 										HttpSession session) {
 		String memberId = (String)session.getAttribute("name");
 		boardLikeDto.setMemberId(memberId);
@@ -41,12 +51,19 @@ public class BoardLikeRestController {
 		boolean isCheck = boardLikeDao.check(boardLikeDto);
 		if(isCheck) {//체크되어 있다면
 			boardLikeDao.delete(boardLikeDto);//체크해제
-			return "N";
 		}
 		else {//아니라면
 			boardLikeDao.insert(boardLikeDto);//체크설정
-			return "Y";
 		}
+		
+		int count = boardLikeDao.count(boardLikeDto.getBoardNo());
+		
+		BoardLikeVO vo = new BoardLikeVO();
+		vo.setCheck(!isCheck);
+		vo.setCount(count);
+		
+		return vo;
+		
 	}
 }
 

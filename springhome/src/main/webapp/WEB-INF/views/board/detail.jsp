@@ -115,10 +115,9 @@ $(function(){
 						//value 설정
 						var replyNo = $(this).attr("data-reply-no");
 						var replyContent = $(this).parents(".view-container")
-																.find(".replyContent").text();
-						console.log($(this).parents(".view-container"));
-						console.log($(this).parents(".view-container").find(".reply-content"));
-						console.log(replyContent);
+																//.find("pre")
+																.find(".replycontent")
+																.text();
 						$(editHtmlTemplate).find("[name=replyNo]").val(replyNo);
 						$(editHtmlTemplate).find("[name=replyContent]").val(replyContent);
 
@@ -134,7 +133,7 @@ $(function(){
 						
 						//완료(등록)버튼 처리
 						//-editHtmlTemplate 자체가 form이므로 추가 탐색을 하지 않음
-						$(editHtmlTemplate).submit(function(e){
+						$(editHtmlTemplate).submit(function(e){re
 							//검사 코드(미입력)
 							
 							//기본 이벤트 차단
@@ -232,12 +231,15 @@ $(function(){
 			method:"post",
 			data:{boardNo : boardNo},
 			success:function(response){
-				if(response =="Y"){
+				//response는 {"check":true, "count":0}형태의 JSON이다->백엔드에서 먼저 구현함
+				if(response.check){
 					$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-solid");
 				}
 				else{
 					$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-regular");
 				}
+				//전달 받은 좋아요 개수를 하트 뒤의 span에 출력
+				$(".fa-heart").next("span").text(response.count);
 			}
 		});
 		
@@ -248,12 +250,14 @@ $(function(){
 				method:"post",
 				data: {boardNo : boardNo},//밖(함수랑 같은 위치랑 가능)에 만든 변수를 쓸 수 있음 
 				success:function(response){
-					if(response =="Y"){
+					if(response.check){
 						$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-solid");
 					}
 					else{
 						$(".fa-heart").removeClass("fa-solid fa-regular").addClass("fa-regular");
 					}
+					//전달 받은 좋아요 개수를 하트 뒤의 span에 출력
+					$(".fa-heart").next("span").text(response.count);
 				}
 			});
 		});
@@ -300,7 +304,7 @@ background-color:#F2EFFB;
 		${boardDto.boardReadcount}
 		&nbsp;&nbsp;
 		<i class="fa-solid fa-heart red"></i> 
-		${boardDto.boardLikecount}
+		<span>?</span>
 		&nbsp;&nbsp;
 		<i class="fa-solid fa-comment blue"></i> 
 		${boardDto.boardReplycount}

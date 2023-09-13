@@ -26,17 +26,17 @@
     <script>
        $(function(){
         $('[name=boardContent]').summernote({
-              placeholder: 'Hello stand alone ui',
-              tabsize: 2,
-              height: 120,
+              placeholder: '내용을 작성하세요',
+              tabsize: 2,//탭을 누르면 이동할 간격(보통 2or4로 설정)
+              height: 200,//에디터 높이
+              minHeight:200,
               toolbar: [
                 ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
+                ['font', ['bold', 'italic', 'underline']],
                 ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
+                ['para', ['paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
+                ['insert', ['link']],
               ]
           });
        });
@@ -54,7 +54,7 @@
       </div>
       <div class="row left">
         <label>내용</label>
-        <textarea name="boardContent" class="form-input w-100" rows="10"></textarea>
+        <textarea name="boardContent" ></textarea>
       </div>
       <div class="row">
         <button type="submit" class="btn btn-positive w-100">작성하기</button> 

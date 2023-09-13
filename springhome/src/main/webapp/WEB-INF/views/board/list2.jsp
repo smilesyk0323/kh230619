@@ -6,9 +6,12 @@
 
     <script src="/js/checkbox.js"></script>
   <style>
+.btn,
 .btn.btn-positive{
 	background-color:#6460AA;
+	color:white;
 	border:none;
+	line-height: 1.2em;
 }
 .upBtn{
 	font-size:14px;
@@ -108,7 +111,7 @@ select.form-input,
 						<c:if test="${boardListDto.boardReplycount > 0}">
 <%-- 						[${boardListDto.boardReplycount}] --%>
 							&nbsp;&nbsp;
-							<i class="fa-solid fa-comment blue"></i>
+							<i class="fa-solid fa-comment"style="color:#9575CD"></i>
 							${boardListDto.boardReplycount}							
 						</c:if>
 					</td>

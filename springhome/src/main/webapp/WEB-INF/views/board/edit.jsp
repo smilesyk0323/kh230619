@@ -2,9 +2,30 @@
     pageEncoding="UTF-8"%>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-<body style="background-color:#F2EFFB">
  <!-- summernote CDN-->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <style>
+    body{
+    background-color:#F2EFFB
+    }
+      .note-editable{
+        line-height:2 !important;
+      }
+      .container,
+		.row,
+		.row.h1{
+			font-size: 16px;
+			color: #182C61;
+		}
+		.btn,
+		.btn.btn-positive{
+			background-color:#6460AA;
+			color:white;
+			border:none;
+			line-height: 1.2em;
+		}
+    </style>
+    
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
        $(function(){
@@ -24,16 +45,37 @@
           });
        });
     </script>
-
-<h2>게시글 수정</h2>
-
 <form action="edit" method="post">
-	<input type="hidden" name="boardNo" value="${boardDto.boardNo}"><br><br>
-	제목 <input type="text" name="boardTitle" 
-					value="${boardDto.boardTitle}" required><br><br>
-	내용 <textarea name="boardContent"
-					required>${boardDto.boardContent}</textarea><br><br>					
-	<button>게시글 수정</button>
+<input type="hidden" name="boardNo" value="${boardDto.boardNo}">
+
+<div class="container w-600">
+	<div class="row">
+		<h1>게시글 수정</h1>
+	</div>
+	
+	<div class="row left">
+		<label>제목</label>
+		<input class="form-input w-100" type="text" name="boardTitle" value="${boardDto.boardTitle}" required>
+	</div>
+	
+	<div class="row left">
+		<label>내용</label>
+		<textarea class="form-input w-100" name="boardContent" 
+			style="min-height:250px" required>${boardDto.boardContent}</textarea>
+	</div>
+	
+	<div class="row right">
+		<a href="list" class="btn">
+			<i class="fa-solid fa-list"></i>
+			목록
+		</a>
+		<button type="submit" class="btn btn-positive">
+			<i class="fa-solid fa-edit"></i>
+			수정
+		</button>
+	</div>
+</div>
+
 </form>
-		<h2><a style="text-decoration:none ; color: #6460AA; " href="list">목록보기</a></h2>
+
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

@@ -5,7 +5,6 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-
 <!-- 댓글과 관련된 처리를 할 수 있도록 jQuery코드 구현 -->
 <script>
 $(function(){
@@ -265,6 +264,15 @@ $(function(){
 </script>
 </c:if>
 <style>
+.note-viewer{
+	line-height:2 !important;
+}
+.btn.btn-reply{
+	background-color:#9575CD;
+	color:white;
+	border:none;
+	line-height: 1.2em;
+	}
 body{
 background-color:#F2EFFB;
 }
@@ -313,7 +321,7 @@ background-color:#F2EFFB;
 		<h2 style="color:#4A148C">${boardDto.boardTitle}</h2>
 	</div>
 	<%-- 게시글 내용(본문) --%>
-	<div class="row left" style="min-height:250px; color:#4A148C">
+	<div class="row left note-viewer" style="min-height:250px; color:#4A148C">
 		${boardDto.boardContent}
 	</div>
 	
@@ -327,7 +335,7 @@ background-color:#F2EFFB;
 				<textarea name="replyContent" class="form-input w-100" rows="4"></textarea>
 			</div>
 			<div class="row">
-				<button class="btn btn-positive w-100">
+				<button class="btn btn-reply w-100">
 					<i class="fa-solid fa-pen"></i>
 					댓글등록
 				</button>

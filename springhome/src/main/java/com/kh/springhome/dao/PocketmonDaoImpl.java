@@ -33,4 +33,23 @@ public class PocketmonDaoImpl implements PocketmonDao{
 		jdbcTemplate.update(sql,data);
 	}
 
+	@Override
+	public void connect(int pocketmonNo, int attachNo) {
+		String sql = "insert into pocketmon_image values(?,?)";
+		Object[] data = {pocketmonNo, attachNo};
+		jdbcTemplate.update(sql,data);
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

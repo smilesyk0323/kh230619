@@ -61,6 +61,11 @@
 					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/">Home</a></li>
 					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/mypage">Mypage</a></li>
 	   				 <li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
+	   				  <li><a style="text-decoration:none ; color: #EDE7F6; " href="/pocketmon/list">포켓몬</a>
+	   				    <ul>
+	   				  		<li><a href="/pocketmon/insert"> 등록</a></li>
+	   				    </ul>
+	   				  </li>
 					<li><a style="text-decoration:none ; color:#EDE7F6; " href="/member/logout">로그아웃</a></li>
 	   				
 	   				<%-- 관리자인 경우 추가 메뉴 출력 --%>

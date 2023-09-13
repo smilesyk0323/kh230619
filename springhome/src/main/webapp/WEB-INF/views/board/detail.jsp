@@ -313,8 +313,8 @@ background-color:#F2EFFB;
 		<h2 style="color:#4A148C">${boardDto.boardTitle}</h2>
 	</div>
 	<%-- 게시글 내용(본문) --%>
-	<div class="row left" style="min-height:250px">
-		<pre style="color:#4A148C">${boardDto.boardContent}</pre>
+	<div class="row left" style="min-height:250px; color:#4A148C">
+		${boardDto.boardContent}
 	</div>
 	
 	<%-- 댓글과 관련된 화면이 작성될 위치 --%>

@@ -2,6 +2,27 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+ <!-- summernote CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+       $(function(){
+        $('[name=boardContent]').summernote({
+              placeholder: '내용을 작성하세요',
+              tabsize: 2,//탭을 누르면 이동할 간격(보통 2or4로 설정)
+              height: 200,//에디터 높이
+              minHeight:200,//에디터 최소 높이
+              toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                ['color', ['color']],
+                ['para', ['paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+              ]
+          });
+       });
+    </script>
 <script src="/js/boardWrite.js"></script>
 <body style="background-color:#F2EFFB">
 

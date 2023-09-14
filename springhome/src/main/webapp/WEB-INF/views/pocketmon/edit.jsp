@@ -25,7 +25,7 @@ background-color:#F2EFFB
 			<input type="hidden" name="no" value="${pocketmonDto.no}">
 			<div class="row">
 				<c:if test="${pocketmonDto.image}">
-					<img src="image?no=${pocketmonDto.no}" width="200" height="200">
+					<img src="image?no=${pocketmonDto.no}" width="100" height="100">
 				</c:if>
 			</div>
 			<div class="row  right mt-20" >

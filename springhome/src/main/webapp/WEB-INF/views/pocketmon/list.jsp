@@ -26,10 +26,10 @@ background-color:#F2EFFB
 		<hr>
 		<c:choose>
 			<c:when test="${pocketmonDto.image}">
-				<img src="image?no=${pocketmonDto.no}" width="200"height="200">
+				<img src="image?no=${pocketmonDto.no}" width="100"height="100">
 			</c:when>
 			<c:otherwise>
-				<img src="https://dummyimage.com/200x200/000/fff" width="200" height="200">
+				<img src="https://dummyimage.com/200x200/000/fff" width="100" height="100">
 			</c:otherwise>
 		</c:choose><br><br>
 		<a class="btn"href="edit?no=${pocketmonDto.no}">수정</a>

@@ -2,11 +2,15 @@ package com.kh.springhome.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -105,11 +109,19 @@ public class PocketmonController {
 		
 		//[4][5]		 - header(정보), body(내용)
 		 return ResponseEntity.ok()
-			.header("Content-Encoding", "UTF-8")
-			.header("Content-Length", String.valueOf(attachDto.getAttachSize()))
-			.header("Content-Type", attachDto.getAttachType())//저장된 유형
-//					.header("Content-Type", "application/octet-stream")//저장된 유형
-			.header("Content-Disposition", "attachment; filename="+attachDto.getAttachName())
+//			.header("Content-Encoding", "UTF-8")
+			.header(HttpHeaders.CONTENT_ENCODING, StandardCharsets.UTF_8.name())	 
+//			.header("Content-Length", String.valueOf(attachDto.getAttachSize()))
+			.contentLength(attachDto.getAttachSize())
+//			.header("Content-Type", attachDto.getAttachType())//저장된 유형
+			.header(HttpHeaders.CONTENT_TYPE, attachDto.getAttachType())
+//			.header("Content-Type", "application/octet-stream")//무조건 다운로드
+//			.contentType(MediaType.APPLICATION_OCTET_STREAM)
+//			.header("Content-Disposition", "attachment; filename="+attachDto.getAttachName())
+			.header(HttpHeaders.CONTENT_DISPOSITION, 
+					ContentDisposition.attachment()
+						.filename(attachDto.getAttachName(),StandardCharsets.UTF_8)//파일명, 인코딩
+						.build().toString())	
 			.body(resource);//파일정보
 		}
 	

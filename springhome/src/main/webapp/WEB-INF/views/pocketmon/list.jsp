@@ -17,10 +17,12 @@ background-color:#F2EFFB
 
 
 </style>
+<div class="container w-300">
 
 <c:forEach var="pocketmonDto" items="${list}">
 	<div>
 		${pocketmonDto.no} / ${pocketmonDto.name} / ${pocketmonDto.type} 
+		
 		<hr>
 		<c:choose>
 			<c:when test="${pocketmonDto.image}">
@@ -29,14 +31,13 @@ background-color:#F2EFFB
 			<c:otherwise>
 				<img src="https://dummyimage.com/200x200/000/fff" width="200" height="200">
 			</c:otherwise>
-		</c:choose>
-		
-		<a href="delete?no=${pocketmonDto.no}">포켓몬 삭제</a>
-		
-	</div>
+		</c:choose><br><br>
+		<a class="btn"href="delete?no=${pocketmonDto.no}">포켓몬 삭제</a>
+			
+	</div><br><br>
 
 </c:forEach>
-
+</div>
 
 
 

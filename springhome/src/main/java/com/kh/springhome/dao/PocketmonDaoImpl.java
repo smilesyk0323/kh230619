@@ -78,6 +78,12 @@ public class PocketmonDaoImpl implements PocketmonDao{
 		List<PocketmonDto>list = jdbcTemplate.query(sql, pocketmonMapper, data);
 		return list.isEmpty() ? null : list.get(0);
 	}
+	@Override
+	public boolean delete(int no) {
+		String sql = "delete pocketmon where no = ?";
+		Object[] data = {no};
+		return jdbcTemplate.update(sql,data)>0;
+	}
 	
 }
 

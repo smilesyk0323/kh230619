@@ -31,6 +31,8 @@ background-color:#F2EFFB
 			</c:otherwise>
 		</c:choose>
 		
+		<a href="delete?no=${pocketmonDto.no}">포켓몬 삭제</a>
+		
 	</div>
 
 </c:forEach>

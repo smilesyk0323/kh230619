@@ -10,6 +10,7 @@ public interface PocketmonDao {
 	void insert(PocketmonDto pocketmonDto);
 	List<PocketmonDto>selectList();
 	PocketmonDto selectOne(int no);
+	boolean delete(int no);
 	
 	void connect(int pocketmonNo, int attachNo);//포켓몬이 메인이기에 포켓몬에서 만들어야함
 	AttachDto findImage(int pocketmonNo);

@@ -32,7 +32,8 @@ background-color:#F2EFFB
 				<img src="https://dummyimage.com/200x200/000/fff" width="200" height="200">
 			</c:otherwise>
 		</c:choose><br><br>
-		<a class="btn"href="delete?no=${pocketmonDto.no}">포켓몬 삭제</a>
+		<a class="btn"href="edit?no=${pocketmonDto.no}">수정</a>
+		<a class="btn"href="delete?no=${pocketmonDto.no}">삭제</a>
 			
 	</div><br><br>
 

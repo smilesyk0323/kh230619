@@ -57,8 +57,17 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!--javascript 작성 공간-->
     <script>
-        $('.radio').on('click',function(){
-            var valueCheck = $('.radio:checked').val();
+        $(function(){
+            $(".login-form").submit(function(e){
+                var id = $("[name=userId]").val()
+                var pw =$("[name=userPw]").val()
+
+                if(id.length == 0 || pw.length == 0){
+                    window.alert("모든 항목을 입력하세요");
+                    e.preventDefault();
+                    return false;
+                }
+            });
         });
     </script>
 </head>
@@ -67,6 +76,7 @@
         <div class="row top mt-30">
             <h1>User Login</h1>
         </div>
+        <form action="" >
         <div class="row main">
                 <div class="row mt-50">
                     <input name="userId" placeholder="ID">
@@ -79,7 +89,7 @@
                         <input type="radio" checked value="normal"><span>일반회원</span>
                     </div>
                     <div class="row col-2">
-                        <input type="radio"value="admin"><span>관리자</span>
+                        <input type="radio" value="admin"><span>관리자</span>
                     </div>
                 </div>
                 <div class="row mt-20">
@@ -89,9 +99,10 @@
                     <hr style="width: 369px;">
                 </div>
                 <div class="row">
-                    <button type="submit" class="btn w-100">회원가입</button>
+                    <button type="button" class="btn w-100">회원가입</button>
                 </div>          
     </div>
     </div>
+</form>
 </body>
 </html>

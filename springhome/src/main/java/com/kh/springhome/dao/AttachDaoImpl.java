@@ -1,5 +1,7 @@
 package com.kh.springhome.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -42,6 +44,17 @@ public class AttachDaoImpl implements AttachDao{
 		Object[] data = {attachNo};
 		return jdbcTemplate.update(sql,data)> 0;
 	}
+
+	//회원 프로필 설정
+	@Override
+	public AttachDto selectOne(int attachNo) {
+		String sql = "select * from attach where attach_no = ?";
+		Object[] data = {attachNo};
+		List<AttachDto> list = jdbcTemplate.query(sql, attachMapper, data);
+		 return list.isEmpty() ? null : list.get(0);  
+	}
+	
+	
 }
 
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 실습</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="./css/commons.css">
+    <!-- <link rel="stylesheet"type="text/css" href="./css/test.css"> -->
+    <style>
+        .container{
+            position: absolute;
+            top: 105.5px;
+            left: 247px;
+            width: 484px;
+            height: 504px;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px 5px ;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .row.h1{
+            font-weight: bold; font-size: 36px; text-align: center;
+        }
+        [name=userId],
+        [name=userPw]{
+             top: 241.5px; left: 304.5px; width: 369px; height: 39px;
+        }
+        .btn.btn-positive{
+            padding-bottom: 2.6em;
+            height: 39px;
+            width: 369px;
+            font-size: 16px;
+            text-align: center ;
+            color: rgb(255, 255, 255);line-height: 2.5em; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(52, 152, 219);
+        }
+        .btn{
+            padding-bottom: 2.6em;
+            height: 39px;
+            width: 369px;
+            font-size: 16px;
+            border: none;
+            text-align: center;
+            color: rgb(64, 64, 64); line-height: 2.5em; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(224, 224, 224);
+        }
+        input{
+            padding-left: 1em;
+        }
+    </style>
+    <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--javascript 작성 공간-->
+    <script>
+        $(function(){
+            $(".login-form").submit(function(e){
+                var id = $("[name=userId]").val()
+                var pw =$("[name=userPw]").val()
+
+                if(id.length == 0 || pw.length == 0){
+                    window.alert("모든 항목을 입력하세요");
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container w-500">
+        <div class="row top mt-30">
+            <h1>User Login</h1>
+        </div>
+        <form action="" >
+        <div class="row main">
+                <div class="row mt-50">
+                    <input name="userId" placeholder="ID">
+                </div>
+                <div class="row mt-30">
+                    <input name="userPw" placeholder="Password">
+                </div>
+                <div class="row flex-container mt-20">
+                    <div class="row col-2 ">
+                        <input type="radio" checked value="normal"><span>일반회원</span>
+                    </div>
+                    <div class="row col-2">
+                        <input type="radio" value="admin"><span>관리자</span>
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <button type="submit" class="btn btn-positive w-100 ">로그인</button>
+                </div>
+                <div class="row mt-20 mb-20">
+                    <hr style="width: 369px;">
+                </div>
+                <div class="row">
+                    <button type="button" class="btn w-100">회원가입</button>
+                </div>          
+    </div>
+    </div>
+</form>
+</body>
+</html>

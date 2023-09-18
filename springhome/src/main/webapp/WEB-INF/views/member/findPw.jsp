@@ -24,13 +24,15 @@
 
 <form action="findPw" method="post">
 <div class="row">
-	<label>아이디</label><input type="text" name="memberId">
+	<label>아이디</label>
+	<input type="text" name="memberId">
 </div>
 <div class="row ">
-	<label>이메일</label><input type="email"name="memberEmail">
+	<label>이메일</label>
+	<input type="email"name="memberEmail">
 </div>
 <div class="row">
-	<button type="submit">비밀번호 찾기</button>
+	<button type="submit" class="btn btn-positive">비밀번호 찾기</button>
 </div>
 
 

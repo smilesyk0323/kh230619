@@ -175,17 +175,17 @@ input::placeholder {
                             <div class="fail-feedback">한글 또는 숫자 2~10자 이내로 작성하세요</div>
                             <div class="fail2-feedback">닉네임이 이미 사용중입니다</div>
                         </div>
+		                <div class="row left">
+			                    <label>이메일<span class="important">*</span></label>
+			                    <input type="email"name="memberEmail" class="form-input w-100" 
+			                         placeholder="testuser@kh.com" >
+			                    <div class="fail-feedback">이메일 형식이 올바르지 않습니다</div>
+			                </div>
 		                <div class="row  left">
 		                    <label>생년월일</label>
 		                    <input type="date"name="memberBirth" class="form-input w-100" >
 		                    <div class="fail-feedback">잘못된 날짜를 선택하셨습니다</div>
 		                </div>
-		                <div class="row left">
-			                    <label>이메일</label>
-			                    <input type="email"name="memberEmail" class="form-input w-100" 
-			                         placeholder="testuser@kh.com" >
-			                    <div class="fail-feedback">이메일 형식이 올바르지 않습니다</div>
-			                </div>
              			<div class="row">
 		                    <button type="button"class="btn btn-prev">이전</button>
 		                    <button type="button"class="btn btn-next">다음</button>

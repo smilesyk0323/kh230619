@@ -51,6 +51,12 @@ public class CertDaoImpl implements CertDao{
 		return list.isEmpty() ? null : list.get(0);
 	}
 	
+	@Override
+	public boolean deleteOver5min() {
+		String sql = "delete cert where cert_time < sysdate-5/24/60";
+		return jdbcTemplate.update(sql)>0;
+	}
+	
 }
 
 

@@ -23,16 +23,16 @@ public class Test01 {
 		JavaMailSenderImpl sender = new JavaMailSenderImpl();
 		sender.setHost("smtp.gmail.com");//업체주소
 		sender.setPort(587);//업체포트
-		sender.setUsername("");//나의 메일계정
-		sender.setPassword("");//나의 앱비밀번호(비번x)
+		sender.setUsername("hwang8243");//나의 메일계정
+		sender.setPassword("twfbdvhsxjpxqzpa");//나의 앱비밀번호(비번x)
 		
 		//통신과 관련된 추가 설정
 		Properties props = new Properties();
-		props.setProperty("mail.smtp.auth", "true");//인정 후 이용 설정(필수)
+		props.setProperty("mail.smtp.auth", "true");//인증 후 이용 설정(필수)
 		props.setProperty("mail.smtp.debug", "true");//디버깅 기능 이용 설정(선택)
-		props.setProperty("mail.smtp.starttls.enable", "true");//TLS사용 설정(필수)
-		props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");//TLS버전 설정(필수)
-		props.setProperty("mail.smtp.ssl.trust", "smtp.gamil.com");//신뢰할 수 있는 대상 설정(필수)
+		props.setProperty("mail.smtp.starttls.enable", "true");//TLS 사용 설정(필수)
+		props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");//TLS 버전 설정(필수)
+		props.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");//신뢰할 수 있는 대상 설정(필수)
 		sender.setJavaMailProperties(props);
 		
 		//전송 메세지 - 상대방의 정보와 메일 내용을 설정

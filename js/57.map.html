@@ -18,6 +18,15 @@
             width:100%;
             height: 300px;
         }
+    /* info window */
+    .outer {
+        font-size: 20px;
+        padding: 0.5em;
+    }
+    .outer > .inner {
+        width: 100%;
+        text-align: center;
+    }
     </style>
     <!--jquery CDN-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -92,10 +101,12 @@
                 //템플릿을 불러와서 글자를 설정한 뒤 인포윈도우 추가
                 var template = $("#info-window-template").html();
                 // var htmlTemplate = $.parseHTML(template);//append를 할때만 작동함 
+                //template  = template.repalce("???","바꿀값");//문자열처럼 처리
                var result = $(template).find(".inner")//inner를 찾아서
                                         .html(text)//글자를 바꾸고 (태그도 넣을거라면 html로 변경)
                                         .parents(".outer")//.outer로 돌아와서
-                                        .html();//html 글자를 내놔라
+                                        // .html();//html 글자를 내놔라(내부글자)
+                                        .prop("outerHTML");//html글자를 내놔라(전체글자)
 
                 var iwContent = result; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                 var iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치입니다
@@ -114,11 +125,11 @@
 	</script>
 
     <script id="info-window-template" type="text/template">
-        <div class="outer">
-            <div class="inner">?</div>
-        </div>
-
+        <div class="outer"><!--outerHTML: 자기자신 포함-->
+            <div class="inner">?</div><!--innerHTML: 자기자신 미포함-->
+       </div>
     </script>
+
 </head>
 <body>
     <div class="container w-500">

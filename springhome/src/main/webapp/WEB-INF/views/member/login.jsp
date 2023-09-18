@@ -12,7 +12,7 @@
 	border:none;
 }
 .form-input{
-	size:12px;
+	size:16px;
 }
 </style>
 <body style="background-color:#F2EFFB">
@@ -30,6 +30,9 @@
             </div>
             <div class="row">
                 <button class="btn btn-positive" style="background-color:#6460AA">Login</button>
+            </div>
+            <div class="row">
+            	<a href="findPw" class="link">비밀번호 찾기</a>
             </div>
         </div>
 </form>

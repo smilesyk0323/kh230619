@@ -158,8 +158,8 @@ public class MemberRestController {
 	public void delete(HttpSession session) {
 		String memberId = (String)session.getAttribute("name");
 		memberDao.deleteProfile(memberId);
-				
 	}
+
 	
 	
 }

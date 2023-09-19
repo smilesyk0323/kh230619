@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 디자인</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="reset.css">
+    <!-- <link rel="stylesheet"type="text/css" href="commons.css"> -->
+    <link rel="stylesheet"type="text/css" href="Gogi-commons.css">
+    <!-- <link rel="stylesheet"type="text/css" href="test.css"> -->
+    <style>
+        main{
+            width: 1200px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+        /*
+            헤더는 좌/중/우 3개로 구분하여 작성
+            - 좌 - 로고 등을 배치
+            - 중 - 검색창이나 타이틀을 배치
+            - 우 - ???
+        */
+        header{
+            display: flex;
+            flex-wrap: nowrap;
+            min-height: 80px;         
+        }
+        header > .logo{
+            width: 25%;
+        }
+        header > .title{
+            flex-grow: 1;/*나머지 공간 전부*/
+        }
+        header > .etc{
+            width: 25%;
+            padding-top: 50px;
+            display: flex;
+            align-items: center;
+        }
+        header > .logo
+        {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        header > .title
+        {
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        nav{/*앱솔루트를 사용하기 때문에 옆에 삐져나오지 않도록 설정 필요*/
+            position: relative;
+        }
+        section{
+            min-height: 500px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .call{
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .row.w-40{
+            border: 0.5px;
+        }
+        .custom-menu{
+            position: relative;
+            display: inline-block;
+        }
+        .custom-service{
+            display: none;
+            position: absolute;
+            z-index: 1;
+        }
+        .custom-service a {
+            display:inline-block;
+            background-color: white;
+            color: #012D5C;
+            padding: 5px 10px;
+            width: 120px;
+        }
+        .custom-service a:hover {
+            color: #FA9F5F;
+        }
+        .custom-menu:hover .custom-service{
+            display: block;
+        }
+        .etc-menu:hover{
+            color: #FA9F5F;
+        }
+            
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="logo">
+                <a><img src="./images/logo/GogiLogo-main.png"width=150 height="150"></a>
+            </div>
+            <div class="title flex-container ">
+                <div class="row input-search">
+                    <input type="search" name="keyword" class="form-input search-navy" value="" 
+                                placeholder="검색어를 입력해주세요" autocomplete="off">
+                    <button class="btn btn-search"><i class="fa-solid fa-magnifying-glass navy"></i></button>
+                </div>
+            </div>
+            <div class="etc">
+                <div class="row pr-20"><a class="orange">관리자</a></div>
+                <div class="row pr-20 etc-menu navy"><a>로그아웃</a></div>
+            </div>
+        </header>
+        <nav>
+            <ul class="menu menu-navy center">
+                <li><a href="#"><i class="fa-solid fa-bars "></i> 고객센터</a>
+                    <ul>
+                        <li><a>공지사항 관리</a></li>
+                        <li><a>1:1문의 관리</a></li>
+                        <li><a>QnA 관리</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa-solid fa-bars "></i> 회원 관리</a>
+                    <ul>
+                        <li><a>회원정보관리</a></li>
+                        <li><a>회원 통계</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">상품 통계</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="row container">
+                <div class="row">
+                    <h2>이 상품 어때요?</h2>
+                </div>
+                <div class="row">
+                    <img src="./images/main-body(sample-image).png"width="900">
+                </div>
+                <div class="row">
+                    <h2>지금 가장 핫한 상품</h2>
+                </div>
+                <div class="row">
+                    <img src="./images/main-body(sample-image).png"width="900">
+                </div>
+            </div>
+        </section>
+        <hr>
+        <footer>
+            <div class="row flex-container">
+                <div class="float-left left pr-50">
+                    <div class="row left">
+                        <h4>고객행복센터</h4>
+                    </div>
+                    <pre><span class="call">1644-1107</span> 월~토요일 오전 7시 - 오후 6시</pre>
+                    <div class="row">
+                        <div class="flex-container row">
+                            <div class="row w-40">카카오톡 문의</div>
+                            <div class="row w-60">
+                                <div class="left">
+                                월~토요일 | 오전 7시 - 오후6시 
+                                </div>  
+                                <div class="left">
+                                일/공휴일 | 오전7시 - 오후1시 
+                                </div>  
+                            </div>                       
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex-container row">
+                                <div class="row w-40">1:1 문의</div>
+                                <div class="row w-60">
+                                    <div class="left">
+                                    365일  
+                                    </div>  
+                                    <div class="left">
+                                    고객센터 운영시간에 순차적으로 답변드리겠습니다 
+                                    </div>  
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex-container row">
+                                <div class="row w-40">대량주문 문의</div>
+                                <div class="row w-60">
+                                    <div class="left">
+                                    월~금요일 | 오전9시 - 오후 6시  
+                                    </div>  
+                                    <div class="left">
+                                    점심시간 | 낮12시 -오후 1시 
+                                    </div>  
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="float-right left pl-50">
+                    <div class="row left">
+                        <a>컬리소개 |</a>
+                        <a>인재채용 |</a>
+                        <a>이용약관 |</a>
+                        <a>개인정보처리방침 |</a>
+                        <a>이용안내</a>
+                    </div>
+                    <div class="row left mt-30">
+                        <pre>법인명 (상호) : 주식회사 고기어때 | 사업자등록번호 : 000-00-00000
+통신판매업 : 제 2023-서울강남-00000호
+주소 : 서울특별시 영등포구 선유도2로 57,19층(이레빌딩) | 대표이사 : 황민하
+채용문의 : recruit@kurlycorp.com
+팩스: 070 - 0000 - 0000
+                        </pre>
+                    </div>
+                    <div class="row left">
+                        <a class="#"><img src="./images/footer_icon/ico_instagram.webp"width="30"></a>
+                        <a class="#"><img src="./images/footer_icon/ico_fb.webp"width="30"></a>
+                        <a class="#"><img src="./images/footer_icon/ico_blog.webp"width="30"></a>
+                        <a class="#"><img src="./images/footer_icon/ico_youtube.webp"width="30"></a>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

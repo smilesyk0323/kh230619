@@ -29,9 +29,12 @@
 .w-20, .col-5 {width: 20%; }
 .w-25, .col-4 {width: 25%; }
 .w-33, .col-3 {width: 33.3333%; }
+.w-40{width: 40%;}
 .w-50, .col-2 {width: 50%; }
+.w-60{width: 60%;}
 .w-75 {width: 75%; }
 .w-100 {width: 100%; }
+
 
 .w-300 { width:300px;}
 .w-400 { width:400px;}
@@ -206,6 +209,32 @@
 .me-40{margin-right: 40px;}
 .me-50{margin-right: 50px;}
 
+.pt-10{padding-top: 10px;}
+.pt-20{padding-top: 20px;}
+.pt-30{padding-top: 30px;}
+.pt-40{padding-top: 40px;}
+.pt-50{padding-top: 50px;}
+
+.pb-10{padding-bottom: 10px;}
+.pb-20{padding-bottom: 20px;}
+.pb-30{padding-bottom: 30px;}
+.pb-40{padding-bottom: 40px;}
+.pb-50{padding-bottom: 50px;}
+
+.pl-10{padding-left: 10px;}
+.pl-20{padding-left: 20px;}
+.pl-30{padding-left: 30px;}
+.pl-40{padding-left: 40px;}
+.pl-50{padding-left: 50px;}
+
+.pr-10{padding-right: 10px;}
+.pr-20{padding-right: 20px;}
+.pr-30{padding-right: 30px;}
+.pr-40{padding-right: 40px;}
+.pr-50{padding-right: 50px;}
+
+
+
 /*
             테이블 디자인
             - 클래스가 table인 항목을 디자인(.table)
@@ -315,6 +344,9 @@
         .black{ color: #2d3436; }
         .white{ color: #FFF; }
 
+        /*
+            전체 화면 디자인
+        */
         .backdrop{
             /*
                 opacity는 현재 태그 뿐 아니라 내부 태그의 투명도도 조절한다
@@ -578,4 +610,53 @@
         .inline-flex-container.allow-wrap
         {/*줄바꿈 허용*/
             flex-wrap: wrap;
+        }
+                /*
+            성공/실패에 대한 스타일 구현
+        */
+        .success-feedback {
+            color: #00b894;
+            display: none;
+        }
+        .fail-feedback,
+        .fail2-feedback
+        {
+            color: #d63031;
+            display: none;
+        }
+        .success ~ .success-feedback {
+            display: block;
+        }
+        .fail ~ .fail-feedback {
+            display: block;
+        }
+        .fail2 ~ .fail2-feedback {
+            display: block;
+        }
+        .success {
+            /* important는 우선순위를 최상위로 올린다 */
+            border-color: #00b894 !important;
+        }
+        .success:not([type=date]) {
+            background-image: url("../image/valid.png");
+            background-repeat: no-repeat;
+            /* background-position-x: right;
+            background-position-y: center; */
+            background-position: center right 1em;
+            background-size: 1em;
+        }
+        .fail, 
+        .fail2
+        {
+            border-color: #d63031 !important;
+        }
+        .fail:not([type=date]), 
+        .fail2:not([type=date])
+        {
+            background-image: url("../image/invalid.png");
+            background-repeat: no-repeat;
+            /* background-position-x: right;
+            background-position-y: center; */
+            background-position: center right 1em;
+            background-size: 1em;
         }

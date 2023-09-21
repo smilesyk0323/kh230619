@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 실습</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="Gogi-layout.css">
+    <link rel="stylesheet"type="text/css" href="Gogi-commons.css">
+    <style>
+
+    </style>
+    <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--javascript 작성 공간-->
+    <script>
+
+    </script>
+</head>
+<body>
+    <div class="row container w-800 navy">
+        <div class="row">
+            <h2>공지사항</h2>
+
+        </div>
+        <div class="row">
+            <table class=" table table-slit">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${noticeDto.noticeNo}</td>
+                        <td><a href="detail?noticeNo=${noticeDto.noticeNo}"></a></td>
+                        <td>${noticeDto.noticeWriter}</td>
+                        <td>${noticeDto.noticeDate}</td>
+                    </tr>
+                </tbody>             
+            </table>
+
+            <div class="row page-navigator mv-30">
+                <!-- 이전 버튼 -->
+                <c:if test="${!vo.first}">
+                    <a href="list?${vo.prevQueryString}">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </a>
+                </c:if>
+            
+                <!-- 숫자 버튼 -->
+                <c:forEach var="i" begin="${vo.begin}" end="${vo.end}" step="1">
+                    <c:choose>
+                        <c:when test="${vo.page == i}">
+                            <a class="on">${i}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="list?${vo.getQueryString(i)}">${i}</a> 
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            
+                <!-- 다음 버튼 -->
+                <c:if test="${!vo.last}">
+                    <a href="list?${vo.nextQueryString}">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </c:if>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

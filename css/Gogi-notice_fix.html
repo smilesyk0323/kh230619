@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 실습</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="Gogi-layout.css">
+    <link rel="stylesheet"type="text/css" href="Gogi-commons.css">
+    <style>
+
+    </style>
+    <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--javascript 작성 공간-->
+    <script>
+
+    </script>
+</head>
+<body>
+
+<div class="container w-800">
+    <div class="row">
+        <h2 class="pt-30 pb-30">공지사항 수정</h2>
+    </div>
+    <form action="fix" method="post">
+            <div class="row">
+                <table class="table table-slit">
+                    <input type="hidden" name="noticeNo" value="${noticeDto.noticeNo}">
+                        <tr>
+                            <th bgcolor="#CCD5DE">제목</th>
+                            <td class="left">
+                                <input type="text" required class="form-input" name="noticeTitle"
+                                value="${noticeDto.noticeTitle}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="left">
+                                <textarea name="noticeContent" class="form-input w-100" cols="30" rows="10">${noticeDto.noticeContent}</textarea>
+                            </td>
+                        </tr>
+                </table>
+                <div class="row right">
+                    <button type="submit" class="btn btn-navy">등록</button>
+                    <a class="btn btn-navy"href="/notice/list">목록</a>
+                </div>
+            </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 실습</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="Gogi-layout.css">
+    <link rel="stylesheet"type="text/css" href="Gogi-commons.css">
+    <style>
+
+    </style>
+    <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--javascript 작성 공간-->
+    <script>
+
+    </script>
+</head>
+<body>
+    <div class="container w-800">
+        <div class="row">
+            <h2 class="pt-30 pb-30 navy">자주하는 질문</h2>
+        </div>
+        <div class="row">
+            <table class="table table-slit">
+                    <tr>
+                        <th bgcolor="#CCD5DE">제목</th>
+                        <td class="left">${qnaDto.qnaTitle}</td>
+                    </tr>
+                    <tr>
+                        <th bgcolor="#CCD5DE">번호</th>
+                        <td class="left">${qnaDto.qnaNo}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="left">${qnaDto.qnaAnswer}</td>
+                    </tr>
+            </table>
+            <div class="row right">
+                <a href="/qna/list"class="btn btn-navy">목록</a>
+                <a class="btn btn-navy" href="/qna/fix?qnaNo=${qnaDto.qnaNo}">수정</a>
+                <a class="btn btn-navy" href="/qna/delete?qnaNo=${qnaDto.qnaNo}">삭제</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -10,9 +10,10 @@ $(function(){
         memberContact:false,
         memberBirth:false,
         memberAddr:false,
+        policy:false,
         ok:function(){
             return this.memberId && this.memberPw && this.pwCheck&&this.memberName && this.memberEmail 
-            && this.memberContact && this.memberBirth && this.memberAddr;
+            && this.memberContact && this.memberBirth && this.memberAddr && this.policy;
         },
     };
 
@@ -141,6 +142,10 @@ $(function(){
         $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").removeClass("success fail");
         $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").addClass(isValid ? "success" : "fail");
          status.memberAddr = isValid;
+    });
+    $(".check-all").change(function(){
+        var isVaild = $(this).checked;
+        status.policy = isVaild;
     });
     
         //페이지 이탈 방지 

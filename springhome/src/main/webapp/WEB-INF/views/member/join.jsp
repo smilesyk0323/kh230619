@@ -180,6 +180,7 @@ input::placeholder {
 			                    <input type="email"name="memberEmail" class="form-input w-100" 
 			                         placeholder="testuser@kh.com" >
 			                    <div class="fail-feedback">이메일 형식이 올바르지 않습니다</div>
+			                    <div class="fail2-feedback">현재 이메일은 이미 사용중입니다</div>
 			                </div>
 		                <div class="row  left">
 		                    <label>생년월일</label>

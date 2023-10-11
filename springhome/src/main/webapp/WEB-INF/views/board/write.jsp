@@ -28,7 +28,7 @@
           });
        });
     </script>
-<script src="/js/boardWrite.js"></script>
+<script src="${pageContext.request.contextPath}/js/boardWrite.js"></script>
 <body style="background-color:#F2EFFB">
 
 		<form action="write" method="post" autocomplete="off" onsubmit="return checkForm();">

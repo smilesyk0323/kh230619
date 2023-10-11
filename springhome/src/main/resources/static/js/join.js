@@ -24,7 +24,7 @@ $(function(){
         if(isValid) {//형식이 유효하다면
             
             $.ajax({
-                url:"http://localhost:8080/rest/member/idCheck",
+                url:window.contextPath + "/rest/member/idCheck",
                 method:"post",
                 // data : {memberId : e.target.value },
                 data : { memberId : $(e.target).val() },
@@ -82,7 +82,7 @@ $(function(){
         if(isValid) {//형식 통과
 
             $.ajax({
-                url:"http://localhost:8080/rest/member/nickCheck",
+                url:window.contextPath + "/rest/member/nickCheck",
                 method:"post",
                 // data:{ memberNickname : e.target.value },//JS
                 data : { memberNickname : $(e.target).val() },//jQuery

@@ -21,7 +21,7 @@ $(function(){
 		
 		//비동기 통신 발생
 		$.ajax({
-			url:"${pageContext.request.contextPath}/rest/reply/insert",
+			url:window.contextPath + "/rest/reply/insert",
 			method:"post",
 			//data:{replyOrigin : ? , replyContent : ?},
 			data : $(e.target).serialize(),
@@ -55,7 +55,7 @@ $(function(){
 		
 		//비동기 통신으로 화면 갱신
 		$.ajax({
-			url:"${pageContext.request.contextPath}/rest/reply/list",
+			url:window.contextPath +"/rest/reply/list",
 			method:"post",
 			data:{replyOrigin : no },
 			success:function(response){
@@ -91,7 +91,7 @@ $(function(){
 						//var replyNo = $(this).data("reply-no");
 						var replyNo = $(this).attr("data-reply-no");//data-reply-no
 						$.ajax({
-							url:"/rest/reply/delete",
+							url:window.contextPath +"/rest/reply/delete",
 							method:"post",
 							data:{replyNo : replyNo},//오른쪽이 위의 var로 만든 replyNo
 							success:function(response){
@@ -139,7 +139,7 @@ $(function(){
 							e.preventDefault();
 							
 							$.ajax({
-								url:"${pageContext.request.contextPath}/rest/reply/edit",
+								url:window.contextPath +"/rest/reply/edit",
 								method:"post",
 								//data:{replyNo : ?, replyContent : ?},
 								data : $(e.target).serialize(),
@@ -226,7 +226,7 @@ $(function(){
 		var boardNo = params.get("boardNo");
 		
 		$.ajax({
-			url:"${pageContext.request.contextPath}/rest/like/check",
+			url:window.contextPath +"/rest/like/check",
 			method:"post",
 			data:{boardNo : boardNo},
 			success:function(response){
@@ -245,7 +245,7 @@ $(function(){
 		//[2]하트를 누르면
 		$(".fa-heart").click(function(){
 			$.ajax({
-				url:"${pageContext.request.contextPath}/rest/like/action",
+				url:window.contextPath +"/rest/like/action",
 				method:"post",
 				data: {boardNo : boardNo},//밖(함수랑 같은 위치랑 가능)에 만든 변수를 쓸 수 있음 
 				success:function(response){

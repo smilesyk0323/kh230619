@@ -18,6 +18,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    
+    <%--
+    			절대 경로를 설정하기 위한 스크립트 작성 
+    				-절대경로라는 개념은 백엔드에만 있다
+    				-클래식 자바스크립트에서 절대경로를 알 수 있는 방법이 없다
+    				-window에 절대경로 값을 탑재시켜 사용 
+    --%>
+    <script>
+    	window.contextPath = "${pageContext.request.contextPath}";
+    </script>
+    
     <!--jquery CDN-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->

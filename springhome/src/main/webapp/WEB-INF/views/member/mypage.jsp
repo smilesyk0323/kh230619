@@ -17,7 +17,7 @@ $(function(){
 		form.append("attach", input.files[0]);
 		
 		$.ajax({
-			url:"${pageContext.request.contextPath}/rest/member/upload",
+			url:window.contextPath +"/rest/member/upload",
 			method:"post",
 			processData:false,
 			contentType:false,
@@ -41,7 +41,7 @@ $(function(){
 		
 		//삭제요청
 		$.ajax({
-			url:"${pageContext.request.contextPath}/rest/member/delete",
+			url:window.contextPath +"/rest/member/delete",
 			method:"post",
 			//data:{attachNo:??}, 이미 아이디에 파일 1개라 불필요
 			success:function(response){

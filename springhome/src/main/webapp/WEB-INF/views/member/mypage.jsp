@@ -17,7 +17,7 @@ $(function(){
 		form.append("attach", input.files[0]);
 		
 		$.ajax({
-			url:"/rest/member/upload",
+			url:"${pageContext.request.contextPath}/rest/member/upload",
 			method:"post",
 			processData:false,
 			contentType:false,
@@ -25,7 +25,7 @@ $(function(){
 			success:function(response){
 				//응답 형태 - {"attachNo" : 7}
 				//프로필 이미지 교체 
-				$(".profile-image").attr("src", "/rest/member/download?attachNo="+response.attachNo);
+				$(".profile-image").attr("src", "${pageContext.request.contextPath}/rest/member/download?attachNo="+response.attachNo);
 			},
 			error:function(){
 				window.alert("통신 오류 발생 \n잠시 후 다시 시도해주세요");
@@ -41,7 +41,7 @@ $(function(){
 		
 		//삭제요청
 		$.ajax({
-			url:"/rest/member/delete",
+			url:"${pageContext.request.contextPath}/rest/member/delete",
 			method:"post",
 			//data:{attachNo:??}, 이미 아이디에 파일 1개라 불필요
 			success:function(response){

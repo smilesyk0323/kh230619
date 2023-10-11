@@ -21,7 +21,7 @@ $(function(){
 		
 		//비동기 통신 발생
 		$.ajax({
-			url:"/rest/reply/insert",
+			url:"${pageContext.request.contextPath}/rest/reply/insert",
 			method:"post",
 			//data:{replyOrigin : ? , replyContent : ?},
 			data : $(e.target).serialize(),
@@ -55,7 +55,7 @@ $(function(){
 		
 		//비동기 통신으로 화면 갱신
 		$.ajax({
-			url:"/rest/reply/list",
+			url:"${pageContext.request.contextPath}/rest/reply/list",
 			method:"post",
 			data:{replyOrigin : no },
 			success:function(response){
@@ -139,7 +139,7 @@ $(function(){
 							e.preventDefault();
 							
 							$.ajax({
-								url:"/rest/reply/edit",
+								url:"${pageContext.request.contextPath}/rest/reply/edit",
 								method:"post",
 								//data:{replyNo : ?, replyContent : ?},
 								data : $(e.target).serialize(),
@@ -226,7 +226,7 @@ $(function(){
 		var boardNo = params.get("boardNo");
 		
 		$.ajax({
-			url:"/rest/like/check",
+			url:"${pageContext.request.contextPath}/rest/like/check",
 			method:"post",
 			data:{boardNo : boardNo},
 			success:function(response){
@@ -245,7 +245,7 @@ $(function(){
 		//[2]하트를 누르면
 		$(".fa-heart").click(function(){
 			$.ajax({
-				url:"/rest/like/action",
+				url:"${pageContext.request.contextPath}/rest/like/action",
 				method:"post",
 				data: {boardNo : boardNo},//밖(함수랑 같은 위치랑 가능)에 만든 변수를 쓸 수 있음 
 				success:function(response){

@@ -57,6 +57,6 @@ public class TestInterceptor implements HandlerInterceptor{
 								Object handler, Exception ex)
 					throws Exception {
 //				System.out.println("afterCompletion 실행");
-				System.out.println(ex);
+//				System.out.println(ex);
 			}	
 }

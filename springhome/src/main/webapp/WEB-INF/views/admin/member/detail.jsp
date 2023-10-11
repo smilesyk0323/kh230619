@@ -81,7 +81,7 @@
 		<c:forEach var="boardListDto" items="${boardList}">
 			<tr>
 				<td>
-				<a href="/board/detail?boardNo=${boardListDto.boardNo}">${boardListDto.boardTitle}</a></td>
+				<a href="${pageContext.request.contextPath}/board/detail?boardNo=${boardListDto.boardNo}">${boardListDto.boardTitle}</a></td>
 				<td>${boardListDto.boardCtime}</td>
 			</tr>		
 		</c:forEach>
@@ -90,7 +90,7 @@
 
 
 <br>
-<a style="text-decoration:none ; color: #6460AA; " href="/admin/member/list">목록보기</a>
+<a style="text-decoration:none ; color: #6460AA; " href="${pageContext.request.contextPath}/admin/member/list">목록보기</a>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 

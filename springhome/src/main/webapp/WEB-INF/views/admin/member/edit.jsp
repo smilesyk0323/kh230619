@@ -55,6 +55,6 @@
 
 
 <br>
-<a style="text-decoration:none ; color: #6460AA; " href="/admin/member/list">목록보기</a>
+<a style="text-decoration:none ; color: #6460AA; " href="${pageContext.request.contextPath}/admin/member/list">목록보기</a>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

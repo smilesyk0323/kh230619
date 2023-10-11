@@ -16,12 +16,12 @@
         <!--jquery CDN-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!--내가 만든 CSS파일-->
-    <link rel="stylesheet"type="text/css" href="/css/reset.css">
-    <link rel="stylesheet"type="text/css" href="/css/layout.css">
-    <link rel="stylesheet"type="text/css" href="/css/commons.css">
+    <link rel="stylesheet"type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+    <link rel="stylesheet"type="text/css" href="${pageContext.request.contextPath}/css/layout.css">
+    <link rel="stylesheet"type="text/css" href="${pageContext.request.contextPath}/css/commons.css">
 	<!--     <link rel="stylesheet"type="text/css" href="/css/test.css"> -->
 	<!-- favicon 설정 -->
-	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 <style>
 
 </style>
@@ -31,7 +31,7 @@
 	<main>
         <header>
             <div class="logo">
-                <img src="/images/bora-logo3.png" style="width:70px">
+                <img src="${pageContext.request.contextPath}/images/bora-logo3.png" style="width:70px">
             </div>
             <div class="title">
                 <h1 style="color:#6460AA">Bora's Home</h1>
@@ -42,21 +42,21 @@
             <ul class="menu">
             	<c:choose>
             		<c:when test="${sessionScope.name != null}">
-            			<li><a href="/">Home</a></li>
-            			<li><a href="/member/mypage">내정보</a></li>
-            			<li><a href="/member/logout">로그아웃</a></li>
-            			<li><a href="/board/list">게시판</a></li>
+            			<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            			<li><a href="${pageContext.request.contextPath}/member/mypage">내정보</a></li>
+            			<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+            			<li><a href="${pageContext.request.contextPath}/board/list">게시판</a></li>
             			
        					<%-- 관리자인 경우 추가 메뉴 출력 --%>
 						<c:if test="${sessionScope.level == '관리자'}">
-							<li><a href="/admin/home">관리자메뉴</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/home">관리자메뉴</a></li>
 						</c:if>
             		</c:when>
             		<c:otherwise>
-            			<li><a href="/">Home</a></li>
-            			<li><a href="/member/join">회원가입</a></li>
-            			<li><a href="/member/login">로그인</a></li>
-            			<li><a href="/board/list">게시판</a></li>
+            			<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            			<li><a href="${pageContext.request.contextPath}/member/join">회원가입</a></li>
+            			<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+            			<li><a href="${pageContext.request.contextPath}/board/list">게시판</a></li>
             		</c:otherwise>
             	</c:choose>
             </ul>
@@ -68,7 +68,7 @@
 						<h1>관리자 페이지</h1>
 					</div>
 					<div class="row">
-						<h3><a class="link" href="/admin/member/list?size=20">회원 관리</a></h3>
+						<h3><a class="link" href="${pageContext.request.contextPath}/admin/member/list?size=20">회원 관리</a></h3>
 					</div>
 					<div class="row">
 						<h3><a class="link" href="#">회원 통계</a></h3>

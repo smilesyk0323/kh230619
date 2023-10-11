@@ -7,11 +7,11 @@
 <title>나의 홈페이지</title>
 
 	<!-- favicon 설정 -->
-	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico">
     <!--내가 만든 CSS파일-->
-    <link rel="stylesheet"type="text/css" href="/css/reset.css">
-    <link rel="stylesheet"type="text/css" href="/css/layout.css">
-    <link rel="stylesheet"type="text/css" href="/css/commons.css">
+    <link rel="stylesheet"type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+    <link rel="stylesheet"type="text/css" href="${pageContext.request.contextPath}/css/layout.css">
+    <link rel="stylesheet"type="text/css" href="${pageContext.request.contextPath}/css/commons.css">
     <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
     <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!--구글 웹 폰트 사용을 위한 CDN-->
@@ -34,7 +34,7 @@
 	 <main>
         <header>
             <div class="logo">
-                <img src="/images/bora-logo3.png" style="width:70px">
+                <img src="${pageContext.request.contextPath}/images/bora-logo3.png" style="width:70px">
             </div>
             <div class="title">
                 <h1 style="color:#6460AA">Bora's Home</h1>
@@ -58,27 +58,27 @@
 		<c:choose>
 			<c:when test="${sessionScope.name != null}">
 			
-					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/">Home</a></li>
-					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/mypage">Mypage</a></li>
-	   				 <li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
-	   				  <li><a style="text-decoration:none ; color: #EDE7F6; " href="/pocketmon/list">포켓몬</a>
+					<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/">Home</a></li>
+					<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/member/mypage">Mypage</a></li>
+	   				 <li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/board/list">게시판</a></li>
+	   				  <li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/pocketmon/list">포켓몬</a>
 	   				    <ul>
-	   				  		<li><a href="/pocketmon/insert"> 등록</a></li>
+	   				  		<li><a href="${pageContext.request.contextPath}/pocketmon/insert"> 등록</a></li>
 	   				    </ul>
 	   				  </li>
-					<li><a style="text-decoration:none ; color:#EDE7F6; " href="/member/logout">로그아웃</a></li>
+					<li><a style="text-decoration:none ; color:#EDE7F6; " href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 	   				
 	   				<%-- 관리자인 경우 추가 메뉴 출력 --%>
 	   				<c:if test = "${sessionScope.level == '관리자'}">
-	   					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/admin/home">관리자메뉴</a></li>
+	   					<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/admin/home">관리자메뉴</a></li>
 	   				</c:if>
 	   				
 			</c:when>
 			<c:otherwise>
-					<li><a style="text-decoration:none ; color: #EDE7F6; " href="/">Home</a></li>
-				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/board/list">게시판</a></li>
-				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/join">회원가입</a></li>
-				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="/member/login">로그인</a></li>
+					<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/">Home</a></li>
+				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/board/list">게시판</a></li>
+				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/member/join">회원가입</a></li>
+				   	<li><a style="text-decoration:none ; color: #EDE7F6; " href="${pageContext.request.contextPath}/member/login">로그인</a></li>
 				  
 			</c:otherwise>
 		</c:choose>

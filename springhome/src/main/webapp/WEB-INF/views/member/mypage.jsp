@@ -83,11 +83,11 @@ font-size:16px;
 		</label>
 		<c:choose>
 			<c:when test="${profile == null }">
-				<img src="/images/user1.jpg"width="150"height="150" 
+				<img src="${pageContext.request.contextPath}/images/user1.jpg"width="150"height="150" 
 				class="image image-circle image-border profile-image">
 			</c:when>
 			<c:otherwise>
-							<img src="/rest/member/download?attachNo=${profile}"width="150"height="150" 
+							<img src="${pageContext.request.contextPath}/rest/member/download?attachNo=${profile}"width="150"height="150" 
 				class="image image-circle image-border profile-image">
 			</c:otherwise>
 		</c:choose>
@@ -171,7 +171,7 @@ font-size:16px;
 			<c:forEach var="boardDto" items="${boardLikeList}">
 			<tr>
 				<td class="w-75">
-				<a href="/board/detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}
+				<a href="${pageContext.request.contextPath}/board/detail?boardNo=${boardDto.boardNo}">${boardDto.boardTitle}
 				</a>
 				</td>
 				<td class="w-25">${boardDto.boardWriter}</td>

@@ -4,7 +4,7 @@
  
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-    <script src="/js/checkbox.js"></script>
+    <script src="${pageContext.request.contextPath}/js/checkbox.js"></script>
   <style>
 .btn,
 .btn.btn-positive{

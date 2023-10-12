@@ -24,6 +24,7 @@
     	<select id="find" resultType="BookDto">
     		select * from book where book_id = #{bookId}
     	</select>
+    	
     	<!-- 수정 -->
     	<update id="edit">
     		update book 
@@ -33,11 +34,23 @@
 			    				 book_genre=#{bookGenre}
 		    			where book_id=#{bookId}
     	</update>
+    	
     	<!-- 삭제 -->
     	<delete id="del">
     		delete book where book_id  = #{bookId}
     	</delete>
-    	<!-- 검색 -->
+    	
+    	<!-- 
+    			도서 검색
+    			- type, keyword 검색에서 type과 keyword는 할당되는 방식이 달라야 한다
+    			- type은 있는 그대로 변형 없이 할당(정적 할당)
+    			- keyword는 데이터의 형태에 맞게 변형하여 할당(동적 할당)
+    	 -->
+    	<select id="search" resultType="BookDto">
+    		 select * from book where instr( ${type} , #{keyword}) > 0
+    		 order by ${type} asc
+    	</select>
+    
     </mapper>
     
     

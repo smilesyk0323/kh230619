@@ -23,6 +23,17 @@
     		insert into pocketmon(no, name, type) values(pocketmon_seq.nextval, #{name}, #{type})
     	</insert>
     	
+    	<!-- 수정 구문-->
+    	 <update id="edit">
+    	 	update pocketmon set name=#{name}, type=#{type} where no=#{no}
+    	 </update>
+    	 
+    	<!-- 삭제 구문
+    	 -->
+    	 <delete id="del">
+    	 	delete pocketmon where no = #{no}
+    	 </delete>
+    	
     </mapper>
     
     

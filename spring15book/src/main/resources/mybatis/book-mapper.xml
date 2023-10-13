@@ -70,6 +70,42 @@
     			<if test="bookId != null">
     				and book_id = #{bookId}
     			</if>	
+    			<!-- 제목(유사) -->
+    			<if test="bookTitle != null">
+    				and instr(book_title, #{bookTitle}) > 0
+    			</if>	
+    			<!-- 저자(유사) -->
+				<if test="bookAuthor != null">
+    				and instr(book_author, #{bookAuthor}) > 0
+    			</if>	
+    			<!-- 출판사(유사) -->
+				<if test="bookPublisher != null">
+    				and instr(book_publisher, #{bookPublisher}) > 0
+    			</if>	
+    			<!-- 
+	    				판매가(구간)
+	    				- 숫자 비교 등에서는 부등호를 사용할 일이 있는데 이 경우 문제가 발생
+	    				- 해결방법은 (1) 부등호 대신 다른 기호를 쓰거나 (2) 부등호를 해석하지 않도록 지시
+	    				- <![CDATA[구문]]>
+    			 -->
+				<choose>
+					<when test="bookPriceMin != null and bookPriceMax != null">
+							<![CDATA[
+							and book_price >= #{bookPriceMin} and book_price <= #{bookPriceMax}						
+							]]>
+					</when>
+					<when test="bookPriceMin != null">
+							<![CDATA[
+							and book_price >= #{bookPriceMin} 						
+							]]>
+					</when>
+					<when test="bookPriceMax != null">
+							<![CDATA[
+							and book_price <= #{bookPriceMax} 						
+							]]>
+					</when>				
+				</choose>
+				
     		</where>
     			
     		<!-- 정렬 구문 -->

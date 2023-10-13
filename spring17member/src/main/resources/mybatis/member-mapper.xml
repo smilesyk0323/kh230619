@@ -6,6 +6,8 @@
     
     <mapper namespace="member">
     		<select id="complexSearch" resultType="MemberDto">
+    			<!-- Top N Query Header 불러오기 -->
+    			<include refid="pagingHeader"></include>
     			
     			<!-- 메인 조회 구문 -->
     				select * from member
@@ -49,3 +51,12 @@
     				
     		</select>
     </mapper>
+    
+    
+    
+    
+    
+    
+    
+    
+    

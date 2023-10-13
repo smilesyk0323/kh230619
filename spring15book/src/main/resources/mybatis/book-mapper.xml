@@ -68,7 +68,7 @@
     		<where>
     			<!-- 번호 -->
     			<if test="bookId != null">
-    				and bookId = #{bookId}
+    				and book_id = #{bookId}
     			</if>	
     		</where>
     			

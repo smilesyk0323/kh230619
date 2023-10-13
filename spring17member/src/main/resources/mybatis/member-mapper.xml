@@ -4,4 +4,48 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-    
+    <mapper namespace="member">
+    		<select id="complexSearch" resultType="MemberDto">
+    			
+    			<!-- 메인 조회 구문 -->
+    				select * from member
+   				<!-- 조건 구문 -->
+   				<where>
+   					<!-- 회원 아이디(유사) -->
+   					<if test="memberId != null">
+   						and instr(member_id,#{memberId}) > 0
+   					</if>
+   					<!-- 회원 닉네임(유사)  -->
+   					<if test="memberNickname != null">
+   						and instr(member_nickname, #{memberNickname}) > 0
+   					</if>
+   					<!-- 회원 이메일(유사) -->
+   					<if test="memberEmail != null">
+   						and instr(member_email, #{memberEmail}) > 0
+   					</if>
+   					<!-- 회원 연락처(유사) -->
+   					<if test="memberContact != null">
+   						and instr(member_contact, #{memberContact}) > 0
+   					</if>
+   					<!-- 회원 우편번호(유사) -->
+   					<if test="memberPost != null">
+   						and instr(member_post, #{memberPost}) > 0
+   					</if>
+   					<!-- 회원 주소1(유사) -->
+   					<if test="memberAddr1 != null">
+   						and instr(member_addr1, #{memberAddr1}) > 0
+   					</if>
+   					<!-- 회원 주소2(유사) -->
+   					<if test="memberAddr2 != null">
+   						and instr(member_addr2, #{memberAddr2}) > 0
+   					</if>
+   					<!-- 회원 생일(구간) -->
+   					<!-- 회원 포인트(구간) -->
+   					<!-- 회원 가입일(구간) -->
+   					<!-- 회원 마지막로그인(구간) -->
+   					<!-- 회원 마지막비밀번호변경일(구간) -->
+   					<!-- 회원 등급(목록 포함 검사)  -->
+   				</where>
+    				
+    		</select>
+    </mapper>

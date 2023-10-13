@@ -131,6 +131,24 @@
 							]]>
 					</when>
 				</choose>
+				<!-- 페이지(구간) -->
+				<choose>
+					<when test="bookPageMin != null and bookPageMax != null">
+							<![CDATA[
+							and book_page_count >= #{bookPageMin} and book_page_count <= #{bookPageMax}						
+							]]>
+					</when>
+					<when test="bookPageMin != null">
+							<![CDATA[
+							and book_page_count >= #{bookPageMin} 					
+							]]>
+					</when>
+					<when test="bookPageMax != null">
+							<![CDATA[
+							and book_page_count <= #{bookPageMax}					
+							]]>
+					</when>
+				</choose>
 				
     		</where>
     			

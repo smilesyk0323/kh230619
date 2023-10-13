@@ -105,6 +105,32 @@
 							]]>
 					</when>				
 				</choose>
+				<!-- 
+						출간일(구간)
+						- 만약 date 형태일 경우는 시간까지 고려해야함
+						- 1월 1일부터 1월 31일까지면 시작일은 00시00분00초, 종료일은 23시59분59초
+				 -->
+				<choose>
+					<when test="bookPublicationBegin != null and bookPublicationEnd != null">
+						and to_date(book_publication_date, 'YYYY-MM-DD' )
+						between 
+							to_date(#{bookPublicationBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')
+							and 
+							to_date(#{bookPublicationEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')
+					</when>
+					<when test="bookPublicationBegin != null">
+					<![CDATA[
+					and to_date(book_publication_date, 'YYYY-MM-DD' )
+							 >= to_date(#{bookPublicationBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')									
+							]]>
+					</when>
+					<when test="bookPublicationEnd != null">
+					<![CDATA[
+					and to_date(book_publication_date, 'YYYY-MM-DD' )
+							<= to_date(#{bookPublicationEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')										
+							]]>
+					</when>
+				</choose>
 				
     		</where>
     			

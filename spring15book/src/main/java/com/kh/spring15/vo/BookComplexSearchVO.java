@@ -12,6 +12,7 @@ public class BookComplexSearchVO {
 		private Integer bookId;
 		private String bookTitle;
 		private String bookAuthor;
+		private String bookPublisher;
 		private Integer bookPriceMin, bookPriceMax;
 		private String bookPublicationBegin, bookPublicationEnd;
 		private Integer bookPageMin, bookPageMax;

@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-${vo}
+<form>
+	<div>도서번호 <input type="text"name="bookId"value="${vo.bookId}"></div>
+	<div>도서명 <input type="text" name="bookTitle"value="${vo.bookTitle}"></div>
+	<button type="submit">검색</button>
+</form>
 
 <hr>
 

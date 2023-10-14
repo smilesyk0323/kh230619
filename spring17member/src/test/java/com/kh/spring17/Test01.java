@@ -27,9 +27,12 @@ public class Test01 {
 //		param.put("memberNickname",54);
 //		param.put("memberEmail",54);
 //		param.put("memberContact",54);
-//		param.put("memberPost",54);
 //		param.put("memberAddr1","제주도");
-		param.put("memberAddr2","100-2");
+//		param.put("memberAddr2","100-2");
+//		param.put("memberBirthBegin", "2000-01-01");
+//		param.put("memberBirthEnd", "2000-12-31");
+		param.put("memberJoinBegin", "2023-08-28");
+		param.put("memberJoinEnd", "2023-09-28");
 		
 		List<MemberDto> list = sqlSession.selectList("member.complexSearch",param);
 		log.debug("검색 결과 = {}개", list.size());

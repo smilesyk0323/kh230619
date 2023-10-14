@@ -14,10 +14,10 @@ public class MemberComplexSearchVo {
 				memberContact, memberPost,memberAddr1,memberAddr2;
 	
 	private String memberBirthBegin, memberBirthEnd ;
-	private Integer memberPointMin, memberPointMax;
-	private Date memberJoinBegin, memberjoinEnd;
+	private Date memberJoinBegin, memberJoinEnd;
 	private Date memberLoginBegin, memberLoginEnd;
 	private Date memberChangeBegin, memberChangeEnd;
+	private Integer memberPointMin, memberPointMax;
 	private List<String> memberLevelList;
 	private List<String> orderList;
 	private Integer begin;

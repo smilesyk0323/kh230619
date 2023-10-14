@@ -55,63 +55,84 @@
 								]]>
    						</when>
    					</choose>
+   					<!-- 회원 생일(년도 별 월별 검색) -->
+   					<choose>
+				        <when test="birthYear != null and birthMonth != null">
+				            AND EXTRACT(year FROM TO_DATE(member_birth, 'YYYY-MM-DD')) = #{birthYear} AND  EXTRACT(MONTH FROM TO_DATE(member_birth, 'YYYY-MM-DD')) = #{birthMonth}
+				        </when>
+				        <when test="birthYear != null">
+				            AND EXTRACT(year FROM TO_DATE(member_birth, 'YYYY-MM-DD')) = #{birthYear} 
+				        </when>
+				        <when test="birthMonth != null">
+				            AND EXTRACT(MONTH FROM TO_DATE(member_birth, 'YYYY-MM-DD')) = #{birthMonth}
+				        </when>
+				    </choose>
    					<!-- 회원 가입일(구간) -->
    					<choose>
    						<when test="memberJoinBegin != null and memberJoinEnd != null">
-					        and member_join 
-					        		between #{memberJoinBegin} and #{memberJoinEnd}
-					    </when>
+   							and member_join
+								between 
+									to_date(#{memberJoinBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')
+								and 
+									to_date(#{memberJoinEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')
+   						</when>
    						<when test="memberJoinBegin != null">
-					        and 
-					        	<![CDATA[ 
-					        			member_join >= #{memberJoinBegin} 
-					        	]]>
-					    </when>
-					    <when test="memberJoinEnd != null">
-					        and 
-					        	<![CDATA[ 
-					        			member_join <= #{memberJoinEnd}
-					        	]]>
-					    </when>
+   							<![CDATA[
+								and member_join
+								 >= to_date(#{memberJoinBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')									
+							]]>
+   						</when>
+   						<when test="memberJoinEnd != null">
+	   						<![CDATA[
+									and member_join
+									 <= to_date(#{memberJoinEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')									
+								]]>
+   						</when>
    					</choose>
    					<!-- 회원 마지막로그인(구간) -->
     				<choose>
    						<when test="memberLoginBegin != null and memberLoginEnd != null">
-					        and member_login 
-					        		between #{memberLoginBegin} and #{memberLoginEnd}
-					    </when>
+   							and member_login
+								between 
+									to_date(#{memberLoginBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')
+								and 
+									to_date(#{memberLoginEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')
+   						</when>
    						<when test="memberLoginBegin != null">
-					        and 
-					        	<![CDATA[ 
-					        			member_login >= #{memberLoginBegin} 
-					        	]]>
-					    </when>
-					    <when test="memberLoginEnd != null">
-					        and 
-					        	<![CDATA[ 
-					        			member_login <= #{memberLoginEnd}
-					        	]]>
-					    </when>
-   					</choose>  					
+   							<![CDATA[
+								and member_login
+								 >= to_date(#{memberLoginBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')									
+							]]>
+   						</when>
+   						<when test="memberLoginEnd != null">
+	   						<![CDATA[
+									and member_login
+									 <= to_date(#{memberLoginEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')									
+								]]>
+   						</when>
+   					</choose>
    					<!-- 회원 마지막비밀번호변경일(구간) -->
    					<choose>
-   						<when test="memberChangeBegin != null and memberChangeEnd != null">
-					        and member_change 
-					        		between #{memberChangeBegin} and #{memberChangeEnd}
-					    </when>
+   						<when test="memberChangeBegin != null and ChangeLoginEnd != null">
+   							and member_change
+								between 
+									to_date(#{memberChangeBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')
+								and 
+									to_date(#{ChangeLoginEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')
+   						</when>
    						<when test="memberChangeBegin != null">
-					        and 
-					        	<![CDATA[ 
-					        			member_change >= #{memberChangeBegin} 
-					        	]]>
-					    </when>
-					    <when test="memberChangeEnd != null">
-					        and 
-					        	<![CDATA[ 
-					        			member_change <= #{memberChangeEnd}
-					        	]]>
-					    </when>
-   					</choose> 
+   							<![CDATA[
+								and member_change
+								 >= to_date(#{memberChangeBegin} || ' ' || '00:00:00','YYYY-MM-DD HH24:MI:SS')									
+							]]>
+   						</when>
+   						<when test="memberLoginEnd != null">
+	   						<![CDATA[
+									and member_change
+									 <= to_date(#{ChangeLoginEnd} || ' ' || '23:59:59','YYYY-MM-DD HH24:MI:SS')									
+								]]>
+   						</when>
+   					</choose>
    					<!-- 회원 포인트(구간) -->
    					<choose>
    						<when test="memberPointMin != null and memberPointMax != null">

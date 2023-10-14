@@ -9,9 +9,22 @@
 	<div>회원 연락처 <input type="text"name="memberContact"value="${vo.memberContact}"></div>
 	<div>회원 주소 <input type="text"name="memberAddr1"value="${vo.memberAddr1}"></div>
 	<div>
-		회원 생일 <input type="date" name="memberBirthBegin"value="${vo.memberBirthBegin}">
-		~
-		<input type="date" name="memberBirthEnd"value="${vo.memberBirthEnd}">
+		회원 생일 <input type="number" name="birthYear" value="${vo.birthYear}" min="1900" max="2023">년		
+        <select name="birthMonth" id="birthMonth"value="${vo.birthMonth}" >
+		    <option value="">월 선택</option>
+		    <option value="1">1월</option>
+		    <option value="2">2월</option>
+		    <option value="3">3월</option>
+		    <option value="4">4월</option>
+		    <option value="5">5월</option>
+		    <option value="6">6월</option>
+		    <option value="7">7월</option>
+		    <option value="8">8월</option>
+		    <option value="9">9월</option>
+		    <option value="10">10월</option>
+		    <option value="11">11월</option>
+		    <option value="12">12월</option>
+		</select>
 	</div>
 	<div>
 		회원 가입일 
@@ -52,14 +65,6 @@
 			</c:otherwise>
 		</c:choose>
 		<c:choose>
-			<c:when test="${vo.memberLevelList.contains('VVIP')}">
-				<input type="checkbox" name="memberLevelList" value="VVIP"checked> VVIP
-			</c:when>
-			<c:otherwise>
-				<input type="checkbox" name="memberLevelList" value="VVIP"> VVIP
-			</c:otherwise>
-		</c:choose>
-		<c:choose>
 			<c:when test="${vo.memberLevelList.contains('관리자')}">
 				<input type="checkbox" name="memberLevelList" value="관리자"checked> 관리자
 			</c:when>
@@ -84,7 +89,7 @@
 		2차 정렬
 		<select name="orderList">
 			<option value="">선택하세요</option>
-			<option value="member_point asc">포인트 순</option>
+			<option value="member_point desc">포인트 많은 순</option>
 			<option value="member_join asc">가입일자가 오래된 순</option>
 			<option value="member_login asc">장기간 로그인 안한 순</option>
 			<option value="member_change desc">비밀번호 변경한지 오래된 순</option>
@@ -100,10 +105,12 @@
 <table border="1">
 	<thead>
 		<tr>
+			<th>등급</th>
 			<th>아이디</th>
 			<th>닉네임</th>
 			<th>연락처</th>
 			<th>이메일</th>
+			<th>생일</th>
 			<th>주소</th>
 			<th>포인트</th>
 			<th>가입일</th>
@@ -114,18 +121,21 @@
 	<tbody>
 	<c:forEach var="memberDto" items="${list}">
 		<tr>
+			<td>${memberDto.memberLevel}</td>
 			<td>${memberDto.memberId}</td>
 			<td>${memberDto.memberNickname}</td>
 			<td>${memberDto.memberContact}</td>
 			<td>${memberDto.memberEmail}</td>
+			<td>${memberDto.memberBirth}</td>
 			<td>[${memberDto.memberPost}] ${memberDto.memberAddr1} ${memberDto.memberAddr2}</td>
 			<td>${memberDto.memberPoint}</td>
-			<td><fmt:formatDate value="${memberDto.memberJoin}" pattern="yyyy-MM-dd" /></td>
-            <td><fmt:formatDate value="${memberDto.memberLogin}" pattern="yyyy-MM-dd" /></td>
-            <td><fmt:formatDate value="${memberDto.memberChange}" pattern="yyyy-MM-dd" /></td>
+			<td>${memberDto.memberJoin}</td>
+            <td>${memberDto.memberLogin}</td>
+            <td>${memberDto.memberChange}</td>
 		</tr>
 	</c:forEach>
 	</tbody>
 </table>
+
 
 		

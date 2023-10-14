@@ -41,7 +41,10 @@ public class Test01 {
 //		param.put("memberLevel", "일반");
 //		param.put("memberLevelList", List.of("관리자"));
 		
-		param.put("orderList", List.of("member_change desc"));
+//		param.put("birthYear", "2000");
+		param.put("birthMonth", "10");
+		
+//		param.put("orderList", List.of("member_change desc"));
 //		param.put("orderList", List.of("book_publication_date desc", "book_id asc"));//최근 출간순(같으면 번호순)
 		
 //		param.put("begin", 1);

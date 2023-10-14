@@ -33,10 +33,6 @@
    					<if test="memberAddr1 != null">
    						and instr(member_addr1, #{memberAddr1}) > 0
    					</if>
-   					<!-- 회원 주소2(유사) -->
-   					<if test="memberAddr2 != null">
-   						and instr(member_addr2, #{memberAddr2}) > 0
-   					</if>
    					<!-- 회원 생일(구간) -->
    					<choose>
    						<when test="memberBirthBegin != null and memberBirthEnd != null">
@@ -60,7 +56,7 @@
    						</when>
    					</choose>
    					<!-- 회원 가입일(구간) -->
-   						<choose>
+   					<choose>
    						<when test="memberJoinBegin != null and memberJoinEnd != null">
 					        and member_join 
 					        		between #{memberJoinBegin} and #{memberJoinEnd}
@@ -78,11 +74,78 @@
 					        	]]>
 					    </when>
    					</choose>
-   					<!-- 회원 포인트(구간) -->
    					<!-- 회원 마지막로그인(구간) -->
+    				<choose>
+   						<when test="memberLoginBegin != null and memberLoginEnd != null">
+					        and member_login 
+					        		between #{memberLoginBegin} and #{memberLoginEnd}
+					    </when>
+   						<when test="memberLoginBegin != null">
+					        and 
+					        	<![CDATA[ 
+					        			member_login >= #{memberLoginBegin} 
+					        	]]>
+					    </when>
+					    <when test="memberLoginEnd != null">
+					        and 
+					        	<![CDATA[ 
+					        			member_login <= #{memberLoginEnd}
+					        	]]>
+					    </when>
+   					</choose>  					
    					<!-- 회원 마지막비밀번호변경일(구간) -->
+   					<choose>
+   						<when test="memberChangeBegin != null and memberChangeEnd != null">
+					        and member_change 
+					        		between #{memberChangeBegin} and #{memberChangeEnd}
+					    </when>
+   						<when test="memberChangeBegin != null">
+					        and 
+					        	<![CDATA[ 
+					        			member_change >= #{memberChangeBegin} 
+					        	]]>
+					    </when>
+					    <when test="memberChangeEnd != null">
+					        and 
+					        	<![CDATA[ 
+					        			member_change <= #{memberChangeEnd}
+					        	]]>
+					    </when>
+   					</choose> 
+   					<!-- 회원 포인트(구간) -->
+   					<choose>
+   						<when test="memberPointMin != null and memberPointMax != null">
+					        and member_point
+					        		between #{memberPointMin} and #{memberPointMax}
+					    </when>
+   						<when test="memberPointMin != null">
+					        and 
+					        	<![CDATA[ 
+					        			member_point >= #{memberPointMin} 
+					        	]]>
+					    </when>
+					    <when test="memberPointMax != null">
+					        and 
+					        	<![CDATA[ 
+					        			member_point <= #{memberPointMax}
+					        	]]>
+					    </when>
+   					</choose> 
    					<!-- 회원 등급(목록 포함 검사)  -->
+   					<if test="memberLevelList != null and memberLevelList.size() > 0">
+						and member_level in
+							<foreach collection="memberLevelList" open="(" close=")" separator="," item="level">
+								#{level}
+							</foreach>
+				 </if>
    				</where>
+   				
+   				<!-- 정렬 구문 -->
+	    		<if test="orderList != null and orderList.size() > 0">
+	    			order by 
+	    			<foreach collection="orderList" separator="," item="order">${order}</foreach>
+	    		</if>
+   				
     				 <!-- Top N Query Footer 불러오기 -->
     				<include refid="pagingFooter"></include>	
     		</select>

@@ -20,7 +20,7 @@ public class MemberDto {
 	private String memberAddr1;
 	private String memberAddr2;
 	private String memberLevel;
-	private Integer memberPoint;
+	private int memberPoint;
 	private Date memberJoin;
 	private Date memberLogin;
 	private Date memberChange;

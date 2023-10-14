@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
-public class MemberComplexSearchVo {
+public class MemberComplexSearchVO {
 	private String memberId,memberNickname,memberEmail,
 				memberContact, memberPost,memberAddr1,memberAddr2;
 	

@@ -11,8 +11,10 @@
     			
     			<!-- 메인 조회 구문 -->
     				select * from member
+    				
    				<!-- 조건 구문 -->
    				<where>
+   				
    					<!-- 회원 아이디(유사) -->
    					<if test="memberId != null">
    						and instr(member_id,#{memberId}) > 0
@@ -152,13 +154,13 @@
 					        	]]>
 					    </when>
    					</choose> 
-   					<!-- 회원 등급(목록 포함 검사)  -->
+   					<!-- 회원 등급(목록 포함)  -->
    					<if test="memberLevelList != null and memberLevelList.size() > 0">
 						and member_level in
 							<foreach collection="memberLevelList" open="(" close=")" separator="," item="level">
 								#{level}
 							</foreach>
-				 </if>
+				 	</if>
    				</where>
    				
    				<!-- 정렬 구문 -->

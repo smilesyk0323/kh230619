@@ -1,8 +1,5 @@
 package com.kh.spring17.dto;
 
-
-
-
 import java.sql.Date;
 
 import lombok.AllArgsConstructor;

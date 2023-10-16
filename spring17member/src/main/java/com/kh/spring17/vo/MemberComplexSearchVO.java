@@ -16,7 +16,7 @@ public class MemberComplexSearchVO {
 	private String memberBirthBegin, memberBirthEnd ;
 	private String birthYear;   
 	private String birthMonth;  
-	private String memberJoinBegin, memberJoinEnd;
+	private String memberJoinBegin, memberJoinEnd;//날짜도 검색할 때는 문자열로 입력
 	private String memberLoginBegin, memberLoginEnd;
 	private String memberChangeBegin, memberChangeEnd;
 	private Integer memberPointMin, memberPointMax;

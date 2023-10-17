@@ -6,7 +6,7 @@
 <form method="post">
 <input type="text" name="memberId">
 <br><br>
-<input type="text" name="memberPw">
+<input type="password" name="memberPw">
 <br><br>
 <button type="submit">가입</button>
 </form>

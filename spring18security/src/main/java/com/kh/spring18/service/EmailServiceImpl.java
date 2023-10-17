@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,6 +38,18 @@ public class EmailServiceImpl implements EmailService{
 		//수신자 표시
 		Element target = doc.getElementById("target");
 		target.text(email);
+		
+		//로그인 링크 작성 
+		Element link = doc.getElementById("login-link");
+//		link.attr("href","/secure/login");//절대경로지만 안됨(다른사이트에서 실행하기 때문)
+		
+		//주소를 현재 상황에 맞게 생성하는 도구 사용
+		String href = ServletUriComponentsBuilder
+													.fromCurrentContextPath()//현재의 context path에서
+													.path("/secure/login")//세부 경로를 더하고 
+													.build()//만든 다음
+													.toUriString();//문자열로 바꿔라
+		link.attr("href", href);
 		
 		helper.setText(doc.toString(),true);
 		

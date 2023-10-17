@@ -1,12 +1,14 @@
 package com.kh.spring18.service;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -30,15 +32,13 @@ public class EmailServiceImpl implements EmailService{
 		helper.setSubject("[KH정보교육원] 가입을 축하합니다!");
 		
 		ClassPathResource resource = new ClassPathResource("templates/celebration.html");
-		File target = resource.getFile();
-		Scanner sc = new Scanner(target);
-		StringBuffer buffer = new StringBuffer();
-		while(sc.hasNextLine()) {
-			buffer.append(sc.nextLine());
-		}
-		sc.close();
+		Document doc = Jsoup.parse(resource.getFile(), "UTF-8");
 		
-		helper.setText(buffer.toString(),true);
+		//수신자 표시
+		Element target = doc.getElementById("target");
+		target.text(email);
+		
+		helper.setText(doc.toString(),true);
 		
 		sender.send(message);
 	}

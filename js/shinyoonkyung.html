@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI구현</title>
+    <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+    <link  rel="stylesheet"type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹 폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!--내가 만든 CSS파일-->
+    <link rel="stylesheet"type="text/css" href="./css/reset.css">
+    <link rel="stylesheet"type="text/css" href="./css/commons.css">
+    <style>
+    .target{
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            padding: 10px;
+            font-size: 24px;
+        }
+    .btn{
+        border: none;
+        background-color:#dfe6e9 ;
+        font-weight: 500;
+        height: 2.5em;
+    }
+    .btn:hover{
+    filter: brightness(105%);
+    }
+    </style>
+    <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--javascript 작성 공간-->
+    <script>
+        $(function(){
+                var buttonList = document.querySelectorAll(".keypad");
+                var target = document.querySelector(".target");
+
+                for(var i=0; i < buttonList.length; i++) {
+                buttonList[i].addEventListener("click", function(){
+                        target.value += this.textContent;
+                    });
+                }
+
+                var deleteOne = document.querySelector(".deleteOne");
+                deleteOne.addEventListener("click", function(){
+                    var currentValue = target.value;
+                    target.value = currentValue.substring(0, currentValue.length - 1);
+                });
+    
+                var sharp = document.querySelector(".delete");
+                sharp.addEventListener("click",function(){
+                    target.value="";
+                });
+    
+                $(".PwCk").change(function(){
+   
+                    var targetInput = document.querySelector(".target");
+                        if($(this).prop("checked")){
+                            targetInput.type = "text";
+                        }
+                        else{
+                            targetInput.type = "password";
+                        }
+                });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container w-300">
+        <div class="row">
+            <h1>비밀번호 입력</h1>
+        </div>
+        <div class="row">
+            <input type="password" class="target  w-100" style="height: 50px;" readonly>
+        </div>
+        <div class="row left">
+            <input type="checkbox" class="PwCk">비밀번호 표시
+        </div>
+        <div class="row float-container">
+            <div class="col-3 ">
+                <button class="btn keypad w-100" >1</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >2</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >3</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >4</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >5</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >6</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >7</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >8</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >9</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypa deleteOne w-100" ><i class="fa-solid fa-square-xmark"></i></button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad w-100" >0</button>
+            </div>
+            <div class="col-3">
+                <button class="btn keypad delete  w-100" ><i class="fa-solid fa-eraser"></i></button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

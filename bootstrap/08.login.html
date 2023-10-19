@@ -62,11 +62,43 @@
 
                 <!--내용(배너, 컨텐츠 등)을 배치할 때는 
                                 margin top을 줘서 메뉴가 표시될 자리만큼 띄워야 한다-->
-                <div class="row mt-5 pt-5">
-                    <div class="col">
-                        <h1>내용 샘플</h1>
-                    </div>
-                </div>
+
+                                <div class="row mt-5 pt-5 mb-5 pb-5">
+                                    <div class="col">
+                                        <form action="login" method="post" autocomplete="off">
+                                            <div class="mt-5 text-center col-4 offset-4">
+                                                <div class="row">
+                                                    <h2>로그인</h2>
+                                                </div>
+                                                <div class="row mt-4 mb-3 ">
+                                                    <input type="text" name="memberId"class="form-control w-100 is-valid p-3"
+                                                        placeholder="아이디">
+                                                    <div class="valid-feedback text-start">멋진 닉네임입니다!</div>
+                                                    <div class="invalid-feedback text-start">영문소문자,숫자 8~20자</div>
+                                                </div>
+                                                <div class="row mt-2 mb-3 ">
+                                                    <input type="password" name="memberPw" class="form-control w-100 is-invalid p-3"
+                                                        placeholder="비밀번호">
+                                                    <div class="invalid-feedback text-start">영문대소문자,숫자,특수기호 8~16자</div>
+                                                </div>
+                                                <div class="row ">
+                                                    <div class="col text-start form-check form-switch ms-1">
+                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="remember">
+                                                        <label class="form-check-label" for="flexSwitchCheckDefault">아이디 기억하기</label>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4 ">
+                                                    <button class="btn btn-primary p-2">Login</button>
+                                                </div>
+                                                <div class="row text-end mt-2">
+                                                    <a href="#" class=" link-underline link-underline-opacity-0 link-underline-opacity-75-hover bs-danger-bg-subtle">비밀번호 찾기</a>
+                                                </div>
+                                            </div>
+                                    </form>
+
+                                    </div>
+                                </div>
 
                 <!--footer-->
                 <hr>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.2/minty/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- <link href="test.css" rel="stylesheet"> -->
+    <style>
+        .form-control:focus {
+            color: var(--bs-body-color);
+            background-color: var(--bs-body-bg);
+            border-color: #bce1d6;
+            outline: 0;
+            box-shadow: 0 0 0 0.125rem rgba(120, 194, 173, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+
+                <div class="row">
+                    <div class="col text-center pb-3">
+                        <c:choose>
+                            <c:when test="${isReply}">
+                                <h1>답글 작성</h1>
+                            </c:when>
+                            <c:otherwise>
+                                <h1>게시글 작성</h1>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <div class="row text-end">
+                        <div class="col me-1">
+                            <label>제목</label>
+                            
+                        </div>
+                        <c:choose>
+                            <c:when test="${isReply}">
+                                <input type="text" name="boardTitle" class="form-control w-100 "
+                                    value="RE: ${originDto.boardTitle}" onblur="checkBoardTitle();">
+                                <div class="fail-feedback me-1">제목은 필수이며 100자 이내로 작성하세요</div>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="text" name="boardTitle" class="form-control w-100"
+                                    onblur="checkBoardTitle();">
+                                <div class="fail-feedback me-1">제목은 필수이며 100자 이내로 작성하세요</div>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </div>
+
+                    <div class="row text-end pt-2">
+                        <div class="col">
+                            <label class=" me-1">내용</label>
+                            <textarea name="boardContent" class="form-control w-100" style="min-height:250px"
+                                oninput="checkBoardContent();"></textarea>
+                            <div class="fail-feedback  me-1">내용은 반드시 작성해야 합니다</div>
+                        </div>
+                    </div>
+                    <div class="row text-start">
+                        <div class="col">
+                            <span class="len red">0</span> / 1000
+                        </div>
+                    </div>
+
+                    <div class="row text-start pt-3">
+                        <div class="col">
+                            <a href="list" class="btn btn-outline-primary">목록보기</a>
+                            <button type="submit" class="btn btn-primary">글쓰기</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

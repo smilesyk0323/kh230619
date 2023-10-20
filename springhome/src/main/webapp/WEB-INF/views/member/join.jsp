@@ -88,19 +88,15 @@ $(function(){
 });
 </script>
 <style>
-.container,
-.row,
-.row.h1{
-	font-size: 16px;
-	color: #182C61;
-}
-.btn,
-.btn.btn-positive{
-	background-color:#6460AA;
-	color:white;
-	border:none;
-	line-height: 1.2em;
-}
+ .form-control:focus {
+     color: var(--bs-body-color);
+     background-color: var(--bs-body-bg);
+     border-color: #bce1d6;
+     outline: 0;
+     box-shadow: 0 0 0 0.125rem rgba(120, 194, 173, 0.25);
+ }
+
+
 input::placeholder {
   font-size: 0.9em;
 }
@@ -114,112 +110,147 @@ input::placeholder {
  .progressbar > .guage{
      width: 0%;
      height: 100%;
-     background-color: #9575CD;
+     background-color: #bce1d6;
      transition: width 0.2s ease-out;/*스르륵*/
  }
 </style>
 <body style="background-color:#F2EFFB">
 
-<form class="join-form" action="join" method="post" autocomplete="off">
-        <div class="container w-400">
-                <div class="row"><h1>회원 정보 입력</h1></div>
-                
-				    <!-- 전체 진행단계를 알 수 있는 게이지 출력 -->
-				    <div class="row">
-				        <div class="progressbar">
-				            <div class="guage"></div>
-				        </div>
-				    </div>
-                <div class="page">
-	                <div class="row">
-	                    <h2>1단계 아이디/비밀번호</h2>
-	                </div>
-	                        <div class="row left">
-	                            <label for="id-input">아이디<span class="important">*</span></label>
-	                            <input type="text"name="memberId" class="form-input w-100" id="id-input"
-	                                placeholder="영문 소문자+숫자 8~20자 5~20자 이내">
-	                            <div class="success-feedback">가입 가능한 아이디입니다</div>
-	                            <div class="fail-feedback">아이디는 영문과 숫자 5~20자로 작성하세요</div> 
-	                            <div class="fail2-feedback">이미 사용중인 아이디입니다</div> 
-	                        </div>
-	                        <div class="row left">
-	                            <label for="id-input">비밀번호<span class="important">*</span></label>
-	                            <input type="password"name="memberPw" class="form-input w-100" 
-	                                placeholder="영문+숫자+특수문자 반드시 포함 8~16자" >
-	                            <div class="success-feedback">올바른 비밀번호 형식입니다</div>
-	                            <div class="fail-feedback">영문,숫자,특수문자를 반드시 포함하여 8~16자로 작성하세요</div>
-	                        </div>
-	                        <div class="row left">
-                            <label for="id-input">비밀번호 확인<span class="important">*</span></label>
-                            <input type="password" id="password-check" class="form-input w-100"
-                            	placeholder="확인을 위해 위와 동일하게 입력해주세요">
-                            <div class="success-feedback">비밀번호가 일치합니다</div>
-                            <div class="fail-feedback">비밀번호가 일치하지 않습니다</div>
-                            <div class="fail2-feedback">비밀번호를 먼저 작성하세요</div>
+                <div class="row ">
+                    <div class="col">
 
-                        </div>
-             			<div class="row">
-		                    <button type="button"class="btn btn-prev">이전</button>
-		                    <button type="button"class="btn btn-next">다음</button>
-		                </div>
-              </div>
-              <div class="page">
-              		<div class="row">
-	                    <h2>2단계 닉네임/생년월일/이메일</h2>
-	                </div>
-                        <div class="row left">
-                            <label for="id-input">닉네임<span class="important">*</span></label>
-                            <input type="text"name="memberNickname" class="form-input w-100" 
-                                placeholder="한글 또는 숫자2~10자 이내">
-                            <div class="success-feedback">사용 가능한 닉네임입니다</div>
-                            <div class="fail-feedback">한글 또는 숫자 2~10자 이내로 작성하세요</div>
-                            <div class="fail2-feedback">닉네임이 이미 사용중입니다</div>
-                        </div>
-		                <div class="row left">
-			                    <label>이메일<span class="important">*</span></label>
-			                    <input type="email"name="memberEmail" class="form-input w-100" 
-			                         placeholder="testuser@kh.com" >
-			                    <div class="fail-feedback">이메일 형식이 올바르지 않습니다</div>
-			                    <div class="fail2-feedback">현재 이메일은 이미 사용중입니다</div>
-			                </div>
-		                <div class="row  left">
-		                    <label>생년월일</label>
-		                    <input type="date"name="memberBirth" class="form-input w-100" >
-		                    <div class="fail-feedback">잘못된 날짜를 선택하셨습니다</div>
-		                </div>
-             			<div class="row">
-		                    <button type="button"class="btn btn-prev">이전</button>
-		                    <button type="button"class="btn btn-next">다음</button>
-		                </div>
-              </div>
-               <div class="page">
-             		<div class="row">
-                    	<h2>3단계 연락처/주소</h2>
-	                </div>
-			                <div class="row left">
-			                    <label>연락처</label>
-			                    <input type="tel"name="memberContact" class="form-input w-100" 
-			                         placeholder="- 제외하고 입력" >
-			                    <div class="fail-feedback">전화번호 형식이 올바르지 않습니다</div>
-			                </div>
-			                <div class="row left">
-			                    <label style="display: block;">주소</label>
-			                    <input type="text"name="memberPost" class="form-input post-search" 
-			                         placeholder="우편번호"size="6" maxlength="6"readonly>
-			                         <button type="button" class="btn post-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-			                    <input type="text"name="memberAddr1" class="form-input w-100 mt-10 post-search" 
-			                         placeholder="기본주소" readonly>
-			                    <input type="text"name="memberAddr2" class="form-input w-100 mt-10" 
-			                         placeholder="상세주소" >
-			                    <div class="fail-feedback">주소 입력시 모든 주소를 작성해주세요</div>
-			                </div>
-			                <div class="row ">		    
-			                    <button type="button"class="btn btn-prev">이전</button>
-			                    <button type="button"class="btn btn-next">다음</button>      
-			                    <button class="btn btn-positive w-50">가입하기</button>
-			                </div>
-            	</div>
-            </div>
-    </form>
+                        <form class="join-form" action="join" method="post" autocomplete="off">
+                            <div class="container-fluid ">
+                                    <div class="row col-6 offset-3 text-center"><div class="col">
+                                            <h2>회원 정보 입력</h2>
+                                        </div></div>
+                                    
+                                        <!-- 전체 진행단계를 알 수 있는 게이지 출력 -->
+                                        <div class="row pb-3">
+                                            <div class=" progressbar">
+                                                <div class="guage"></div>
+                                            </div>
+                                        </div>
+                                    <div class="page col-6 offset-3">
+                                        <div class="row"><div class="col">
+                                            <h3>1단계 아이디/비밀번호</h3>
+                                        </div></div>
+                                                <div class="row text-start"><div class="col">
+                                                    <div class="ms-2">
+                                                        <label for="id-input">아이디<span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <input type="text"name="memberId" class="form-control w-100" id="id-input"
+                                                        placeholder="영문 소문자+숫자 8~20자 5~20자 이내">
+                                                    <div class="success-feedback">가입 가능한 아이디입니다</div>
+                                                    <div class="fail-feedback">아이디는 영문과 숫자 5~20자로 작성하세요</div> 
+                                                    <div class="fail2-feedback">이미 사용중인 아이디입니다</div> 
+                                                </div></div>
+                                                <div class="row  text-start"><div class="col">
+                                                    <div class="ms-2">
+                                                        <label for="id-input">비밀번호<span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <input type="password"name="memberPw" class="form-control w-100" 
+                                                        placeholder="영문+숫자+특수문자 반드시 포함 8~16자" >
+                                                    <div class="success-feedback">올바른 비밀번호 형식입니다</div>
+                                                    <div class="fail-feedback">영문,숫자,특수문자를 반드시 포함하여 8~16자로 작성하세요</div>
+                                                </div></div>
+                                                <div class="row  text-start"><div class="col">
+                                                    <div class="ms-2">
+                                                        <label for="id-input">비밀번호 확인<span class="text-danger">*</span></label>
+                                                    </div>
+                                                <input type="password" id="password-check" class="form-control w-100"
+                                                    placeholder="확인을 위해 위와 동일하게 입력해주세요">
+                                                <div class="success-feedback">비밀번호가 일치합니다</div>
+                                                <div class="fail-feedback">비밀번호가 일치하지 않습니다</div>
+                                                <div class="fail2-feedback">비밀번호를 먼저 작성하세요</div>
+                    
+                                            </div></div>
+                                             <div class="row pt-2"><div class="col">
+                                                <button type="button"class="btn btn-primary btn-prev">이전</button>
+                                                <button type="button"class="btn btn-primary btn-next">다음</button>
+                                            </div></div>
+                                  </div>
+                                  <div class="page  col-6 offset-3">
+                                          <div class="row"><div class="col">
+                                            <h3>2단계 닉네임/생년월일/이메일</h3>
+                                        </div></div>
+                                            <div class="row text-start"><div class="col">
+                                                <div class="ms-2">
+                                                    <label for="id-input">닉네임<span class="text-danger">*</span></label>
+                                                </div>
+                                                <input type="text"name="memberNickname" class="form-control w-100" 
+                                                    placeholder="한글 또는 숫자2~10자 이내">
+                                                <div class="success-feedback">사용 가능한 닉네임입니다</div>
+                                                <div class="fail-feedback">한글 또는 숫자 2~10자 이내로 작성하세요</div>
+                                                <div class="fail2-feedback">닉네임이 이미 사용중입니다</div>
+                                            </div></div>
+                                            <div class="row  text-start"><div class="col">
+                                                <div class="ms-2">
+                                                    <label>이메일<span class="text-danger">*</span></label>
+                                                </div>
+                                                    <input type="email"name="memberEmail" class="form-control w-100" 
+                                                         placeholder="testuser@kh.com" >
+                                                    <div class="fail-feedback">이메일 형식이 올바르지 않습니다</div>
+                                                    <div class="fail2-feedback">현재 이메일은 이미 사용중입니다</div>
+                                                </div></div>
+                                            <div class="row   text-start"><div class="col">
+                                                <div class="ms-2">
+                                                    <label>생년월일</label>
+                                                </div>
+                                                <input type="date"name="memberBirth" class="form-control w-100" >
+                                                <div class="fail-feedback">잘못된 날짜를 선택하셨습니다</div>
+                                            </div></div>
+                                            <div class="row pt-2"><div class="col">
+                                                <button type="button"class="btn btn-primary btn-prev">이전</button>
+                                                <button type="button"class="btn btn-primary btn-next">다음</button>
+                                            </div></div>
+                                  </div>
+                                   <div class="page col-6 offset-3">
+	                                         <div class="row"><div class="col">
+	                                            <h3>3단계 연락처/주소</h3>
+	                                         </div></div>
+                                              <div class="row text-start"><div class="col">
+                                                  <div class="ms-2">
+                                                      <label>연락처</label>
+                                                  </div>
+                                                  <input type="tel"name="memberContact" class="form-control w-100" 
+                                                       placeholder="- 제외하고 입력" >
+                                                  <div class="fail-feedback">전화번호 형식이 올바르지 않습니다</div>
+                                              </div></div>
+                                              
+                                               <div class="row text-start"><div class="col">
+                                                   <div class="ms-2">
+                                                       <label style="display: block;">주소</label>
+                                                   </div>
+                                                   <div class="row col-5">
+                                                       <div class="col-8">
+                                                           <input type="text"name="memberPost" class="form-control post-search" 
+                                                                placeholder="우편번호"size="6" maxlength="6"readonly>
+                                                       </div>
+                                                       <div class="col-4">
+                                                           <button type="button" class="btn btn-primary post-search h-100"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                                       </div>
+                                                   </div>
+                                                   <input type="text"name="memberAddr1" class="form-control  w-100 mt-10 post-search" 
+                                                        placeholder="기본주소" readonly>
+                                                   <input type="text"name="memberAddr2" class="form-control w-100 mt-10" 
+                                                        placeholder="상세주소" >
+                                                   <div class="fail-feedback">주소 입력시 모든 주소를 작성해주세요</div>
+                                               </div></div>
+                                                
+                                                <div class="row "><div class="col">		    
+                                                    <div class="col">
+                                                        <button type="button"class="btn btn-primary btn-prev">이전</button>
+                                                        <button type="button"class="btn btn-primary btn-next">다음</button>      
+                                                        <button class="btn btn-primary w-50">가입하기</button>
+                                                    </div>
+                                                </div></div>
+                                     	</div>
+                        			</div>
+
+                        </form>
+
+                    </div>
+                </div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

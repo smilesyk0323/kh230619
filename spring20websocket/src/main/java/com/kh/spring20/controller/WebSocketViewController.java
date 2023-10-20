@@ -63,6 +63,11 @@ public class WebSocketViewController {
 		return "member";
 	}
 	
+	@RequestMapping("/json")
+	public String json() {
+		return "json";
+	}
+	
 	
 }
 

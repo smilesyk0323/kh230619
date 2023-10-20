@@ -27,6 +27,7 @@
 		  if(input.length == 0) return;
 		  
 		  window.socket.send(input);
+		  $(".message-input").val("");
 	  });
 	  
   });

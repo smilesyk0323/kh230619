@@ -8,6 +8,22 @@
 <h2><a href="time">타임 웹소켓 예제</a></h2>
 <h2><a href="group">그룹 웹소켓 예제</a></h2>
 
+<c:choose>
+	<c:when test="${sessionScope.name == null}">
+		<!-- 로그인 화면 -->
+		<form action="login"method="post">
+			ID<input type="text"name="memberId">
+			<br><br>
+			PW<input type="password"name="memberPw">
+			<button type="submit">로그인</button>
+		</form>
+	</c:when>
+	<c:otherwise>
+		<a href="logout">로그아웃</a>
+	</c:otherwise>
+</c:choose>
+
+<h2><a href="member">회원 전용 웹소켓 예제</a></h2>
 
 
 

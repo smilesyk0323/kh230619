@@ -31,10 +31,10 @@
 	    width: 8px;
 	  }
 	  .message-list::-webkit-scrollbar-track {
-	    background: #f0f0f0;
+	    background:  #f0f0f0;
 	  }
 	  .message-list::-webkit-scrollbar-thumb {
-	    background-color: #888;
+	    background-color:  #888;
 	  }
 	@media screen and (max-width:768px){
 		.client-list{
@@ -164,18 +164,24 @@
     		}
     	};
     	
-     
     	
-    	$(".send-btn").click(function(){
-    		var text = $(".message-input").val();
-    		if(text.length == 0) return;
-    		
-    		window.socket.send(text);
-    		$(".message-input").val("");
-    		
-    		// 메세지를 보낸 후 스크롤바를 맨 아래로 이동
-    		  scrollToBottom();
-    	});
+    	//엔터키 입력시 등록
+    	 $(".send-btn").click(sendMessage);
+    	    
+    	    // .message-input 요소에서 엔터 키 입력을 처리
+    	    $(".message-input").keypress(function (e) {
+    	        if (e.which === 13) { // 13은 엔터 키의 키 코드
+    	            sendMessage();
+    	        }
+    	    });
+    	    
+    	    function sendMessage() {
+    	        var text = $(".message-input").val();
+    	        if (text.length == 0) return;
+    	        window.socket.send(text);
+    	        $(".message-input").val("");
+    	        scrollToBottom();
+    	    }
     	
     	//.btn-userlist를 누르면 사용자 목록에 active를 붙였다 떼었다 하도록 처리
     	$(".btn-userlist").click(function(){

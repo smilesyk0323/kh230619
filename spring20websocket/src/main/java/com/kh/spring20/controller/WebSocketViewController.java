@@ -68,6 +68,11 @@ public class WebSocketViewController {
 		return "json";
 	}
 	
+	@RequestMapping("/sockjs")
+	public String sockjs() {
+		return "sockjs";
+	}
+	
 	
 }
 

@@ -134,7 +134,18 @@
 	    		ul.appendTo(".client-list")
     		}
     		else if(data.content){//메세지 처리
-    			  var memberId = $("<span>").text(data.memberId);
+    			  var memberId
+	    			  if(data.dm == true){//DM이라면
+	    				  if(myId == data.memberId){
+	    					  memberId = $("<span>").text(data.target + "님에게 DM");
+	    				  }
+	    				  else{
+	    				 	 memberId = $("<span>").text(data.memberId + " 님으로부터의 DM");	    					  
+	    				  }
+	    			  }
+	    			  else{
+	    				  memberId = $("<span>").text(data.memberId);
+	    			  }
     		      var memberLevel = $("<span>").text(data.memberLevel).addClass("badge bg-secondary ms-1");
     		      var content = $("<div>").text(data.content).addClass("p-2 mt-1 border border-secondary rounded");
     		      
@@ -165,29 +176,54 @@
     	};
     	
     	
-    	//엔터키 입력시 등록
-    	 $(".send-btn").click(sendMessage);
-    	    
-    	    // .message-input 요소에서 엔터 키 입력을 처리
-    	    $(".message-input").keypress(function (e) {
-    	        if (e.which === 13) { // 13은 엔터 키의 키 코드
-    	            sendMessage();
-    	        }
-    	    });
-    	    
-    	    function sendMessage() {
-    	        var text = $(".message-input").val();
-    	        if (text.length == 0) return;
-    	        window.socket.send(text);
-    	        $(".message-input").val("");
-    	        scrollToBottom();
-    	    }
-    	
-    	//.btn-userlist를 누르면 사용자 목록에 active를 붙였다 떼었다 하도록 처리
-    	$(".btn-userlist").click(function(){
-    		$(".client-list").toggleClass("active");
+    	$(".btn-userlist").click(function() {
+    	    $(".client-list").toggleClass("active");
     	});
-    	
+
+    	$(".send-btn").click(function() {
+    	    sendMessage();
+    	});
+
+    	$(".message-input").keypress(function(e) {
+    	    if (e.which === 13) { // 13은 엔터 키의 키 코드
+    	        sendMessage();
+    	    }
+    	});
+
+    	//메세지를 전송하는 코드 
+    	//- 메세지가 @로 시작하면 DM으로 처리(+아이디 유무 검사)
+    	//- @아이디 메세지
+    	function sendMessage() {
+    	    var text = $(".message-input").val();
+    	    if (text.length === 0) {
+    	        return;
+    	    }
+
+    	    //window.socket.send(text);//일반 텍스트 형식으로 보낼때
+    	    
+    	    if(text.startsWith("@")){//@로 시작하면(DM)
+    	    	var space = text.indexOf(" ");
+    	    	if(space == -1) return;// 없으면 하지마
+    	    	
+    	    	var obj = {
+    	    			target: text.substring(1,space),
+    	    			content: text.substring(space+1)
+    	    	};
+	    	    var str=JSON.stringify(obj);//JSON을 문자열로 변환
+	    	    window.socket.send(str);//JSON문자열
+	    	    $(".message-input").val("");
+	    	       
+    	    }
+    	    else{
+	    	    var obj={
+	    	            content:text
+	    	    };	
+	    	    var str=JSON.stringify(obj);//JSON을 문자열로 변환
+	    	    window.socket.send(str);//JSON문자열
+	    	    $(".message-input").val(""); 	    	
+    	    }
+    	    
+    	}
 		
     </script>
     

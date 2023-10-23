@@ -52,7 +52,7 @@ public class WebSocketServerConfiguration implements WebSocketConfigurer{
 		
 		//SockJS를 사용하는 웹소켓 서버는 뒤에 추가적인 설정을 해야 한다. 
 		//- 클라이언트도 이 웹소켓 서버에 연결하려면 SockJS를 사용해야 한다 
-		registry.addHandler(sockJsWebSocketServer, "/ws/sockth")
+		registry.addHandler(sockJsWebSocketServer, "/ws/sockjs")
 					.addInterceptors(new HttpSessionHandshakeInterceptor())
 					.withSockJS();
 	}

@@ -20,6 +20,22 @@
 	.btn-userlist{
 		display: none;
 	}
+	.message-list{
+		height: 65vh;
+		overflow-y:scroll;
+		scrollbar-width: thin;
+   		scrollbar-color: #888 #f0f0f0;
+	}
+	  /* Webkit 브라우저(Chrome, Safari)의 스크롤바 스타일링 */
+	  .message-list::-webkit-scrollbar {
+	    width: 8px;
+	  }
+	  .message-list::-webkit-scrollbar-track {
+	    background: #f0f0f0;
+	  }
+	  .message-list::-webkit-scrollbar-thumb {
+	    background-color: #888;
+	  }
 	@media screen and (max-width:768px){
 		.client-list{
 			position : fixed;
@@ -129,6 +145,9 @@
     		         .appendTo(".message-list");
     		         
     		         memberId.addClass("badge bg-danger");
+    		         // 메세지를 보낸 후 스크롤바를 맨 아래로 이동
+    		         var messageList = $(".message-list");
+    	                messageList.scrollTop(messageList[0].scrollHeight);
     		         
     		      }
     		      else{
@@ -138,6 +157,9 @@
     		                  .append(content)
     		                  .appendTo(".message-list");
     		         memberId.addClass("badge bg-primary");
+    		      // 메세지를 보낸 후 스크롤바를 맨 아래로 이동
+    		         var messageList = $(".message-list");
+    	                messageList.scrollTop(messageList[0].scrollHeight);
     		      }
     		}
     	};
@@ -150,6 +172,9 @@
     		
     		window.socket.send(text);
     		$(".message-input").val("");
+    		
+    		// 메세지를 보낸 후 스크롤바를 맨 아래로 이동
+    		  scrollToBottom();
     	});
     	
     	//.btn-userlist를 누르면 사용자 목록에 active를 붙였다 떼었다 하도록 처리
@@ -157,6 +182,7 @@
     		$(".client-list").toggleClass("active");
     	});
     	
+		
     </script>
     
     

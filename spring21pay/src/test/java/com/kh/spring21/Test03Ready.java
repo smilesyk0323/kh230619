@@ -60,9 +60,9 @@ public class Test03Ready {
 		body.add("cid","TC0ONETIME");//가맹점 코드(사업자번호)대체 하는 테스트 코드
 		body.add("partner_order_id",request.getPartnerOrderId());//시퀀스, 랜덤 시리얼 번호 생성(같은번호는 같은 결제!) 
 		body.add("partner_user_id",request.getPartnerUserId());//회원아이디
-		body.add("item_name",request.getItemName());//상품 총액
-		body.add("quantity","1"); //상품 여러개 일땐 "상품명 외 ?개"로 표기
-		body.add("total_amount",String.valueOf(request.getItemPrice()));//상품수량: 무조건1로 표기 실제 수량은 DB에서 관리
+		body.add("item_name",request.getItemName());//상품 여러개 일땐 "상품명 외 ?개"로 표기
+		body.add("quantity","1"); //상품수량: 무조건1로 표기 실제 수량은 DB에서 관리
+		body.add("total_amount",String.valueOf(request.getItemPrice()));//상품 총액
 		body.add("tax_free_amount","0");//비과세 
 		body.add("approval_url","http://localhost:8080/pay/success");//성공
 		body.add("cancel_url","http://localhost:8080/pay/cancel");//취소

@@ -53,7 +53,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 						//.addPathPatterns(간섭하고 싶은 주소);
 						//.addPathPatterns("/**") 몽땅!
 			
-//			registry.addInterceptor(testInterceptor).addPathPatterns("/**");
+			registry.addInterceptor(testInterceptor).addPathPatterns("/**");
 			
 			//[2] MemberInterceptor를 회원 전용 페이지 처리과정에 간섭할 수 있도록 설정하겠다
 			//- addPathPatterns를 사용하면 추가할 주소를 설정할 수 있다.

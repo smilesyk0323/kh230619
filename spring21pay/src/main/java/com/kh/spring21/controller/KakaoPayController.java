@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.spring21.service.KakaoPayService;
 import com.kh.spring21.vo.KakaoPayApproveRequestVO;
 import com.kh.spring21.vo.KakaoPayApproveResponseVO;
+import com.kh.spring21.vo.KakaoPayCancelRequestVO;
+import com.kh.spring21.vo.KakaoPayCancelResponseVO;
 import com.kh.spring21.vo.KakaoPayDetailRequestVO;
 import com.kh.spring21.vo.KakaoPayDetailResponseVO;
 import com.kh.spring21.vo.KakaoPayReadyRequestVO;
@@ -78,6 +80,19 @@ public class KakaoPayController {
 				kakaoPayService.detail(KakaoPayDetailRequestVO.builder().tid(tid).build());
 			model.addAttribute("vo",response);
 		return "pay/detail";
+	}
+	
+	@RequestMapping("/test1/cancel")
+	public String cancel(@ModelAttribute KakaoPayCancelRequestVO request) throws URISyntaxException {
+		KakaoPayCancelResponseVO response = kakaoPayService.cancel(request);
+		return "redirect:detail?tid="+request.getTid();
+	}
+	
+	//---[ test2 ]------------------------------------------------------------------------
+	@RequestMapping("/test2")
+	public String test2() {
+		
+		return "pay2/home";
 	}
 	
 	

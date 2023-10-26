@@ -195,7 +195,7 @@ public class KakaoPayController {
 		int total = 0;
 		for(PurchaseVO vo : purchaseList) {//사용자가 선택한 번호와 수량의 목록을 반복하며
 			ProductDto productDto = productDao.selectOne(vo.getProductNo());//상품정보를구한다
-			//vo와 dto를 신규객체로 만들어 추가\
+			//vo와 dto를 신규객체로 만들어 추가
 			PurchaseConfirmVO confirmVO = PurchaseConfirmVO.builder()
 						.purchaseVO(vo).productDto(productDto)
 					.build();

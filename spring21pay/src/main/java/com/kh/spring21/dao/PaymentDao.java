@@ -18,5 +18,5 @@ public interface PaymentDao {
 	PaymentDto selectOne(int paymentNo);
 	void cancelDetail(int paymentDetailNo);
 	void cancel(PaymentDto build);
-	
+	void cancelDetailGroup(int paymentDetailOrigin);
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="book">
+    
+    	<select id="save">
+    		insert into book(book_id,book_title, book_author, book_publication_date, 
+  										book_price, book_publisher, book_page_count, book_genre)  
+  			values(book_seq.nextval,#{bookTitle}, #{bookAuthor}, #{bookPublicationDate}, 
+  										#{bookPrice}, #{bookPublisher}, #{bookPageCount}, #{bookGenre})
+    	</select>
+    	
+    	<delete id="remove">
+    		delete book where book_id = #{bookId}
+    	</delete>
+    	
+    	<select id="list" resultType="BookDto">
+    		select * from book
+    	</select>
+    	
+    	   <update id="editUnit">
+		      update book
+		      <set>
+		      <if test="dto.bookTitle != null">
+		      book_title = #{dto.bookTitle},
+		      </if>
+		      <if test="dto.bookPublicationDate !=null">
+		      book_publication_date = #{dto.bookPublicationDate},
+		      </if>
+		      <if test="dto.bookPrice > 0">
+		      book_price = #{dto.bookPrice},
+		      </if>
+		      <if test="dto.bookPublisher != null">
+		      book_publisher = #{dto.bookPublisher},
+		      </if>
+		      <if test="dto.bookAuthor != null">
+		      book_author = #{dto.bookAuthor},
+		      </if>
+		      <if test="dto.bookPageCount > 0">
+		      book_page_count = #{dto.bookPageCount},
+		      </if>
+		      <if test="dto.bookGenre != null">
+		      book_genre = #{dto.bookGenre}
+		      </if>
+		      
+		      </set>
+		      where book_id = #{bookId}
+		   </update>
+		   
+		   <select id="find" resultType="BookDto">
+		   		select * from book where book_id = #{bookId}
+		   </select>
+		   
+		   <select id="search" resultType="BookDto">
+		   		select * from book
+		   		where instr(book_title, #{bookTitle}) > 0	
+		   </select>
+    	
+    </mapper>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

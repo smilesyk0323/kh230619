@@ -6,58 +6,64 @@
     
     <mapper namespace="book">
     
-    	<select id="save">
+    	<select id="list" resultType="BookDto">
+    		select * from book order by book_id asc
+    	</select>
+    	
+	   <select id="find" resultType="BookDto">
+	   		select * from book where book_id = #{bookId}
+	   </select>
+		   
+	   <!-- 도서명 검색 -->
+	   <select id="findByBookTitle" resultType="BookDto">
+	   		select * from book where instr(book_title, #{bookTitle}) > 0	
+	   </select>
+	   
+    	<insert id="save">
     		insert into book(book_id,book_title, book_author, book_publication_date, 
   										book_price, book_publisher, book_page_count, book_genre)  
   			values(book_seq.nextval,#{bookTitle}, #{bookAuthor}, #{bookPublicationDate}, 
   										#{bookPrice}, #{bookPublisher}, #{bookPageCount}, #{bookGenre})
-    	</select>
+    	</insert>
     	
+	   
     	<delete id="remove">
     		delete book where book_id = #{bookId}
     	</delete>
     	
-    	<select id="list" resultType="BookDto">
-    		select * from book
-    	</select>
-    	
-    	   <update id="editUnit">
-		      update book
-		      <set>
-		      <if test="dto.bookTitle != null">
-		      book_title = #{dto.bookTitle},
-		      </if>
-		      <if test="dto.bookPublicationDate !=null">
-		      book_publication_date = #{dto.bookPublicationDate},
-		      </if>
-		      <if test="dto.bookPrice > 0">
-		      book_price = #{dto.bookPrice},
-		      </if>
-		      <if test="dto.bookPublisher != null">
-		      book_publisher = #{dto.bookPublisher},
-		      </if>
-		      <if test="dto.bookAuthor != null">
-		      book_author = #{dto.bookAuthor},
-		      </if>
-		      <if test="dto.bookPageCount > 0">
-		      book_page_count = #{dto.bookPageCount},
-		      </if>
-		      <if test="dto.bookGenre != null">
-		      book_genre = #{dto.bookGenre}
-		      </if>
-		      
-		      </set>
-		      where book_id = #{bookId}
-		   </update>
+    	<!-- (참고) JPA에서는 등록과 수정 명령이 같다 : 둘다 save
+    			- 변경시 변경할 PK와 변경할 정도(DTO)가 전달
+    			- PK 는 bookId, DTO는 bookDto
+    	 -->
+   	   <update id="editUnit">
+	      update book
+	      <set>
+	      <if test="dto.bookTitle != null">
+	      book_title = #{dto.bookTitle},
+	      </if>
+	      <if test="dto.bookPublicationDate !=null">
+	      book_publication_date = #{dto.bookPublicationDate},
+	      </if>
+	      <if test="dto.bookPrice >= 0">
+	      book_price = #{dto.bookPrice},
+	      </if>
+	      <if test="dto.bookPublisher != null">
+	      book_publisher = #{dto.bookPublisher},
+	      </if>
+	      <if test="dto.bookAuthor != null">
+	      book_author = #{dto.bookAuthor},
+	      </if>
+	      <if test="dto.bookPageCount > 0">
+	      book_page_count = #{dto.bookPageCount},
+	      </if>
+	      <if test="dto.bookGenre != null">
+	      book_genre = #{dto.bookGenre}
+	      </if>
+	      
+	      </set>
+	      where book_id = #{bookId}
+	   </update>
 		   
-		   <select id="find" resultType="BookDto">
-		   		select * from book where book_id = #{bookId}
-		   </select>
-		   
-		   <select id="search" resultType="BookDto">
-		   		select * from book
-		   		where instr(book_title, #{bookTitle}) > 0	
-		   </select>
     	
     </mapper>
     

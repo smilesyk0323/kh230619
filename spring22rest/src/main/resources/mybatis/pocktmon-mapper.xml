@@ -25,9 +25,10 @@
     		update pocketmon
     		set 
     		<if test="dto.no > 0">
-	    		no=#{dto.no}, name=#{dto.name}, type=#{dto.type}
-	    		where no=#{no}
+    		no=#{dto.no}, 
     		</if>
+    		name=#{dto.name}, type=#{dto.type}
+    		where no=#{no}
     	</update>
     	
     	<update id="editUnit">

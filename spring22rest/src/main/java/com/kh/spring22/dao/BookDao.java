@@ -9,8 +9,10 @@ public interface BookDao {
 	void insert(BookDto bookDto);
 	boolean delete(int bookId);
 	List<BookDto> selectList();
-	boolean editUnit(int bookId, BookDto bookDto);
 	BookDto selectOne(int bookId);
 	List<BookDto> searchByTitle(String bookTitle);
+	void edit(int bookId, BookDto bookDto);
+	List<BookDto> selectListByPage(int page, int size);//무한스크롤
+
 
 }

@@ -54,12 +54,16 @@ public class BookRestController {
 		bookDao.insert(bookDto);
 	}
 	
-	//일부만 수정
+	
+	@PutMapping("/{bookId}")
+	public void update(@RequestBody BookDto bookDto, @PathVariable int bookId) {
+		//bookDto에 모든 항목이 있는지 검사해야함
+		bookDao.edit(bookId, bookDto);
+	}
 	@PatchMapping("/{bookId}")
-	public ResponseEntity<String> editUnit(
-			@PathVariable int bookId, @RequestBody BookDto bookDto){
-		boolean result = bookDao.editUnit(bookId, bookDto);
-		return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+	public void update2(@RequestBody BookDto bookDto, @PathVariable int bookId) {
+		//bookDto에 항목이 하나라도 있는지 검사해야함
+		bookDao.edit(bookId, bookDto);
 	}
 	
 	//삭제
@@ -72,6 +76,13 @@ public class BookRestController {
 		else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	
+	//무한스크롤
+	//FE에서 페이지 번호, 데이터 개수를 보낼 경우의 조회 매핑
+	@GetMapping("/page/{page}/size/{size}")
+	public List<BookDto> listByPage(@PathVariable int page, @PathVariable int size){
+		return bookDao.selectListByPage(page,size);
 	}
 	
 	

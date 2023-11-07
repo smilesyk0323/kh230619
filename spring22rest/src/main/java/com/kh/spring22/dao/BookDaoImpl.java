@@ -50,13 +50,19 @@ public class BookDaoImpl implements BookDao{
 	}
 
 	@Override
-	public boolean editUnit(int bookId, BookDto bookDto) {
-		Map<String, Object> params = new HashMap<>();
-		params.put("bookId", bookId);
-		params.put("dto", bookDto);
-		return sqlSession.update("book.editUnit", params) > 0;
+	public void edit(int bookId, BookDto bookDto) {
+		Map<String, Object> param = Map.of("bookId", bookId, "bookDto", bookDto);
+		int result = sqlSession.update("book.change", param);
+		if(result == 0) throw new NoTargetException();
 	}
-
+	
+	@Override//무한 스크롤
+	public List<BookDto> selectListByPage(int page, int size) {
+		int end = page * size;
+		int begin = end - (size - 1) ;
+		Map<String, Object> params = Map.of("begin", begin, "end", end);
+		return sqlSession.selectList("book.selectListByPage", params);
+	}
 
 
 }

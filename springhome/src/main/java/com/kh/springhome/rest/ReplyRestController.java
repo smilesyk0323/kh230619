@@ -67,6 +67,9 @@ public class ReplyRestController {
 	public void edit(@ModelAttribute ReplyDto replyDto) {
 		replyDao.update(replyDto);
 	}
+
+
+
 	
 }
 

@@ -25,7 +25,6 @@ public interface BoardDao {
 				
 		List<BoardListDto> selectListByPage(PaginationVO vo);//(모듈화)페이징 - 목록 구하는
 		int countList(PaginationVO vo);//(모듈화)페이징- 갯수 구하는
-			
 		//특정 사용자(매개변수)가 작성한 글을 조회(list)하는 메소드
 		List<BoardListDto> selectListByBoardWriter(String boardWriter);
 		
